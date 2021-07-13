@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,12 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-object ExamplePage extends BasePage {
+object CommonPage extends BrowserDriver with Matchers {
 
-  val url: String = TestConfiguration.url("auth-login-stub") + "/gg-sign-in"
-  val title       = "Authority Wizard"
+  def goToStartOfJourney(): Unit =
+    driver.navigate().to("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns/")
 
 }
