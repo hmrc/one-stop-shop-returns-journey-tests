@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.By
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
@@ -24,4 +25,35 @@ object CommonPage extends BrowserDriver with Matchers {
   def goToStartOfJourney(): Unit =
     driver.navigate().to("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns/")
 
+  def checkUrl(url: String): Unit =
+    driver.getCurrentUrl should endWith(url)
+
+  def selectAnswer(data: String): Unit = {
+    data match {
+      case "yes" => driver.findElement(By.id("value")).click()
+      case "no"  => driver.findElement(By.id("value-no")).click()
+      case _     => throw new Exception("Option doesn't exist")
+    }
+    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+  }
+
+  def enterData(data: String): Unit = {
+    val inputId = "value"
+    driver.findElement(By.id(inputId)).sendKeys(data)
+    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+  }
+
+  def tickCheckbox(checkbox: String): Unit =
+    checkbox match {
+      case "first"  => driver.findElement(By.id("value_0")).click()
+      case "second" => driver.findElement(By.id("value_1")).click()
+      case _        => throw new Exception("Checkbox doesn't exist")
+    }
+
+  def whichPage(page: String): String =
+    page match {
+      case "sales" => "netValueOfSalesFromNi"
+      case "vat"   => "vatOnSalesFromNi"
+      case _       => throw new Exception("Page doesn't exist")
+    }
 }
