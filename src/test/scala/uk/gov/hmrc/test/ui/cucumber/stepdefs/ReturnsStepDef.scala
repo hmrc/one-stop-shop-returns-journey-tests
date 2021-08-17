@@ -79,6 +79,15 @@ class ReturnsStepDef extends BaseStepDef {
     CommonPage.enterData(data)
   }
 
+  When("""^the user selects (.*) on the (first|second) (.*) page$""") { (data: String, index: String, url: String) =>
+    index match {
+      case "first"  => CommonPage.checkUrl(url + "/1")
+      case "second" => CommonPage.checkUrl(url + "/2")
+      case _        => throw new Exception("Index doesn't exist")
+    }
+    CommonPage.selectValueAutocomplete(data)
+  }
+
   When(
     """^the user enters (first|second) EU country total (sales|vat) of (.*) for (first|second) selected VAT rate$"""
   ) { (index: String, page: String, data: String, vatRate: String) =>

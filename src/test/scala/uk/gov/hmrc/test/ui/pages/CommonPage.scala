@@ -17,8 +17,10 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import uk.gov.hmrc.test.ui.pages.CommonPage.waitForElement
 
 object CommonPage extends BrowserDriver with Matchers {
 
@@ -55,5 +57,18 @@ object CommonPage extends BrowserDriver with Matchers {
       case "sales" => "netValueOfSalesFromNi"
       case "vat"   => "vatOnSalesFromNi"
       case _       => throw new Exception("Page doesn't exist")
+    }
+
+  def selectValueAutocomplete(data: String): Unit = {
+    val inputId = "value"
+    driver.findElement(By.id(inputId)).sendKeys(data)
+    waitForElement(By.id(inputId))
+    driver.findElement(By.cssSelector("li#value__option--0")).click()
+    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+  }
+
+  def waitForElement(by: By) =
+    new WebDriverWait(driver, 3).until {
+      ExpectedConditions.presenceOfElementLocated(by)
     }
 }
