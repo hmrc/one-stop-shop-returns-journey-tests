@@ -19,11 +19,11 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.Select
 import uk.gov.hmrc.test.ui.pages.CommonPage
-import uk.gov.hmrc.test.ui.pages.CommonPage.driver
 
 class ReturnsStepDef extends BaseStepDef {
 
   Given("^the user accesses the service$") { () =>
+    driver.manage().deleteAllCookies()
     CommonPage.goToStartOfJourney()
   }
 
@@ -43,7 +43,7 @@ class ReturnsStepDef extends BaseStepDef {
         .sendKeys("VRN")
       driver
         .findElement(By.xpath("/html/body/main/div[2]/form/div[1]/div[26]/table/tbody/tr[2]/td[3]/input"))
-        .sendKeys("100000002")
+        .sendKeys(vrn)
       driver.findElement(By.cssSelector("Input[value='Submit']")).click()
 
       eventually {
@@ -66,8 +66,8 @@ class ReturnsStepDef extends BaseStepDef {
     CommonPage.checkUrl(url)
   }
 
-  Then("""^the user is directed back to the index page$""") { (url: String) =>
-    CommonPage.checkUrl("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns/")
+  Then("""^the user is directed back to the index page$""") { () =>
+    driver.getCurrentUrl shouldBe "http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns"
   }
 
   When("""^the user adds (.*) on the (first|second) (.*) page$""") { (data: String, index: String, url: String) =>
@@ -93,8 +93,6 @@ class ReturnsStepDef extends BaseStepDef {
   }
 
   When("""^the user ticks the (first|second) checkbox on the (first|second) (.*) page$""") {
-
-    import uk.gov.hmrc.test.ui.pages.CommonPage.whichPage
 
     (checkbox: String, index: String, url: String) =>
       index match {
