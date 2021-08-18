@@ -23,7 +23,6 @@ import uk.gov.hmrc.test.ui.pages.CommonPage
 class ReturnsStepDef extends BaseStepDef {
 
   Given("^the user accesses the service$") { () =>
-    driver.manage().deleteAllCookies()
     CommonPage.goToStartOfJourney()
   }
 

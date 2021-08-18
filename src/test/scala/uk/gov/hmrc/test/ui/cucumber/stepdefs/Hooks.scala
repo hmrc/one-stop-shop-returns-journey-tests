@@ -29,9 +29,10 @@ class Hooks extends ScalaDsl with EN with BrowserDriver {
       val screenshot     = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.BYTES)
       scenario.attach(screenshot, "image/png", screenshotName)
     }
+  }
 
-    Before {
-      MongoConnection.insert(RegistrationData.data, "one-stop-shop-registration", "registrations")
-    }
+  Before {
+    driver.manage().deleteAllCookies()
+    MongoConnection.insert(RegistrationData.data, "one-stop-shop-registration", "registrations")
   }
 }
