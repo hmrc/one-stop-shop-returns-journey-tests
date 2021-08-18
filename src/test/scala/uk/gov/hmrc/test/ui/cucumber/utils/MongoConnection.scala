@@ -53,12 +53,10 @@ object MongoConnection {
     dropMongoCollection(database, collection)
 
     try {
-      println("Inside insert try")
       val db  = mongoClient.getDatabase(database)
       val col = db.getCollection(collection)
       source.map { e =>
         val doc = Document(e)
-        println("doc " + doc)
         Await.result(
           col.insertOne(doc).toFutureOption().map { _ =>
             Done
