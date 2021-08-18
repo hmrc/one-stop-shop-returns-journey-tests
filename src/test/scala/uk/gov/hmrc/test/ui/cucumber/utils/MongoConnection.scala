@@ -18,9 +18,10 @@ package uk.gov.hmrc.test.ui.cucumber.utils
 
 import org.mongodb.scala.MongoClient
 import org.mongodb.scala.bson.collection.immutable.Document
+import org.mongodb.scala.model.Filters
 import play.api.libs.iteratee.Done
-import scala.concurrent.ExecutionContext.Implicits.global
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Await
 import scala.concurrent.duration._
 import scala.language.postfixOps
@@ -35,12 +36,12 @@ object MongoConnection {
     mongoClient.close()
   }
 
-  def dropMongoCollection(db: String, collection: String): Unit =
+  def dropRegistration(db: String, collection: String): Unit =
     try Await.result(
       mongoClient
         .getDatabase(db)
         .getCollection(collection)
-        .drop()
+        .deleteOne(filter = Filters.equal("vrn", "100000002"))
         .head(),
       timeout
     )
@@ -49,8 +50,7 @@ object MongoConnection {
     }
 
   def insert(source: List[String], database: String, collection: String): Unit = {
-
-    dropMongoCollection(database, collection)
+    dropRegistration(database, collection)
 
     try {
       val db  = mongoClient.getDatabase(database)
