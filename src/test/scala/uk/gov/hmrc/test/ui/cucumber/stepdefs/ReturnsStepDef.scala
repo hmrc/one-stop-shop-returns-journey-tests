@@ -75,7 +75,8 @@ class ReturnsStepDef extends BaseStepDef {
       case "second" => CommonPage.checkUrl(url + "/2")
       case _        => throw new Exception("Index doesn't exist")
     }
-    CommonPage.enterData(data)
+    CommonPage.enterData(data = data)
+    CommonPage.submitForm()
   }
 
   When("""^the user selects (.*) on the (first|second) (.*) page$""") { (data: String, index: String, url: String) =>
@@ -88,16 +89,19 @@ class ReturnsStepDef extends BaseStepDef {
   }
 
   When(
-    """^the user enters (first|second) EU country total (sales|vat) of (.*) for (first|second) selected VAT rate$"""
-  ) { (index: String, page: String, data: String, vatRate: String) =>
+    """^the user enters (first|second) EU country total sales of (.*) and vat of (.*) for (first|second) selected VAT rate$"""
+  ) { (index: String, netValueData: String, vatData: String, vatRate: String) =>
+    val urlPage = "salesAtVatRateFromNi"
     (index, vatRate) match {
-      case ("first", "first")   => CommonPage.checkUrl(CommonPage.whichPage(page) + "/1/1")
-      case ("first", "second")  => CommonPage.checkUrl(CommonPage.whichPage(page) + "/1/2")
-      case ("second", "first")  => CommonPage.checkUrl(CommonPage.whichPage(page) + "/2/1")
-      case ("second", "second") => CommonPage.checkUrl(CommonPage.whichPage(page) + "/2/2")
+      case ("first", "first")   => CommonPage.checkUrl(CommonPage.whichPage(urlPage) + "/1/1")
+      case ("first", "second")  => CommonPage.checkUrl(CommonPage.whichPage(urlPage) + "/1/2")
+      case ("second", "first")  => CommonPage.checkUrl(CommonPage.whichPage(urlPage) + "/2/1")
+      case ("second", "second") => CommonPage.checkUrl(CommonPage.whichPage(urlPage) + "/2/2")
       case _                    => throw new Exception("Combination of Vat rate and index doesn't exist")
     }
-    CommonPage.enterData(data)
+    CommonPage.enterData("netValueOfSales", netValueData)
+    CommonPage.enterData("vatOnSales", vatData)
+    CommonPage.submitForm()
   }
 
   When("""^the user ticks the (first|second) checkbox on the (first|second) (.*) page$""") {

@@ -39,11 +39,11 @@ object CommonPage extends BrowserDriver with Matchers {
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
   }
 
-  def enterData(data: String): Unit = {
-    val inputId = "value"
+  def enterData(inputId: String = "value", data: String): Unit =
     driver.findElement(By.id(inputId)).sendKeys(data)
+
+  def submitForm(): Unit =
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
-  }
 
   def tickCheckbox(checkbox: String): Unit =
     checkbox match {
@@ -54,9 +54,8 @@ object CommonPage extends BrowserDriver with Matchers {
 
   def whichPage(page: String): String =
     page match {
-      case "sales" => "netValueOfSalesFromNi"
-      case "vat"   => "vatOnSalesFromNi"
-      case _       => throw new Exception("Page doesn't exist")
+      case "salesAtVatRateFromNi" => "salesAtVatRateFromNi"
+      case _                      => throw new Exception("Page doesn't exist")
     }
 
   def selectValueAutocomplete(data: String): Unit = {
