@@ -93,10 +93,10 @@ class ReturnsStepDef extends BaseStepDef {
   ) { (index: String, netValueData: String, vatData: String, vatRate: String) =>
     val urlPage = "salesAtVatRateFromNi"
     (index, vatRate) match {
-      case ("first", "first")   => CommonPage.checkUrl(CommonPage.whichPage(urlPage) + "/1/1")
-      case ("first", "second")  => CommonPage.checkUrl(CommonPage.whichPage(urlPage) + "/1/2")
-      case ("second", "first")  => CommonPage.checkUrl(CommonPage.whichPage(urlPage) + "/2/1")
-      case ("second", "second") => CommonPage.checkUrl(CommonPage.whichPage(urlPage) + "/2/2")
+      case ("first", "first")   => CommonPage.checkUrl(urlPage + "/1/1")
+      case ("first", "second")  => CommonPage.checkUrl(urlPage + "/1/2")
+      case ("second", "first")  => CommonPage.checkUrl(urlPage + "/2/1")
+      case ("second", "second") => CommonPage.checkUrl(urlPage + "/2/2")
       case _                    => throw new Exception("Combination of Vat rate and index doesn't exist")
     }
     CommonPage.enterData("netValueOfSales", netValueData)

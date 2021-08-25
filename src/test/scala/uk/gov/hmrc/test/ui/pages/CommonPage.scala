@@ -52,12 +52,6 @@ object CommonPage extends BrowserDriver with Matchers {
       case _        => throw new Exception("Checkbox doesn't exist")
     }
 
-  def whichPage(page: String): String =
-    page match {
-      case "salesAtVatRateFromNi" => "salesAtVatRateFromNi"
-      case _                      => throw new Exception("Page doesn't exist")
-    }
-
   def selectValueAutocomplete(data: String): Unit = {
     val inputId = "value"
     driver.findElement(By.id(inputId)).sendKeys(data)
