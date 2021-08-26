@@ -1,8 +1,8 @@
-@Returns
+@Returns @wip
 
 Feature: Returns Feature
 
-  Scenario: A user accesses the Returns service when selling goods from NI
+  Scenario: A user accesses the Returns service when selling goods and removes countries
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
     Then the user navigates to the start page
@@ -23,13 +23,7 @@ Feature: Returns Feature
     And the user enters second EU country total sales of 1350 and vat of 300 for first selected VAT rate on the salesAtVatRateFromNi page
     Then the user is on the check-sales-from-ni/2 page
     And the user clicks the continue button
-
-  Scenario: A user accesses the Returns service when selling goods to an EU country
-    Given the user accesses the service
-    And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
-    Then the user navigates to the start page
-    And the user answers yes on the startReturn page
-    And the user answers no on the soldGoodsFromNi page
+    And the user selects the remove link for deleteSalesFromNi\/1
     And the user answers yes on the soldGoodsFromEu page
     And the user selects Spain on the first countryOfSaleFromEu page
     And the user selects Bulgaria on the first countryOfConsumptionFromEu/1 page

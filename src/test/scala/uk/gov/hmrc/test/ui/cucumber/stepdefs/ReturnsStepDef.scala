@@ -89,9 +89,8 @@ class ReturnsStepDef extends BaseStepDef {
   }
 
   When(
-    """^the user enters (first|second) EU country total sales of (.*) and vat of (.*) for (first|second) selected VAT rate$"""
-  ) { (index: String, netValueData: String, vatData: String, vatRate: String) =>
-    val urlPage = "salesAtVatRateFromNi"
+    """^the user enters (first|second) EU country total sales of (.*) and vat of (.*) for (first|second) selected VAT rate on the (.*) page$"""
+  ) { (index: String, netValueData: String, vatData: String, vatRate: String, urlPage: String) =>
     (index, vatRate) match {
       case ("first", "first")   => CommonPage.checkUrl(urlPage + "/1/1")
       case ("first", "second")  => CommonPage.checkUrl(urlPage + "/1/2")
