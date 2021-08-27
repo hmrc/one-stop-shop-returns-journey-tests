@@ -17,7 +17,7 @@ Feature: Check Your Answers Feature
     And the user clicks the continue button
     And the user enters first EU country total sales of 50000 and vat of 5000 for first selected VAT rate on the changeSalesAtVatRateFromNi page
     Then the user clicks continue on the first change-check-sales-from-ni page
-#   VEOSS-378 - CYA looping needs fixing here as it's supposed to go to check-add-sales-from-ni
+    And the user answers no on the check-add-sales-from-ni page
     Then the user is on the check-your-answers page
     Then the user clicks change for NI sales excluding VAT
     And the user answers yes on the check-add-sales-from-ni page
@@ -26,12 +26,11 @@ Feature: Check Your Answers Feature
     And the user clicks the continue button
     And the user enters second EU country total sales of 10000 and vat of 500 for first selected VAT rate on the changeSalesAtVatRateFromNi page
     Then the user clicks continue on the second change-check-sales-from-ni page
-#   VEOSS-378 - CYA looping needs fixing here as it's supposed to go to check-add-sales-from-ni
+    And the user answers no on the check-add-sales-from-ni page
     Then the user is on the check-your-answers page
     Then the user clicks change for NI VAT charged
     And the user answers no on the check-add-sales-from-ni page
-#    VEOSS-378 - Bug - should be going to CYA but goes to /changeSoldGoodsFromEu
-#    Then the user is on the check-your-answers page
+    Then the user is on the check-your-answers page
 
   Scenario: A user provides answers then amends to remove info using Check Your Answer functionality
     Given the user accesses the service
