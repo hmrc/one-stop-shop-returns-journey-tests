@@ -43,4 +43,7 @@ class CheckYourAnswersStepDef extends BaseStepDef {
     }
   }
 
+  Then("""^the NI answers have been removed from the check-your-answers page$""") { () =>
+    CheckYourAnswersPage.checkCYAText()
+  }
 }
