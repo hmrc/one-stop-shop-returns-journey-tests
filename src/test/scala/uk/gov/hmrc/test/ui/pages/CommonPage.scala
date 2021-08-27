@@ -64,4 +64,8 @@ object CommonPage extends BrowserDriver with Matchers {
     new WebDriverWait(driver, 3).until {
       ExpectedConditions.presenceOfElementLocated(by)
     }
+
+  def clickContinue(): Unit =
+    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+
 }
