@@ -26,6 +26,7 @@ Feature: Returns Feature
     And the user answers no on the add-sales-from-ni page
     And the user answers no on the soldGoodsFromEu page
     Then the user is on the check-your-answers page
+    Then the user submits their return
 
   Scenario: A user completes a returns journey when only selling goods from the EU
     Given the user accesses the service
@@ -55,6 +56,7 @@ Feature: Returns Feature
     And the user answers no on the add-sales-to-eu/1 page
     And the user answers no on the add-sales-from-eu page
     Then the user is on the check-your-answers page
+    Then the user submits their return
 
   Scenario: A user completes a full returns journey for NI and EU
     Given the user accesses the service
@@ -97,5 +99,9 @@ Feature: Returns Feature
     And the user enters second EU country total sales of 550 and vat of 95 for second selected VAT rate on the salesAtVatRateFromEu/1 page
     Then the user is on the check-sales-to-eu/1/2 page
     And the user clicks the continue button
+    And the user answers no on the add-sales-to-eu/1 page
+    And the user answers no on the add-sales-from-eu page
+    Then the user is on the check-your-answers page
+    Then the user submits their return
 
 

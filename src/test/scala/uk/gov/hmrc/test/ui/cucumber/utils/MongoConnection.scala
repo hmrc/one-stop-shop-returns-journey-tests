@@ -36,7 +36,7 @@ object MongoConnection {
     mongoClient.close()
   }
 
-  def dropRegistration(db: String, collection: String): Unit =
+  def dropRecord(db: String, collection: String): Unit =
     try Await.result(
       mongoClient
         .getDatabase(db)
@@ -50,7 +50,7 @@ object MongoConnection {
     }
 
   def insert(source: List[String], database: String, collection: String): Unit = {
-    dropRegistration(database, collection)
+    dropRecord(database, collection)
 
     try {
       val db  = mongoClient.getDatabase(database)
