@@ -40,6 +40,11 @@ class CheckYourAnswersStepDef extends BaseStepDef {
         driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[2]/div[1]/dd[2]/a")).click()
       case "NI VAT charged"         =>
         driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[2]/div[2]/dd[2]/a")).click()
+      case "EU sales excluding VAT" =>
+        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[3]/div[2]/dd[2]/a")).click()
+      case "EU VAT charged"         =>
+        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[3]/div[3]/dd[2]/a")).click()
+      case _                        => throw new Exception("Change link doesn't exist")
     }
   }
 
