@@ -118,4 +118,9 @@ class ReturnsStepDef extends BaseStepDef {
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
   }
 
+  Then("""^the user submits their return$""") { () =>
+    CommonPage.clickContinue()
+    CommonPage.checkUrl("successful")
+  }
+
 }
