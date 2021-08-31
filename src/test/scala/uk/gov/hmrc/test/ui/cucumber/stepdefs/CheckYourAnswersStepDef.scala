@@ -37,9 +37,9 @@ class CheckYourAnswersStepDef extends BaseStepDef {
   Then("""^the user clicks change for (.*)$""") { (option: String) =>
     option match {
       case "NI sales excluding VAT" =>
-        driver.findElement(By.xpath("/html/body/div/main/div/div/dl[2]/div[1]/dd[2]/a")).click()
+        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[2]/div[1]/dd[2]/a")).click()
       case "NI VAT charged"         =>
-        driver.findElement(By.xpath("/html/body/div/main/div/div/dl[2]/div[2]/dd[2]/a")).click()
+        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[2]/div[2]/dd[2]/a")).click()
     }
   }
 
