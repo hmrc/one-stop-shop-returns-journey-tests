@@ -57,7 +57,7 @@ Feature: Returns Feature
     And the user answers no on the add-sales-from-eu page
     Then the user is on the check-your-answers page
     Then the user submits their return
-
+@ZAP
   Scenario: A user completes a full returns journey for NI and EU
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
