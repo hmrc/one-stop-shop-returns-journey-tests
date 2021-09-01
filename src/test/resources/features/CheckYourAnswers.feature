@@ -46,13 +46,13 @@ Feature: Check Your Answers Feature
     And the user selects Slovakia on the first changeCountryOfConsumptionFromEu/1 page
     And the user ticks the first checkbox on the first changeVatRatesFromEu/1 page
     And the user clicks the continue button
-    And the user enters first EU country total sales of 50000 and vat of 5000 for first selected VAT rate on the changeSalesDetailsFromEu/1 page
+    And the user enters first EU country total sales of 50000 and vat of 5000 for first selected VAT rate on the changeSalesAtVatRateFromEu/1 page
     Then the user clicks continue on the first change-check-sales-to-eu/1 page
     And the user answers yes on the check-add-sales-to-eu/1 page
     And the user selects Estonia on the second changeCountryOfConsumptionFromEu/1 page
     And the user ticks the first checkbox on the second changeVatRatesFromEu/1 page
     And the user clicks the continue button
-    And the user enters second EU country total sales of 70000 and vat of 6000 for first selected VAT rate on the changeSalesDetailsFromEu/1 page
+    And the user enters second EU country total sales of 70000 and vat of 6000 for first selected VAT rate on the changeSalesAtVatRateFromEu/1 page
     Then the user clicks continue on the second change-check-sales-to-eu/1 page
     And the user answers no on the check-add-sales-to-eu/1 page
     And the user answers yes on the check-add-sales-from-eu page
@@ -62,10 +62,10 @@ Feature: Check Your Answers Feature
     And the user clicks the continue button
     And the user enters first EU country total sales of 6000 and vat of 440 for first selected VAT rate on the changeSalesAtVatRateFromEu/2 page
     And the user clicks the continue button
-    And the user answers no on the check-sales-to-eu/2 page
+    And the user answers no on the check-add-sales-to-eu/2 page
     And the user answers no on the check-add-sales-from-eu page
     Then the user is on the check-your-answers page
-    And the user clicks change for EU Sales excluding VAT
+    And the user clicks change for EU sales excluding VAT
     Then the user is on the check-add-sales-from-eu page
     And the user answers no on the check-add-sales-from-eu page
     Then the user is on the check-your-answers page
