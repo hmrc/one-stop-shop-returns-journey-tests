@@ -23,9 +23,6 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 object CheckYourAnswersPage extends BrowserDriver with Matchers {
 
-  def selectLink(link: String): Unit =
-    driver.findElement(By.cssSelector(s"a[href*=$link]")).click()
-
   def checkCYAText(): Unit = {
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertFalse(htmlBody.contains("Sales excluding VAT"))

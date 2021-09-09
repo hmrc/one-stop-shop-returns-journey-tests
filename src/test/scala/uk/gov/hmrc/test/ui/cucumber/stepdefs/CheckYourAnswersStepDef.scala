@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{CheckYourAnswersPage, CommonPage}
 class CheckYourAnswersStepDef extends BaseStepDef {
 
   Then("""^the user selects the (change|remove) link for (.*)$""") { (linkType: String, link: String) =>
-    CheckYourAnswersPage.selectLink(link)
+    CommonPage.selectLink(link)
   }
 
   When("""^the user clicks continue on the (first|second) (.*) page$""") { (index: String, url: String) =>

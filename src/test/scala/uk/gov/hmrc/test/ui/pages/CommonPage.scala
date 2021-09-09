@@ -68,4 +68,7 @@ object CommonPage extends BrowserDriver with Matchers {
   def clickContinue(): Unit =
     driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
 
+  def selectLink(link: String): Unit =
+    driver.findElement(By.cssSelector(s"a[href*=$link]")).click()
+
 }

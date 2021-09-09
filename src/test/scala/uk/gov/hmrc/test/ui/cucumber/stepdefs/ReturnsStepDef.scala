@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import org.junit.Assert
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.Select
 import uk.gov.hmrc.test.ui.pages.CommonPage
@@ -31,7 +32,7 @@ class ReturnsStepDef extends BaseStepDef {
       driver.findElement(By.name("redirectionUrl")).clear()
       driver
         .findElement(By.name("redirectionUrl"))
-        .sendKeys("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns/")
+        .sendKeys("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns")
       val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
       selectCredentialStrength.selectByValue("strong")
       val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
@@ -44,12 +45,6 @@ class ReturnsStepDef extends BaseStepDef {
         .findElement(By.xpath("/html/body/main/div[2]/form/div[1]/div[26]/table/tbody/tr[2]/td[3]/input"))
         .sendKeys(vrn)
       driver.findElement(By.cssSelector("Input[value='Submit']")).click()
-  }
-
-  When("""^the user navigates to the start page$""") { () =>
-    driver
-      .navigate()
-      .to("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns/2021-Q3/startReturn")
   }
 
   When("""^the user answers (yes|no) on the (.*) page$""") { (data: String, url: String) =>
@@ -117,6 +112,33 @@ class ReturnsStepDef extends BaseStepDef {
   Then("""^the user submits their return$""") { () =>
     CommonPage.clickContinue()
     CommonPage.checkUrl("successful")
+  }
+
+  Then("""^the user clicks on the (.*) link$""") { (link: String) =>
+    link match {
+      case "Start your return"           =>
+        driver
+          .findElement(By.xpath("/html/body/div/main/div/div/div[1]/div[1]/div/p[2]/a"))
+          .click()
+      case "Back to your account"        =>
+        driver
+          .findElement(By.xpath("/html/body/div/main/div/div/div[1]/p[6]/a"))
+          .click()
+      case "View past returns"           =>
+        driver
+          .findElement(By.xpath("/html/body/div/main/div/div/div[1]/div[2]/div/p/a"))
+          .click()
+      case "1 July to 30 September 2021" =>
+        driver
+          .findElement(By.xpath("/html/body/div/main/div/div/div[2]/div/ul/li/a"))
+          .click()
+      case _                             => throw new Exception("Link doesn't exist")
+    }
+  }
+
+  Then("""^the user sees the no returns message$""") { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(htmlBody.contains("You have not submitted any returns for this year."))
   }
 
 }
