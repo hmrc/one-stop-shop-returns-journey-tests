@@ -44,10 +44,6 @@ class ReturnsStepDef extends BaseStepDef {
         .findElement(By.xpath("/html/body/main/div[2]/form/div[1]/div[26]/table/tbody/tr[2]/td[3]/input"))
         .sendKeys(vrn)
       driver.findElement(By.cssSelector("Input[value='Submit']")).click()
-
-      eventually {
-        driver.getCurrentUrl should be("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns/")
-      }
   }
 
   When("""^the user navigates to the start page$""") { () =>
