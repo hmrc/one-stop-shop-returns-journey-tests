@@ -5,7 +5,8 @@ Feature: Returns Feature
   Scenario: A user completes a returns journey when only selling goods from NI
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
-    Then the user navigates to the start page
+    Then the user is directed back to the index page
+    Then the user clicks on the Start your return link
     And the user answers yes on the startReturn page
     And the user answers yes on the soldGoodsFromNi page
     And the user selects Spain on the first countryOfConsumptionFromNi page
@@ -31,7 +32,8 @@ Feature: Returns Feature
   Scenario: A user completes a returns journey when only selling goods from the EU
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
-    Then the user navigates to the start page
+    Then the user is directed back to the index page
+    Then the user clicks on the Start your return link
     And the user answers yes on the startReturn page
     And the user answers no on the soldGoodsFromNi page
     And the user answers yes on the soldGoodsFromEu page
@@ -61,7 +63,8 @@ Feature: Returns Feature
   Scenario: A user completes a full returns journey for NI and EU
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
-    Then the user navigates to the start page
+    Then the user is directed back to the index page
+    Then the user clicks on the Start your return link
     And the user answers yes on the startReturn page
     And the user answers yes on the soldGoodsFromNi page
     And the user selects Spain on the first countryOfConsumptionFromNi page
