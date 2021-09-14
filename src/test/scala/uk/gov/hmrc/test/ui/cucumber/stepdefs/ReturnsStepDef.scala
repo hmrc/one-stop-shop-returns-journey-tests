@@ -141,4 +141,15 @@ class ReturnsStepDef extends BaseStepDef {
     Assert.assertTrue(htmlBody.contains("You have not submitted any returns for this year."))
   }
 
+  Then("""^the user sees the no returns due message$""") { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(htmlBody.contains("You do not have any returns due"))
+  }
+
+  When("""^the user manually navigates to the start page$""") { () =>
+    driver
+      .navigate()
+      .to("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns/2021-Q3/startReturn")
+  }
+
 }
