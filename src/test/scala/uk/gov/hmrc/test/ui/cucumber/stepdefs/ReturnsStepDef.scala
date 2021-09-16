@@ -162,5 +162,8 @@ class ReturnsStepDef extends BaseStepDef {
       .navigate()
       .to("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns/2021-Q3/startReturn")
   }
+  Then("""^the user clicks on the Back to your account button$""") { () =>
+    driver.findElement(By.xpath("/html/body/div/main/div/div/a")).click()
+  }
 
 }

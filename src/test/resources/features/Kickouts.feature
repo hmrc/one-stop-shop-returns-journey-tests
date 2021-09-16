@@ -13,6 +13,7 @@ Feature: Kickouts Feature
     Then the user is directed back to the index page
     Then the user clicks on the Start your return link
     And the user answers no on the startReturn page
+    Then the user is on the no-other-periods-available page
+    Then the user clicks on the Back to your account button
     Then the user is directed back to the index page
-#    TODO: Awaiting code in frontend
-#    Then the user is on the noOtherReturnPeriods page
+
