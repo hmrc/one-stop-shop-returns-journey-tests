@@ -20,7 +20,6 @@ import org.junit.Assert
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.Select
 import uk.gov.hmrc.test.ui.pages.CommonPage
-import uk.gov.hmrc.test.ui.pages.CommonPage.driver
 
 class ReturnsStepDef extends BaseStepDef {
 
@@ -33,7 +32,7 @@ class ReturnsStepDef extends BaseStepDef {
       driver.findElement(By.name("redirectionUrl")).clear()
       driver
         .findElement(By.name("redirectionUrl"))
-        .sendKeys("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns")
+        .sendKeys("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/your-account")
       val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
       selectCredentialStrength.selectByValue("strong")
       val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
@@ -58,7 +57,7 @@ class ReturnsStepDef extends BaseStepDef {
   }
 
   Then("""^the user is directed back to the index page$""") { () =>
-    driver.getCurrentUrl shouldBe "http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns"
+    driver.getCurrentUrl shouldBe "http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/your-account"
   }
 
   When("""^the user adds (.*) on the (first|second) (.*) page$""") { (data: String, index: String, url: String) =>
@@ -122,7 +121,7 @@ class ReturnsStepDef extends BaseStepDef {
 
   Then("""^the user submits their return$""") { () =>
     CommonPage.clickContinue()
-    CommonPage.checkUrl("successful")
+    CommonPage.checkUrl("return-submitted")
   }
 
   Then("""^the user clicks on the (.*) link$""") { (link: String) =>
@@ -160,7 +159,7 @@ class ReturnsStepDef extends BaseStepDef {
   When("""^the user manually navigates to the start page$""") { () =>
     driver
       .navigate()
-      .to("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns/2021-Q3/startReturn")
+      .to("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/2021-Q3/start")
   }
   Then("""^the user clicks on the Back to your account button$""") { () =>
     driver.findElement(By.xpath("/html/body/div/main/div/div/a")).click()

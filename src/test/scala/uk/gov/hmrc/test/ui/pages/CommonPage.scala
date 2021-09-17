@@ -25,7 +25,9 @@ import uk.gov.hmrc.test.ui.pages.CommonPage.waitForElement
 object CommonPage extends BrowserDriver with Matchers {
 
   def goToStartOfJourney(): Unit =
-    driver.navigate().to("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns/")
+    driver
+      .navigate()
+      .to("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/your-account")
 
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(url)

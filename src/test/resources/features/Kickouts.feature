@@ -12,7 +12,7 @@ Feature: Kickouts Feature
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
     Then the user is directed back to the index page
     Then the user clicks on the Start your return link
-    And the user answers no on the startReturn page
+    And the user answers no on the start page
     Then the user is on the no-other-periods-available page
     Then the user clicks on the Back to your account button
     Then the user is directed back to the index page
