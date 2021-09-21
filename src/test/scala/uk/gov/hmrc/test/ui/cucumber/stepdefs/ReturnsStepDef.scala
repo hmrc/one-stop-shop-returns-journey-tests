@@ -132,7 +132,7 @@ class ReturnsStepDef extends BaseStepDef {
           .click()
       case "Back to your account"        =>
         driver
-          .findElement(By.xpath("/html/body/div/main/div/div/div[1]/p[6]/a"))
+          .findElement(By.xpath("/html/body/div[2]/main/div/div/div[1]/p/a"))
           .click()
       case "View past returns"           =>
         driver
