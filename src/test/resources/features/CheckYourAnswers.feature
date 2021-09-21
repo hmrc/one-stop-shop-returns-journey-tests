@@ -14,8 +14,6 @@ Feature: Check Your Answers Feature
     Then the user selects the change link for check-sales-from-northern-ireland
     And the user answers yes on the check-sales-from-northern-ireland page
     And the user selects Denmark on the first check-eu-country-from-northern-ireland page
-    And the user ticks the first checkbox on the first check-eu-vat-rates-from-northern-ireland page
-    And the user clicks the continue button
     And the user enters first EU country total sales of 50000 for first selected VAT rate on the check-eu-sales-from-northern-ireland page
     And the user confirms the vat for the first EU country as the suggested amount for the first selected VAT rate on the check-vat-on-sales-from-northern-ireland page
     Then the user clicks continue on the first change-check-sales-from-northern-ireland page
