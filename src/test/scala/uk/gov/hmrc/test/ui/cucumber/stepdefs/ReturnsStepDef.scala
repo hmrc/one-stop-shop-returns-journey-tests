@@ -39,10 +39,10 @@ class ReturnsStepDef extends BaseStepDef {
       selectAffinityGroup.selectByValue("Organisation")
       driver.findElement(By.id("enrolment[0].name")).sendKeys("HMRC-MTD-VAT")
       driver
-        .findElement(By.xpath("/html/body/main/div[2]/form/div[1]/div[26]/table/tbody/tr[2]/td[2]/input"))
+        .findElement(By.id("input-0-0-name"))
         .sendKeys("VRN")
       driver
-        .findElement(By.xpath("/html/body/main/div[2]/form/div[1]/div[26]/table/tbody/tr[2]/td[3]/input"))
+        .findElement(By.id("input-0-0-value"))
         .sendKeys(vrn)
       driver.findElement(By.cssSelector("Input[value='Submit']")).click()
   }
