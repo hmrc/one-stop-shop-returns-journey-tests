@@ -152,8 +152,6 @@ Feature: Check Your Answers Feature
     Then the user selects the change link for change-check-sales-from-northern-ireland\/1
     Then the user selects the change link for check-vat-on-sales-from-northern-ireland\/1\/1
     And the user enters a different amount of VAT totalling 12345 for the first EU country and the first selected VAT rate on the check-vat-on-sales-from-northern-ireland page
-    Then the user clicks the continue button
-    And the user confirms the vat for the first EU country as the suggested amount for the second selected VAT rate on the check-vat-on-sales-from-northern-ireland page
     Then the user clicks continue on the first change-check-sales-from-northern-ireland page
     And the user answers no on the check-add-sales-from-northern-ireland page
     Then the user is on the check-your-answers page
@@ -162,8 +160,6 @@ Feature: Check Your Answers Feature
     Then the user selects the change link for change-check-sales-from-eu\/1\/1
     Then the user selects the change link for check-vat-on-sales-from-eu\/1\/1\/1
     And the user enters a different amount of VAT totalling 15200 for the first EU country and the first selected VAT rate on the check-vat-on-sales-from-eu/1 page
-    Then the user clicks the continue button
-    And the user confirms the vat for the first EU country as the suggested amount for the second selected VAT rate on the check-vat-on-sales-from-eu/1 page
     Then the user clicks the continue button
     And the user answers no on the check-add-sales-from-eu-to-eu/1 page
     And the user answers no on the check-add-sales-from-eu page
