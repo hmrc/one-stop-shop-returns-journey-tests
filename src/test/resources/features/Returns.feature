@@ -121,4 +121,15 @@ Feature: Returns Feature
     Then the user is on the check-your-answers page
     Then the user submits their return
 
+  Scenario: A user can submit a nil return
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
+    Then the user is directed back to the index page
+    Then the user clicks on the Start your return link
+    And the user answers yes on the start page
+    And the user answers no on the sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    Then the user is on the check-your-answers page
+    Then the user submits their return
+
 
