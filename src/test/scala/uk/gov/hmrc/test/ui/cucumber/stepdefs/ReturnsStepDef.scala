@@ -165,4 +165,9 @@ class ReturnsStepDef extends BaseStepDef {
     driver.findElement(By.xpath("/html/body/div/main/div/div/a")).click()
   }
 
+  Then("""^the user clicks on the (.*) breadcrumb""") { (id: String) =>
+    driver
+      .findElement(By.id(id))
+      .click()
+  }
 }
