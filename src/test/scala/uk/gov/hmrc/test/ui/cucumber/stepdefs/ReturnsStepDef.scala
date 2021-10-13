@@ -140,7 +140,7 @@ class ReturnsStepDef extends BaseStepDef {
           .click()
       case "1 July to 30 September 2021" =>
         driver
-          .findElement(By.xpath("/html/body/div/main/div/div/div[2]/div/ul/li/a"))
+          .findElement(By.id("period"))
           .click()
       case _                             => throw new Exception("Link doesn't exist")
     }
