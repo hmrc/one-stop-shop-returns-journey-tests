@@ -136,7 +136,7 @@ class ReturnsStepDef extends BaseStepDef {
           .click()
       case "View past returns"           =>
         driver
-          .findElement(By.xpath("/html/body/div/main/div/div/div[1]/div[2]/div/p/a"))
+          .findElement(By.xpath("/html/body/div/main/div/div/div[1]/div[3]/div/p/a"))
           .click()
       case "1 July to 30 September 2021" =>
         driver
