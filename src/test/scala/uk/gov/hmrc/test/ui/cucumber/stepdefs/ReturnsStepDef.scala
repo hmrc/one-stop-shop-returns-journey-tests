@@ -82,7 +82,7 @@ class ReturnsStepDef extends BaseStepDef {
   When(
     """^the user enters (first|second) EU country total sales of (.*) for (first|second) selected VAT rate on the (.*) page$"""
   ) { (index: String, netValueData: String, vatRate: String, urlPage: String) =>
-    CommonPage.checkVatAndSalesURL(index, vatRate, urlPage)
+    CommonPage.checkDoubleIndexURL(index, vatRate, urlPage)
     CommonPage.enterData("value", netValueData)
     CommonPage.submitForm()
   }
@@ -90,7 +90,7 @@ class ReturnsStepDef extends BaseStepDef {
   When(
     """^the user confirms the vat for the (first|second) EU country as the suggested amount for the (first|second) selected VAT rate on the (.*) page$"""
   ) { (indexCountry: String, indexVatRate: String, urlPage: String) =>
-    CommonPage.checkVatAndSalesURL(indexCountry, indexVatRate, urlPage)
+    CommonPage.checkDoubleIndexURL(indexCountry, indexVatRate, urlPage)
     driver.findElement(By.id("value_0")).click()
     CommonPage.submitForm()
   }
@@ -98,7 +98,7 @@ class ReturnsStepDef extends BaseStepDef {
   When(
     """^the user enters a different amount of VAT totalling (.*) for the (first|second) EU country and the (first|second) selected VAT rate on the (.*) page$"""
   ) { (newVatAmount: String, indexCountry: String, indexVatRate: String, urlPage: String) =>
-    CommonPage.checkVatAndSalesURL(indexCountry, indexVatRate, urlPage)
+    CommonPage.checkDoubleIndexURL(indexCountry, indexVatRate, urlPage)
     driver.findElement(By.id("value_1")).click()
     CommonPage.enterData("amount", newVatAmount)
     CommonPage.submitForm()
@@ -126,6 +126,10 @@ class ReturnsStepDef extends BaseStepDef {
 
   Then("""^the user clicks on the (.*) link$""") { (link: String) =>
     link match {
+      case "continue"                    =>
+        driver
+          .findElement(By.xpath("/html/body/div/main/div/div/p[2]/a"))
+          .click()
       case "Start your return"           =>
         driver
           .findElement(By.xpath("/html/body/div/main/div/div/div[1]/div[1]/div/p[2]/a"))
@@ -156,10 +160,10 @@ class ReturnsStepDef extends BaseStepDef {
     Assert.assertTrue(htmlBody.contains("You do not have any returns due"))
   }
 
-  When("""^the user manually navigates to the start page$""") { () =>
+  When("""^the user manually navigates to the (.*) start page$""") { (period: String) =>
     driver
       .navigate()
-      .to("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/2021-Q3/start")
+      .to(s"http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/$period/start")
   }
   Then("""^the user clicks on the Back to your account button$""") { () =>
     driver.findElement(By.xpath("/html/body/div/main/div/div/a")).click()

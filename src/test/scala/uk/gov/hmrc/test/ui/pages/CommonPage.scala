@@ -73,7 +73,7 @@ object CommonPage extends BrowserDriver with Matchers {
   def selectLink(link: String): Unit =
     driver.findElement(By.cssSelector(s"a[href*=$link]")).click()
 
-  def checkVatAndSalesURL(firstIndex: String, secondIndex: String, urlPage: String): Unit =
+  def checkDoubleIndexURL(firstIndex: String, secondIndex: String, urlPage: String): Unit =
     (firstIndex, secondIndex) match {
       case ("first", "first")   => CommonPage.checkUrl(urlPage + "/1/1")
       case ("first", "second")  => CommonPage.checkUrl(urlPage + "/1/2")
