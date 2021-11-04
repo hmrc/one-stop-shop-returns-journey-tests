@@ -1,7 +1,7 @@
 @Returns
 
 Feature: Past Returns Feature
-
+@ZAP
   Scenario: A user views one of their past returns
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
@@ -78,7 +78,7 @@ Feature: Past Returns Feature
     Then the user clicks on the Back to your account link
     Then the user is directed back to the index page
     Then the user sees the no returns due message
-    Then the user manually navigates to the start page
+    Then the user manually navigates to the 2021-Q3 start page
     And the user is on the past-returns/2021-Q3 page
 
   Scenario: A user should be able to navigate using the breadcrumbs

@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl, Scenario}
 import org.openqa.selenium.{OutputType, TakesScreenshot}
-import uk.gov.hmrc.test.ui.cucumber.data.RegistrationData
+import uk.gov.hmrc.test.ui.cucumber.data.{RegistrationData, ReturnsData}
 import uk.gov.hmrc.test.ui.cucumber.utils.MongoConnection
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
@@ -33,7 +33,9 @@ class Hooks extends ScalaDsl with EN with BrowserDriver {
 
   Before {
     driver.manage().deleteAllCookies()
-    MongoConnection.dropRecord("one-stop-shop-returns", "returns")
+    MongoConnection.dropRegistrations()
+    MongoConnection.dropReturns()
     MongoConnection.insert(RegistrationData.data, "one-stop-shop-registration", "registrations")
+    MongoConnection.insert(ReturnsData.data, "one-stop-shop-returns", "returns")
   }
 }
