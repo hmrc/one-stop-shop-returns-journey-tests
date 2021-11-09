@@ -11,14 +11,15 @@ Feature: Corrections Feature
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
     And the user answers yes on the correctPreviousReturn page
-    And the user answers yes on the correctionReturnSinglePeriod page
+    And the user answers yes on the correctionReturnSinglePeriod/1 page
     And the user selects the first country as Croatia for the first period on the correctionCountry page
     And the user adds the first correction amount as 1000 for the first period on the countryVatCorrection page
     And the user answers yes on the vatCorrectionsList/1 page
     And the user selects the second country as France for the first period on the correctionCountry page
     And the user adds the second correction amount as -1000 for the first period on the countryVatCorrection page
     And the user answers no on the vatCorrectionsList/1 page
-    And the user answers no on the vatPeriodCorrectionsList page
+    And the user is on the vatPeriodCorrectionsList page
+    And the user clicks the continue button
 #   Navigation & index not set up yet
 #   And the user answers no on the vatPeriodCorrectionsList/1 page
 #   Then the user is on the check-your-answers page
@@ -33,12 +34,13 @@ Feature: Corrections Feature
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
     And the user answers yes on the correctPreviousReturn page
-    And the user answers yes on the correctionReturnSinglePeriod page
+    And the user answers yes on the correctionReturnSinglePeriod/1 page
     And the user selects the first country as Bulgaria for the first period on the correctionCountry page
     And the user answers yes on the undeclaredCountryCorrection/1/1 page
     And the user adds the first correction amount as 5000 for the first period on the countryVatCorrection page
     And the user answers no on the vatCorrectionsList/1 page
-    And the user answers no on the vatPeriodCorrectionsList page
+    And the user is on the vatPeriodCorrectionsList page
+    And the user clicks the continue button
 #   Navigation & index not set up yet
 #   And the user answers no on the vatPeriodCorrectionsList/1 page
 #   Then the user is on the check-your-answers page
@@ -65,7 +67,7 @@ Feature: Corrections Feature
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
     And the user answers yes on the correctPreviousReturn page
-    And the user answers no on the correctionReturnSinglePeriod page
+    And the user answers no on the correctionReturnSinglePeriod/1 page
     Then the user is on the noOtherCorrectionPeriodsAvailable page
     And the user clicks on the continue link
     Then the user is on the check-your-answers page
