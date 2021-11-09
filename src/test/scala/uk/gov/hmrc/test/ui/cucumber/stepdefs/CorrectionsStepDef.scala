@@ -36,4 +36,12 @@ class CorrectionsStepDef extends BaseStepDef {
     CommonPage.enterData("value", correctionAmount)
     CommonPage.submitForm()
   }
+
+  When(
+    """^the user changes the answer to (.*)$"""
+  ) { (answer: String) =>
+    CommonPage.driver.findElement(By.id("value")).clear()
+    CommonPage.enterData("value", answer)
+    CommonPage.submitForm()
+  }
 }

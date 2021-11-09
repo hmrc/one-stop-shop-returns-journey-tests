@@ -36,15 +36,21 @@ class CheckYourAnswersStepDef extends BaseStepDef {
 
   Then("""^the user clicks change for (.*)$""") { (option: String) =>
     option match {
-      case "NI sales excluding VAT" =>
+      case "NI sales excluding VAT"   =>
         driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[2]/div[2]/dd[2]/a")).click()
-      case "NI VAT charged"         =>
+      case "NI VAT charged"           =>
         driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[2]/div[3]/dd[2]/a")).click()
-      case "EU sales excluding VAT" =>
+      case "EU sales excluding VAT"   =>
         driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[3]/div[2]/dd[2]/a")).click()
-      case "EU VAT charged"         =>
+      case "EU VAT charged"           =>
         driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[3]/div[3]/dd[2]/a")).click()
-      case _                        => throw new Exception("Change link doesn't exist")
+      case "Corrections"              =>
+        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[4]/div/dd[2]/a")).click()
+      case "Periods with corrections" =>
+        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[4]/div[2]/dd[2]/a")).click()
+      case "the first country"        =>
+        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[1]/div/dd[2]/a")).click()
+      case _                          => throw new Exception("Change link doesn't exist")
     }
   }
 

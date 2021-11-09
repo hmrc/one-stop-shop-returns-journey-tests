@@ -166,3 +166,68 @@ Feature: Check Your Answers Feature
     And the user is on the check-your-answers page
     Then the user submits their return
 
+  Scenario: A user says no to adding a correction then changes to yes and adds a correction
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the 2021-Q4 start page
+    And the user answers yes on the start page
+    And the user answers no on the sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    And the user answers no on the correctPreviousReturn page
+    And the user is on the check-your-answers page
+    Then the user clicks change for Corrections
+    And the user answers yes on the changeCorrectPreviousReturn page
+    And the user answers yes on the changeCorrectionReturnSinglePeriod/1 page
+#  Bug VEOSS-615 to fix check loop mode for the subsequent pages
+    And the user selects the first country as Austria for the first period on the correctionCountry page
+    And the user answers yes on the undeclaredCountryCorrection/1/1 page
+    And the user adds the first correction amount as 2000 for the first period on the countryVatCorrection page
+    And the user answers no on the vatCorrectionsList/1 page
+    And the user is on the vatPeriodCorrectionsList page
+    And the user clicks the continue button
+    Then the user is on the check-your-answers page
+
+  Scenario: A user says yes to adding a correction then changes to no
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the 2021-Q4 start page
+    And the user answers yes on the start page
+    And the user answers no on the sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    And the user answers yes on the correctPreviousReturn page
+    And the user answers yes on the correctionReturnSinglePeriod/1 page
+    And the user selects the first country as Romania for the first period on the correctionCountry page
+    And the user answers yes on the undeclaredCountryCorrection/1/1 page
+    And the user adds the first correction amount as 8500 for the first period on the countryVatCorrection page
+    And the user answers no on the vatCorrectionsList/1 page
+    And the user is on the vatPeriodCorrectionsList page
+    And the user clicks the continue button
+    Then the user is on the check-your-answers page
+    Then the user clicks change for Corrections
+    And the user answers no on the changeCorrectPreviousReturn page
+    Then the user is on the check-your-answers page
+
+  Scenario: A user says yes to adding a correction to a single period then uses change option to add another country
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the 2021-Q4 start page
+    And the user answers yes on the start page
+    And the user answers no on the sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    And the user answers yes on the correctPreviousReturn page
+    And the user answers yes on the correctionReturnSinglePeriod/1 page
+    And the user selects the first country as Romania for the first period on the correctionCountry page
+    And the user answers yes on the undeclaredCountryCorrection/1/1 page
+    And the user adds the first correction amount as 8500 for the first period on the countryVatCorrection page
+    And the user answers no on the vatCorrectionsList/1 page
+    And the user is on the vatPeriodCorrectionsList page
+    And the user clicks the continue button
+    Then the user is on the check-your-answers page
+    Then the user clicks change for Periods with corrections
+    Then the user is on the changeVatPeriodCorrectionsList page
+#  Will then require further changes to check loop mode for list pages in VEOSS-554
+
+
