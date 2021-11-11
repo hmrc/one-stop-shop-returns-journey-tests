@@ -183,6 +183,9 @@ Feature: Check Your Answers Feature
     And the user selects the first country as Austria for the first period on the correctionCountry page
     And the user answers yes on the undeclaredCountryCorrection/1/1 page
     And the user adds the first correction amount as 2000 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
+    And the user continues from the checkVatPayableAmount page
     And the user answers no on the vatCorrectionsList/1 page
     And the user is on the vatPeriodCorrectionsList page
     And the user clicks the continue button
@@ -201,6 +204,9 @@ Feature: Check Your Answers Feature
     And the user selects the first country as Romania for the first period on the correctionCountry page
     And the user answers yes on the undeclaredCountryCorrection/1/1 page
     And the user adds the first correction amount as 8500 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
+    And the user continues from the checkVatPayableAmount page
     And the user answers no on the vatCorrectionsList/1 page
     And the user is on the vatPeriodCorrectionsList page
     And the user clicks the continue button
@@ -222,6 +228,9 @@ Feature: Check Your Answers Feature
     And the user selects the first country as Romania for the first period on the correctionCountry page
     And the user answers yes on the undeclaredCountryCorrection/1/1 page
     And the user adds the first correction amount as 8500 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
+    And the user continues from the checkVatPayableAmount page
     And the user answers no on the vatCorrectionsList/1 page
     And the user is on the vatPeriodCorrectionsList page
     And the user clicks the continue button
