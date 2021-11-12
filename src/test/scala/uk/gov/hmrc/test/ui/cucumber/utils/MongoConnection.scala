@@ -77,4 +77,7 @@ object MongoConnection {
     dropRecord("one-stop-shop-returns", "returns", "100000003")
     dropRecord("one-stop-shop-returns", "returns", "100000004")
   }
+
+  def dropCorrections(): Unit =
+    dropRecord("one-stop-shop-returns", "corrections", "100000003")
 }
