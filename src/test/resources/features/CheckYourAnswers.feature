@@ -186,6 +186,7 @@ Feature: Check Your Answers Feature
     And the user is on the changeVatPeriodCorrectionsList page
     And the user clicks the continue button
     Then the user is on the check-your-answers page
+    Then the user submits their return
 
   Scenario: A user says yes to adding a correction then changes to no
     Given the user accesses the service
@@ -207,6 +208,7 @@ Feature: Check Your Answers Feature
     Then the user clicks change for Corrections
     And the user answers no on the changeCorrectPreviousReturn page
     Then the user is on the check-your-answers page
+    Then the user submits their return
 
   Scenario: A user says yes to adding a correction to a single period then uses change option to add another country
     Given the user accesses the service
