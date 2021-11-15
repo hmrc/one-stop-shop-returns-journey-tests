@@ -48,8 +48,6 @@ class CheckYourAnswersStepDef extends BaseStepDef {
         driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[4]/div/dd[2]/a")).click()
       case "Periods with corrections" =>
         driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[4]/div[2]/dd[2]/a")).click()
-      case "the first country"        =>
-        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[1]/div/dd[2]/a")).click()
       case _                          => throw new Exception("Change link doesn't exist")
     }
   }
