@@ -65,7 +65,7 @@ Feature: Corrections Feature
     And the user answers yes on the correctPreviousReturn page
     And the user answers no on the correctionReturnSinglePeriod/1 page
     Then the user is on the noOtherCorrectionPeriodsAvailable page
-    And the user clicks on the continue link
+    And the user clicks the continue button
     Then the user is on the check-your-answers page
     Then the user submits their return
 
