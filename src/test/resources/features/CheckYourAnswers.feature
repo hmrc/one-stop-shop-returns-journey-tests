@@ -183,7 +183,7 @@ Feature: Check Your Answers Feature
     And the user answers yes on the changeUndeclaredCountryCorrection/1/1 page
     And the user adds the first correction amount as 2000 for the first period on the changeCountryVatCorrection page
     And the user answers yes on the changeVatPayableForCountry/1/1 page
-    And the user is on the changeCheckVatPayableAmount/1/1 page
+    And the user is on the changeCheckVatPayableAmount/1/1?completeJourney=true page
     And the user continues from the checkVatPayableAmount page
     And the user answers no on the changeVatCorrectionsList/1 page
     And the user is on the changeVatPeriodCorrectionsList page
@@ -236,6 +236,15 @@ Feature: Check Your Answers Feature
     Then the user is on the check-your-answers page
     Then the user clicks change for Periods with corrections
     Then the user is on the changeVatPeriodCorrectionsList page
-#  Will then require further changes to check loop mode for list pages in VEOSS-554
+    And the user selects the change link for changeVatCorrectionsList\/1
+    And the user answers yes on the changeVatCorrectionsList/1 page
+    And the user selects the second country as Spain for the first period on the changeCorrectionCountry page
+    And the user adds the second correction amount as 1234 for the first period on the changeCountryVatCorrection page
+    And the user answers yes on the changeVatPayableForCountry/1/2 page
+    And the user is on the changeCheckVatPayableAmount/1/2?completeJourney=true page
+    And the user continues from the checkVatPayableAmount page
+    And the user answers no on the changeVatCorrectionsList/1 page
+    Then the user clicks the continue button
+    And the user is on the check-your-answers page
 
 
