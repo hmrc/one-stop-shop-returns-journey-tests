@@ -21,7 +21,7 @@ Feature: Corrections Feature
     And the user is on the vatPeriodCorrectionsList page
     And the user clicks the continue button
     Then the user is on the check-your-answers page
-#   Submission not set up yet
+    Then the user submits their return
 
   Scenario: A user adds a correction for a country that was not on their previous return
     Given the user accesses the service
@@ -40,7 +40,7 @@ Feature: Corrections Feature
     And the user is on the vatPeriodCorrectionsList page
     And the user clicks the continue button
     Then the user is on the check-your-answers page
-#   Submission not set up yet
+    Then the user submits their return
 
   Scenario: A user says no to adding a correction to their return
     Given the user accesses the service
@@ -106,7 +106,7 @@ Feature: Corrections Feature
     And the user is on the changeVatPeriodCorrectionsList page
     And the user clicks the continue button
     Then the user is on the check-your-answers page
-#   Submission not set up yet
+    Then the user submits their return
 
   Scenario: A user changes and removes data on their correction in vatPeriodCorrectionsList
     Given the user accesses the service
