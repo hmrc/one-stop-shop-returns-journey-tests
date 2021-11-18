@@ -105,16 +105,16 @@ Feature: Corrections Feature
     Then the user changes the answer to 3000
     And the user answers yes on the vatPayableForCountry/1/1 page
     And the user is on the checkVatPayableAmount/1/1 page
-    Then the user selects the change link for first-changeCountryVatCorrection\/1\/1\?completeJourney\=false
+    Then the user selects the change link for first-changeCountryVatCorrection\/1\/1
     Then the user changes the answer to 1500
-    And the user answers yes on the first-changeVatPayableForCountry/1/1?completeJourney=false page
-    And the user is on the changeCheckVatPayableAmount/1/1?completeJourney=false page
+    And the user answers yes on the first-changeVatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
     And the user continues from the checkVatPayableAmount page
     And the user answers no on the vatCorrectionsList/1 page
     And the user is on the vatPeriodCorrectionsList page
     And the user clicks the continue button
     Then the user is on the check-your-answers page
-  #   Submission not set up yet
+    Then the user submits their return
 
   Scenario: A user changes and removes data on their correction in vatCorrectionsList
     Given the user accesses the service
@@ -138,11 +138,11 @@ Feature: Corrections Feature
     And the user is on the checkVatPayableAmount/1/2 page
     And the user continues from the checkVatPayableAmount page
     And the user is on the vatCorrectionsList/1 page
-    And the user selects the change link for changeCheckVatPayableAmount\/1\/1\?completeJourney\=false
-    And the user selects the change link for first-changeCountryVatCorrection\/1\/1\?completeJourney\=false
+    And the user selects the change link for second-changeCheckVatPayableAmount\/1\/1
+    And the user selects the change link for second-changeCountryVatCorrection\/1\/1
     And the user changes the answer to 4500
-    And the user answers yes on the first-changeVatPayableForCountry/1/1?completeJourney=false page
-    And the user is on the changeCheckVatPayableAmount/1/1?completeJourney=false page
+    And the user answers yes on the second-changeVatPayableForCountry/1/1 page
+    And the user is on the second-changeCheckVatPayableAmount/1/1 page
     And the user continues from the checkVatPayableAmount page
     And the user is on the vatCorrectionsList/1 page
     And the user selects the remove link for removeCountryCorrection\/1\/2
@@ -176,16 +176,37 @@ Feature: Corrections Feature
     And the user continues from the checkVatPayableAmount page
     And the user answers no on the vatCorrectionsList/1 page
     And the user is on the vatPeriodCorrectionsList page
-    Then the user selects the change link for vatCorrectionsList\/1
-#    Should this be check mode?
-    And the user is on the vatCorrectionsList/1 page
-    And the user answers no on the vatCorrectionsList/1 page
+    Then the user selects the change link for third-changeVatCorrectionsList\/1
+    And the user is on the third-changeVatCorrectionsList/1 page
+    And the user answers no on the third-changeVatCorrectionsList/1 page
     Then the user selects the remove link for removePeriodCorrection\/1
     And the user answers yes on the removePeriodCorrection/1 page
     Then the user is on the correctPreviousReturn page
     And the user answers yes on the correctPreviousReturn page
     Then the user is on the correctionReturnSinglePeriod/1 page
-@wip
+
+  Scenario: A user can submit a return with only minus corrections
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the 2021-Q4 start page
+    And the user answers yes on the start page
+    And the user answers no on the sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    And the user answers yes on the correctPreviousReturn page
+    And the user answers yes on the correctionReturnSinglePeriod/1 page
+    And the user selects the first country as Bulgaria for the first period on the correctionCountry page
+    And the user answers yes on the undeclaredCountryCorrection/1/1 page
+    And the user adds the first correction amount as -5000 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
+    And the user continues from the checkVatPayableAmount page
+    And the user answers no on the vatCorrectionsList/1 page
+    And the user is on the vatPeriodCorrectionsList page
+    And the user clicks the continue button
+    Then the user is on the check-your-answers page
+    Then the user submits their return
+
   Scenario: A user submits a full return with corrections
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
@@ -229,7 +250,7 @@ Feature: Corrections Feature
     And the user is on the vatPeriodCorrectionsList page
     And the user clicks the continue button
     Then the user is on the check-your-answers page
-    #   Submission not set up yet
+    Then the user submits their return
 
 #  Added user and data for this in advance but won't be able to continue with this scenario until the date
 #  has reached 1st January as it won't show /correctionReturnPeriod page until then
