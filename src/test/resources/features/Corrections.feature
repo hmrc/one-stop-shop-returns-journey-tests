@@ -14,9 +14,15 @@ Feature: Corrections Feature
     And the user answers yes on the correctionReturnSinglePeriod/1 page
     And the user selects the first country as Croatia for the first period on the correctionCountry page
     And the user adds the first correction amount as 1000 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
+    And the user continues from the checkVatPayableAmount page
     And the user answers yes on the vatCorrectionsList/1 page
     And the user selects the second country as France for the first period on the correctionCountry page
     And the user adds the second correction amount as -1000 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/2 page
+    And the user is on the checkVatPayableAmount/1/2 page
+    And the user continues from the checkVatPayableAmount page
     And the user answers no on the vatCorrectionsList/1 page
     And the user is on the vatPeriodCorrectionsList page
     And the user clicks the continue button
@@ -36,6 +42,9 @@ Feature: Corrections Feature
     And the user selects the first country as Bulgaria for the first period on the correctionCountry page
     And the user answers yes on the undeclaredCountryCorrection/1/1 page
     And the user adds the first correction amount as 5000 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
+    And the user continues from the checkVatPayableAmount page
     And the user answers no on the vatCorrectionsList/1 page
     And the user is on the vatPeriodCorrectionsList page
     And the user clicks the continue button
@@ -80,6 +89,33 @@ Feature: Corrections Feature
     Then the user is on the check-your-answers page
     Then the user submits their return
 
+  Scenario: A user changes data on their correction in progress and via checkVatPayableAmount
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the 2021-Q4 start page
+    And the user answers yes on the start page
+    And the user answers no on the sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    And the user answers yes on the correctPreviousReturn page
+    And the user answers yes on the correctionReturnSinglePeriod/1 page
+    And the user selects the first country as Croatia for the first period on the correctionCountry page
+    And the user adds the first correction amount as 2000 for the first period on the countryVatCorrection page
+    And the user answers no on the vatPayableForCountry/1/1 page
+    Then the user changes the answer to 3000
+    And the user answers yes on the vatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
+    Then the user selects the change link for first-changeCountryVatCorrection\/1\/1
+    Then the user changes the answer to 1500
+    And the user answers yes on the first-changeVatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
+    And the user continues from the checkVatPayableAmount page
+    And the user answers no on the vatCorrectionsList/1 page
+    And the user is on the vatPeriodCorrectionsList page
+    And the user clicks the continue button
+    Then the user is on the check-your-answers page
+    Then the user submits their return
+
   Scenario: A user changes and removes data on their correction in vatCorrectionsList
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
@@ -92,18 +128,27 @@ Feature: Corrections Feature
     And the user answers yes on the correctionReturnSinglePeriod/1 page
     And the user selects the first country as Croatia for the first period on the correctionCountry page
     And the user adds the first correction amount as 1000 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
+    And the user continues from the checkVatPayableAmount page
     And the user answers yes on the vatCorrectionsList/1 page
     And the user selects the second country as France for the first period on the correctionCountry page
     And the user adds the second correction amount as -1000 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/2 page
+    And the user is on the checkVatPayableAmount/1/2 page
+    And the user continues from the checkVatPayableAmount page
     And the user is on the vatCorrectionsList/1 page
-    And the user selects the change link for changeCountryVatCorrection\/1\/1
+    And the user selects the change link for second-changeCheckVatPayableAmount\/1\/1
+    And the user selects the change link for second-changeCountryVatCorrection\/1\/1
     And the user changes the answer to 4500
-#    Check loop mode to be fixed in VEOSS-599
-    And the user is on the changeVatCorrectionsList/1 page
-    And the user selects the remove link for changeRemoveCountryCorrection\/1\/2
-    And the user answers yes on the changeRemoveCountryCorrection/1/2 page
-    And the user answers no on the changeVatCorrectionsList/1 page
-    And the user is on the changeVatPeriodCorrectionsList page
+    And the user answers yes on the second-changeVatPayableForCountry/1/1 page
+    And the user is on the second-changeCheckVatPayableAmount/1/1 page
+    And the user continues from the checkVatPayableAmount page
+    And the user is on the vatCorrectionsList/1 page
+    And the user selects the remove link for removeCountryCorrection\/1\/2
+    And the user answers yes on the removeCountryCorrection/1/2 page
+    And the user answers no on the vatCorrectionsList/1 page
+    And the user is on the vatPeriodCorrectionsList page
     And the user clicks the continue button
     Then the user is on the check-your-answers page
     Then the user submits their return
@@ -120,20 +165,92 @@ Feature: Corrections Feature
     And the user answers yes on the correctionReturnSinglePeriod/1 page
     And the user selects the first country as Croatia for the first period on the correctionCountry page
     And the user adds the first correction amount as 1000 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
+    And the user continues from the checkVatPayableAmount page
     And the user answers yes on the vatCorrectionsList/1 page
     And the user selects the second country as France for the first period on the correctionCountry page
     And the user adds the second correction amount as -1000 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/2 page
+    And the user is on the checkVatPayableAmount/1/2 page
+    And the user continues from the checkVatPayableAmount page
     And the user answers no on the vatCorrectionsList/1 page
     And the user is on the vatPeriodCorrectionsList page
-    #    Check loop mode to be fixed in VEOSS-599
-    Then the user selects the change link for vatCorrectionsList\/1
-    And the user is on the vatCorrectionsList/1 page
-    And the user answers no on the vatCorrectionsList/1 page
+    Then the user selects the change link for third-changeVatCorrectionsList\/1
+    And the user is on the third-changeVatCorrectionsList/1 page
+    And the user answers no on the third-changeVatCorrectionsList/1 page
     Then the user selects the remove link for removePeriodCorrection\/1
     And the user answers yes on the removePeriodCorrection/1 page
     Then the user is on the correctPreviousReturn page
     And the user answers yes on the correctPreviousReturn page
     Then the user is on the correctionReturnSinglePeriod/1 page
+
+  Scenario: A user can submit a return with only minus corrections
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the 2021-Q4 start page
+    And the user answers yes on the start page
+    And the user answers no on the sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    And the user answers yes on the correctPreviousReturn page
+    And the user answers yes on the correctionReturnSinglePeriod/1 page
+    And the user selects the first country as Bulgaria for the first period on the correctionCountry page
+    And the user answers yes on the undeclaredCountryCorrection/1/1 page
+    And the user adds the first correction amount as -5000 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
+    And the user continues from the checkVatPayableAmount page
+    And the user answers no on the vatCorrectionsList/1 page
+    And the user is on the vatPeriodCorrectionsList page
+    And the user clicks the continue button
+    Then the user is on the check-your-answers page
+    Then the user submits their return
+
+  Scenario: A user submits a full return with corrections
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the 2021-Q4 start page
+    And the user answers yes on the start page
+    And the user answers yes on the sales-from-northern-ireland page
+    And the user selects Spain on the first eu-country-from-northern-ireland page
+    And the user ticks the first checkbox on the first eu-vat-rates-from-northern-ireland page
+    And the user clicks the continue button
+    And the user enters first EU country total sales of 50000 for first selected VAT rate on the eu-sales-from-northern-ireland page
+    And the user enters a different amount of VAT totalling 12345 for the first EU country and the first selected VAT rate on the vat-on-sales-from-northern-ireland page
+    Then the user is on the check-sales-from-northern-ireland/1 page
+    And the user clicks the continue button
+    And the user answers no on the add-sales-from-northern-ireland page
+    And the user answers yes on the sales-from-eu page
+    And the user selects Spain on the first eu-country-sold-from page
+    And the user selects Bulgaria on the first eu-country-sold-to/1 page
+    And the user ticks the first checkbox on the first eu-vat-rates-from-eu/1 page
+    And the user clicks the continue button
+    And the user enters first EU country total sales of 350000 for first selected VAT rate on the eu-sales-from-eu/1 page
+    And the user enters a different amount of VAT totalling 71234 for the first EU country and the first selected VAT rate on the vat-on-sales-from-eu/1 page
+    Then the user is on the check-sales-from-eu/1/1 page
+    And the user clicks the continue button
+    And the user answers no on the add-sales-from-eu-to-eu/1 page
+    And the user answers no on the add-sales-from-eu page
+    And the user answers yes on the correctPreviousReturn page
+    And the user answers yes on the correctionReturnSinglePeriod/1 page
+    And the user selects the first country as Croatia for the first period on the correctionCountry page
+    And the user adds the first correction amount as 1000 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/1 page
+    And the user is on the checkVatPayableAmount/1/1 page
+    And the user continues from the checkVatPayableAmount page
+    And the user answers yes on the vatCorrectionsList/1 page
+    And the user selects the second country as France for the first period on the correctionCountry page
+    And the user adds the second correction amount as -1000 for the first period on the countryVatCorrection page
+    And the user answers yes on the vatPayableForCountry/1/2 page
+    And the user is on the checkVatPayableAmount/1/2 page
+    And the user continues from the checkVatPayableAmount page
+    And the user answers no on the vatCorrectionsList/1 page
+    And the user is on the vatPeriodCorrectionsList page
+    And the user clicks the continue button
+    Then the user is on the check-your-answers page
+    Then the user submits their return
 
 #  Added user and data for this in advance but won't be able to continue with this scenario until the date
 #  has reached 1st January as it won't show /correctionReturnPeriod page until then

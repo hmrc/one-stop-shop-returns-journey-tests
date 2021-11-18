@@ -44,4 +44,10 @@ class CorrectionsStepDef extends BaseStepDef {
     CommonPage.enterData("value", answer)
     CommonPage.submitForm()
   }
+
+  When(
+    """^the user continues from the checkVatPayableAmount page$"""
+  ) { () =>
+    CommonPage.driver.findElement(By.xpath("/html/body/div/main/div/div/p/a")).click()
+  }
 }
