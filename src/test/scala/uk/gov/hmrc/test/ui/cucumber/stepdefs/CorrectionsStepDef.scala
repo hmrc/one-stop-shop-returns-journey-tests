@@ -16,9 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import org.junit.Assert
 import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.Select
 import uk.gov.hmrc.test.ui.pages.CommonPage
 
 class CorrectionsStepDef extends BaseStepDef {
@@ -48,6 +46,6 @@ class CorrectionsStepDef extends BaseStepDef {
   When(
     """^the user continues from the checkVatPayableAmount page$"""
   ) { () =>
-    CommonPage.driver.findElement(By.xpath("/html/body/div/main/div/div/p/a")).click()
+    CommonPage.driver.findElement(By.id("continue")).click()
   }
 }

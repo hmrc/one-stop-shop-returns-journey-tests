@@ -126,27 +126,16 @@ class ReturnsStepDef extends BaseStepDef {
 
   Then("""^the user clicks on the (.*) link$""") { (link: String) =>
     link match {
-      case "continue"                    =>
-        driver
-          .findElement(By.xpath("/html/body/div/main/div/div/p[2]/a"))
-          .click()
       case "Start your return"           =>
-        driver
-          .findElement(By.xpath("/html/body/div/main/div/div/div[1]/div[1]/div/p[2]/a"))
-          .click()
+        driver.findElement(By.id("start-your-return")).click()
       case "Back to your account"        =>
-        driver
-          .findElement(By.xpath("/html/body/div[2]/main/div/div/div[1]/p/a"))
-          .click()
+        driver.findElement(By.id("back-to-your-account")) click ()
       case "View past returns"           =>
-        driver
-          .findElement(By.xpath("/html/body/div/main/div/div/div[1]/div[3]/div/p/a"))
-          .click()
+        driver.findElement(By.id("view-past-returns")).click()
       case "1 July to 30 September 2021" =>
-        driver
-          .findElement(By.id("period"))
-          .click()
-      case _                             => throw new Exception("Link doesn't exist")
+        driver.findElement(By.id("period")).click()
+      case _                             =>
+        throw new Exception("Link doesn't exist")
     }
   }
 
@@ -166,7 +155,7 @@ class ReturnsStepDef extends BaseStepDef {
       .to(s"http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/$period/start")
   }
   Then("""^the user clicks on the Back to your account button$""") { () =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/a")).click()
+    driver.findElement(By.id("back-to-your-account")).click()
   }
 
   Then("""^the user clicks on the (.*) breadcrumb""") { (id: String) =>
