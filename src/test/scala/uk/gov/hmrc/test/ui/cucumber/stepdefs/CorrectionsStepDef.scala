@@ -44,7 +44,7 @@ class CorrectionsStepDef extends BaseStepDef {
   }
 
   When(
-    """^the user continues from the checkVatPayableAmount page$"""
+    """^the user continues from the vat-payable-check page$"""
   ) { () =>
     CommonPage.driver.findElement(By.id("continue")).click()
   }

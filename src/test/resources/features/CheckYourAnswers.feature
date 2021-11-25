@@ -174,19 +174,19 @@ Feature: Check Your Answers Feature
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
-    And the user answers no on the correctPreviousReturn page
+    And the user answers no on the correct-previous-return page
     And the user is on the check-your-answers page
     Then the user clicks change for Corrections
-    And the user answers yes on the changeCorrectPreviousReturn page
-    And the user answers yes on the changeCorrectionReturnSinglePeriod/1 page
-    And the user selects the first country as Austria for the first period on the changeCorrectionCountry page
-    And the user answers yes on the changeUndeclaredCountryCorrection/1/1 page
-    And the user adds the first correction amount as 2000 for the first period on the changeCountryVatCorrection page
-    And the user answers yes on the changeVatPayableForCountry/1/1 page
-    And the user is on the changeCheckVatPayableAmount/1/1 page
-    And the user continues from the checkVatPayableAmount page
-    And the user answers no on the changeVatCorrectionsList/1 page
-    And the user is on the changeVatPeriodCorrectionsList page
+    And the user answers yes on the change-correct-previous-return page
+    And the user answers yes on the change-correction-return-single-period/1 page
+    And the user selects the first country as Austria for the first period on the change-correction-country page
+    And the user answers yes on the change-add-new-country/1/1 page
+    And the user adds the first correction amount as 2000 for the first period on the change-country-vat-correction-amount page
+    And the user answers yes on the change-vat-payable-confirm/1/1 page
+    And the user is on the change-vat-payable-check/1/1 page
+    And the user continues from the vat-payable-check page
+    And the user answers no on the change-vat-correction-list/1 page
+    And the user is on the change-vat-correction-periods page
     And the user clicks the continue button
     Then the user is on the check-your-answers page
     Then the user submits their return
@@ -199,20 +199,20 @@ Feature: Check Your Answers Feature
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
-    And the user answers yes on the correctPreviousReturn page
-    And the user answers yes on the correctionReturnSinglePeriod/1 page
-    And the user selects the first country as Romania for the first period on the correctionCountry page
-    And the user answers yes on the undeclaredCountryCorrection/1/1 page
-    And the user adds the first correction amount as 8500 for the first period on the countryVatCorrection page
-    And the user answers yes on the vatPayableForCountry/1/1 page
-    And the user is on the checkVatPayableAmount/1/1 page
-    And the user continues from the checkVatPayableAmount page
-    And the user answers no on the vatCorrectionsList/1 page
-    And the user is on the vatPeriodCorrectionsList page
+    And the user answers yes on the correct-previous-return page
+    And the user answers yes on the correction-return-single-period/1 page
+    And the user selects the first country as Romania for the first period on the correction-country page
+    And the user answers yes on the add-new-country/1/1 page
+    And the user adds the first correction amount as 8500 for the first period on the country-vat-correction-amount page
+    And the user answers yes on the vat-payable-confirm/1/1 page
+    And the user is on the vat-payable-check/1/1 page
+    And the user continues from the vat-payable-check page
+    And the user answers no on the vat-correction-list/1 page
+    And the user is on the vat-correction-periods page
     And the user clicks the continue button
     Then the user is on the check-your-answers page
     Then the user clicks change for Corrections
-    And the user answers no on the changeCorrectPreviousReturn page
+    And the user answers no on the change-correct-previous-return page
     Then the user is on the check-your-answers page
     Then the user submits their return
 
@@ -224,28 +224,28 @@ Feature: Check Your Answers Feature
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
-    And the user answers yes on the correctPreviousReturn page
-    And the user answers yes on the correctionReturnSinglePeriod/1 page
-    And the user selects the first country as Romania for the first period on the correctionCountry page
-    And the user answers yes on the undeclaredCountryCorrection/1/1 page
-    And the user adds the first correction amount as 8500 for the first period on the countryVatCorrection page
-    And the user answers yes on the vatPayableForCountry/1/1 page
-    And the user is on the checkVatPayableAmount/1/1 page
-    And the user continues from the checkVatPayableAmount page
-    And the user answers no on the vatCorrectionsList/1 page
-    And the user is on the vatPeriodCorrectionsList page
+    And the user answers yes on the correct-previous-return page
+    And the user answers yes on the correction-return-single-period/1 page
+    And the user selects the first country as Romania for the first period on the correction-country page
+    And the user answers yes on the add-new-country/1/1 page
+    And the user adds the first correction amount as 8500 for the first period on the country-vat-correction-amount page
+    And the user answers yes on the vat-payable-confirm/1/1 page
+    And the user is on the vat-payable-check/1/1 page
+    And the user continues from the vat-payable-check page
+    And the user answers no on the vat-correction-list/1 page
+    And the user is on the vat-correction-periods page
     And the user clicks the continue button
     Then the user is on the check-your-answers page
     Then the user clicks change for Periods with corrections
-    Then the user is on the changeVatPeriodCorrectionsList page
-    And the user selects the change link for changeVatCorrectionsList\/1
-    And the user answers yes on the changeVatCorrectionsList/1 page
-    And the user selects the second country as Spain for the first period on the changeCorrectionCountry page
-    And the user adds the second correction amount as 1234 for the first period on the changeCountryVatCorrection page
-    And the user answers yes on the changeVatPayableForCountry/1/2 page
-    And the user is on the changeCheckVatPayableAmount/1/2 page
-    And the user continues from the checkVatPayableAmount page
-    And the user answers no on the changeVatCorrectionsList/1 page
+    Then the user is on the change-vat-correction-periods page
+    And the user selects the change link for change-vat-correction-list\/1
+    And the user answers yes on the change-vat-correction-list/1 page
+    And the user selects the second country as Spain for the first period on the change-correction-country page
+    And the user adds the second correction amount as 1234 for the first period on the change-country-vat-correction-amount page
+    And the user answers yes on the change-vat-payable-confirm/1/2 page
+    And the user is on the change-vat-payable-check/1/2 page
+    And the user continues from the vat-payable-check page
+    And the user answers no on the change-vat-correction-list/1 page
     Then the user clicks the continue button
     And the user is on the check-your-answers page
     Then the user submits their return
