@@ -180,7 +180,7 @@ Feature: Check Your Answers Feature
     And the user answers yes on the change-correct-previous-return page
     And the user answers yes on the change-correction-return-single-period/1 page
     And the user selects the first country as Austria for the first period on the change-correction-country page
-    And the user answers yes on the changeadd-new-country/1/1 page
+    And the user answers yes on the change-add-new-country/1/1 page
     And the user adds the first correction amount as 2000 for the first period on the change-country-vat-correction-amount page
     And the user answers yes on the change-vat-payable-confirm/1/1 page
     And the user is on the change-vat-payable-check/1/1 page
