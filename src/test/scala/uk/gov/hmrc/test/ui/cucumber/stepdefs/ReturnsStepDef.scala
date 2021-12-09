@@ -20,6 +20,7 @@ import org.junit.Assert
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.Select
 import uk.gov.hmrc.test.ui.pages.CommonPage
+import uk.gov.hmrc.test.ui.pages.CommonPage.{clickContinue, driver}
 
 class ReturnsStepDef extends BaseStepDef {
 
@@ -116,25 +117,35 @@ class ReturnsStepDef extends BaseStepDef {
   }
 
   Then("""^the user clicks the continue button$""") { () =>
-    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+    clickContinue()
+  }
+
+  Then("""^the user clicks the Save and come back later button$""") { () =>
+    driver.findElement(By.id("saveProgress")).click()
   }
 
   Then("""^the user submits their return$""") { () =>
-    CommonPage.clickContinue()
+    clickContinue()
     CommonPage.checkUrl("return-submitted")
   }
 
   Then("""^the user clicks on the (.*) link$""") { (link: String) =>
     link match {
-      case "Start your return"           =>
+      case "Start your return"                =>
         driver.findElement(By.id("start-your-return")).click()
-      case "Back to your account"        =>
+      case "Back to your account"             =>
         driver.findElement(By.id("back-to-your-account")) click ()
-      case "View past returns"           =>
+      case "View past returns"                =>
         driver.findElement(By.id("view-past-returns")).click()
-      case "1 July to 30 September 2021" =>
+      case "1 July to 30 September 2021"      =>
         driver.findElement(By.id("period")).click()
-      case _                             =>
+      case "continue to complete your return" =>
+        driver.findElement(By.id("continueToYourReturn")).click()
+      case "return to your account"           =>
+        driver.findElement(By.id("backToYourAccount")).click()
+      case "sign out and come back later"     =>
+        driver.findElement(By.id("signOut")).click()
+      case _                                  =>
         throw new Exception("Link doesn't exist")
     }
   }
