@@ -20,11 +20,17 @@ import org.junit.Assert
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.Select
 import uk.gov.hmrc.test.ui.pages.CommonPage
-import uk.gov.hmrc.test.ui.pages.CommonPage.{clickContinue, driver}
+import uk.gov.hmrc.test.ui.pages.CommonPage.clickContinue
 
 class ReturnsStepDef extends BaseStepDef {
 
   Given("^the user accesses the service$") { () =>
+    CommonPage.goToStartOfJourney()
+  }
+
+  Given("^the user accesses the service with cookies cleared$") { () =>
+    driver.manage().deleteAllCookies()
+    Thread.sleep(5000)
     CommonPage.goToStartOfJourney()
   }
 
@@ -133,6 +139,8 @@ class ReturnsStepDef extends BaseStepDef {
     link match {
       case "Start your return"                =>
         driver.findElement(By.id("start-your-return")).click()
+      case "Continue your return"             =>
+        driver.findElement(By.id("continue-your-return")).click()
       case "Back to your account"             =>
         driver.findElement(By.id("back-to-your-account")) click ()
       case "View past returns"                =>
@@ -173,5 +181,14 @@ class ReturnsStepDef extends BaseStepDef {
     driver
       .findElement(By.id(id))
       .click()
+  }
+
+  Then("""^the user selects the (.*) option""") { (option: String) =>
+    option match {
+      case "Continue my return"               => driver.findElement(By.id("value_0")).click()
+      case "Delete my return and start again" => driver.findElement(By.id("value_1")).click()
+      case _                                  => throw new Exception("Link doesn't exist")
+    }
+    clickContinue()
   }
 }
