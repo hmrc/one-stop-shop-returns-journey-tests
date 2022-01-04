@@ -23,7 +23,6 @@ Feature: Past Returns Feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
     Then the user is directed back to the index page
-    Then the user sees the no returns due message
     Then the user manually navigates to the 2021-Q3 start page
     And the user is on the past-returns/2021-Q3 page
 
