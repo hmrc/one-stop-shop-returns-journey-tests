@@ -37,18 +37,19 @@ class CheckYourAnswersStepDef extends BaseStepDef {
   Then("""^the user clicks change for (.*)$""") { (option: String) =>
     option match {
       case "NI sales excluding VAT"   =>
-        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[2]/div[2]/dd[2]/a")).click()
+        driver.findElement(By.id("change-sales-excluding-vat-ni")).click()
       case "NI VAT charged"           =>
-        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[2]/div[3]/dd[2]/a")).click()
+        driver.findElement(By.id("change-vat-charged-ni")).click()
       case "EU sales excluding VAT"   =>
-        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[3]/div[2]/dd[2]/a")).click()
+        driver.findElement(By.id("change-sales-excluding-vat-eu")).click()
       case "EU VAT charged"           =>
-        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[3]/div[3]/dd[2]/a")).click()
+        driver.findElement(By.id("change-vat-charged-eu")).click()
       case "Corrections"              =>
-        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[4]/div/dd[2]/a")).click()
+        driver.findElement(By.id("change-corrections")).click()
       case "Periods with corrections" =>
-        driver.findElement(By.xpath("/html/body/div/main/div/div/form/dl[4]/div[2]/dd[2]/a")).click()
-      case _                          => throw new Exception("Change link doesn't exist")
+        driver.findElement(By.id("change-correction-periods")).click()
+      case _                          =>
+        throw new Exception("Change link doesn't exist")
     }
   }
 
