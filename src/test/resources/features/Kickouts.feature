@@ -17,3 +17,12 @@ Feature: Kickouts Feature
     Then the user clicks on the Back to your account button
     Then the user is directed back to the index page
 
+  Scenario: A user cannot start a return later than the most overdue return
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
+    And the user is directed back to the index page
+    Then the user manually navigates to the 2021-Q4 start page
+    And the user is on the cannot-start-return page
+    Then the user clicks on the Back to your account button
+    Then the user is directed back to the index page
+
