@@ -26,3 +26,11 @@ Feature: Kickouts Feature
     Then the user clicks on the Back to your account button
     Then the user is directed back to the index page
 
+  Scenario: A user cannot complete a return for the current period by manually browsing to the URL
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000005 and strong credentials
+    Then the user is directed back to the index page
+    And the user sees the no returns due message
+    Then the user manually navigates to the start page for the current period
+    And the user is on the no-other-periods-available page
+

@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.test.ui.cucumber.data
 
+import java.time.LocalDate
+
 object RegistrationData {
   val data: List[String] =
     List(
@@ -238,6 +240,77 @@ object RegistrationData {
         "niPresence" : "principalPlaceOfBusinessInNi",
         "submissionReceived" : "2021-11-03T16:15:24.896Z",
         "lastUpdated" : "2021-11-03T16:15:24.896Z"
-      }""".stripMargin
+      }""".stripMargin,
+      s"""
+      {
+        "_id" : ObjectId("61dc100c24ea875fce8a616a"),
+        "vrn" : "100000005",
+        "registeredCompanyName" : {
+            "value" : "lyLQ620Ufvw+AYEri5BgKLKsp2ezTBHX2udXTQ==",
+            "nonce" : "P/s885UH/RQ9mPTujRscBi+n2w27z+E/A3Uxn5y00aXWxFrwWEqYfc1TBZCJEKjo2nU1EjFIYCxdEC58E2gRTU3kulDP/ipGH3ZTauoQK7F1mwSnHngbpSj770M2MEHj"
+        },
+        "tradingNames" : [],
+        "vatDetails" : {
+            "registrationDate" : "2020-01-01",
+            "address" : {
+                "line1" : {
+                    "value" : "XfIXgAdbSd44Yzdg+3JZJ0pvw47FYp2hzxfu4Q==",
+                    "nonce" : "+U5usR/Wsb+r5itPPsoKe0MFQXglWfAuJRHrIwcpiafv5BCTbRZEDQS0ltiF/nqlohMcZE+bGutmuJ1VaZc8CBoOQU7aeo2+NTDYZfiur+DMLG1X+yFRQ5d3sD+Ci+Zg"
+                },
+                "line2" : {
+                    "value" : "zEqYmh8VKYfQQ3s4ByVg9R2biITSYNmU6w==",
+                    "nonce" : "SdaflYeEtKhoklwj3xEQTn655/1AauPl+TeQkF19IAEOlKQZnR4bUydXB6Z4S4ynpGNsQNypcRZPanMSzoYWd7JOF7SRfozAfMJmJtPMWAvWdasJyhLqjZ8fzmUx0F4q"
+                },
+                "postCode" : {
+                    "value" : "LYfupyLDrobqXSXFeYSXdrtlanuoNUoB",
+                    "nonce" : "Ae52YAzXK8SbW+q93nQpH6ZaFCz4s+QfxQvC225x6xT6RY9Zv65r3M+TFaD5HHFZzwu4+KCinW7YAe/WINsr13heoiOyhySCnUb7dyDaGlNxaL4Oohlbr5mr/gwF6VPV"
+                },
+                "countryCode" : {
+                    "value" : "XX6MM3lPSIJ4SxHY8/4QbC+e",
+                    "nonce" : "6TMgVkbbwCSUaXk58+ab4WIiyxe4QSavk2ptmZH5DSLBcvwe3mviI54CiLH2YdftR09Mqx6N3/jUCo4XC8WDX+MAQI9OylfG1CSAZ3XpjKoRxsB9NAjmMxM7F+XfvWdo"
+                }
+            },
+            "partOfVatGroup" : {
+                "value" : "n+YLcz8SyrjVQT7iyqJNz/QTvVE=",
+                "nonce" : "nbceBWo1SqyLzzwKUYIP06bEyc1zVD5xl//N0syckVXz10fdmf+9jTp9ss0LvdLdxL++WCOqttp7ENZ2DtQdnf0vUSdBdWUHJgAVAg2pLc6j1q/D4O6AYYiJE6MVodOf"
+            },
+            "source" : "etmp"
+        },
+        "euRegistrations" : [],
+        "contactDetails" : {
+            "fullName" : {
+                "value" : "+xr4Ji26tFFHeAeJYzLnGSobY14=",
+                "nonce" : "2EtumPr8b1rM1mJov2F6ySvYUrgPZEM/xoMYcHsXek15q5zMtYMjuc3L0R+nG314jMNUTPqk+HeTkWYY2C5tNbANkdGVUJbPnm5xIeFuQ5o1HcMzwvFxDCBYnTjZihCA"
+            },
+            "telephoneNumber" : {
+                "value" : "7HYjKeerSzkFP8tlPNWr1hpaGUptE9Bs9Mk=",
+                "nonce" : "f5Ez+MDzhriu0eIL7gLd7LC/zN1Cta0eksuYqZxqshIzL+VF/zvQXl5mkzYF4E2+Dnoo1wZ5H3MOno/zrT2aNJFJzZAdgklI+JkSj2PvAal6vnQa3YasnfbXfeYqOGke"
+            },
+            "emailAddress" : {
+                "value" : "uoQO94YrdWat4Ec/M/sd0Rtu2Ez1tRJ75k9fM9g=",
+                "nonce" : "zmTwvaEhThytSk8OHjSGh5Hp7YA9/41vW0NBWJ6VLFx9WdTaUMyPQqeBAuJ/DaD1dIo+RlC9lKVrPkx1+ACP2cFYV//sCue8fLvqMju5F7FPxrySzlG26fX1MUBPjcOF"
+            }
+        },
+        "websites" : [],
+        "commencementDate" : "${LocalDate.now()}",
+        "previousRegistrations" : [],
+        "bankDetails" : {
+            "accountName" : {
+                "value" : "BD3yGX6UY8ODUlP5WvZlZAArNmw=",
+                "nonce" : "Cl11aqk6katE8u+tSabhMiEqZsjDERs4ayyeW/bGc8tGIs9gHDfwoZa7lRm4rEuRZgnsIurYpKUkVKpU659uaZF1gZGGmqylhS2CXY9h32mFVKiOejabbXKhOkl5bfOJ"
+            },
+            "iban" : {
+                "value" : "paitFQ1hLT5F6qnDfzie91U6uC5HEQqzQYiTyoW10JUCelIun4A=",
+                "nonce" : "uMXn/TrjZRsgmC1979xUuIBa5tUmweLJEgFHfFljxQ1bOhkkS7cUmSmzeE1wagKRvHLzu1rfWRXyvyPFkBzhXUau7xUBAp/Hi7jfApEDJh9902CFIvqqCFrk4aPdpS39"
+            }
+        },
+        "isOnlineMarketplace" : {
+            "value" : "2TJXXbPsIbiHxIYqpeSRX7PfrQvO",
+            "nonce" : "xO/BOGh8adewHnZZhFogeiVbwR1XsNtJkFQXh5yMN8BMvdwpZWg9eugtdDfSRY/ifs1tEKvAq8xVGp8Ck6Ae+Jd6GTM0C5lXsdiwhN7UjZmVBqwwrhQCAMNZLB2JmhhF"
+        },
+        "niPresence" : "principalPlaceOfBusinessInNi",
+        "submissionReceived" : "2022-01-10T10:53:00.595Z",
+        "lastUpdated" : "2022-01-10T10:53:00.595Z"
+    }""".stripMargin
     )
 }
