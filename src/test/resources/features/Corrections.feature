@@ -252,7 +252,7 @@ Feature: Corrections Feature
     Then the user submits their return
 
 #  Added user and data for this in advance but won't be able to continue with this scenario until the date
-#  has reached 1st January as it won't show /correction-return-period page until then
+#  has reached 1st April as it won't show /correction-return-period page until then
 #  Scenario: A user adds corrections for multiple previous returns
 #    Given the user accesses the service
 #    And the user signs in as an Organisation Admin with VAT enrolment 100000004 and strong credentials

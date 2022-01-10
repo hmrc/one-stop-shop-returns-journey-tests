@@ -22,6 +22,8 @@ import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import uk.gov.hmrc.test.ui.pages.CommonPage.waitForElement
 
+import java.time.LocalDate
+
 object CommonPage extends BrowserDriver with Matchers {
 
   def goToStartOfJourney(): Unit =
@@ -81,5 +83,21 @@ object CommonPage extends BrowserDriver with Matchers {
       case ("second", "second") => CommonPage.checkUrl(urlPage + "/2/2")
       case _                    => throw new Exception("Index combination is invalid")
     }
+
+  def currentPeriod(): String =
+    LocalDate.now().getYear + "-" + getQuarter(LocalDate.now().getMonthValue)
+
+  def getQuarter(month: Int): String =
+    month match {
+      case 1 | 2 | 3    => "Q1"
+      case 4 | 5 | 6    => "Q2"
+      case 7 | 8 | 9    => "Q3"
+      case 10 | 11 | 12 => "Q4"
+    }
+
+  def navigateToReturnStartPage(period: String): Unit =
+    driver
+      .navigate()
+      .to(s"http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/$period/start")
 
 }
