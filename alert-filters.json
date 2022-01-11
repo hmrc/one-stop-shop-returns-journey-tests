@@ -3,7 +3,7 @@
     {
       "reason":"AUTH_LOGIN_STUB, caused by Absence of Anti-CSRF Tokens",
       "contextId":1,
-      "url":"http://localhost:9949/auth-login-stub/gg-sign-in?continue=http://localhost:10204/pay-vat-on-goods-sold-to-eu/Fnorthern-ireland-returns-payments/your-account",
+      "url":"http://localhost:9949/auth-login-stub/gg-sign-in?continue=http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/your-account",
       "ruleId":10202,
       "newLevel":-1
     }
