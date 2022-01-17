@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,6 +70,7 @@ object MongoConnection {
     dropRecord("one-stop-shop-registration", "registrations", "100000002")
     dropRecord("one-stop-shop-registration", "registrations", "100000003")
     dropRecord("one-stop-shop-registration", "registrations", "100000004")
+    dropRecord("one-stop-shop-registration", "registrations", "100000005")
   }
 
   def dropReturns(): Unit = {

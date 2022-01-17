@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -169,10 +169,13 @@ class ReturnsStepDef extends BaseStepDef {
   }
 
   When("""^the user manually navigates to the (.*) start page$""") { (period: String) =>
-    driver
-      .navigate()
-      .to(s"http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/$period/start")
+    CommonPage.navigateToReturnStartPage(period)
   }
+
+  When("""^the user manually navigates to the start page for the current period$""") { () =>
+    CommonPage.navigateToReturnStartPage(CommonPage.currentPeriod())
+  }
+
   Then("""^the user clicks on the Back to your account button$""") { () =>
     driver.findElement(By.id("back-to-your-account")).click()
   }
