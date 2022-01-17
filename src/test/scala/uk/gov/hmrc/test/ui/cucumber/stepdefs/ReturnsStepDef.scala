@@ -28,12 +28,6 @@ class ReturnsStepDef extends BaseStepDef {
     CommonPage.goToStartOfJourney()
   }
 
-  Given("^the user accesses the service with cookies cleared$") { () =>
-    driver.manage().deleteAllCookies()
-    Thread.sleep(5000)
-    CommonPage.goToStartOfJourney()
-  }
-
   Given("^the user signs in as an Organisation Admin with VAT enrolment (.*) and strong credentials$") {
     (vrn: String) =>
       driver.findElement(By.name("redirectionUrl")).clear()

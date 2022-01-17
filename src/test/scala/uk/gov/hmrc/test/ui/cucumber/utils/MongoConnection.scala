@@ -83,4 +83,7 @@ object MongoConnection {
     dropRecord("one-stop-shop-returns", "corrections", "100000002")
     dropRecord("one-stop-shop-returns", "corrections", "100000003")
   }
+
+  def dropSavedAnswers(): Unit =
+    dropRecord("one-stop-shop-returns", "saved-user-answers", "100000002")
 }
