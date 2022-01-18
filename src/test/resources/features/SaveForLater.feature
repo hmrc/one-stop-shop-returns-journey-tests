@@ -170,15 +170,17 @@ Feature: Save For Later Feature
     And the user is directed back to the index page
     And the user clicks on the Continue your return link
     And the user answers yes on the start page
-#  Need to discuss with Sophie and Joe where this should go. Currently goes to start page
-#    Then the user is on the return-continue page
-#    And the user selects the Continue my return option
-#    Then the user is on the check-sales-from-northern-ireland/1 page
-#    And the user clicks the continue button
-#    And the user answers no on the add-sales-from-northern-ireland page
-#    And the user answers no on the sales-from-eu page
-#    Then the user is on the check-your-answers page
-#    Then the user submits their return
+    And the user clicks the continue button
+    And the user clicks the continue button
+    And the user ticks the first checkbox on the first eu-vat-rates-from-northern-ireland page
+    And the user clicks the continue button
+    And the user enters first EU country total sales of 50000 for first selected VAT rate on the eu-sales-from-northern-ireland page
+    And the user enters a different amount of VAT totalling 12345 for the first EU country and the first selected VAT rate on the vat-on-sales-from-northern-ireland page
+    And the user clicks the continue button
+    And the user answers no on the add-sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    Then the user is on the check-your-answers page
+    Then the user submits their return
 
 
 
