@@ -40,14 +40,14 @@ object CommonPage extends BrowserDriver with Matchers {
       case "no"  => driver.findElement(By.id("value-no")).click()
       case _     => throw new Exception("Option doesn't exist")
     }
-    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+    clickContinue()
   }
 
   def enterData(inputId: String = "value", data: String): Unit =
     driver.findElement(By.id(inputId)).sendKeys(data)
 
   def submitForm(): Unit =
-    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+    clickContinue()
 
   def tickCheckbox(checkbox: String): Unit =
     checkbox match {
@@ -61,7 +61,7 @@ object CommonPage extends BrowserDriver with Matchers {
     driver.findElement(By.id(inputId)).sendKeys(data)
     waitForElement(By.id(inputId))
     driver.findElement(By.cssSelector("li#value__option--0")).click()
-    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+    clickContinue()
   }
 
   def waitForElement(by: By) =
@@ -70,7 +70,7 @@ object CommonPage extends BrowserDriver with Matchers {
     }
 
   def clickContinue(): Unit =
-    driver.findElement(By.xpath("//*[@id='main-content']/div/div/form/button")).click()
+    driver.findElement(By.id("continue")).click()
 
   def selectLink(link: String): Unit =
     driver.findElement(By.cssSelector(s"a[href*=$link]")).click()
