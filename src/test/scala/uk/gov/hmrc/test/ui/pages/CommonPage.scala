@@ -75,12 +75,12 @@ object CommonPage extends BrowserDriver with Matchers {
   def selectLink(link: String): Unit =
     driver.findElement(By.cssSelector(s"a[href*=$link]")).click()
 
-  def checkDoubleIndexURL(firstIndex: String, secondIndex: String, urlPage: String): Unit =
+  def checkDoubleIndexURL(firstIndex: String, secondIndex: String, urlPage: String, appendText: String): Unit =
     (firstIndex, secondIndex) match {
-      case ("first", "first")   => CommonPage.checkUrl(urlPage + "/1/1")
-      case ("first", "second")  => CommonPage.checkUrl(urlPage + "/1/2")
-      case ("second", "first")  => CommonPage.checkUrl(urlPage + "/2/1")
-      case ("second", "second") => CommonPage.checkUrl(urlPage + "/2/2")
+      case ("first", "first")   => CommonPage.checkUrl(urlPage + "/1/1" + appendText)
+      case ("first", "second")  => CommonPage.checkUrl(urlPage + "/1/2" + appendText)
+      case ("second", "first")  => CommonPage.checkUrl(urlPage + "/2/1" + appendText)
+      case ("second", "second") => CommonPage.checkUrl(urlPage + "/2/2" + appendText)
       case _                    => throw new Exception("Index combination is invalid")
     }
 

@@ -13,13 +13,13 @@ Feature: Corrections Feature
     And the user answers yes on the correct-previous-return page
     And the user answers yes on the correction-return-single-period/1 page
     And the user selects the first country as Croatia for the first period on the correction-country page
-    And the user adds the first correction amount as 1000 for the first period on the country-vat-correction-amount page
+    And the user adds the first declared correction amount as 1000 for the first period on the country-vat-correction-amount page
     And the user answers yes on the vat-payable-confirm/1/1 page
     And the user is on the vat-payable-check/1/1 page
     And the user continues from the vat-payable-check page
     And the user answers yes on the vat-correction-list/1 page
     And the user selects the second country as France for the first period on the correction-country page
-    And the user adds the second correction amount as -1000 for the first period on the country-vat-correction-amount page
+    And the user adds the second declared correction amount as -1000 for the first period on the country-vat-correction-amount page
     And the user answers yes on the vat-payable-confirm/1/2 page
     And the user is on the vat-payable-check/1/2 page
     And the user continues from the vat-payable-check page
@@ -41,7 +41,7 @@ Feature: Corrections Feature
     And the user answers yes on the correction-return-single-period/1 page
     And the user selects the first country as Bulgaria for the first period on the correction-country page
     And the user answers yes on the add-new-country/1/1 page
-    And the user adds the first correction amount as 5000 for the first period on the country-vat-correction-amount page
+    And the user adds the first undeclared correction amount as 5000 for the first period on the country-vat-correction-amount page
     And the user answers yes on the vat-payable-confirm/1/1 page
     And the user is on the vat-payable-check/1/1 page
     And the user continues from the vat-payable-check page
@@ -100,7 +100,7 @@ Feature: Corrections Feature
     And the user answers yes on the correct-previous-return page
     And the user answers yes on the correction-return-single-period/1 page
     And the user selects the first country as Croatia for the first period on the correction-country page
-    And the user adds the first correction amount as 2000 for the first period on the country-vat-correction-amount page
+    And the user adds the first declared correction amount as 2000 for the first period on the country-vat-correction-amount page
     And the user answers no on the vat-payable-confirm/1/1 page
     Then the user changes the answer to 3000
     And the user answers yes on the vat-payable-confirm/1/1 page
@@ -127,13 +127,13 @@ Feature: Corrections Feature
     And the user answers yes on the correct-previous-return page
     And the user answers yes on the correction-return-single-period/1 page
     And the user selects the first country as Croatia for the first period on the correction-country page
-    And the user adds the first correction amount as 1000 for the first period on the country-vat-correction-amount page
+    And the user adds the first declared correction amount as 1000 for the first period on the country-vat-correction-amount page
     And the user answers yes on the vat-payable-confirm/1/1 page
     And the user is on the vat-payable-check/1/1 page
     And the user continues from the vat-payable-check page
     And the user answers yes on the vat-correction-list/1 page
     And the user selects the second country as France for the first period on the correction-country page
-    And the user adds the second correction amount as -1000 for the first period on the country-vat-correction-amount page
+    And the user adds the second declared correction amount as -1000 for the first period on the country-vat-correction-amount page
     And the user answers yes on the vat-payable-confirm/1/2 page
     And the user is on the vat-payable-check/1/2 page
     And the user continues from the vat-payable-check page
@@ -164,13 +164,13 @@ Feature: Corrections Feature
     And the user answers yes on the correct-previous-return page
     And the user answers yes on the correction-return-single-period/1 page
     And the user selects the first country as Croatia for the first period on the correction-country page
-    And the user adds the first correction amount as 1000 for the first period on the country-vat-correction-amount page
+    And the user adds the first declared correction amount as 1000 for the first period on the country-vat-correction-amount page
     And the user answers yes on the vat-payable-confirm/1/1 page
     And the user is on the vat-payable-check/1/1 page
     And the user continues from the vat-payable-check page
     And the user answers yes on the vat-correction-list/1 page
     And the user selects the second country as France for the first period on the correction-country page
-    And the user adds the second correction amount as -1000 for the first period on the country-vat-correction-amount page
+    And the user adds the second declared correction amount as -1000 for the first period on the country-vat-correction-amount page
     And the user answers yes on the vat-payable-confirm/1/2 page
     And the user is on the vat-payable-check/1/2 page
     And the user continues from the vat-payable-check page
@@ -196,7 +196,7 @@ Feature: Corrections Feature
     And the user answers yes on the correct-previous-return page
     And the user answers yes on the correction-return-single-period/1 page
     And the user selects the first country as Croatia for the first period on the correction-country page
-    And the user adds the first correction amount as -5000 for the first period on the country-vat-correction-amount page
+    And the user adds the first declared correction amount as -5000 for the first period on the country-vat-correction-amount page
     And the user answers yes on the vat-payable-confirm/1/1 page
     And the user is on the vat-payable-check/1/1 page
     And the user continues from the vat-payable-check page
@@ -235,13 +235,13 @@ Feature: Corrections Feature
     And the user answers yes on the correct-previous-return page
     And the user answers yes on the correction-return-single-period/1 page
     And the user selects the first country as Croatia for the first period on the correction-country page
-    And the user adds the first correction amount as 1000 for the first period on the country-vat-correction-amount page
+    And the user adds the first declared correction amount as 1000 for the first period on the country-vat-correction-amount page
     And the user answers yes on the vat-payable-confirm/1/1 page
     And the user is on the vat-payable-check/1/1 page
     And the user continues from the vat-payable-check page
     And the user answers yes on the vat-correction-list/1 page
     And the user selects the second country as France for the first period on the correction-country page
-    And the user adds the second correction amount as -1000 for the first period on the country-vat-correction-amount page
+    And the user adds the second declared correction amount as -1000 for the first period on the country-vat-correction-amount page
     And the user answers yes on the vat-payable-confirm/1/2 page
     And the user is on the vat-payable-check/1/2 page
     And the user continues from the vat-payable-check page
