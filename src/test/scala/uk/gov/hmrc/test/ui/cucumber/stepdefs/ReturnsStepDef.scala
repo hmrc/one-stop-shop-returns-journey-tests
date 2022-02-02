@@ -83,7 +83,7 @@ class ReturnsStepDef extends BaseStepDef {
   When(
     """^the user enters (first|second) EU country total sales of (.*) for (first|second) selected VAT rate on the (.*) page$"""
   ) { (index: String, netValueData: String, vatRate: String, urlPage: String) =>
-    CommonPage.checkDoubleIndexURL(index, vatRate, urlPage)
+    CommonPage.checkDoubleIndexURL(index, vatRate, urlPage, "")
     CommonPage.enterData("value", netValueData)
     CommonPage.submitForm()
   }
@@ -91,7 +91,7 @@ class ReturnsStepDef extends BaseStepDef {
   When(
     """^the user confirms the vat for the (first|second) EU country as the suggested amount for the (first|second) selected VAT rate on the (.*) page$"""
   ) { (indexCountry: String, indexVatRate: String, urlPage: String) =>
-    CommonPage.checkDoubleIndexURL(indexCountry, indexVatRate, urlPage)
+    CommonPage.checkDoubleIndexURL(indexCountry, indexVatRate, urlPage, "")
     driver.findElement(By.id("value_0")).click()
     CommonPage.submitForm()
   }
@@ -99,7 +99,7 @@ class ReturnsStepDef extends BaseStepDef {
   When(
     """^the user enters a different amount of VAT totalling (.*) for the (first|second) EU country and the (first|second) selected VAT rate on the (.*) page$"""
   ) { (newVatAmount: String, indexCountry: String, indexVatRate: String, urlPage: String) =>
-    CommonPage.checkDoubleIndexURL(indexCountry, indexVatRate, urlPage)
+    CommonPage.checkDoubleIndexURL(indexCountry, indexVatRate, urlPage, "")
     driver.findElement(By.id("value_1")).click()
     CommonPage.enterData("amount", newVatAmount)
     CommonPage.submitForm()

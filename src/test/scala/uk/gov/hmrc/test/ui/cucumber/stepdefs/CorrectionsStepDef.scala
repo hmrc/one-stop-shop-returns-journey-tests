@@ -23,14 +23,20 @@ class CorrectionsStepDef extends BaseStepDef {
 
   When("""^the user selects the (first|second) country as (.*) for the (first|second) period on the (.*) page$""") {
     (countryIndex: String, countryName: String, periodIndex: String, urlPage: String) =>
-      CommonPage.checkDoubleIndexURL(periodIndex, countryIndex, urlPage)
+      CommonPage.checkDoubleIndexURL(periodIndex, countryIndex, urlPage, "")
       CommonPage.selectValueAutocomplete(countryName)
   }
 
   When(
-    """^the user adds the (first|second) correction amount as (.*) for the (first|second) period on the (.*) page$"""
-  ) { (countryIndex: String, correctionAmount: String, periodIndex: String, urlPage: String) =>
-    CommonPage.checkDoubleIndexURL(periodIndex, countryIndex, urlPage)
+    """^the user adds the (first|second) (declared|undeclared) correction amount as (.*) for the (first|second) period on the (.*) page$"""
+  ) { (countryIndex: String, declared: String, correctionAmount: String, periodIndex: String, urlPage: String) =>
+    val appendText =
+      if (declared == "declared") {
+        "?undeclaredCountry=false"
+      } else {
+        "?undeclaredCountry=true"
+      }
+    CommonPage.checkDoubleIndexURL(periodIndex, countryIndex, urlPage, appendText)
     CommonPage.enterData("value", correctionAmount)
     CommonPage.submitForm()
   }
