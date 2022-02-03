@@ -211,8 +211,7 @@ Feature: Save For Later Feature
     Then the user clicks on the Back to your account button
     And the user clicks on the Continue your return link
     Then the user is on the return-continue page
-    And the user selects the Continue my return option
-    Then the user is on the sales-from-eu page
+    Then the user selects the Continue my return option
     And the user is on the check-your-answers page
 
 
