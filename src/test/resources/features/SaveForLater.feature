@@ -208,7 +208,7 @@ Feature: Save For Later Feature
     And the user answers no on the sales-from-eu page
     Then the user is on the check-your-answers page
     And the user is informed their return cannot be submitted
-    Then the user clicks on the Back to your account button
+    Then the user clicks on the return to your account link
     And the user clicks on the Continue your return link
     Then the user is on the return-continue page
     Then the user selects the Continue my return option

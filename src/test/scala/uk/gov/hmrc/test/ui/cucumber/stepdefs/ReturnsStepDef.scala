@@ -131,7 +131,7 @@ class ReturnsStepDef extends BaseStepDef {
 
   Then("""^the user is informed their return cannot be submitted$""") { () =>
     clickContinue()
-    CommonPage.checkUrl("return-not-registered")
+    CommonPage.checkUrl("return-not-submitted")
   }
 
   Then("""^the user clicks on the (.*) link$""") { (link: String) =>
