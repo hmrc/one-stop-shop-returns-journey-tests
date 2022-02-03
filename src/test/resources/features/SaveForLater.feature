@@ -182,6 +182,37 @@ Feature: Save For Later Feature
     Then the user is on the check-your-answers page
     Then the user submits their return
 
-
+  Scenario: A user is advised to come back later and their return is saved when submitting a return where the registration is not found on Core
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 222222222 and strong credentials
+    Then the user is directed back to the index page
+    Then the user clicks on the Start your return link
+    And the user answers yes on the start page
+    And the user answers yes on the sales-from-northern-ireland page
+    And the user selects Spain on the first eu-country-from-northern-ireland page
+    And the user ticks the first checkbox on the first eu-vat-rates-from-northern-ireland page
+    And the user clicks the continue button
+    And the user enters first EU country total sales of 50000 for first selected VAT rate on the eu-sales-from-northern-ireland page
+    And the user confirms the vat for the first EU country as the suggested amount for the first selected VAT rate on the vat-on-sales-from-northern-ireland page
+    Then the user is on the check-sales-from-northern-ireland/1 page
+    And the user clicks the continue button
+    And the user answers yes on the add-sales-from-northern-ireland page
+    And the user selects France on the second eu-country-from-northern-ireland page
+    And the user ticks the first checkbox on the second eu-vat-rates-from-northern-ireland page
+    And the user clicks the continue button
+    And the user enters second EU country total sales of 500000 for first selected VAT rate on the eu-sales-from-northern-ireland page
+    And the user confirms the vat for the second EU country as the suggested amount for the first selected VAT rate on the vat-on-sales-from-northern-ireland page
+    Then the user is on the check-sales-from-northern-ireland/2 page
+    And the user clicks the continue button
+    And the user answers no on the add-sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    Then the user is on the check-your-answers page
+    And the user is informed their return cannot be submitted
+    Then the user clicks on the Back to your account button
+    And the user clicks on the Continue your return link
+    Then the user is on the return-continue page
+    And the user selects the Continue my return option
+    Then the user is on the sales-from-eu page
+    And the user is on the check-your-answers page
 
 
