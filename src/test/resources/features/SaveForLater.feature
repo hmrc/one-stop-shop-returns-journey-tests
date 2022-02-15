@@ -214,4 +214,36 @@ Feature: Save For Later Feature
     Then the user selects the Continue my return option
     And the user is on the check-your-answers page
 
+  Scenario: A user is advised to come back later and their return is saved when submitting a return and there is an issue connecting to EIS/Core
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 222222223 and strong credentials
+    Then the user is directed back to the index page
+    Then the user clicks on the Start your return link
+    And the user answers yes on the start page
+    And the user answers yes on the sales-from-northern-ireland page
+    And the user selects Spain on the first eu-country-from-northern-ireland page
+    And the user ticks the first checkbox on the first eu-vat-rates-from-northern-ireland page
+    And the user clicks the continue button
+    And the user enters first EU country total sales of 50000 for first selected VAT rate on the eu-sales-from-northern-ireland page
+    And the user confirms the vat for the first EU country as the suggested amount for the first selected VAT rate on the vat-on-sales-from-northern-ireland page
+    Then the user is on the check-sales-from-northern-ireland/1 page
+    And the user clicks the continue button
+    And the user answers yes on the add-sales-from-northern-ireland page
+    And the user selects France on the second eu-country-from-northern-ireland page
+    And the user ticks the first checkbox on the second eu-vat-rates-from-northern-ireland page
+    And the user clicks the continue button
+    And the user enters second EU country total sales of 500000 for first selected VAT rate on the eu-sales-from-northern-ireland page
+    And the user confirms the vat for the second EU country as the suggested amount for the first selected VAT rate on the vat-on-sales-from-northern-ireland page
+    Then the user is on the check-sales-from-northern-ireland/2 page
+    And the user clicks the continue button
+    And the user answers no on the add-sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    Then the user is on the check-your-answers page
+    And the user clicks the continue button
+    Then the user is on the return-service-down page
+    Then the user clicks on the return to your account link
+    And the user clicks on the Continue your return link
+    Then the user is on the return-continue page
+    Then the user selects the Continue my return option
+    And the user is on the check-your-answers page
 

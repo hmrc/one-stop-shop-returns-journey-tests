@@ -382,6 +382,77 @@ object RegistrationData {
         "niPresence" : "principalPlaceOfBusinessInNi",
         "submissionReceived" : "2022-02-03T13:41:03.523Z",
         "lastUpdated" : "2022-02-03T13:41:03.523Z"
-      }""".stripMargin
+      }""".stripMargin,
+      s"""
+      {
+    "_id" : ObjectId("620a747acf0f0c001a966a42"),
+    "vrn" : "222222223",
+    "registeredCompanyName" : {
+        "value" : "Z660LC3NRqGZrHKiVzEF/XvvndBGUArkVXOtyw==",
+        "nonce" : "DAWtUIEdFGjC0bs+nLB975HLAgQM9JXsRCNdSj5gYp70gcuJN5vPH1o2a+VV7t2nn28cNpVLyb24Z6nGcQvhsG2VivWZIfzo308N9+AGXp6tK8lCwqxvZcoLtQ6yEh32"
+    },
+    "tradingNames" : [],
+    "vatDetails" : {
+        "registrationDate" : "2020-01-01",
+        "address" : {
+            "line1" : {
+                "value" : "9Qa0k65OA/pNV3Ne8kXWzvDgIR8GAvtDMatoQA==",
+                "nonce" : "OMMKKfQX03CoUl1ejBEtXIbQd7D4K5Mq+Sx3cN6K0aaeoUjR+wjnXPKnbOmtFDoOFkiBjFvHdQFdws3KPhkBd6L9IOM45uAgsGsJXQpg2OGDiswxduWSn1VM7so/dzPY"
+            },
+            "line2" : {
+                "value" : "UEuVa+NnTBEFKRI+nVnUZ1gK10prHXUdvg==",
+                "nonce" : "RUUfSZpmZnqBoPOsQIhH34SaVULeuGr8GIpJx0MYPoegwKMoCskc/bWR1qZ3MMDadbkLNBmvA7Ur6dZ4SBYQlt5NdmVrJN/fBFjCMPvvpRznx0aojk32jP6A3RuwTMWl"
+            },
+            "postCode" : {
+                "value" : "NI3jzvge/f7xos+hEQWWlIJUV2ZP8Sst",
+                "nonce" : "/nERzRNl2r287LrADx173Vaa3uoRuLcGtEXZ2/S7dhKeB1AnJPqtrWz0XRIJmvAOkCuaN3q7pa19nEC+F7JrfnydCt/T4CRw+5cGza5kDpvOBz4wbxUeoqQVUZc/0gGL"
+            },
+            "countryCode" : {
+                "value" : "zcKGyMreatnKpQJPQhzuFGgA",
+                "nonce" : "GgXOXaTThQ/M8EzhDfLNVYTiBIns3HZB2f1Qy27KVMfRrLTylqZxcDxRRBu8T0gk2aE4Zbri65Iz5hartoVmXJ37ZcbmSC8K61n8QFumkB7OmyaU43qt1zybcWkMP6Hl"
+            }
+        },
+        "partOfVatGroup" : {
+            "value" : "CFc3p88pq/odN62N74sFiZmZoaQ=",
+            "nonce" : "HTmo8z5fZW79LoUv7oDGzheSscodrzitnqpfd9saKyAjmK2AKf1nWYQ7aYmf12oyb7XGnrV0uhBgdKHgURZgWHYU3OGgJzrdXgGv+0XASHUz9m8d0pfyIocOLFV7iE/Z"
+        },
+        "source" : "etmp"
+    },
+    "euRegistrations" : [],
+    "contactDetails" : {
+        "fullName" : {
+            "value" : "feGGks9JLe/JfRuDEUMDXtUD3as=",
+            "nonce" : "6ASSWa9RD00nj+mAmNOcF9NR3GiMsO5JoKvN2v/BrBz1xJKdVslFH5/NIu6ZYwuZRKBUkxRvzoulpXFu+8N9HgAq38Y11NF07z104WDH/ztM+OrFO2T8i0vfnQFK9vnO"
+        },
+        "telephoneNumber" : {
+            "value" : "TLwiEIT/Q2t90kmOluHYdeXAn5LIdA==",
+            "nonce" : "Ra6DA/XZi8AZzkkJpL/J9lofuy3h1nyVFgLH9pBnz/aV96dQtFVuLE4mBs9dimFX6Qd7qoSI5xNj1NMXcR+GOyKCnBtRWr5TkzTCjt9SpL27kmCzWyS6UD8TsjCbyFfB"
+        },
+        "emailAddress" : {
+            "value" : "mpK8xdc26lxVPvel6UXt8hYOkPPt9o13ibEJMl0=",
+            "nonce" : "oKa3lFlTWNNYuVImZXZQGWOQCjK4/gMFmt/PlerDElgo4ohcem69uSmIaJacafsYckm3yABCDbJYBQcewT+blujSAMFdHW1GFJkW34qpzRTn8wAAYZZvB5A5kh1iTZ0t"
+        }
+    },
+    "websites" : [],
+    "commencementDate" : "2021-07-14",
+    "previousRegistrations" : [],
+    "bankDetails" : {
+        "accountName" : {
+            "value" : "vVZhViephD0r7umWxoR0FZgDyYI=",
+            "nonce" : "50iIAn584UWTAHHqJXTG44RkBFkAf0KTA9Uavmk+WYOtf9Vf/O0o3KdSvOlmfkllSmn6VUgvzS+CkVE57bKZxKa/7gEAEqRqy8nEr4m75sCkCMlqc8UO+KfPVDZWH+Al"
+        },
+        "iban" : {
+            "value" : "rJAjREt58orZ1UeFeKcp9hb+MU4xAk9YLE9EP0AdQyxPwJhGY0U=",
+            "nonce" : "aEuzYzdV5KPPd+1BwPN3XSr4gEoHaQbBg3uOKPEA6WgDWrRbGpTMizgdWRq6r/4gAF+c89yuO+3KJTEahkMims7Wq/MAgrjoavjFBt95gCJSua2wg2nlxx6EL981qcuJ"
+        }
+    },
+    "isOnlineMarketplace" : {
+        "value" : "6BrP8S3+4jjfAlKMktS2JpPkfjbw",
+        "nonce" : "lBNrH34QYhWRrBgY6kODYA1uzp4hc3d9pDNBUFcK/KlneDI2VlkMZdkgwP6VkAKRPyrtk0l9TjJxZZrY9yvMg4bXi1nGmihw+8E/MMrF/Zoe9QJ9GkH/G4yMBKx2rQwp"
+    },
+    "niPresence" : "principalPlaceOfBusinessInNi",
+    "submissionReceived" : "2022-02-14T15:25:46.686Z",
+    "lastUpdated" : "2022-02-14T15:25:46.686Z"
+    }""".stripMargin
     )
 }
