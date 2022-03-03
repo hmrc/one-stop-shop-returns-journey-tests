@@ -159,7 +159,7 @@ class ReturnsStepDef extends BaseStepDef {
 
   Then("""^the user sees the no returns message$""") { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(htmlBody.contains("You have not submitted any returns for this year."))
+    Assert.assertTrue(htmlBody.contains("You have not submitted any returns."))
   }
 
   Then("""^the user sees the no returns due message$""") { () =>
