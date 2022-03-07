@@ -24,6 +24,10 @@ import uk.gov.hmrc.test.ui.pages.CommonPage.clickContinue
 
 class ReturnsStepDef extends BaseStepDef {
 
+  Given("^the user has previously registered for the One Stop Shop service$") { () =>
+    //Needs implementing
+  }
+
   Given("^the user accesses the service$") { () =>
     CommonPage.goToStartOfJourney()
   }
@@ -71,13 +75,17 @@ class ReturnsStepDef extends BaseStepDef {
     CommonPage.submitForm()
   }
 
-  When("""^the user selects (.*) on the (first|second) (.*) page$""") { (data: String, index: String, url: String) =>
-    index match {
-      case "first"  => CommonPage.checkUrl(url + "/1")
-      case "second" => CommonPage.checkUrl(url + "/2")
-      case _        => throw new Exception("Index doesn't exist")
-    }
-    CommonPage.selectValueAutocomplete(data)
+  When("""^the user selects (.*) on the (first|second|third|fourth|fifth) (.*) page$""") {
+    (data: String, index: String, url: String) =>
+      index match {
+        case "first"  => CommonPage.checkUrl(url + "/1")
+        case "second" => CommonPage.checkUrl(url + "/2")
+        case "third"  => CommonPage.checkUrl(url + "/3")
+        case "fourth" => CommonPage.checkUrl(url + "/4")
+        case "fifth"  => CommonPage.checkUrl(url + "/5")
+        case _        => throw new Exception("Index doesn't exist")
+      }
+      CommonPage.selectValueAutocomplete(data)
   }
 
   When(
