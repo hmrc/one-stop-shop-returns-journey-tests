@@ -34,7 +34,8 @@ Feature: Integration Test Feature for Sending Existing Returns to Core
 
     Examples:
       | vrn       |
-      | 100000003 |
+      | 444444441 |
+      | 444444444 |
 #     add vrns here
 
 
@@ -126,7 +127,8 @@ Feature: Integration Test Feature for Sending Existing Returns to Core
 
     Examples:
       | vrn       |
-      | 100000002 |
+      | 444444442 |
+      | 444444445 |
 #     add vrns here
 
   Scenario Outline: A user completes a nil first return
@@ -142,7 +144,7 @@ Feature: Integration Test Feature for Sending Existing Returns to Core
 
     Examples:
       | vrn       |
-      | 100000004 |
+      | 444444443 |
 #     add vrns here
 
 
@@ -177,7 +179,8 @@ Feature: Integration Test Feature for Sending Existing Returns to Core
 
     Examples:
       | vrn       |
-      | 100000003 |
+      | 444444442 |
+      | 444444444 |
 #     add vrns here
 
   Scenario Outline: A user completes a large second return with corrections
@@ -285,7 +288,7 @@ Feature: Integration Test Feature for Sending Existing Returns to Core
 
     Examples:
       | vrn       |
-      | 100000002 |
+      | 444444441 |
 #     add vrns here
 
   Scenario Outline: A user completes a small second return with no corrections
@@ -313,6 +316,7 @@ Feature: Integration Test Feature for Sending Existing Returns to Core
 
     Examples:
       | vrn       |
-      | 100000004 |
+      | 444444443 |
+      | 444444445 |
 #     add vrns here
 

@@ -20,12 +20,16 @@ import org.junit.Assert
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.Select
 import uk.gov.hmrc.test.ui.pages.CommonPage
-import uk.gov.hmrc.test.ui.pages.CommonPage.clickContinue
+import uk.gov.hmrc.test.ui.pages.CommonPage.{clickContinue, driver}
 
 class ReturnsStepDef extends BaseStepDef {
 
   Given("^the user has previously registered for the One Stop Shop service$") { () =>
-    //Needs implementing
+    driver
+      .navigate()
+      .to(
+        "http://localhost:10201/one-stop-shop-registration/test-only/create-registrations/444444441/444444445/2021-07-01"
+      )
   }
 
   Given("^the user accesses the service$") { () =>
