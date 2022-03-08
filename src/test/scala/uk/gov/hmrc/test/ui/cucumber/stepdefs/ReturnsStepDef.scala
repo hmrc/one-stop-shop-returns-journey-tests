@@ -19,16 +19,19 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import org.junit.Assert
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.Select
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.CommonPage
-import uk.gov.hmrc.test.ui.pages.CommonPage.{clickContinue, driver}
+import uk.gov.hmrc.test.ui.pages.CommonPage.clickContinue
 
 class ReturnsStepDef extends BaseStepDef {
+
+  val host: String = TestConfiguration.url("one-stop-shop-returns-frontend")
 
   Given("^the user has previously registered for the One Stop Shop service$") { () =>
     driver
       .navigate()
       .to(
-        "http://localhost:10201/one-stop-shop-registration/test-only/create-registrations/444444441/444444445/2021-07-01"
+        s"$host/444444441/444444445/2021-07-01"
       )
   }
 
@@ -41,7 +44,7 @@ class ReturnsStepDef extends BaseStepDef {
       driver.findElement(By.name("redirectionUrl")).clear()
       driver
         .findElement(By.name("redirectionUrl"))
-        .sendKeys("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/your-account")
+        .sendKeys(s"$host/your-account")
       val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
       selectCredentialStrength.selectByValue("strong")
       val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
@@ -66,7 +69,7 @@ class ReturnsStepDef extends BaseStepDef {
   }
 
   Then("""^the user is directed back to the index page$""") { () =>
-    driver.getCurrentUrl shouldBe "http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/your-account"
+    driver.getCurrentUrl shouldBe s"$host/your-account"
   }
 
   When("""^the user adds (.*) on the (first|second) (.*) page$""") { (data: String, index: String, url: String) =>

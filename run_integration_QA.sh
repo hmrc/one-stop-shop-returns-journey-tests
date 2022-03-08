@@ -1,5 +1,5 @@
 #!/bin/bash -e
-ENV=${1:-local}
+ENV=qa
 BROWSER=${2:-chrome}
 DRIVER=
 

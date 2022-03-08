@@ -4,6 +4,7 @@
 #  It is not to be included in the main journey tests, hence the separate tagging
 #  The VRNs will need to be added for each run, once they have been decided
 #  The VRNs will also need to be amended in the steps behind the registration scenario
+#  This is to be ran with script run_integration_QA.sh and is intended to run on QA but can be tested locally
 
 Feature: Integration Test Feature for Sending Existing Returns to Core
 
