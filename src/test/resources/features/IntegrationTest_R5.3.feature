@@ -164,3 +164,19 @@ Feature: Integration Test Feature for Sending Existing Returns to Core
       | 100000002 |
 #     add vrns here
 
+  Scenario Outline: A user completes a nil return
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment <vrn> and strong credentials
+    Then the user is directed back to the index page
+    Then the user clicks on the Start your return link
+    And the user answers yes on the start page
+    And the user answers no on the sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    Then the user is on the check-your-answers page
+    Then the user submits their return
+
+    Examples:
+      | vrn       |
+      | 100000002 |
+#     add vrns here
+
