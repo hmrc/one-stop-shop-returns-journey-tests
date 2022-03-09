@@ -2,17 +2,17 @@
 
 #  This feature is to be used for integration testing of sending existing returns to Core for Release 5.3
 #  It is not to be included in the main journey tests, hence the separate tagging
-#  The VRNs will need to be added for each run, once they have been decided
-#  The VRNs will also need to be amended in the steps behind the registration scenario
+
+#  The VRNs will need to be added to the scenarios for each run, once they have been decided
+#  The VRNs will also need to be added to the registration database, via the test-only endpoint
+#  This can be accessed in Postman locally or via the curl microservice job for QA
+
 #  This is to be ran with script run_integration_QA.sh and is intended to run on QA but can be tested locally
 
 Feature: Integration Test Feature for Sending Existing Returns to Core
 
-  Scenario: All users have previously registered for the One Stop Shop service
-    Given the user has previously registered for the One Stop Shop service
-
   Scenario Outline: A user completes a small first return
-    Given the user accesses the service
+    Given the user navigates to the auth page
     And the user signs in as an Organisation Admin with VAT enrolment <vrn> and strong credentials
     Then the user is directed back to the index page
     Then the user clicks on the Start your return link
@@ -41,7 +41,7 @@ Feature: Integration Test Feature for Sending Existing Returns to Core
 
 
   Scenario Outline: A user completes a large first return
-    Given the user accesses the service
+    Given the user navigates to the auth page
     And the user signs in as an Organisation Admin with VAT enrolment <vrn> and strong credentials
     Then the user is directed back to the index page
     Then the user clicks on the Start your return link
@@ -133,7 +133,7 @@ Feature: Integration Test Feature for Sending Existing Returns to Core
 #     add vrns here
 
   Scenario Outline: A user completes a nil first return
-    Given the user accesses the service
+    Given the user navigates to the auth page
     And the user signs in as an Organisation Admin with VAT enrolment <vrn> and strong credentials
     Then the user is directed back to the index page
     Then the user clicks on the Start your return link
@@ -151,7 +151,7 @@ Feature: Integration Test Feature for Sending Existing Returns to Core
 
 #  This scenario can be ran for a VRN that has been through the small return or the large return scenario
   Scenario Outline: A user completes a nil second return with corrections for the previous period
-    Given the user accesses the service
+    Given the user navigates to the auth page
     And the user signs in as an Organisation Admin with VAT enrolment <vrn> and strong credentials
     Then the user is directed back to the index page
     Then the user clicks on the Start your return link
@@ -185,7 +185,7 @@ Feature: Integration Test Feature for Sending Existing Returns to Core
 #     add vrns here
 
   Scenario Outline: A user completes a large second return with corrections
-    Given the user accesses the service
+    Given the user navigates to the auth page
     And the user signs in as an Organisation Admin with VAT enrolment <vrn> and strong credentials
     Then the user is directed back to the index page
     Then the user clicks on the Start your return link
@@ -293,7 +293,7 @@ Feature: Integration Test Feature for Sending Existing Returns to Core
 #     add vrns here
 
   Scenario Outline: A user completes a small second return with no corrections
-    Given the user accesses the service
+    Given the user navigates to the auth page
     And the user signs in as an Organisation Admin with VAT enrolment <vrn> and strong credentials
     Then the user is directed back to the index page
     Then the user clicks on the Start your return link

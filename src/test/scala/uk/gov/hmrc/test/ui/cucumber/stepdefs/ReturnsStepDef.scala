@@ -27,12 +27,8 @@ class ReturnsStepDef extends BaseStepDef {
 
   val host: String = TestConfiguration.url("one-stop-shop-returns-frontend")
 
-  Given("^the user has previously registered for the One Stop Shop service$") { () =>
-    driver
-      .navigate()
-      .to(
-        s"$host/444444441/444444445/2021-07-01"
-      )
+  Given("^the user navigates to the auth page$") { () =>
+    CommonPage.goToAuthPage()
   }
 
   Given("^the user accesses the service$") { () =>

@@ -26,7 +26,13 @@ import java.time.LocalDate
 
 object CommonPage extends BrowserDriver with Matchers {
 
-  val host: String = TestConfiguration.url("one-stop-shop-returns-frontend")
+  val host: String     = TestConfiguration.url("one-stop-shop-returns-frontend")
+  val authHost: String = TestConfiguration.url("auth-login-stub")
+
+  def goToAuthPage(): Unit =
+    driver
+      .navigate()
+      .to(s"$authHost/gg-sign-in")
 
   def goToStartOfJourney(): Unit =
     driver

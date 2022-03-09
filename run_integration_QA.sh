@@ -1,13 +1,7 @@
 #!/bin/bash -e
-ENV=qa
-BROWSER=${2:-chrome}
-DRIVER=
-
-if [ "$BROWSER" = "chrome" ]; then
-    DRIVER="-Dwebdriver.chrome.driver=/usr/local/bin/chromedriver"
-elif [ "$BROWSER" = "firefox" ]; then
-    DRIVER="-Dwebdriver.gecko.driver=/usr/local/bin/geckodriver"
-fi
+ENV=local
+BROWSER=chrome
+DRIVER=-Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
 
 # Scalafmt checks have been separated from the test command to avoid OutOfMemoryError in Jenkins
 sbt scalafmtCheckAll scalafmtSbtCheck
