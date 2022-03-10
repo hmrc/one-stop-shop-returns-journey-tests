@@ -19,10 +19,17 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import org.junit.Assert
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.Select
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.CommonPage
 import uk.gov.hmrc.test.ui.pages.CommonPage.clickContinue
 
 class ReturnsStepDef extends BaseStepDef {
+
+  val host: String = TestConfiguration.url("one-stop-shop-returns-frontend")
+
+  Given("^the user navigates to the auth page$") { () =>
+    CommonPage.goToAuthPage()
+  }
 
   Given("^the user accesses the service$") { () =>
     CommonPage.goToStartOfJourney()
@@ -33,7 +40,7 @@ class ReturnsStepDef extends BaseStepDef {
       driver.findElement(By.name("redirectionUrl")).clear()
       driver
         .findElement(By.name("redirectionUrl"))
-        .sendKeys("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/your-account")
+        .sendKeys(s"$host/your-account")
       val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
       selectCredentialStrength.selectByValue("strong")
       val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
@@ -58,7 +65,7 @@ class ReturnsStepDef extends BaseStepDef {
   }
 
   Then("""^the user is directed back to the index page$""") { () =>
-    driver.getCurrentUrl shouldBe "http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/your-account"
+    driver.getCurrentUrl shouldBe s"$host/your-account"
   }
 
   When("""^the user adds (.*) on the (first|second) (.*) page$""") { (data: String, index: String, url: String) =>
@@ -71,13 +78,17 @@ class ReturnsStepDef extends BaseStepDef {
     CommonPage.submitForm()
   }
 
-  When("""^the user selects (.*) on the (first|second) (.*) page$""") { (data: String, index: String, url: String) =>
-    index match {
-      case "first"  => CommonPage.checkUrl(url + "/1")
-      case "second" => CommonPage.checkUrl(url + "/2")
-      case _        => throw new Exception("Index doesn't exist")
-    }
-    CommonPage.selectValueAutocomplete(data)
+  When("""^the user selects (.*) on the (first|second|third|fourth|fifth) (.*) page$""") {
+    (data: String, index: String, url: String) =>
+      index match {
+        case "first"  => CommonPage.checkUrl(url + "/1")
+        case "second" => CommonPage.checkUrl(url + "/2")
+        case "third"  => CommonPage.checkUrl(url + "/3")
+        case "fourth" => CommonPage.checkUrl(url + "/4")
+        case "fifth"  => CommonPage.checkUrl(url + "/5")
+        case _        => throw new Exception("Index doesn't exist")
+      }
+      CommonPage.selectValueAutocomplete(data)
   }
 
   When(

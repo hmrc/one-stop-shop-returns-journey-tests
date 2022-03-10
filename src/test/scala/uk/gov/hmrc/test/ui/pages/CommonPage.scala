@@ -19,17 +19,25 @@ package uk.gov.hmrc.test.ui.pages
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
 import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.test.ui.pages.CommonPage.waitForElement
 
 import java.time.LocalDate
 
 object CommonPage extends BrowserDriver with Matchers {
 
+  val host: String     = TestConfiguration.url("one-stop-shop-returns-frontend")
+  val authHost: String = TestConfiguration.url("auth-login-stub")
+
+  def goToAuthPage(): Unit =
+    driver
+      .navigate()
+      .to(s"$authHost/gg-sign-in")
+
   def goToStartOfJourney(): Unit =
     driver
       .navigate()
-      .to("http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/your-account")
+      .to(s"$host/your-account")
 
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(url)
@@ -98,6 +106,6 @@ object CommonPage extends BrowserDriver with Matchers {
   def navigateToReturnStartPage(period: String): Unit =
     driver
       .navigate()
-      .to(s"http://localhost:10204/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments/$period/start")
+      .to(s"$host/$period/start")
 
 }
