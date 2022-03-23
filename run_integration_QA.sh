@@ -1,5 +1,5 @@
 #!/bin/bash -e
-ENV=local
+ENV=qa
 BROWSER=chrome
 DRIVER=-Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
 
