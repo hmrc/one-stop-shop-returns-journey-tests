@@ -108,4 +108,9 @@ object CommonPage extends BrowserDriver with Matchers {
       .navigate()
       .to(s"$host/$period/start")
 
+  def navigateToBtaLink(link: String): Unit =
+    driver
+      .navigate()
+      .to(s"$host/test-only/$link")
+
 }
