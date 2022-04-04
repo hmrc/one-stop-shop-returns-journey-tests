@@ -204,4 +204,13 @@ class ReturnsStepDef extends BaseStepDef {
     }
     clickContinue()
   }
+
+  Then("""^the user selects the (.*) return period""") { (option: String) =>
+    option match {
+      case "first"  => driver.findElement(By.id("value_0")).click()
+      case "second" => driver.findElement(By.id("value_1")).click()
+      case _        => throw new Exception("Link doesn't exist")
+    }
+    clickContinue()
+  }
 }
