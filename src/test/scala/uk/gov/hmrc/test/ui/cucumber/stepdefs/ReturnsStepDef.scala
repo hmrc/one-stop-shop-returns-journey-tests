@@ -182,6 +182,10 @@ class ReturnsStepDef extends BaseStepDef {
     CommonPage.navigateToReturnStartPage(period)
   }
 
+  When("""^the user manually navigates to the (.*) link$""") { (link: String) =>
+    CommonPage.navigateToBtaLink(link)
+  }
+
   When("""^the user manually navigates to the start page for the current period$""") { () =>
     CommonPage.navigateToReturnStartPage(CommonPage.currentPeriod())
   }
