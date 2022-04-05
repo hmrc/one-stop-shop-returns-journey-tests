@@ -6,7 +6,7 @@ Feature: Corrections Feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
     Then the user is directed back to the index page
-    Then the user manually navigates to the 2021-Q4 start page
+    Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
@@ -33,7 +33,7 @@ Feature: Corrections Feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
     Then the user is directed back to the index page
-    Then the user manually navigates to the 2021-Q4 start page
+    Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
@@ -55,7 +55,7 @@ Feature: Corrections Feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
     Then the user is directed back to the index page
-    Then the user manually navigates to the 2021-Q4 start page
+    Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
@@ -67,7 +67,7 @@ Feature: Corrections Feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
     Then the user is directed back to the index page
-    Then the user manually navigates to the 2021-Q4 start page
+    Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
@@ -93,7 +93,7 @@ Feature: Corrections Feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
     Then the user is directed back to the index page
-    Then the user manually navigates to the 2021-Q4 start page
+    Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
@@ -120,7 +120,7 @@ Feature: Corrections Feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
     Then the user is directed back to the index page
-    Then the user manually navigates to the 2021-Q4 start page
+    Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
@@ -157,7 +157,7 @@ Feature: Corrections Feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
     Then the user is directed back to the index page
-    Then the user manually navigates to the 2021-Q4 start page
+    Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
@@ -189,7 +189,7 @@ Feature: Corrections Feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
     Then the user is directed back to the index page
-    Then the user manually navigates to the 2021-Q4 start page
+    Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
@@ -210,7 +210,7 @@ Feature: Corrections Feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
     Then the user is directed back to the index page
-    Then the user manually navigates to the 2021-Q4 start page
+    Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers yes on the sales-from-northern-ireland page
     And the user selects Spain on the first eu-country-from-northern-ireland page
@@ -251,15 +251,38 @@ Feature: Corrections Feature
     Then the user is on the check-your-answers page
     Then the user submits their return
 
-#  Added user and data for this in advance but won't be able to continue with this scenario until the date
-#  has reached 1st April as it won't show /correction-return-period page until then
-#  Scenario: A user adds corrections for multiple previous returns
-#    Given the user accesses the service
-#    And the user signs in as an Organisation Admin with VAT enrolment 100000004 and strong credentials
-#    Then the user is directed back to the index page
-#    Then the user manually navigates to the 2022-Q1 start page
-#    And the user answers yes on the start page
-#    And the user answers no on the sales-from-northern-ireland page
-#    And the user answers no on the sales-from-eu page
-#    And the user answers yes on the correct-previous-return page
+  Scenario: A user adds corrections for multiple previous returns
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000004 and strong credentials
+    Then the user is directed back to the index page
+    Then the user clicks on the Start your return link
+    And the user answers yes on the start page
+    And the user answers no on the sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    And the user answers yes on the correct-previous-return page
+    Then the user is on the correction-return-period/1 page
+    And the user selects the first return period
+    And the user selects the first country as Croatia for the first period on the correction-country page
+    And the user answers yes on the add-new-country/1/1 page
+    And the user adds the first undeclared correction amount as 1000 for the first period on the country-vat-correction-amount page
+    And the user answers yes on the vat-payable-confirm/1/1 page
+    And the user is on the vat-payable-check/1/1 page
+    And the user continues from the vat-payable-check page
+    And the user answers no on the vat-correction-list/1 page
+    Then the user answers yes on the vat-correction-periods-add page
+    And the user answers yes on the correction-return-single-period/2 page
+    And the user selects the first country as Denmark for the second period on the correction-country page
+    And the user answers yes on the add-new-country/2/1 page
+    And the user adds the first undeclared correction amount as 5000 for the second period on the country-vat-correction-amount page
+    And the user answers yes on the vat-payable-confirm/2/1 page
+    And the user is on the vat-payable-check/2/1 page
+    And the user continues from the vat-payable-check page
+    And the user answers no on the vat-correction-list/2 page
+    Then the user clicks the continue button
+    Then the user is on the check-your-answers page
+    Then the user submits their return
+
+
+
+
 

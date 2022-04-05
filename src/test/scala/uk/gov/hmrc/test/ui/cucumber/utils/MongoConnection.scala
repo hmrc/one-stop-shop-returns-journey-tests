@@ -84,6 +84,7 @@ object MongoConnection {
   def dropCorrections(): Unit = {
     dropRecord("one-stop-shop-returns", "corrections", "100000002")
     dropRecord("one-stop-shop-returns", "corrections", "100000003")
+    dropRecord("one-stop-shop-returns", "corrections", "100000004")
   }
 
   def dropSavedAnswers(): Unit = {
