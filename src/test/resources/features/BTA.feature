@@ -67,4 +67,56 @@ Feature: BTA Feature
     And the user clicks on the your-account breadcrumb
     And the user is on the business-account page
 
+  Scenario: A Welsh user enters the Your Account page via BTA and sees the Welsh transition page before "Your Account"
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the your-account-from-bta?lang=cy link
+    And the user is directed to the Welsh transition page
+    Then the user clicks the continue button
+    And the user is on the your-account page
+
+  Scenario: A Welsh user enters the Start Your Return page via BTA and sees the Welsh transition page before they start their return
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the start-your-return-from-bta/2021-Q3?lang=cy link
+    And the user is directed to the Welsh transition page
+    Then the user clicks the continue button
+    And the user is on the start page
+
+  Scenario: A Welsh user enters the Continue Your Return page via BTA and sees the Welsh transition page before they continue their return
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
+    Then the user is directed back to the index page
+    Then the user clicks on the Start your return link
+    And the user answers yes on the start page
+    And the user answers yes on the sales-from-northern-ireland page
+    And the user selects Spain on the first eu-country-from-northern-ireland page
+    And the user clicks the Save and come back later button
+    And the user clicks on the sign out and come back later link
+    Then the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the continue-return-from-bta/2021-Q3?lang=cy link
+    And the user is directed to the Welsh transition page
+    Then the user clicks the continue button
+    Then the user is on the return-continue page
+
+  Scenario: A Welsh user enters the Submitted Returns page via BTA and sees the Welsh transition page before the Past Returns page
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the returns-history-from-bta?lang=cy link
+    And the user is directed to the Welsh transition page
+    Then the user clicks the continue button
+    Then the user is on the past-returns page
+
+  Scenario: A user enters the Your Account page via BTA with the en specific parameter and is directed straight to "Your Account"
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the your-account-from-bta?lang=en link
+    And the user is on the your-account page
+
 
