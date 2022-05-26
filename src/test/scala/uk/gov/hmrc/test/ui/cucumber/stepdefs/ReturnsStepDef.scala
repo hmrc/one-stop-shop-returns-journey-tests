@@ -63,6 +63,9 @@ class ReturnsStepDef extends BaseStepDef {
   Then("""^the user is on the (.*) page$""") { (url: String) =>
     CommonPage.checkUrl(url)
   }
+  Then("""^the user is directed to the Welsh transition page$""") { () =>
+    driver.getCurrentUrl contains s"$host/no-welsh-service?redirectUrl"
+  }
 
   Then("""^the user is directed back to the index page$""") { () =>
     driver.getCurrentUrl shouldBe s"$host/your-account"
