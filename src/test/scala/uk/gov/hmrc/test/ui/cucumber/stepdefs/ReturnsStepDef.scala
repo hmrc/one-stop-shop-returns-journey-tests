@@ -64,7 +64,7 @@ class ReturnsStepDef extends BaseStepDef {
     CommonPage.checkUrl(url)
   }
   Then("""^the user is directed to the Welsh transition page$""") { () =>
-    driver.getCurrentUrl contains s"$host/no-more-welsh?redirectUrl"
+    driver.getCurrentUrl contains s"$host/no-welsh-service?redirectUrl"
   }
 
   Then("""^the user is directed back to the index page$""") { () =>
