@@ -22,7 +22,8 @@ import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.{Clock, LocalDate}
 
 object CommonPage extends BrowserDriver with Matchers {
 
@@ -102,6 +103,26 @@ object CommonPage extends BrowserDriver with Matchers {
       case 7 | 8 | 9    => "Q3"
       case 10 | 11 | 12 => "Q4"
     }
+
+  private def nextQuarter: LocalDate = {
+    val today                    = LocalDate.now(Clock.systemUTC())
+    val endMonthOfQuarter        = (((today.getMonthValue - 1) / 3) + 1) * 3
+    val dateInLastMonthOfQuarter = today.withMonth(endMonthOfQuarter)
+    val lastDayOfCurrentQuarter  = dateInLastMonthOfQuarter.withDayOfMonth(dateInLastMonthOfQuarter.lengthOfMonth)
+
+    lastDayOfCurrentQuarter.plusDays(1)
+  }
+
+  def generateNextAvailableReturn(): String = {
+    val today               = LocalDate.now()
+    val currentQuarterStart = nextQuarter.minusMonths(3)
+    val currentQuarterEnd   = today.withMonth(currentQuarterStart.getMonthValue).plusMonths(2)
+
+    s"You can complete your " +
+      s"${currentQuarterStart.format(DateTimeFormatter.ofPattern("MMMM"))} to " +
+      s"${currentQuarterEnd.format(DateTimeFormatter.ofPattern("MMMM yyyy"))} return from " +
+      s"${nextQuarter.format(DateTimeFormatter.ofPattern("d MMMM yyyy"))}."
+  }
 
   def navigateToReturnStartPage(period: String): Unit =
     driver

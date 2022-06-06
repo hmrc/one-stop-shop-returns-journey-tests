@@ -176,9 +176,9 @@ class ReturnsStepDef extends BaseStepDef {
     Assert.assertTrue(htmlBody.contains("You have not submitted any returns."))
   }
 
-  Then("""^the user sees the no returns due message$""") { () =>
+  Then("""^the user sees the next available return due message$""") { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(htmlBody.contains("You do not have any returns due"))
+    Assert.assertTrue(htmlBody.contains(CommonPage.generateNextAvailableReturn()))
   }
 
   When("""^the user manually navigates to the (.*) start page$""") { (period: String) =>
