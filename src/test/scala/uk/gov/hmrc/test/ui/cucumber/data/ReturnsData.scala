@@ -512,200 +512,132 @@ object ReturnsData {
         "lastUpdated" : "2021-11-03T16:26:12.570Z"
     }""".stripMargin,
       s"""
-      {
-    "_id" : ObjectId("62a856b8f77d8050d38aaae9"),
-    "vrn" : "100000006",
-    "period" : {
-        "year" : 2021,
-        "quarter" : "Q3"
-    },
-    "reference" : "XI/XI100000006/Q3.2021",
-    "paymentReference" : "NI100000006Q321",
-    "salesFromNi" : [
-        {
-            "countryOfConsumption" : {
-                "code" : {
-                    "value" : "U8vBS2A1A2DA2ILusDgbzKWh",
-                    "nonce" : "LuSDk60X3XeqZF+nSziYATCBPKZEzQKWgAUmMa3CvMNvEIMq8eXJ7U9OgSUgDkZvqwZTFY04vw4KpfYRQACqsVoyY/tsqnceLX5Uj7tERvMi1BgKXHNzhG2Jcbrh3tED"
-                },
-                "name" : {
-                    "value" : "vHqhbaKa/q3siAdN7KTQReuTw+Oa6J4=",
-                    "nonce" : "2/Ta8sIVrr9zgcpHIuFVjfl/ZHVSM7bd/GXlXOBbtbfJ7EMdT589BnBlrGt81OVrQ7ZN1GFZLrkiXVFw6ab1wjxeGiZ1cJyngwyhi1PcEQBoKenzZ0OuZWUppYuRQcsg"
-                }
-            },
-            "amounts" : [
-                {
-                    "vatRate" : {
-                        "rate" : {
-                            "value" : "u+QpqWIj80Bajtsv4no/iV/+",
-                            "nonce" : "U+esWykLSns057Q/OBtdPAXBF1zRWmujBerO4XNKQrBRIJF+z1pCdViuK/LeDGywKQX8lBTgRnf+jkOHW/I92lNO1cteWgXWTK2iAkscQpfHeUOHgMxVQM4bRY0zUcZ4"
-                        },
-                        "rateType" : {
-                            "value" : "t24vNovx2YRP3xQ2KQ76LBbhZQ8SsVlX",
-                            "nonce" : "xnl40YojvDzExNNDvZdTCTXHHZRRWh8KrgeShiF6MbpToLgGH+KgY2zYiN21PR4rC/5zwbt8gjDkOqAL00s0F7By4Od4UEAVsRZSW+vIlvTG+G87HbUHYW18PQkYEx0i"
-                        }
-                    },
-                    "netValueOfSales" : {
-                        "value" : "uwkuhPBABm4kCNrEgYJDpJjQ7sq3QgU=",
-                        "nonce" : "uvGGhqFsPLRxvd261wg+jOKHipyQ7TrxpWxhm5gmAdjXvQih1+Y8Y/3CW4lalsoc/bCY/iPFAit+iFSBuZSEMawOTEZLPDuId6ZnYwYcbCgCt6jzwyiL4JcBs8ZA3G1W"
-                    },
-                    "vatOnSales" : {
-                        "choice" : {
-                            "value" : "KbA4ww/rSLbjMx4s4AkAXcCOrNk4XcsY",
-                            "nonce" : "XRGI7NHgP5fCB2J7Re4v2IKBTeEIRyVwIObWnIi2Ge06qcjxP0tftAuFLYabcD2vLN+TM4mDGj6CxPkxoOW27pAUUN9IpnpuGmmRH61+3ZLky3ARIuRWNI9BmkRKwQyp"
-                        },
-                        "amount" : {
-                            "value" : "V/emLuzaeBbQkGbt+D3qjDXAuEChvhul",
-                            "nonce" : "cNkz0M7KjRd5vT+GHlNeIBrg2ylFsPYwA6auR5PC8TCFE7zGux4RYWgkxopYTSiWEJqxoUUG2GTBErExPnfez+JY/GnjHQjlDK0BR9qvqs1l7RZ5/4T/N6n7nR12+SZb"
-                        }
-                    }
-                }
-            ]
-        }
-    ],
-    "salesFromEu" : [],
-    "submissionReceived" : "2022-06-14T09:36:55.913Z",
-    "lastUpdated" : "2022-06-14T09:36:55.913Z"
-}""".stripMargin,
+         |{
+         |    "_id" : ObjectId("62a8610ef77d8050d38aaaee"),
+         |    "vrn" : "444444444",
+         |    "period" : {
+         |        "year" : 2021,
+         |        "quarter" : "Q3"
+         |    },
+         |    "reference" : "XI/XI444444444/Q3.2021",
+         |    "paymentReference" : "NI444444444Q321",
+         |    "salesFromNi" : [
+         |        {
+         |            "countryOfConsumption" : {
+         |                "code" : {
+         |                    "value" : "GgNV7zGT8oka/KQl0ElvGvFY",
+         |                    "nonce" : "pSg1jL6t7ZV9cINgHHZ6Jwvzh+VFKB24vLnDlS8RqX6u9hkQ/y3YUd0mXrikrvtc84bCy6zW77t45EoBJQd2u0k+i90QWaEJT3Xn7R+OjPtd5lH9ruJwffn2w3Y9wbDP"
+         |                },
+         |                "name" : {
+         |                    "value" : "hiPg5acmk3B3NTqVZ6o3jwvWRUjuZmc=",
+         |                    "nonce" : "bH9wAymEvKYJTpJ3GluPvLyRlXRayjTbJEiy+iBwbcqpOyAg5/8NKOThnKGSnHGFH6BEziUMER7XBDM3gTNgRkuuvptldgvnnMrRYnekMSLo3uMhGYv10gbKRGX025xC"
+         |                }
+         |            },
+         |            "amounts" : [
+         |                {
+         |                    "vatRate" : {
+         |                        "rate" : {
+         |                            "value" : "J9TzHZZrDgrWzGtjNOLsWij6",
+         |                            "nonce" : "xyc6Xzyr/iMCxK6me/C960WfO55NgCHnLJRa5zggKGeIrD5dzKQUGcSlXSJuZfcXp9jYtZvdOIkuplz3O95QzPO5YDn7h8yNMkqnd+hhcYE76oHAGYpMVFRFj+G//Zb0"
+         |                        },
+         |                        "rateType" : {
+         |                            "value" : "dG/KvBOrCdXJjCta72umz3PNVVt0PlgQ",
+         |                            "nonce" : "2mgQyOzwIems8QE4Ed5zK9uLQTu4NYM8CQGvZNi9Q6XNr6C9zdmpYP+MJgqbq9B67SvB964ibLy6bIP44zgG8jhx0yzGzV+teQmXhGU9vJypBImXjttUs7a7KwSFsrSK"
+         |                        }
+         |                    },
+         |                    "netValueOfSales" : {
+         |                        "value" : "vAFntTnCeycNXbjctVke3Hf/HoE1",
+         |                        "nonce" : "iiiR8fpd9CTdkbph8XJp+Zrf/YKlpe23H7bWrJF0L6lRhXgHSG62MWmN91pS6/X27OyJApWLKOqOgX0GbEJlnWhhPsvIebbuAcCWr6lLUertisxORp+dsBitvV07vodX"
+         |                    },
+         |                    "vatOnSales" : {
+         |                        "choice" : {
+         |                            "value" : "+DT8E5B7JD14pWlBjah88Jx1tLJfoOA+",
+         |                            "nonce" : "JrKeCYQPXyzRlTEt364qTjmp9LIeSVaTaXWHNonzTBuUrqJIVQz2leg+F5KTLOjipbO65paCNy6piMCym1moLg1+e8NwSVCXSwQf+PZlf58jRMZr64JAdPWDWn34nl9I"
+         |                        },
+         |                        "amount" : {
+         |                            "value" : "i7L8crJwcBE6sljDUK+RjsYyol8=",
+         |                            "nonce" : "1tVHYXm4JpV0LQzf0+8PCx12q1Y9EgWydnM0H6a+e5RTdT6K0dTGTZeZA3Z4yS3QbKli3AIqq3RrdoAvCQrQSO6e4w1qeGoVBWxiuk2KGPOHS2EbHVHrdl6i0Cx2ewri"
+         |                        }
+         |                    }
+         |                }
+         |            ]
+         |        }
+         |    ],
+         |    "salesFromEu" : [],
+         |    "submissionReceived" : "2022-06-14T10:21:02.644Z",
+         |    "lastUpdated" : "2022-06-14T10:21:02.644Z"
+         |}
+      """.stripMargin,
       s"""
-      {
-    "_id" : ObjectId("62a856d8f77d8050d38aaaea"),
-    "vrn" : "100000006",
-    "period" : {
-        "year" : 2021,
-        "quarter" : "Q4"
-    },
-    "reference" : "XI/XI100000006/Q4.2021",
-    "paymentReference" : "NI100000006Q421",
-    "salesFromNi" : [],
-    "salesFromEu" : [
-        {
-            "countryOfSale" : {
-                "code" : {
-                    "value" : "mGhd7C5brcpOjDcYt/4h18/B",
-                    "nonce" : "30dUxfiPWOWXk8cMBMmJAqrmmZuHPvLxmbwYee64RqYWd5YswaRkUrXr9g0I0b90iTn/uoWolN4pWqvH6I/HG9WpbusPxaSYWxQ++luv1q2N0HDuwJfM+ednqul5FArC"
-                },
-                "name" : {
-                    "value" : "nES1Y0E/LIQvyfYo4KwrealOMw96mZIa",
-                    "nonce" : "Ks+nPW8V+KGPP3rgi5UlL3huK6bvT50ysXynZGjVdpiUHMrDpjr/9wd57KY4rpNSOEj9dybZO37IF2p91OMSdrx9dphOFP4mBsphQYu/RMlrf2WmDQDvUwXrD9DK0evx"
-                }
-            },
-            "sales" : [
-                {
-                    "countryOfConsumption" : {
-                        "code" : {
-                            "value" : "eHIzaRBMNOhxptJA5HXgWCnp",
-                            "nonce" : "yu6/fsQw+ddNgBa4ca8ZqSV7ItNR6Vntal/cH8S/l9tXIyuVfPhycakaV3IbWdWF89mzh/A4gljqj6YR0YHz8z4JRMeXcYWoHlp080G4pFRU7RfgC02pwOriqmbD1j6j"
-                        },
-                        "name" : {
-                            "value" : "CVskd0/rf7kw/Nbl2ADNaGauiF2MnzBicuRepZqj",
-                            "nonce" : "5VhhKA1lnO9/CI2A3Bs2I0JbPCZdnqimJ9pwVrJOAz9iRjtR+NFIfd/yJy1W/MvSLLjmSK0yba1FhykAmJw0Iv6eMfpGFCR6piFPyWrc9ABFRWsncZZbI8Q66lAIrtCm"
-                        }
-                    },
-                    "amounts" : [
-                        {
-                            "vatRate" : {
-                                "rate" : {
-                                    "value" : "NFHHZIYw9MvzTu0Peme25GVh",
-                                    "nonce" : "BOghZUz4isTYLZFQ2c79IGLlq6zQM2+eVbx3KyNNFNm/Aw9OZ/HX8elq5+xAk3qYjyJz9skQCnDps6hEgfOOnWSwR8xUqPCcdWG88zIZ0ppadiYd/spYZy6ZvheDj2I2"
-                                },
-                                "rateType" : {
-                                    "value" : "BQRLfG/b12PjxX8XZR4XoaZMeetxp2C4",
-                                    "nonce" : "4mqlPBUu+sNkOFodDM8BnavpydZ6o31QEXd0x4iIPWPTtCj/w0VXUYUrNlpApq2QVspN2sc3eSitDnx/Aso2+ASm+0APrxUdYxu962bu3hSdFj9Q5zFjYKD0yEujpflX"
-                                }
-                            },
-                            "netValueOfSales" : {
-                                "value" : "EzlN8kgM2tlRBaJLBYebmsrIxIqb",
-                                "nonce" : "OfYqjffo4sIFgRVIsyzv712Kv0CZl5Lhcw16BcxIoJqYpcQJBxOX8fdjmzsN5akaxKTnRTusdjVnhqBFFylpkiaxMolzaaTsqx7uxdIym1K0zgJfoMKnD2N9KQZ0hlZu"
-                            },
-                            "vatOnSales" : {
-                                "choice" : {
-                                    "value" : "qnu8kV9b51g3h1qw6UWBXwGvAnMaf1Gt",
-                                    "nonce" : "cW9LHpkeHhX1+ZTxOf9/YuZCZ3QGtFJWlnpd+68bKALtfMI8nVCGYgx1sCvRTCZPzSel59Kx1JS7vukfh1R7n2m/w8lVV7c22kjhRxXmFQnqKHwF+FrK3BtSNQhJqGMS"
-                                },
-                                "amount" : {
-                                    "value" : "e8VzXlLjzJ7+eSG0eIp5jCtFFfK3xEFt",
-                                    "nonce" : "qUSw0RrM9AG6UTP/8MBPCZzUd1MpXp8GY2SQ/vpJbFAmOU4sk7zv6YUSX7GFwq+2z+Eb8kFD8As7SfLPv46Sml479Nl5aI5hUg84edx7x9j3r6iNnbABBGiNF+MJDOCb"
-                                }
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
-    "submissionReceived" : "2022-06-14T09:37:28.169Z",
-    "lastUpdated" : "2022-06-14T09:37:28.169Z"
-}""".stripMargin,
-      s"""
-      {
-    "_id" : ObjectId("62a8571bf77d8050d38aaaec"),
-    "vrn" : "100000006",
-    "period" : {
-        "year" : 2022,
-        "quarter" : "Q1"
-    },
-    "reference" : "XI/XI100000006/Q1.2022",
-    "paymentReference" : "NI100000006Q122",
-    "salesFromNi" : [],
-    "salesFromEu" : [
-        {
-            "countryOfSale" : {
-                "code" : {
-                    "value" : "lr5oPMlPpB8tJgicihRQPjIm",
-                    "nonce" : "ohsSBottKbgX2ghjTSB+osi68XG8OTDNPbUeakbPLNO5dzOYIMEOaXZZQF7Q3hUkaH6Ho/PcDlGOwAgi1qwWX5nNp+sh530lqCQdOySOusOX/jK3OflzfXaW+Sky7BiI"
-                },
-                "name" : {
-                    "value" : "oloA6Nk1V6JiPUhpXpG8ExwXOHJJTAI=",
-                    "nonce" : "l5TnsRfmnNUG9mXZ9Z9UdSPy4x63uv+ip29HlGyv8pC4l11NNO1pxxJ/BrxtHvqL9dAaV2FbTqd+uvZ4ww+mMqbeOOQYVcgJMPScFA5y+kxJz/CSMOfN4ZWFrMtCAPio"
-                }
-            },
-            "sales" : [
-                {
-                    "countryOfConsumption" : {
-                        "code" : {
-                            "value" : "EB1k+L1D+kJax7eAYUgj6BNl",
-                            "nonce" : "NptjEcOZw++K5o5UmBcy2rdUtuWAKWmUawNJn6Job683/i3KS7CL9mh1xBRsQmPHeJzOoOyLJNWBee967DlS54ZwzknycVWlk1kFnYNeDbVvWp8iypfuqeUNKqyCm1t7"
-                        },
-                        "name" : {
-                            "value" : "2kI/XRpTTssdlzoe8kc0ZzGCj7B16Q==",
-                            "nonce" : "YgTHvNuDYIK8iVwm+r65qIG5o88bPvMuV7EmiOE7A7EcnauK6rSljkmZAm5jHLPmneN0PhuJQU0MJC5gh/fUHhYjtbnXI5befhuvaWb/D39dwMdoS2kWaG9IcpUDH97K"
-                        }
-                    },
-                    "amounts" : [
-                        {
-                            "vatRate" : {
-                                "rate" : {
-                                    "value" : "qDvMK7U9xgAcDJnbKyykP0HG",
-                                    "nonce" : "cYixqmBeWUgHJNpemMtDEmMG/pCo9xUU50tbmE2EOWSIKcCB8WNDvdGw5er/ZBOZ/HyQs/Nuu7hnixo2h22mSzkwoMoa0ciB1EyiwYLjKoJVfm5JAaqvE2rbe3Q2QGKv"
-                                },
-                                "rateType" : {
-                                    "value" : "U0yggkfWETSq3a9m6WQG2gKQOSfeVuw=",
-                                    "nonce" : "O7BKy7oyTIUpO+DDk82rP27Y6Gz8GRsMV7ikSbB09LwMwjaZ8ZSnogGHjRL13W2oOtAfbpvkbCfHVMk2uKz9VMzmPskgT+jSywpfYDPqlJYiyYGHC4XB308sLqd7W6xQ"
-                                }
-                            },
-                            "netValueOfSales" : {
-                                "value" : "8OcoUEiiLfnmsPNfCq73uYfPr4C0",
-                                "nonce" : "UH3xUJdslMsOL0hJQOaT1dXPpHvZf/Z1CE5ZhFlm6dZMTiHxOpiekCkcSgML+vG4BrsTg1ZIPAGFu6mEvc2EIuGb2fncxw7QpMwNNbXakLb8Iv9bYFBmuu0pCWJHWYEB"
-                            },
-                            "vatOnSales" : {
-                                "choice" : {
-                                    "value" : "NufeM8hZfaTRMWyrzI/x50Q5+IgSYkKe",
-                                    "nonce" : "L+P6QCPXzEP6EhpHt4CbtmIr402+ib4jM7U6rWZmXQxL4G/gKUKeLROkgZ1ex3mrGPM7obnJeyW349REJNCWCFpkAzBoLZhIV8ASYi6tENNleqhHIPqTo2qodPorxZwV"
-                                },
-                                "amount" : {
-                                    "value" : "Rtfuwyo375G/PQlbNSlfasooeypKchc=",
-                                    "nonce" : "Wztp08ftCAkHNb90gXjGXM80ItxMCKbiMCMIEi9aKhgVDs3xIstONsBUATJpKFKgruWDodf/6aoEh+Pe7Y45h9gCT6P7sfsPrOGGYewlgu4pZsnsMpJvHd3Ilj8cmW7F"
-                                }
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
-    "submissionReceived" : "2022-06-14T09:38:35.662Z",
-    "lastUpdated" : "2022-06-14T09:38:35.662Z"
-}""".stripMargin
+         |{
+         |    "_id" : ObjectId("62a86137f77d8050d38aaaef"),
+         |    "vrn" : "444444444",
+         |    "period" : {
+         |        "year" : 2021,
+         |        "quarter" : "Q4"
+         |    },
+         |    "reference" : "XI/XI444444444/Q4.2021",
+         |    "paymentReference" : "NI444444444Q421",
+         |    "salesFromNi" : [],
+         |    "salesFromEu" : [
+         |        {
+         |            "countryOfSale" : {
+         |                "code" : {
+         |                    "value" : "dehlGDzqpH/+Bb0QczvdWTeN",
+         |                    "nonce" : "E6OqGM2sNQrxU68lRXWJL66jYK9udUP+LzD7Q/VFB/iUCORnF77kxWrh9LlxlWUZcRcQ95NBYLAiH/F6nq72twCZv9tZ2INKgTRw9NUsrCiFJ1IjpRJO2F7gpA8l5M/p"
+         |                },
+         |                "name" : {
+         |                    "value" : "Tdt2F/wC47wICSj1jBAhIQ8WGllqpVc=",
+         |                    "nonce" : "hJuGwv2QiacK2H277HNi7+Bjp+9g9+8PBfJXmxQGuLRCHC2D+no5hCIeVVeaSToJPVzG2oClz33+2044l1CEfk/jSLjhS2so4+ncElUIJYChcR64h82UV6AJ7ZIfeNj1"
+         |                }
+         |            },
+         |            "sales" : [
+         |                {
+         |                    "countryOfConsumption" : {
+         |                        "code" : {
+         |                            "value" : "164e2HNA8Ykh1sKBTw5j/PA/",
+         |                            "nonce" : "+YVCenzFNXHKxBOgqqC/cpENpv5em+4hgFMlpvqcSZUnEIM5Gtb8LURwnV9WdnrzDp1RQgAjbGU5A4njm/y7ssAO9xw1qMZYIHgIQQpTN3XMEKfXTCJF/8SREZs0TE52"
+         |                        },
+         |                        "name" : {
+         |                            "value" : "RVgIr7rTdb05x49oKJUE6uRPAJZKUNTFNS13BmFORDqCyA==",
+         |                            "nonce" : "aM0H3xW1aVJCjEDnS3gmkmPJ2QcpxS39i0bImxHi/3UdJXv6YMheCnzjfCYTPxKGrVz7IISC1lwQbgCjcLGPc2yM5POit2SWuV/0bgxD96fazFhDm/UXnev4YJ7w+I1N"
+         |                        }
+         |                    },
+         |                    "amounts" : [
+         |                        {
+         |                            "vatRate" : {
+         |                                "rate" : {
+         |                                    "value" : "mT2LKRi0qEnidFCYEMFTI6d5",
+         |                                    "nonce" : "4yGpxDqLmPe8LNjWGtQ0QZIbIs4w3Ph5G5sOhu7vcruyByp+uM0MttmF+DFX/eIfVOfDmPDqzYP89JEoEwiJIr4pznsDGVc7/Ec0dePghD5zf9oqVwgyaq77vwNBEUeD"
+         |                                },
+         |                                "rateType" : {
+         |                                    "value" : "3mXqpjVIuc+1WuENHaiH/fTwSsXP4NXS",
+         |                                    "nonce" : "oNbd+x52r0ozatBDN5533Vx3/Re7Pq01nufBlSYbPHPhOKw1iN81FhL//uAjHOKLcHefMqdd7iNMQ0Jix8OPJyz1NKRYXUXJ8TYQ/E2TW2KtsUjZEZGs7gr73ZpSPcSD"
+         |                                }
+         |                            },
+         |                            "netValueOfSales" : {
+         |                                "value" : "cL1bL1NndN5t7BYRGiBhvq4sfHg=",
+         |                                "nonce" : "2tEl0i5mcadVFm2Bq6ePw+y1koXPaPyoMQbvQtZ0h4aFMG33gSH6Wqg1268R3mq9nFbHrsExABz+/r7TXJ3OfaWHEiHPG5FDjKrNpkmqULrGBs2sYjpbSUogpIbxgryy"
+         |                            },
+         |                            "vatOnSales" : {
+         |                                "choice" : {
+         |                                    "value" : "ROY9LKHAg7dsEM0iOx4LzfInnxaPMwYv",
+         |                                    "nonce" : "ols7Z/VCYfML+ynjRPIOChN6Ok+Xwom0+GIkkDiuosdOcurLnQCo0Sg470UAYKrmyeGnqO/uA22diG66DM8/Hkt9tX3QaiohYVPUpc0iol1wf4d5i3TnbUj8rux9+wwh"
+         |                                },
+         |                                "amount" : {
+         |                                    "value" : "8vg6ECM7qi8cmk/QYSsOq5azqYv0Gg==",
+         |                                    "nonce" : "I/Goat7BZP8boC8FJixe+KWXF1TCzhZz/K1b5PapiJidND/xGUaPWT4/ClBZLswzUKP2gDc1Z3udFoqfRsTbkQTJrd6U0IzpYZqVwCgcnwZyEQj9X6N6VmTDXsbOhAt8"
+         |                                }
+         |                            }
+         |                        }
+         |                    ]
+         |                }
+         |            ]
+         |        }
+         |    ],
+         |    "submissionReceived" : "2022-06-14T10:21:43.687Z",
+         |    "lastUpdated" : "2022-06-14T10:21:43.687Z"
+         |}
+""".stripMargin
     )
 }

@@ -135,7 +135,7 @@ Feature: BTA Feature
 
   Scenario: A Welsh user with multiple outstanding payments clicks the BTA payment link and and sees the Welsh transition page before the payment choice page
     Given the user accesses the service
-    And the user signs in as an Organisation Admin with VAT enrolment 100000006 and strong credentials
+    And the user signs in as an Organisation Admin with VAT enrolment 444444444 and strong credentials
     Then the user is directed back to the index page
     Then the user manually navigates to the payments-from-bta?lang=cy link
     And the user is directed to the Welsh transition page
