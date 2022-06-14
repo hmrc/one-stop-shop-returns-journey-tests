@@ -43,6 +43,9 @@ object CommonPage extends BrowserDriver with Matchers {
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(url)
 
+  def paymentsUrl(): Unit =
+    driver.getCurrentUrl should include("pay/select-payment-amount?traceId=")
+
   def selectAnswer(data: String): Unit = {
     data match {
       case "yes" => driver.findElement(By.id("value")).click()
