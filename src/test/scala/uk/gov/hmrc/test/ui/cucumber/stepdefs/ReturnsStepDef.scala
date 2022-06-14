@@ -60,9 +60,14 @@ class ReturnsStepDef extends BaseStepDef {
     CommonPage.selectAnswer(data)
   }
 
+  Then("""^the user has been directed to the payments service$""") { () =>
+    CommonPage.paymentsUrl()
+  }
+
   Then("""^the user is on the (.*) page$""") { (url: String) =>
     CommonPage.checkUrl(url)
   }
+
   Then("""^the user is directed to the Welsh transition page$""") { () =>
     driver.getCurrentUrl contains s"$host/no-welsh-service?redirectUrl"
   }
@@ -166,6 +171,8 @@ class ReturnsStepDef extends BaseStepDef {
         driver.findElement(By.id("backToYourAccount")).click()
       case "sign out and come back later"     =>
         driver.findElement(By.id("signOut")).click()
+      case "Make a payment"                   =>
+        driver.findElement(By.id("make-a-payment")).click()
       case _                                  =>
         throw new Exception("Link doesn't exist")
     }

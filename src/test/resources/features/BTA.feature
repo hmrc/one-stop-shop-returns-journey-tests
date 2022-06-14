@@ -67,6 +67,20 @@ Feature: BTA Feature
     And the user clicks on the your-account breadcrumb
     And the user is on the business-account page
 
+  Scenario: A user with one outstanding payment clicks the BTA payment link and is directed to the payments service
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000004 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the payments-from-bta link
+    And the user has been directed to the payments service
+
+  Scenario: A user with multiple outstanding payments clicks the BTA payment link and is directed to the payment choice page
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 444444444 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the payments-from-bta link
+    And the user is on the outstanding-payments page
+
   Scenario: A Welsh user enters the Your Account page via BTA and sees the Welsh transition page before "Your Account"
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
@@ -118,5 +132,14 @@ Feature: BTA Feature
     Then the user is directed back to the index page
     Then the user manually navigates to the your-account-from-bta?lang=en link
     And the user is on the your-account page
+
+  Scenario: A Welsh user with multiple outstanding payments clicks the BTA payment link and and sees the Welsh transition page before the payment choice page
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 444444444 and strong credentials
+    Then the user is directed back to the index page
+    Then the user manually navigates to the payments-from-bta?lang=cy link
+    And the user is directed to the Welsh transition page
+    Then the user clicks the continue button
+    And the user is on the outstanding-payments page
 
 
