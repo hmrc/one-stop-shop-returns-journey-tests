@@ -73,6 +73,7 @@ Feature: BTA Feature
     Then the user is directed back to the index page
     Then the user manually navigates to the payments-from-bta link
     And the user has been directed to the payments service
+    And the user accesses the service
 
   Scenario: A user with multiple outstanding payments clicks the BTA payment link and is directed to the payment choice page
     Given the user accesses the service
