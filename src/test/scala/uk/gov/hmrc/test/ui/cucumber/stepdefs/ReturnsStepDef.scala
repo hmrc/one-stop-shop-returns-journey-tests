@@ -36,8 +36,8 @@ class ReturnsStepDef extends BaseStepDef {
   }
 
   Given("^the user signs in as an Organisation Admin with VAT enrolment (.*) and strong credentials$") {
-    logger.info(s"The current URL is ${driver.getCurrentUrl}")
     (vrn: String) =>
+      logger.info(s"The current URL is ${driver.getCurrentUrl}")
       driver.findElement(By.id("redirectionUrl")).clear()
       driver
         .findElement(By.id("redirectionUrl"))
