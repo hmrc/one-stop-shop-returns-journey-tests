@@ -37,9 +37,9 @@ class ReturnsStepDef extends BaseStepDef {
 
   Given("^the user signs in as an Organisation Admin with VAT enrolment (.*) and strong credentials$") {
     (vrn: String) =>
-      driver.findElement(By.name("redirectionUrl")).clear()
+      driver.findElement(By.id("redirectionUrl")).clear()
       driver
-        .findElement(By.name("redirectionUrl"))
+        .findElement(By.id("redirectionUrl"))
         .sendKeys(s"$host/your-account")
       val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
       selectCredentialStrength.selectByValue("strong")
