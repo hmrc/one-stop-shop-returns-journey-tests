@@ -4,7 +4,12 @@ Feature: Kickouts Feature
 
   Scenario: A user has not registered for the One Shop Stop scheme
     Given the user accesses the service
-    And the user signs in as an Organisation Admin with VAT enrolment 111111111 and strong credentials
+    And the user signs in as an Organisation Admin with Hmrc Mdt enrolment 111111111 and strong credentials
+    Then the user is on the cannot-use-not-registered page
+
+  Scenario: A user has not registered for the One Shop Stop scheme
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with Hmrc Oss VAT enrolment 111111111 and strong credentials
     Then the user is on the cannot-use-not-registered page
 
   Scenario: A user selects no to starting return for sales period where there are no other sales periods available
