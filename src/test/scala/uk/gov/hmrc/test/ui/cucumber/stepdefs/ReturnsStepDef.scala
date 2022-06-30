@@ -52,6 +52,51 @@ class ReturnsStepDef extends BaseStepDef {
       driver
         .findElement(By.id("input-0-0-value"))
         .sendKeys(vrn)
+      driver.findElement(By.id("enrolment[1].name")).sendKeys("HMRC-OSS-ORG")
+      driver
+        .findElement(By.id("input-1-0-name"))
+        .sendKeys("VRN")
+      driver
+        .findElement(By.id("input-1-0-value"))
+        .sendKeys(vrn)
+      driver.findElement(By.cssSelector("Input[value='Submit']")).click()
+  }
+  Given("^the user signs in as an Organisation Admin with Hmrc Mdt enrolment (.*) and strong credentials$") {
+    (vrn: String) =>
+      driver.findElement(By.id("redirectionUrl")).clear()
+      driver
+        .findElement(By.id("redirectionUrl"))
+        .sendKeys(s"$host/your-account")
+      val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
+      selectCredentialStrength.selectByValue("strong")
+      val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
+      selectAffinityGroup.selectByValue("Organisation")
+      driver.findElement(By.id("enrolment[0].name")).sendKeys("HMRC-MTD-VAT")
+      driver
+        .findElement(By.id("input-0-0-name"))
+        .sendKeys("VRN")
+      driver
+        .findElement(By.id("input-0-0-value"))
+        .sendKeys(vrn)
+      driver.findElement(By.cssSelector("Input[value='Submit']")).click()
+  }
+  Given("^the user signs in as an Organisation Admin with Hmrc Oss VAT enrolment (.*) and strong credentials$") {
+    (vrn: String) =>
+      driver.findElement(By.id("redirectionUrl")).clear()
+      driver
+        .findElement(By.id("redirectionUrl"))
+        .sendKeys(s"$host/your-account")
+      val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
+      selectCredentialStrength.selectByValue("strong")
+      val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
+      selectAffinityGroup.selectByValue("Organisation")
+      driver.findElement(By.id("enrolment[0].name")).sendKeys("HMRC-OSS-VAT")
+      driver
+        .findElement(By.id("input-1-0-name"))
+        .sendKeys("VRN")
+      driver
+        .findElement(By.id("input-1-0-value"))
+        .sendKeys(vrn)
       driver.findElement(By.cssSelector("Input[value='Submit']")).click()
   }
 
