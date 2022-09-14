@@ -40,6 +40,11 @@ object CommonPage extends BrowserDriver with Matchers {
       .navigate()
       .to(s"$host/your-account")
 
+  def navigateToStartYourReturnPage(): Unit =
+    driver
+      .navigate()
+      .to(s"$host/2022-Q2/start")
+
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(url)
 

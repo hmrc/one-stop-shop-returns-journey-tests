@@ -48,6 +48,19 @@ object MongoConnection {
       case e: Exception => println("Error: " + e)
     }
 
+  def dropRecords(db: String, collection: String): Unit =
+    try Await.result(
+      mongoClient
+        .getDatabase(db)
+        .getCollection(collection)
+        .drop()
+        .head(),
+      timeout
+    )
+    catch {
+      case e: Exception => println("Error: " + e)
+    }
+
   def insert(source: List[String], database: String, collection: String): Unit =
     try {
       val db  = mongoClient.getDatabase(database)
@@ -73,6 +86,8 @@ object MongoConnection {
     dropRecord("one-stop-shop-registration", "registrations", "100000004")
     dropRecord("one-stop-shop-registration", "registrations", "100000005")
     dropRecord("one-stop-shop-registration", "registrations", "444444444")
+    dropRecord("one-stop-shop-registration", "registrations", "600000011")
+    dropRecord("one-stop-shop-registration", "registrations", "600000012")
   }
 
   def dropReturns(): Unit = {
@@ -80,6 +95,7 @@ object MongoConnection {
     dropRecord("one-stop-shop-returns", "returns", "100000003")
     dropRecord("one-stop-shop-returns", "returns", "100000004")
     dropRecord("one-stop-shop-returns", "returns", "444444444")
+    dropRecord("one-stop-shop-returns", "returns", "600000011")
   }
 
   def dropCorrections(): Unit = {
@@ -97,5 +113,10 @@ object MongoConnection {
     dropRecord("one-stop-shop-returns", "saved-user-answers", "100000004")
     dropRecord("one-stop-shop-returns", "saved-user-answers", "100000005")
     dropRecord("one-stop-shop-returns", "saved-user-answers", "444444444")
+    dropRecord("one-stop-shop-returns", "saved-user-answers", "600000011")
+    dropRecord("one-stop-shop-returns", "saved-user-answers", "600000012")
   }
+
+  def dropCachedVatReturns(): Unit =
+    dropRecords("one-stop-shop-returns-frontend", "cachedVatReturns")
 }
