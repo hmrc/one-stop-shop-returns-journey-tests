@@ -34,6 +34,10 @@ class ReturnsStepDef extends BaseStepDef {
   Given("^the user accesses the service$") { () =>
     CommonPage.goToStartOfJourney()
   }
+  Given("^the excluded user navigates to the start your return page$") { () =>
+    CommonPage.navigateToStartYourReturnPage()
+
+  }
 
   Given("^the user signs in as an Organisation Admin with VAT enrolment (.*) and strong credentials$") {
     (vrn: String) =>
@@ -226,6 +230,14 @@ class ReturnsStepDef extends BaseStepDef {
   Then("""^the user sees the no returns message$""") { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertTrue(htmlBody.contains("You have not submitted any returns."))
+
+  }
+  Then("""^the user sees the exclusion message$""") { () =>
+    val htmlBody = driver.findElement(By.className("govuk-warning-text__text")).getText
+    Assert.assertTrue(
+      htmlBody.contains("We've removed you from this service, but you must complete and pay your final return.")
+    )
+
   }
 
   Then("""^the user sees the next available return due message$""") { () =>

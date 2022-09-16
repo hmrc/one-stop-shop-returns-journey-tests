@@ -39,3 +39,10 @@ Feature: Kickouts Feature
     Then the user manually navigates to the start page for the current period
     And the user is on the no-other-periods-available page
 
+  Scenario: An excluded user unable to completes a second returns
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 600000012 and strong credentials
+    And the excluded user navigates to the start your return page
+    Then the user is on the excluded-cannot-use-service page
+
+
