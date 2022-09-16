@@ -48,8 +48,4 @@ class Hooks extends ScalaDsl with EN with BrowserDriver {
   Before("@Returns") {
     resetAll()
   }
-
-  Before("@Exclusions") {
-    resetAll()
-  }
 }

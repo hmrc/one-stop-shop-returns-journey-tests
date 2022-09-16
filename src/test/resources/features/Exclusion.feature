@@ -1,4 +1,4 @@
-@Returns @wip
+@Returns
 
 Feature: Exclusion feature
 
