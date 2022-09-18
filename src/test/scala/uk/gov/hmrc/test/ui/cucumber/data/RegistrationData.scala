@@ -767,6 +767,145 @@ object RegistrationData {
         "submissionReceived" : "2022-09-13T22:07:05.331Z",
         "lastUpdated" : "2022-09-13T22:07:05.331Z",
         "dateOfFirstSale" : "2022-07-08"
-        }""".stripMargin
+        }""".stripMargin,
+      s"""
+      {
+        "_id": ObjectId
+        ("6324985472333e4ba0d619df")
+        ,
+        "vrn": "600000013"
+        ,
+        "registeredCompanyName": {
+          "value": "IWLNhc879BE/H7XaHZzJnK4UIsYKVOyXNDmVDg==",
+          "nonce": "U5PEmERCFD7MDk5nEJPiOm3lC3KndIXRyULXSYPVgNWlx1Gov9QuiZmhDEN+ykrnD9uxddw8HwhBuPTsKjrHavcurJEcBd8cqUShsafmDgVWdyybxpHzZuDZPuLDHYuH"
+        }
+        ,
+        "tradingNames":
+        [
+
+        ],
+        "vatDetails": {
+          "registrationDate": "2020-01-01",
+          "address": {
+          "line1": {
+          "value": "gvhAMfcW734ydsJheZgKBsRK881jP3IvnxyLAA==",
+          "nonce": "D/cfPTOfSs9lDW11E5bc1Ocilo1eF/MJNCvpbxbDGfvNKo010A2LQSy5dWQk8S8WFzd/cb2yA59hs9iUMBWBMGEEra3Z4oe4jp+qNhYwkqJTMOtPfr4pYIK/0ZfVD/jq"
+        },
+          "line2": {
+          "value": "1uKj2WeO/QBYkA5xnRuqrnCsIPWWaWlNCg==",
+          "nonce": "3IKX+vJ+onJ+jB4ymohYw+dczHa4yn6COayA/7ZvieVv8IVuxe12sC3JI+xUx1NHuuOj/Iwq/RJa29K+GuL1z7CYQ/qaJj8NpKO9h95EL5PZaAp0TyXCKXQn+hg/wQst"
+        },
+          "postCode": {
+          "value": "DBMLTJAhNcGKg7HRPDKhO96mSx8c0/gc",
+          "nonce": "A2rzFL5YgrO1yLdWWVxPCGvsqSh0Sygi6/OrB0po+8ByAy6jkuV3R0I4LYIc8y0I5tc1rFJobrqbzkDInKESescd5Wjg05aNIRTYAVySrjp8JjQxAgAaBmo3yzMIf/8d"
+        },
+          "countryCode": {
+          "value": "aFVubT9mbMb6wX39P2wyczRB",
+          "nonce": "P37vquWIPzC8TZ2W0GNqy/TsNy4Wt+crcpBNPewGZtrifhAGAz2GTqXX+2CMF7koClcfzsaSAmdqtXNf5+Qzr5TL8PJv7826EBDE+806F35Z5ykl4cfy+Dq2RzKt9zPE"
+        }
+        },
+          "partOfVatGroup": {
+          "value": "LXUzEFxbHxzKyo7yQAZLGzIBSlY=",
+          "nonce": "ZaeuKyxqGQ8zqZL2IEV81x0eeBlTQZ3/IObApacvJQArfywwSL9x+5MKRWeNhxI13vjvlFPYYWBdptRH8EzmXjEDPEXQyVfJN3kb58WFXnrDmMS+4piqYYD/Q12W8/JU"
+        },
+          "source": "etmp"
+        }
+        ,
+        "euRegistrations":
+        [
+        {
+          "country": {
+            "code": {
+            "value": "/hPtR2bgeNJgO76Okpv1u3lV",
+            "nonce": "BCC8Yvsz2GZ/d3+M/DxikeLZ4JAzAPrfvhvxiJ9ikWXs4jiadKMW33UNA0erzxglHwJn1ErYj4CZam/N+/kHiDW5fhcAHF5gESmXz+Al/4DfCheIqaIT/i2vh4UgS4AB"
+          },
+            "name": {
+            "value": "i9Cc6XGMh8VNXPiildCs+nN00J1XIQU=",
+            "nonce": "nL27hh4vCEdSfz/YjjjHFuvrtDgeqTOTVaYIHGETJBFc2uh1MWmDLxb4mNWPuO9ZSo7ahTG31qYw4mP+1BHwcGQmwx4DYqLX+zCpUEkkGtACv2UV1GqTDcALllP5CtNo"
+          }
+          }
+          ,
+          "taxIdentifier": {
+            "identifierType": {
+            "value": "ZH7ghB/heXie3Br3GDT99Y+kyQ==",
+            "nonce": "pP2Ch+gSM7yBDC/o++ihTokNp4Hmny0PZBB4ow1Qfh8ZhFWqQ1lGvvOf0whS6zQDNc/I+prTgrYdPaecfprrjUn+dHFneVEcMVLKIqfpQqdNcH3W9dO3YRH8EYWIi7fU"
+          },
+            "value": {
+            "value": "3img1keNkYGK/8cEhwKW6j7APNfWEwFA6Q==",
+            "nonce": "RwSlc0vlHW2aeoC4LmexXsUWawYVPK+sqB1JElHZHBohM+cXc4GaSwAhKnhJh3KXCBXYJOE66oaI9Vg0HRPZ/5RmJ0QTX1AuqWk0XIzsgnjdJnoiaXCHQ5QSghpW8qC1"
+          }
+          }
+          ,
+          "fixedEstablishment": {
+            "tradingName": {
+            "value": "OmznUuClBj+2hDuF5EEjEYmWDHSCOanT0w==",
+            "nonce": "oAzbNGzfd9lMjjc83Pag4bJ+YMCyO3b70YEa7l228CdwYctXujf5vDyiwcHIfEYMW3KiL1LrTFd883AnMY2WT/R1Rmy9bsH4nb2UpFZDPWmUJ/y/SJavONfwbxAn6trd"
+          },
+            "address": {
+            "line1": {
+            "value": "Ph5UYl/o3UhLV3iSyaxOYMGQLb3MpxZ90NFl",
+            "nonce": "zecPULSXz6DvX3DpBCQK7HY+Z+N7ul3+CDv8iLIJ8LgeKUcPKVj+AkRb5vMVI/SjAmPLsEgaBETlWeoQnFB6y7r2JXz68ZcPFQxHv2yW7zeRZlruXjWuRnQj7MS1+aw0"
+          },
+            "townOrCity": {
+            "value": "chn48u8W2K32DDIbTeCBtFZRL40X3AOHUsM=",
+            "nonce": "Q8Q7TkyyROnulz+Cxa560lOh1eLJ7zh3OMgRMpJgvSbGjjguWMLYAkQPntfWdPHeDhbaTwbwblucNTWYV30viq6ARUSdh99eEk/Ibwsd+Olfsr09Y2Nhgt1uctKSMVEN"
+          },
+            "country": {
+            "code": "DE",
+            "name": "Germany"
+          }
+          }
+          }
+        }
+        ],
+        "contactDetails": {
+          "fullName": {
+          "value": "Ge0PSkUDVCR3Ok04HIBEaM+HVRL17tbFoPg=",
+          "nonce": "A3ILnyTMopu3FY5R8O5nIys7NPw2V1dAtY6aqJXqB0ClP1xBVxkVlFd1ZR9dJeIvFB6GjLsa+UewsnwF8OHFpG7ssun2A4kj+yxFaeDOVu9zAcGlg4NproUuyqHVsRps"
+        },
+          "telephoneNumber": {
+          "value": "NTBcMptwNkgCI2rHGjnyV7TOHBW4v1IC5INI",
+          "nonce": "J63L61nIn6wugOd/j39Aybpcn5Y8Bo1Yhp77tCv41Na6YaEC2td9DL7LyB+wdoEKOy+dfcm8ildsnVvvHeLREyqbDGEGkz4RnJbTTp5WtmFf7uvnwZpAA7sPcybPcKPn"
+        },
+          "emailAddress": {
+          "value": "UbOyeOqa5B6OToG/721AKgHoM3w02Xfz8z/F7fFe",
+          "nonce": "qGtzLUsUKizPUI99p2/JftGCvL4Yq0Bbmphg1Pp6f+WR/Eqi3NzBLOa/oeXDpi9ZFVCAm8+l8itUAtvr3zX+1bsZp7aregs4vFD1m7xdYCIPGa1DNujx3MabaL7F/uon"
+        }
+        }
+        ,
+        "websites":
+        [
+
+        ],
+        "commencementDate": "2021-11-01"
+        ,
+        "previousRegistrations":
+        [
+
+        ],
+        "bankDetails": {
+          "accountName": {
+          "value": "TnU3mWR1iz5vyeCKZKOGrhPbrg==",
+          "nonce": "6otLsR4QKujh18InA/9a4WGvYQLBln5vqP/Tn0Xfit0uqVhLaSTg3TmpwWwd+szIBaI4xdtIpu902gDa0SR/Kux4jcfWnuAVF/d8yg7AnSGEmx0hJieQEVgLfrusUZrZ"
+        },
+          "iban": {
+          "value": "Qk3J0KSDwfSCBbZdJN4v8IVXphdDQQFMBHXqVQ4yg6Sr/Nq5uRU=",
+          "nonce": "SD5LdZwg1K/W8Q/flAmwNE6t/yrjiszqd0Gxr2RsIdNiUKPT8Wy4VoE8dwqQ2+exe58X6sFrhUni0jOsJ8Rf7Qu9C2jv7icxvHPNCM9GN2SoUh0MwpxZHu2E2nbWwTi8"
+        }
+        }
+        ,
+        "isOnlineMarketplace": {
+          "value": "uApCBxlsmMl9Y0aN998lv4OuX+z1",
+          "nonce": "01kCMHj9x02zmwSpPC45wNs22Q3nJDIfxXxQYoSrDEfjabI5k/J0jdGrPyjoTlIrekPiDbWx8Uv4qIBbGYrufNqrTgKu63Bh/K5a+tSSsqLdmGLxa9O0koHY0MdsXO60"
+        }
+        ,
+        "niPresence": "principalPlaceOfBusinessInNi"
+        ,
+        "submissionReceived": "2022-09-16T15:37:56.181Z"
+        ,
+        "lastUpdated": "2022-09-16T15:37:56.181Z"
+        ,
+        "dateOfFirstSale": "2022-07-09"
+          }""".stripMargin
     )
 }
