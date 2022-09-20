@@ -638,6 +638,151 @@ object ReturnsData {
          |    "submissionReceived" : "2022-06-14T10:21:43.687Z",
          |    "lastUpdated" : "2022-06-14T10:21:43.687Z"
          |}
-""".stripMargin
+""".stripMargin,
+      s"""
+      {
+        "_id": ObjectId
+        ("6321048c0ca558124c82158b")
+        ,
+        "vrn": "600000012"
+        ,
+        "period": {
+          "year": NumberInt (2022),
+          "quarter": "Q1"
+        }
+        ,
+        "reference": "XI/XI600000012/Q1.2022"
+        ,
+        "paymentReference": "NI600000012Q122"
+        ,
+        "salesFromNi":
+        [
+        {
+          "countryOfConsumption": {
+            "code": {
+            "value": "9/VmIUw0BrsZG1qFLvh5ort6",
+            "nonce": "wILbt9IMC2lFmAY+BHtjib4XxLBK39go3zt7ohu/7afdYT+2lk/L/GRMpNiLPZyV7nkAE4kvPfUuNxQA0nOt/7HpS5E6UPmbt20FcVJXZLAwOj2DebKTkyvjKZh0Co5X"
+          },
+            "name": {
+            "value": "rAj4dNDvfhJYXGAIuWi3PT10+YWK",
+            "nonce": "F0/dza6OHGOhoZyF2loJRJCldbbtT0H/couy5ngOfwjJbc3otYDRCYMPeh/gYo8pEWVACZM9bff7+LmdFqMA6AeaoDPy5mCoPDb5J99eU8ALT0kRM6MgAVG/j4jASnCu"
+          }
+          }
+          ,
+          "amounts":
+          [
+          {
+            "vatRate": {
+              "rate": {
+              "value": "5vIIwLaL3NmpgUCw6x/W+vTo",
+              "nonce": "UX7p09Y94gCn4h2vfYQtRgkg16Q/RekPb3WEou5t3XFDLmADdJXuGl+/gdRtmPB2dl6GHT3mZV+13h3Qor2jxrP/pfk9H4EsacR57PW/EDOPseQd9zsh/bfZxscM16q9"
+            },
+              "rateType": {
+              "value": "tvReSQ7c52t7tiCFQEnyG3gmGpCUEEFt",
+              "nonce": "S1RJjzFJqfkqmH1kQVwZTRECwvtYvY1HLYu7E0PFQjpLm3Ekes3S1qsVT1izJAK7UH8rOTv5vD18sHbi1TrUhHktUljQouXkEzT7S/km4M/IPqBAfUrVpPx4S+Cj91pG"
+            }
+            }
+            ,
+            "netValueOfSales": {
+              "value": "FZZJnG3Yntmy3wsPsd/FZr+CkogM",
+              "nonce": "6YGkGWb/bayIXsiX9Xme8izhd6olzVhwqz4jQsuOLuYK9Kvxwt/bHSBp6/EfuVcolKvOIVcnCFPdG3sJ+oefYG8iSSM0tgA8PDilH11U5Ef0VKx7G+ZQtzbYrYdozMRR"
+            }
+            ,
+            "vatOnSales": {
+              "choice": {
+              "value": "DeE9jnKn+JaVs5l5yWau4uxliC9BuYbL",
+              "nonce": "G4ISWL3DYMFV6YYJDhgjp71En/grR6jfV3hLtbbEgBWoNpx3Y12KprZHSf8Ag/HBEA4BYb7P8eq0WWNpY5aPKYCiBjnbhWeLmlofJcJR+8Av5Vzz6Y00IvjFZ9ukxYmx"
+            },
+              "amount": {
+              "value": "iT0hTx5E2w5JDJE9Rx+VAaRBpAq+",
+              "nonce": "n04ziA2WW7dnq9Rqi89g6xA+zXiOV2H2AthibQfQD7V2sujK3nfrBKAOFpZYncqG5bUpJE6V7oZ2cyZ4HKxlAtsHHfj23ktGw8XIiwNuFWRnEj5PQBd2NoHf9tdwbZDh"
+            }
+            }
+          }
+          ,
+          {
+            "vatRate": {
+              "rate": {
+              "value": "5t8gS80BYCvYirzxJoYTMgOd",
+              "nonce": "U7zt8nOGadXnUrGC0qPTkbVlr9ZlFqfkg7RS1moOutYcD9pL9N9Q0WsC7etXEbHs8StrBytjmL5/cuYvLSHDLPGCvVQnMZSMLIdfLvvFdtN6B5/weTUdM5b3R9rc9/cp"
+            },
+              "rateType": {
+              "value": "vJi95/ii+VnbI/a+qRMI981azm5zcT8=",
+              "nonce": "nW1sRdWZpTjPamN28CqESDoAXdBZ3e8JiTxVwJdGGX64nnkjaW5hBYdnhTl6v1Wfw9+GSpXJpU6RaZtBJnUNNI5UYdtySo+JDg15TnBPpaB3l39+AtbYXio/aYcmBsdT"
+            }
+            }
+            ,
+            "netValueOfSales": {
+              "value": "1pysT6SShUSJdQSmD9W1ONpnQZ1W",
+              "nonce": "AIMBJRaThlx4AQDjrKT8UQ+xd8mDyqNNJAmqfW/EFrUGQQIp+yEvvOrBqFiqXlwzW1LNdiUcjw3oPWJQRSLZ1ErVEBOcpxMPjvZcO9lzXVQ8ewkpja/xsF0C67Dyk8uF"
+            }
+            ,
+            "vatOnSales": {
+              "choice": {
+              "value": "fa58Q2IIQU2Y9yS6InNbkk3x5Ef+MXfI",
+              "nonce": "ndfd1jQVByIbzcER68PrvCFWRFB3YpKo8fIELg84JPIwWMuQFpBU4rOfBtLMmHIw00cZ0C7KLCYg8Iz1ngKA1FPcQ00FitlGqgWligYo0KKMi2ye5cfI+EGoDdL3W7KU"
+            },
+              "amount": {
+              "value": "rCy6qFwYSAbnZAzO6iGXFzs09Ug=",
+              "nonce": "twZ11n7MVODqUoWmw5a1dLfBCpuh22wxTNhwhEi6ePmG5wP8qY+TbIotP1e1PlBV2CMuiJtg935W+FsSTMKWUTwuy6EPAbDxqhrYJLXK+eKFTmLjJQAKY7I49tw+8DUl"
+            }
+            }
+          }
+          ]
+        }
+        ,
+        {
+          "countryOfConsumption": {
+            "code": {
+            "value": "7PgvSpyPBdr+HofmrWQS2LCH",
+            "nonce": "0anFAYnYsZ6Pyc6gCZMUge53hmnyJZrdXUaOFNk6n/TbUvSvUyBUaY7oN7LclEGzLhinJ0pvdsZXRCv3vlN8H7FCQXcGH1jTylrCZZZpoiXTGoU28EZTHGVhhJQ22aqJ"
+          },
+            "name": {
+            "value": "rXt23gJK+mUr7BymrllZzp9DtIvpRg==",
+            "nonce": "EEs1IBWiksKV4LRco7yP7zPmPDGF5ZS2WDqdubrnAMbZXPZg5gDVsoyNgK6rBATkAdKnbZgSZMQBkIzlNCRQvc+BbJJjgiA3v6PcAO397RS+sv1xE9yhXwxPD/UENMTS"
+          }
+          }
+          ,
+          "amounts":
+          [
+          {
+            "vatRate": {
+              "rate": {
+              "value": "t9Q2R+x68R/JWyD+Og8XkEPw",
+              "nonce": "qQbOFT3ocKRhFA9XQNql8QlOFkZlrlV8h9vjBvmkE2kWC1PbbniGd3hXj/cUqMKtogfYpamWf+uGLPzM1zvfs2zsX7aPX/6UlJZ/qbQ1y5IB8conXmuXSpYHs01N7/9H"
+            },
+              "rateType": {
+              "value": "fegZvT9g2075PHZc8OQRlkgvVgM2bZJt",
+              "nonce": "PRH8hW1LptoqJj+M6Dakc0iQKWo8ez7/z3zUiKi8Q/q7aug7LM3okzc7NWTSVavQpigqEGMH+tEPIEKWLYWPeczV8Twtp1dHToaT/BN+lbT5Kd6KSNURhQLohzHEEUyh"
+            }
+            }
+            ,
+            "netValueOfSales": {
+              "value": "M9SyNvZ/OfHn9lo4GHrSsdt2FNHJ",
+              "nonce": "e5i60crajrt3hCE2q2LhkGFd28kqndHom65lpEBJHmXtB0I4KJB10oR2euVBWLApCRQHPfeTM15/VMUMgJ00X+nfGpqIu7r4rL6HNQPipxPybSJ4fpvjMJttZ2LMt3so"
+            }
+            ,
+            "vatOnSales": {
+              "choice": {
+              "value": "bNernI3e8qcT4/h2mpQwlGhBcO5N08ZD",
+              "nonce": "X9+xifdy4fj0btEoO34gOn2v0u/BlaXn0EEeDi45BthAC4iElWlYp91LTCknQtt1F+55lqYqTAdve4JOYsJ4LbZuaElIknZjoqIHlAr1cyLXo8x/9omx/ukxEQXW3U/X"
+            },
+              "amount": {
+              "value": "USfYFnsH9/o5JoPihcYO3nhwaDs/",
+              "nonce": "pESAOm9V9SsYRmU3QfrxXHPX2J9YlYTu4uka5pPWLIU3iUf1LrsdFAG7TL5l0i9mA41R/Rt2qoUGBT13Ovuvu3mxGGFVaOq8PSTW9jdCWE80zAWXDIhG7syPGbmcQseD"
+            }
+            }
+          }
+          ]
+        }
+        ],
+        "salesFromEu":
+        [
+
+        ],
+        "submissionReceived": "2022-09-13T22:30:35.167Z"
+        ,
+        "lastUpdated": "2022-09-13T22:30:35.167Z"
+          }""".stripMargin
     )
 }
