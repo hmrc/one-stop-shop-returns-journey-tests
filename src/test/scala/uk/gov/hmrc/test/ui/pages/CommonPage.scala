@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,13 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.{Clock, LocalDate}
 
 object CommonPage extends BrowserDriver with Matchers {
 
@@ -39,8 +40,16 @@ object CommonPage extends BrowserDriver with Matchers {
       .navigate()
       .to(s"$host/your-account")
 
+  def navigateToStartYourReturnPage(): Unit =
+    driver
+      .navigate()
+      .to(s"$host/2022-Q2/start")
+
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(url)
+
+  def paymentsUrl(): Unit =
+    driver.getCurrentUrl should include("pay/select-payment-amount?traceId=")
 
   def selectAnswer(data: String): Unit = {
     data match {
@@ -73,7 +82,7 @@ object CommonPage extends BrowserDriver with Matchers {
   }
 
   def waitForElement(by: By) =
-    new WebDriverWait(driver, 3).until {
+    new FluentWait(driver).until {
       ExpectedConditions.presenceOfElementLocated(by)
     }
 
@@ -102,6 +111,26 @@ object CommonPage extends BrowserDriver with Matchers {
       case 7 | 8 | 9    => "Q3"
       case 10 | 11 | 12 => "Q4"
     }
+
+  private def nextQuarter: LocalDate = {
+    val today                    = LocalDate.now(Clock.systemUTC())
+    val endMonthOfQuarter        = (((today.getMonthValue - 1) / 3) + 1) * 3
+    val dateInLastMonthOfQuarter = today.withMonth(endMonthOfQuarter)
+    val lastDayOfCurrentQuarter  = dateInLastMonthOfQuarter.withDayOfMonth(dateInLastMonthOfQuarter.lengthOfMonth)
+
+    lastDayOfCurrentQuarter.plusDays(1)
+  }
+
+  def generateNextAvailableReturn(): String = {
+    val today               = LocalDate.now()
+    val currentQuarterStart = nextQuarter.minusMonths(3)
+    val currentQuarterEnd   = today.withMonth(currentQuarterStart.getMonthValue).plusMonths(2)
+
+    s"You can complete your " +
+      s"${currentQuarterStart.format(DateTimeFormatter.ofPattern("MMMM"))} to " +
+      s"${currentQuarterEnd.format(DateTimeFormatter.ofPattern("MMMM yyyy"))} return from " +
+      s"${nextQuarter.format(DateTimeFormatter.ofPattern("d MMMM yyyy"))}."
+  }
 
   def navigateToReturnStartPage(period: String): Unit =
     driver

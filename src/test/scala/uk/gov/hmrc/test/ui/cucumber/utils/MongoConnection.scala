@@ -24,7 +24,6 @@ import play.api.libs.iteratee.Done
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Await
 import scala.concurrent.duration._
-import scala.language.postfixOps
 
 object MongoConnection {
 
@@ -42,6 +41,19 @@ object MongoConnection {
         .getDatabase(db)
         .getCollection(collection)
         .deleteMany(filter = Filters.equal("vrn", vrn))
+        .head(),
+      timeout
+    )
+    catch {
+      case e: Exception => println("Error: " + e)
+    }
+
+  def dropRecords(db: String, collection: String): Unit =
+    try Await.result(
+      mongoClient
+        .getDatabase(db)
+        .getCollection(collection)
+        .drop()
         .head(),
       timeout
     )
@@ -74,6 +86,10 @@ object MongoConnection {
     dropRecord("one-stop-shop-registration", "registrations", "100000004")
     dropRecord("one-stop-shop-registration", "registrations", "100000005")
     dropRecord("one-stop-shop-registration", "registrations", "100000006")
+    dropRecord("one-stop-shop-registration", "registrations", "444444444")
+    dropRecord("one-stop-shop-registration", "registrations", "600000011")
+    dropRecord("one-stop-shop-registration", "registrations", "600000012")
+    dropRecord("one-stop-shop-registration", "registrations", "600000013")
   }
 
   def dropReturns(): Unit = {
@@ -81,6 +97,9 @@ object MongoConnection {
     dropRecord("one-stop-shop-returns", "returns", "100000003")
     dropRecord("one-stop-shop-returns", "returns", "100000004")
     dropRecord("one-stop-shop-returns", "returns", "100000006")
+    dropRecord("one-stop-shop-returns", "returns", "444444444")
+    dropRecord("one-stop-shop-returns", "returns", "600000011")
+    dropRecord("one-stop-shop-returns", "returns", "600000013")
   }
 
   def dropCorrections(): Unit = {
@@ -88,6 +107,7 @@ object MongoConnection {
     dropRecord("one-stop-shop-returns", "corrections", "100000003")
     dropRecord("one-stop-shop-returns", "corrections", "100000004")
     dropRecord("one-stop-shop-returns", "corrections", "100000006")
+    dropRecord("one-stop-shop-returns", "corrections", "444444444")
   }
 
   def dropSavedAnswers(): Unit = {
@@ -98,5 +118,12 @@ object MongoConnection {
     dropRecord("one-stop-shop-returns", "saved-user-answers", "100000004")
     dropRecord("one-stop-shop-returns", "saved-user-answers", "100000005")
     dropRecord("one-stop-shop-returns", "saved-user-answers", "100000006")
+    dropRecord("one-stop-shop-returns", "saved-user-answers", "444444444")
+    dropRecord("one-stop-shop-returns", "saved-user-answers", "600000011")
+    dropRecord("one-stop-shop-returns", "saved-user-answers", "600000012")
+    dropRecord("one-stop-shop-returns", "saved-user-answers", "600000013")
   }
+
+  def dropCachedVatReturns(): Unit =
+    dropRecords("one-stop-shop-returns-frontend", "cachedVatReturns")
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,12 +34,42 @@ class ReturnsStepDef extends BaseStepDef {
   Given("^the user accesses the service$") { () =>
     CommonPage.goToStartOfJourney()
   }
+  Given("^the excluded user navigates to the start your return page$") { () =>
+    CommonPage.navigateToStartYourReturnPage()
+
+  }
 
   Given("^the user signs in as an Organisation Admin with VAT enrolment (.*) and strong credentials$") {
     (vrn: String) =>
-      driver.findElement(By.name("redirectionUrl")).clear()
+      driver.findElement(By.id("redirectionUrl")).clear()
       driver
-        .findElement(By.name("redirectionUrl"))
+        .findElement(By.id("redirectionUrl"))
+        .sendKeys(s"$host/your-account")
+      val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
+      selectCredentialStrength.selectByValue("strong")
+      val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
+      selectAffinityGroup.selectByValue("Organisation")
+      driver.findElement(By.id("enrolment[0].name")).sendKeys("HMRC-MTD-VAT")
+      driver
+        .findElement(By.id("input-0-0-name"))
+        .sendKeys("VRN")
+      driver
+        .findElement(By.id("input-0-0-value"))
+        .sendKeys(vrn)
+      driver.findElement(By.id("enrolment[1].name")).sendKeys("HMRC-OSS-ORG")
+      driver
+        .findElement(By.id("input-1-0-name"))
+        .sendKeys("VRN")
+      driver
+        .findElement(By.id("input-1-0-value"))
+        .sendKeys(vrn)
+      driver.findElement(By.cssSelector("Input[value='Submit']")).click()
+  }
+  Given("^the user signs in as an Organisation Admin with Hmrc Mdt enrolment (.*) and strong credentials$") {
+    (vrn: String) =>
+      driver.findElement(By.id("redirectionUrl")).clear()
+      driver
+        .findElement(By.id("redirectionUrl"))
         .sendKeys(s"$host/your-account")
       val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
       selectCredentialStrength.selectByValue("strong")
@@ -54,14 +84,41 @@ class ReturnsStepDef extends BaseStepDef {
         .sendKeys(vrn)
       driver.findElement(By.cssSelector("Input[value='Submit']")).click()
   }
+  Given("^the user signs in as an Organisation Admin with Hmrc Oss VAT enrolment (.*) and strong credentials$") {
+    (vrn: String) =>
+      driver.findElement(By.id("redirectionUrl")).clear()
+      driver
+        .findElement(By.id("redirectionUrl"))
+        .sendKeys(s"$host/your-account")
+      val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
+      selectCredentialStrength.selectByValue("strong")
+      val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
+      selectAffinityGroup.selectByValue("Organisation")
+      driver.findElement(By.id("enrolment[0].name")).sendKeys("HMRC-OSS-VAT")
+      driver
+        .findElement(By.id("input-1-0-name"))
+        .sendKeys("VRN")
+      driver
+        .findElement(By.id("input-1-0-value"))
+        .sendKeys(vrn)
+      driver.findElement(By.cssSelector("Input[value='Submit']")).click()
+  }
 
   When("""^the user answers (yes|no) on the (.*) page$""") { (data: String, url: String) =>
     CommonPage.checkUrl(url)
     CommonPage.selectAnswer(data)
   }
 
+  Then("""^the user has been directed to the payments service$""") { () =>
+    CommonPage.paymentsUrl()
+  }
+
   Then("""^the user is on the (.*) page$""") { (url: String) =>
     CommonPage.checkUrl(url)
+  }
+
+  Then("""^the user is directed to the Welsh transition page$""") { () =>
+    driver.getCurrentUrl contains s"$host/no-welsh-service?redirectUrl"
   }
 
   Then("""^the user is directed back to the index page$""") { () =>
@@ -163,6 +220,8 @@ class ReturnsStepDef extends BaseStepDef {
         driver.findElement(By.id("backToYourAccount")).click()
       case "sign out and come back later"     =>
         driver.findElement(By.id("signOut")).click()
+      case "Make a payment"                   =>
+        driver.findElement(By.id("make-a-payment")).click()
       case _                                  =>
         throw new Exception("Link doesn't exist")
     }
@@ -171,11 +230,32 @@ class ReturnsStepDef extends BaseStepDef {
   Then("""^the user sees the no returns message$""") { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertTrue(htmlBody.contains("You have not submitted any returns."))
+
+  }
+  Then("""^the user sees the hmrc exclusion message$""") { () =>
+    val hmrcExclusionMessage = driver.findElement(By.className("govuk-warning-text__text")).getText
+    Assert.assertTrue(
+      hmrcExclusionMessage.contains(
+        "We've removed you from this service, but you must complete and pay your final return."
+      )
+    )
+
+  }
+  Then("""^the user sees the trader exclusion message$""") { () =>
+    val traderExclusionMessage = driver.findElement(By.className("govuk-warning-text__text")).getText
+    Assert.assertTrue(
+      traderExclusionMessage.contains("You have left this service, but you must complete and pay your final return.")
+    )
+  }
+  Then("""^the user sees the exclusion message after final return$""") { () =>
+    val traderExclusionMessage = driver.findElement(By.className("govuk-warning-text__text")).getText
+    Assert.assertTrue(traderExclusionMessage.contains("You have left this service."))
+
   }
 
-  Then("""^the user sees the no returns due message$""") { () =>
+  Then("""^the user sees the next available return due message$""") { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(htmlBody.contains("You do not have any returns due"))
+    Assert.assertTrue(htmlBody.contains(CommonPage.generateNextAvailableReturn()))
   }
 
   When("""^the user manually navigates to the (.*) start page$""") { (period: String) =>
