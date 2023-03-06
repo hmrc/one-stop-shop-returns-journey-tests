@@ -456,6 +456,220 @@ object RegistrationData {
     }""".stripMargin,
       s"""
       {
+        "_id" : ObjectId("627290223a9a64703b8c3730"),
+        "vrn" : "100000006",
+        "registeredCompanyName" : {
+          "value" : "c575WqKja81Y7GBqgpjbQ3tasi5BlqpaWxCiuA==",
+          "nonce" : "QBkiYoFwiTmdxG/16HMz8X9CvOOHDY9AKWpDWxghEBEhCMTRbP9opnAAhUhKS8cS/hXUn2J0cz+BFW9pSxzswszZP+cQr6YHJMm120ozMggUK04U+2YZ2ct+4/hv8olR"
+        },
+        "tradingNames" : [],
+        "vatDetails" : {
+          "registrationDate" : "2020-01-01",
+          "address" : {
+          "line1" : {
+          "value" : "djs/SrUp6ecfZP3qz9vw5SSB+CU3Oxn5A0XS7A==",
+          "nonce" : "jhGiSikvRKLwPX0IZ5VKj+ZZM3lQIvJcosuS1APsvauZA2wtPvYenMx1ku2MsGqxstmnaMuBSSHihxaZWTgyNamU5xjsgLqUhT5GVfMwFvmc2gJqgDGKYWVMaZsRhaJv"
+        },
+          "line2" : {
+          "value" : "7RLgEIXTHCEu7YfQ5Vb7cHXMdz/ulbGkeA==",
+          "nonce" : "1VivWZvwyuqqCx4S2RJ1RwivMoC/FHpjZR+A+woPH97Z5/A71s82UmZBswZINnzFjtERmvMpClugQ8ceKCJn26Y3jXhuW0Sf7lfTYsXyNHX/2cmHUYu22g2SxZJ8vg65"
+        },
+          "postCode" : {
+          "value" : "rn8mM13wJeDTVlUH8mlKL0jRJrQtSQ+F",
+          "nonce" : "+gOXSc7ixxJdyd2j210zndd/k+zJvY4wUIcr1Ka6ooNHV49a19uhi23XpHRbrqSTUFDtMISnM1mCn2BBnM84yljgHMrZjMA+UJL7Gy0pg/8Lg9V4gLgzQHV5i213FGia"
+        },
+          "countryCode" : {
+          "value" : "LuWWuY7zWXGOHrQtmAziI+rY",
+          "nonce" : "2LYSsNjgR1oDi+/BpMx4+cWbjXXSXJrnUPcizvzoqCxtvd5apM6BU7G69eSkrn5o3deJGRqTJRBuNzYQq1JP87ZskBZ5OR+w+FCxsTVjpXNOCfRyAcFqYXfC4sRE9F4q"
+        }
+        },
+          "partOfVatGroup" : {
+          "value" : "MLIvMmMeuZS3HwBp3u49tv5Tbck=",
+          "nonce" : "1AphxUwzzRUugQcVGAKGfXIil450Kcc/mFcSROfDoiIMuHcWP6ijSGl4NQGBctADiDry0PXd0hTGSckBauF1vU66yTuFgBOxAa8ltMJq8CL7edrCxvCeyqLT9v6FL3gB"
+        },
+          "source" : "etmp"
+        },
+        "euRegistrations" : [
+        {
+          "country" : {
+            "code" : {
+            "value" : "TmXWVdPYe51HLpgXsvl0OoUt",
+            "nonce" : "PnggqYPwFMj2mA8cuJKFPa/Gw4inaaBPGFQ/qPJoTHy8aXV0rNufWbkm4oGSX1cXyO6BB0+zA11+JiJH7lXXpkt6j9vW3+rFaFeh8cDClYKqdCk0ZE5SiFzdCXKNVJMu"
+          },
+            "name" : {
+            "value" : "Q8OLauMddSJpbrw7G37oEQk5gqJPiIFzN8mHBGgklGTm/g==",
+            "nonce" : "rqbVHBrPnsXHlfSUJ9hcCF38FnosXa6tOzxqZnQjZn38ZMHOnKQ8dUpTo/e4oHs8WX7ERjBK3l2hUavPrJ2VtmRdDQx+Sd+6/DLGE4VKpsg7GWgifryX9wkOo74ZsBd5"
+          }
+          },
+          "taxIdentifier" : {
+            "identifierType" : {
+            "value" : "6OYd7EhSEYaMU8EWxQhlIj5u+Q==",
+            "nonce" : "YXFq83zVx+auV7QWqNBBW0JwW5APDaBuvgxMxYh7gleGCRmKbxwkCBE0b4/TC/TBkmOKUmvf0brAxjEAHFqNQPbtJkfYkVStmfwBZPZbKvZ6kTwMm1ccYz5dvKsRngTD"
+          },
+            "value" : {
+            "value" : "+ZHxpXXswGTdROYwB9AkNTWlW7EOUFWHdg==",
+            "nonce" : "hU0R0q+xVRjEv3EvzZStv1tmOT8t2y/dKRcPsyaikQn6eUc/sRNmkOSA1r1/tDk6vSQY62eaFBKAl595ZKRPpK95wW0eCwbkxux87lUOPitN8hpq4HkuuuheGFeBkSuy"
+          }
+          },
+          "sendsGoods" : {
+            "value" : "W4iIz/LKOU3iSjU7XDFjFV5Z3hc=",
+            "nonce" : "px3+rikNQYy/mAvUkPRAU1qZq3COoHnALv1TvdT30XsJMno3/wQr/b/mQpmFPkFRrjs1+CMfox+HJkwCC43iAcZO77lrBFbdOxtt+YnxWMKTkPh4NVLVPmhHnvKX4+K5"
+          },
+          "tradingName" : {
+            "value" : "Vc6XMvCd07BAjKWqiEJFc4NNnL/m1SZCInHktA==",
+            "nonce" : "0M677DfcM8lpHq0c+QmJg1JNHCm3hak2Tmm3i+Z/CFch0T+VeUyDrawo95bL9sf2jsv1G8EGejF/VABHqgmoat6ZQwYHRwCVOs6Nwyob0AWoxh70JkaVuOa4f69is0Ai"
+          },
+          "address" : {
+            "line1" : {
+            "value" : "GbwwEgDnIwgnboaLn93AsBgEFmqCICP568Pw5IgC",
+            "nonce" : "vbOba6D2PRbJh2RIQU9cM6r3ujuYgsDgO6fvb/dT0oQZuVElV7SxSTPBYUZP0smp3LIXkPzwXQuGGqHq16FbOPdea7oxkjkYeUy7iMdxDWkftHeyeTKlnpGUVIjtBSiY"
+          },
+            "townOrCity" : {
+            "value" : "qV4paOJJSgzqIs7n3Pks16eManAeOB1qiQ==",
+            "nonce" : "xX65oypKzBOF+NofHVAoqn5R5I3bPa/+80YAxhkSTCWPgtunn9xpMVV8wfmIkthDjslO+y1UqLjrGcLrd4g5PeQh3DByeGu19ZXAXYszVq4viTKUSVJg+1ojhPYOQ7DA"
+          },
+            "stateOrRegion" : {
+            "value" : "0L5KymOM8xrSiBpCiA5IuhCJNVe09ST6Sm4a",
+            "nonce" : "dPqWURV16iiq2wK+4dEY6BVOAbbnuAWzZbfHd+yQiDjQFFVTIZtZ6KMNSjcooj8U01o+GE8NqFlG1bk+WsJS3QgtUSVgT2rSYgR2cbzlYrPPj64lMvT1ySD7LOTt68i+"
+          },
+            "postCode" : {
+            "value" : "qE/huD9a34jnNzFdSuKhOUl3JTEHkQo=",
+            "nonce" : "bZZu36q51Kl79faW0/vzPC//J616TUoOipt/YPz6RZBFvZO4uZlUQ1UlgZjZ/lLMb0lM3kHY60vDMMplDYGQ9mgtGoXtYn8At5Tt+PYxuwz04oJ/t3s34W2/GMwPhSbT"
+          },
+            "country" : {
+            "code" : "CY",
+            "name" : "Republic of Cyprus"
+          }
+          }
+        },
+        {
+          "country" : {
+            "code" : {
+            "value" : "Qkcl+h3eqjjQJoN0sgU5zisN",
+            "nonce" : "iFkP7XVvu2CvgukuPGxxAcJ6W2SrEokVJmDBgjX/d6C75c1rieug0WGySSZ1jBrjyEea9rMONjyXF8huErre6BunRjkui1bLkMRNTkAFligcTDVh549GvREMtkjiNy//"
+          },
+            "name" : {
+            "value" : "K91ohQz5tYqo/D/wB3yS+qd/bQKhYtE=",
+            "nonce" : "2RRUGbxA1Tcrf61VRENwmwhSV4PTEjX7/WCzIbm2RAIQTH9BqoDtcPBy5yjEeZEkYd56Dqm0s3/VnCI+gOrjtrPmMt/9kYjziKKUw3tTSk2hCs0vBaGpajXHhkMuafcC"
+          }
+          },
+          "taxIdentifier" : {
+            "identifierType" : {
+            "value" : "hIXJXvvW4kTqoXR/rObF4IJ+W6QY",
+            "nonce" : "t8K9pM0LDWEIBMuaG22nDSvXHyZBXtrX4iB1MFKFKy9UJaPaNWxiIP1XF5y7N4B+IBRTiTl1ONx8xzyRytu3Xt9Sbtd9C2yBjX5hHkwbXm+Cy/cw1EiIfA9NItTdfZlO"
+          },
+            "value" : {
+            "value" : "n4CToNx89ooQLaCduHkxvmfox0XtV/c=",
+            "nonce" : "umrYY37IDT2vrw10MEuOfh8emzS618nrjB8W8riVmuqPO4XdZYLBZtSi2rVYhKy5I1bNzA+ybSuTTGKDNBg0ulk2FeHOdcJbAg/hBxZAibBRksVNNiyCryY1O/F6kcNB"
+          }
+          },
+          "sendsGoods" : {
+            "value" : "ozflf8Mid842W8+PCalIjOJDWiA=",
+            "nonce" : "XOHfbbVPsvuPSwlJ9YFCuFoC3P5/2/wszbY+iJdpuOsddd3FjuuzUdV251KEzG+jKeBL7izWLA4dyled6bTQdRP//FnkbzEER207r9AH4gnrV27X1QnTxV2WA9pDoKsC"
+          },
+          "tradingName" : {
+            "value" : "xgYp99cLYzWGgkQhhca20zvBaiwFVsLEQgzqQL8=",
+            "nonce" : "BQuBO8Pex2l5kUdA3XKvct30kM5xIHuqXtlFEWWmezXAhtxES4qT2iKkD673gyD4TzUfvE6uoHYlgm9lQdJBrFb+JDBcI48HPpT4D++R3zyU+pVHRM69Q7NKXBKf3Xtq"
+          },
+          "address" : {
+            "line1" : {
+            "value" : "kZRBexIbetbX41djioe0U8QuswdG2o7WizDgA6Ay",
+            "nonce" : "jv9QRrNytB3NbbQxt4c0JRyKlDhe5avRAFnwLg5e1S6ho1xee6QCZW5Z+8fKzl5kN09n53I9OYTl9ECnfnxzOGdO3w9L7Ss8PaeOyOpGLsDvqLGyEfQ0SdfvZWL2Xh7V"
+          },
+            "townOrCity" : {
+            "value" : "iWrGXSw78c/Z2J15n9a5MfD8C9CEsCiSEg==",
+            "nonce" : "iYjVjbfJxBOAsV9qY4BQQSKwUJ2V/n5Rvi5TSYXU5Ah0X3JfwpNBKWiVoMQltQyJIGvT0EOxgLpaXzbRS8yE9tOBpcZCDULW9eu/li+uzmOasyXiFa1OPpocU0lSKvv3"
+          },
+            "stateOrRegion" : {
+            "value" : "83jTTnhNtpBPYuhBYZ4mEDkK78wfZsHHe7I=",
+            "nonce" : "G+67p0/Wk+e0h9oTBQxqS3DY40pX/uMa0xdCNVbJieAwa3QtL1MSx9XvS41wR+a8niP3toct0VwH3zKlaFttYzzIwOrMk1lxv1QBh+KCq/+LBGy6Wj+QQsX3y5WSY54+"
+          },
+            "postCode" : {
+            "value" : "Kj4CK5EZbyTtO3MDLbJPSlB/rC/5/YLl4w==",
+            "nonce" : "ao7ZL1kEeoAhO4zcOWofigd4yNSAF2TMGQbWNZRJ225qDqQp3gPmIyIBcxSNtQs5Sk24Ks4VcGO7xLslV7G3I3KcdjRjrrP0zH3XILHO1dhe86JxvYbJCV1Q/t1z7glJ"
+          },
+            "country" : {
+            "code" : "EE",
+            "name" : "Estonia"
+          }
+          }
+        },
+        {
+          "country" : {
+            "code" : {
+            "value" : "OXRDTgvRDTaRgg/nyHzA4tdv",
+            "nonce" : "tfkuWl1Qf6SBux6m0HeYxa42OQOW3kkrApprc/eoo/DNxGXp3UPldX17V4YGynCmXN63TDuYLBGvyRslSEA1+LI2iKiwF39Avse90EnHfNmQcwJwaV7WT+McgfxsV1sX"
+          },
+            "name" : {
+            "value" : "nkZ1J29PD/9UZY3tuYYyQ0XeziSmKg==",
+            "nonce" : "pzkoRvc7J4WZwuQ+zTNjNmpxXAlU1thOa9ZHOnze3hWQTCtpD7SwS0ckplmVK3+ct7p19+2OEtsH+h0VEFa/ymsb2vdAF/e3KhoI45489zxI/mE05NZL9GVJYO9F5eFU"
+          }
+          },
+          "taxIdentifier" : {
+            "identifierType" : {
+            "value" : "HCHI6f96blwj5tyuXpUnghw5gQ==",
+            "nonce" : "ihRBHjIqCbbhYw+CDGCUN5XuUogpRRU2HZvqsrZn2g5Tg4xA6YrjcClMms8XsgY/waHPhzJ6RMaMwlXBTx9UqHbYbxHrzlwmiAVwtOwzm68aADXbTaBvREejAo3f7HZR"
+          },
+            "value" : {
+            "value" : "Zh7IyTWd8KLIy1RXoKKpEYFW5fg=",
+            "nonce" : "OvamlA9TUl48sKtqpGKCXyuRVoXZkw8mBuM0SCBTsXQXWRRLugg8kby7JlO1jgwuPeT/fSaYRmA0k3N93MwrzHQC+WmVgDu9I+8Hve4Tye6CJMF5BeyKr9wPcC33g0Sw"
+          }
+          },
+          "sendsGoods" : {
+            "value" : "F6iHuS+H8t41oxtyOmy9zxQ8UbO0",
+            "nonce" : "/QBML0cK0xtBSX2iJSYySsgeybke/BaV6xdIpqxXvn8dGflpaL9C2m1/8unojYUklzFsBH07vqnGYud7jBNqo3NPuHNYK8updPRdgdrer6ZuwcUvxuhzP6Caw7ZUl6ke"
+          }
+        },
+        {
+          "country" : {
+            "code" : {
+            "value" : "51fR3ULZK3xvimgh8sGvO1IQ",
+            "nonce" : "TXsjad7ZYAmnB4xn+m7JJk3lhrCHkGt1V5Rm+KVkaSA1M9LBYxZ6LbkNUR9the3VfVfa1OBaeES+dXVcVZlPEqZcM00F18mAqgKkrVbQ7p7GhVweS3LuU55gqAB9OPmE"
+          },
+            "name" : {
+            "value" : "6/93ApjEOTj4q90wNkAfYUuCKnv2tg==",
+            "nonce" : "fzH6cmt7Kes3ylqTamEkHMuJQe18eb27LOLZw87pKZaVBKsbWpAjoKW863lPxb8dwZnFnypmQzhszP1ZktZ8yR4IRYsdYQ4iLdJO233Sl+GJfILmwv5sDZSYeNx6QD7P"
+          }
+          }
+        }
+        ],
+        "contactDetails" : {
+          "fullName" : {
+          "value" : "S0ZIxi9ggWxntJ+Bdyya2PDXmKk=",
+          "nonce" : "MFqnk0owOs/IiEVZNOhpBGukR1mrEGaYOr3vkJP+gDGrQ13dTWxrInpTHUq9f53g5TNL10uVU/5vBNRKMAlgLw/aokHdC6+0lrCeVBWwDd00Styvb0uvXGkGvzmnPHNm"
+        },
+          "telephoneNumber" : {
+          "value" : "LGauHumv+HGjk4ISLP+3tssqOgac9Q==",
+          "nonce" : "0P5JSheyZh1Zc/c0btpBlkQXzKBEv069LX9XlwtfGQLijYsd6jq5CDSnYf65ZNU3wlAbeV218zCweTUKo+qXa4jl5G2wWY6yeQYpE8sVKG7OuKrViXxxfbdjuf23Ksiy"
+        },
+          "emailAddress" : {
+          "value" : "V4G7Bekm0oOhGcvIFNYH+cgNwh+JJ2ucJXHuzhs=",
+          "nonce" : "ZIx1AGsBS4LzcXxN7nU7Jqu4+OgpwtFYUFG0CEKNmBLGATB/2a0gwzfzI9CoTXNPNnpefF+EjNjPuwzQJ5DIOKUOxoEcRA18cO9XV41iEtghK2CZMXVKMJ4Gt1UaNyiI"
+        }
+        },
+        "websites" : [],
+        "commencementDate" : "2021-07-04",
+        "previousRegistrations" : [],
+        "bankDetails" : {
+          "accountName" : {
+          "value" : "UjeKqH9O+4RjEjXp5gDb1Zjkri0=",
+          "nonce" : "JXAMmmumVWxocR3PaIqO9UiWk8JlORHtSxA0YBnBltK7G4wYWqeRgMLyxbUeQUjKT/MjN/8lA/ltzioR50/PfX75YUXbZsh1kj0vbpz4XZvUhVFpVP5jNCrV0lzzIzZ+"
+        },
+          "iban" : {
+          "value" : "JVTApcYsPr2uQswVgvXiy/9oX5E8M16ZYm9r83hMr5rsBnyfD7M=",
+          "nonce" : "pZ/xbxO5M1mZj1x9dWn9S2tvWCrDrWbTL0K1I0qMS4/0O6aRpjsNzIjAqOOk9IrSNkXWo+T5lE1yZ8xRTyBPfWvi9MN/LF7akG1+aur2Ko/Oam8WHlxej6CHIRTSs6j0"
+        }
+        },
+        "isOnlineMarketplace" : {
+          "value" : "nsh2uHawdcP//RI60q38F4Gja/MF",
+          "nonce" : "pHYsLwrT40Zo4E+R1057kQlKQ++XPSOhzI7IYUmFXEf2egfymp6+vwaQyWSg88v2iKYj+nagw9w4Vy6UHihbhoEWjpRpbRIYywgUZSUEFY/MU0QEiREy0a6Cgt2B3vzw"
+        },
+        "submissionReceived" : "2022-05-04T14:39:30.517Z",
+        "lastUpdated" : "2022-05-04T14:39:30.517Z"
+      }""".stripMargin,
+
+      s"""
+      {
     "_id" : ObjectId("62a860d66af7db087cb53f4b"),
     "vrn" : "444444444",
     "registeredCompanyName" : {
