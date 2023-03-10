@@ -667,7 +667,6 @@ object RegistrationData {
         "submissionReceived" : "2022-05-04T14:39:30.517Z",
         "lastUpdated" : "2022-05-04T14:39:30.517Z"
       }""".stripMargin,
-
       s"""
       {
     "_id" : ObjectId("62a860d66af7db087cb53f4b"),
