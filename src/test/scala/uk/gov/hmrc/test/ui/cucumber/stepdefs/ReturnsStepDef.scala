@@ -209,7 +209,7 @@ class ReturnsStepDef extends BaseStepDef {
       case "Continue your return"             =>
         driver.findElement(By.id("continue-your-return")).click()
       case "Back to your account"             =>
-        driver.findElement(By.id("back-to-your-account")).click ()
+        driver.findElement(By.id("back-to-your-account")).click()
       case "View past returns"                =>
         driver.findElement(By.id("view-past-returns")).click()
       case "1 July to 30 September 2021"      =>
