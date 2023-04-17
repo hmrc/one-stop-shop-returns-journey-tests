@@ -1,4 +1,4 @@
-@Returns
+@Returns @Accessibility
 
 Feature: Past Returns Feature
 @ZAP
