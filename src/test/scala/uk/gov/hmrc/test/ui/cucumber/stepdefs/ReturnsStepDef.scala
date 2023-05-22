@@ -222,6 +222,8 @@ class ReturnsStepDef extends BaseStepDef {
         driver.findElement(By.id("signOut")).click()
       case "Make a payment"                   =>
         driver.findElement(By.id("make-a-payment")).click()
+      case "Change your registration"         =>
+        driver.findElement(By.id("change-your-registration")).click()
       case _                                  =>
         throw new Exception("Link doesn't exist")
     }
