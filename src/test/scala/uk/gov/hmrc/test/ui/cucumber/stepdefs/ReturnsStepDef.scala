@@ -263,17 +263,17 @@ class ReturnsStepDef extends BaseStepDef {
 
   Then("""^the user sees the (HMRC|trader) exclusion messages on dashboard after final return$""") { (source: String) =>
     val leftService = driver.findElement(By.className("govuk-warning-text__text")).getText
-      Assert.assertTrue(
-        leftService.contains(
-          if (source == "HMRC") {
-            "We've removed you from this service."
-          } else {
-            "You have left this service."
-          }
-        )
+    Assert.assertTrue(
+      leftService.contains(
+        if (source == "HMRC") {
+          "We've removed you from this service."
+        } else {
+          "You have left this service."
+        }
       )
+    )
 
-    val htmlBody    = driver.findElement(By.tagName("body")).getText
+    val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertTrue(
       htmlBody.contains(
         "You can no longer use this service to correct previous returns. You must make any corrections directly with the country where you made the sales."
