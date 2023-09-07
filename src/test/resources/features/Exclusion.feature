@@ -84,7 +84,7 @@ Feature: Exclusion feature
     Then the user sees the exclusion submission message
     Then the user submits their return
     And the user clicks on the Back to your account button
-    Then the user sees the exclusion messages on dashboard after final return
+    Then the user sees the HMRC exclusion messages on dashboard after final return
 
   Scenario: A user can complete one of their remaining returns with trader exclusion reason 1
     Given the user accesses the service
@@ -121,6 +121,6 @@ Feature: Exclusion feature
   Scenario: A user who is excluded for trader reason 3 is unable to submit any more returns
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 600000012 and strong credentials
-    Then the user sees the exclusion messages on dashboard after final return
+    Then the user sees the trader exclusion messages on dashboard after final return
 
 
