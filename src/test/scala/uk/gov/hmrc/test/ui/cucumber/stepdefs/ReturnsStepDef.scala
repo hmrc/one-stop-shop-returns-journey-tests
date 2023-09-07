@@ -234,25 +234,43 @@ class ReturnsStepDef extends BaseStepDef {
     Assert.assertTrue(htmlBody.contains("You have not submitted any returns."))
 
   }
-  Then("""^the user sees the hmrc exclusion message$""") { () =>
+  Then("""^the user sees the (trader|hmrc) exclusion message$""") { (source: String) =>
     val hmrcExclusionMessage = driver.findElement(By.className("govuk-warning-text__text")).getText
     Assert.assertTrue(
       hmrcExclusionMessage.contains(
-        "We've removed you from this service, but you must complete and pay your final return."
+        if (source == "hmrc") {
+          "We've removed you from this service, but you must complete and pay your final return."
+        } else {
+          "You have left this service, but you must complete and pay your final return."
+        }
       )
     )
-
   }
-  Then("""^the user sees the trader exclusion message$""") { () =>
-    val traderExclusionMessage = driver.findElement(By.className("govuk-warning-text__text")).getText
+
+  Then("""^the user sees the exclusion submission message$""") { () =>
+    val hmrcExclusionMessage = driver.findElement(By.className("govuk-warning-text__text")).getText
     Assert.assertTrue(
-      traderExclusionMessage.contains("You have left this service, but you must complete and pay your final return.")
+      hmrcExclusionMessage.contains(
+        "After you submit this return, you will not be able to make any corrections using the One Stop Shop service."
+      )
     )
   }
-  Then("""^the user sees the exclusion message after final return$""") { () =>
-    val traderExclusionMessage = driver.findElement(By.className("govuk-warning-text__text")).getText
-    Assert.assertTrue(traderExclusionMessage.contains("You have left this service."))
 
+  Then("""^the user sees the final return message on the dashboard$""") { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(htmlBody.contains("This is your final return on this service."))
+  }
+
+  Then("""^the user sees the exclusion messages on dashboard after final return$""") { () =>
+    val leftService = driver.findElement(By.className("govuk-warning-text__text")).getText
+    Assert.assertTrue(leftService.contains("You have left this service."))
+    val htmlBody    = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains(
+        "You can no longer use this service to correct previous returns. You must make any corrections directly with the country where you made the sales."
+      )
+    )
+    Assert.assertTrue(htmlBody.contains("You've completed your final return."))
   }
 
   Then("""^the user sees the next available return due message$""") { () =>
