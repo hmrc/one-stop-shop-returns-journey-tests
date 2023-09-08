@@ -85,6 +85,8 @@ Feature: Exclusion feature
     Then the user submits their return
     And the user clicks on the Back to your account button
     Then the user sees the HMRC exclusion messages on dashboard after final return
+    Then the user manually navigates to the 2022-Q3 start page
+    And the user is on the excluded-cannot-use-service page
 
   Scenario: A user can complete one of their remaining returns with trader exclusion reason 1
     Given the user accesses the service
@@ -133,7 +135,10 @@ Feature: Exclusion feature
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
     Then the user is on the check-your-answers page
+    Then the user sees the exclusion submission message
     Then the user submits their return
     And the user clicks on the Back to your account button
     Then the user sees the quarantined exclusion messages on dashboard after final return
+    Then the user manually navigates to the 2022-Q3 start page
+    And the user is on the excluded-cannot-use-service page
 
