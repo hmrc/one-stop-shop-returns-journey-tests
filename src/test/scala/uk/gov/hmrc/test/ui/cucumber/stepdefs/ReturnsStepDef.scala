@@ -234,12 +234,14 @@ class ReturnsStepDef extends BaseStepDef {
     Assert.assertTrue(htmlBody.contains("You have not submitted any returns."))
 
   }
-  Then("""^the user sees the (trader|hmrc) exclusion message$""") { (source: String) =>
+  Then("""^the user sees the (trader|hmrc|quarantined) exclusion message$""") { (source: String) =>
     val hmrcExclusionMessage = driver.findElement(By.className("govuk-warning-text__text")).getText
     Assert.assertTrue(
       hmrcExclusionMessage.contains(
         if (source == "hmrc") {
           "We've removed you from this service, but you must complete your final return and pay any VAT you still owe."
+        } else if (source == "quarantined") {
+          "We've removed you from the One Stop Shop scheme, but you must complete your final return and pay any VAT you still owe.\nYou cannot rejoin the scheme until 1 April 2024."
         } else {
           "You have left this service, but you must complete your final return and pay any VAT you still owe."
         }
@@ -261,25 +263,28 @@ class ReturnsStepDef extends BaseStepDef {
     Assert.assertTrue(htmlBody.contains("This is your final return on this service."))
   }
 
-  Then("""^the user sees the (HMRC|trader) exclusion messages on dashboard after final return$""") { (source: String) =>
-    val leftService = driver.findElement(By.className("govuk-warning-text__text")).getText
-    Assert.assertTrue(
-      leftService.contains(
-        if (source == "HMRC") {
-          "We've removed you from this service."
-        } else {
-          "You have left this service."
-        }
+  Then("""^the user sees the (HMRC|trader|quarantined) exclusion messages on dashboard after final return$""") {
+    (source: String) =>
+      val leftService = driver.findElement(By.className("govuk-warning-text__text")).getText
+      Assert.assertTrue(
+        leftService.contains(
+          if (source == "HMRC") {
+            "We've removed you from this service."
+          } else if (source == "quarantined") {
+            "We've removed you from the One Stop Shop scheme.\nYou cannot rejoin the scheme until 1 April 2024."
+          } else {
+            "You have left this service."
+          }
+        )
       )
-    )
 
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains(
-        "You can no longer use this service to correct previous returns. You must make any corrections directly with the country where you made the sales."
+      val htmlBody = driver.findElement(By.tagName("body")).getText
+      Assert.assertTrue(
+        htmlBody.contains(
+          "You can no longer use this service to correct previous returns. You must make any corrections directly with the country where you made the sales."
+        )
       )
-    )
-    Assert.assertTrue(htmlBody.contains("You've completed your final return."))
+      Assert.assertTrue(htmlBody.contains("You've completed your final return."))
   }
 
   Then("""^the user sees the next available return due message$""") { () =>
