@@ -220,6 +220,8 @@ class ReturnsStepDef extends BaseStepDef {
         driver.findElement(By.id("backToYourAccount")).click()
       case "sign out and come back later"     =>
         driver.findElement(By.id("signOut")).click()
+        //temporary clearing cookies as sign out won't work until continue url is updated with redirect
+        driver.manage().deleteAllCookies()
       case "Make a payment"                   =>
         driver.findElement(By.id("make-a-payment")).click()
       case "Change your registration"         =>
