@@ -111,3 +111,11 @@ Feature: Exclusion feature
     Then the user manually navigates to the 2022-Q3 start page
     And the user is on the excluded-cannot-use-service page
 
+  Scenario: A user selects Leave this service from the dashboard
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
+    Then the user is directed back to the index page
+    When the user clicks on the Leave this service link
+    Then the user is on the leave-this-service page
+    When the user clicks on the return to your account link
+    Then the user is on the your-account page
