@@ -333,4 +333,31 @@ class ReturnsStepDef extends BaseStepDef {
     }
     clickContinue()
   }
+
+  Then(
+    """^the user transferring (from|to) another MSID is (offered|submitting) a (partial|full) return for the correct period$"""
+  ) { (transferDirection: String, returnStage: String, returnType: String) =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    val heading  = driver.findElement(By.tagName("h1")).getText
+    if (transferDirection == "to" && returnStage == "offered" && returnType == "full") {
+      Assert.assertTrue(heading.contains("1 April to 30 June 2023"))
+    } else if (transferDirection == "to" && returnStage == "submitting" && returnType == "full") {
+      Assert.assertTrue(htmlBody.contains("1 April to 30 June 2023"))
+    } else if (transferDirection == "to" && returnType == "partial") {
+      Assert.assertTrue(htmlBody.contains("1 July to 9 September 2023"))
+    } else if (transferDirection == "from" && returnType == "partial") {
+      Assert.assertTrue(htmlBody.contains("9 June to 30 June 2023"))
+    } else {
+      Assert.assertTrue(heading.contains("1 July to 30 September 2023"))
+    }
+
+  }
+
+  Then(
+    """^the user is presented with the corrections warning regarding their final return$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(htmlBody.contains("You can correct a previous return when you submit your final one."))
+  }
+
 }
