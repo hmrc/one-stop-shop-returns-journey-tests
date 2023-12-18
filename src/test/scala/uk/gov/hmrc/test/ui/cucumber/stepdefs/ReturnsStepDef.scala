@@ -344,7 +344,7 @@ class ReturnsStepDef extends BaseStepDef {
     } else if (transferDirection == "to" && returnStage == "submitting" && returnType == "full") {
       Assert.assertTrue(htmlBody.contains("1 April to 30 June 2023"))
     } else if (transferDirection == "to" && returnType == "partial") {
-      Assert.assertTrue(htmlBody.contains("1 July to 9 September 2023"))
+      Assert.assertTrue(htmlBody.contains("1 July to 8 September 2023"))
     } else if (transferDirection == "from" && returnType == "partial") {
       Assert.assertTrue(htmlBody.contains("9 June to 30 June 2023"))
     } else {
