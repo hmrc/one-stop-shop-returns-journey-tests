@@ -41,6 +41,7 @@ class Hooks extends ScalaDsl with EN with BrowserDriver {
     MongoConnection.dropCorrections()
     MongoConnection.dropSavedAnswers()
     MongoConnection.dropCachedVatReturns()
+    MongoConnection.dropCachedRegistrations()
     MongoConnection.insert(RegistrationData.data, "one-stop-shop-registration", "registrations")
     MongoConnection.insert(ReturnsData.data, "one-stop-shop-returns", "returns")
   }
