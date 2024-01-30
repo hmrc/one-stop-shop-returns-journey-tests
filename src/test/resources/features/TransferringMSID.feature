@@ -34,6 +34,13 @@ Feature: Transferring MSID feature
     And the user transferring from another MSID is submitting a partial return for the correct period
     Then the user submits their return
     When the user clicks on the Back to your account link
+    Then the user clicks on the View past returns link
+    Then the user is on the past-returns page
+    Then the user clicks on the 9 June to 30 June 2023 link
+    And the user is on the past-returns/2023-Q2 page
+    And the user transferring from another MSID has the correct partial dates in the past return
+    And the user clicks on the your-account breadcrumb
+    And the user is on the your-account page
     Then the user clicks on the Start your return link
     And the user transferring from another MSID is offered a full return for the correct period
     And the user answers yes on the start page
@@ -142,6 +149,12 @@ Feature: Transferring MSID feature
     Then the user is on the check-your-answers page
     And the user transferring to another MSID is submitting a partial return for the correct period
     Then the user submits their return
+    When the user clicks on the Back to your account link
+    Then the user clicks on the View past returns link
+    Then the user is on the past-returns page
+    Then the user clicks on the 1 July to 8 September 2023 link
+    And the user is on the past-returns/2023-Q3 page
+    And the user transferring to another MSID has the correct partial dates in the past return
 
 
 

@@ -21,7 +21,7 @@ import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.Select
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.CommonPage
-import uk.gov.hmrc.test.ui.pages.CommonPage.clickContinue
+import uk.gov.hmrc.test.ui.pages.CommonPage.{checkTransferringToOtherMSIDPastReturn, clickContinue, selectLink}
 
 class ReturnsStepDef extends BaseStepDef {
 
@@ -214,6 +214,10 @@ class ReturnsStepDef extends BaseStepDef {
         driver.findElement(By.id("view-past-returns")).click()
       case "1 July to 30 September 2021"      =>
         driver.findElement(By.id("period")).click()
+      case "1 July to 8 September 2023"       =>
+        selectLink("past-returns\\/2023-Q3")
+      case "9 June to 30 June 2023"           =>
+        selectLink("past-returns\\/2023-Q2")
       case "continue to complete your return" =>
         driver.findElement(By.id("continueToYourReturn")).click()
       case "return to your account"           =>
@@ -358,6 +362,15 @@ class ReturnsStepDef extends BaseStepDef {
   ) { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertTrue(htmlBody.contains("You can correct a previous return when you submit your final one."))
+  }
+
+  Then(
+    """^the user transferring (to|from) another MSID has the correct partial dates in the past return$"""
+  ) { (direction: String) =>
+    if (direction == "to") {
+      checkTransferringToOtherMSIDPastReturn()
+    } else {}
+
   }
 
 }

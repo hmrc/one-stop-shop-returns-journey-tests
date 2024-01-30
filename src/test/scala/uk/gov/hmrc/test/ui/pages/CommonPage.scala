@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.junit.Assert
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import org.scalatest.matchers.should.Matchers
@@ -141,5 +142,15 @@ object CommonPage extends BrowserDriver with Matchers {
     driver
       .navigate()
       .to(s"$host/test-only/$link")
+
+  def checkTransferringToOtherMSIDPastReturn(): Unit = {
+    val htmlH1 = driver.findElement(By.tagName("h1")).getText
+    Assert.assertTrue(htmlH1.equals("1 July to 8 September 2023"))
+  }
+
+  def checkTransferringFromOtherMSIDPastReturn(): Unit = {
+    val htmlH1 = driver.findElement(By.tagName("h1")).getText
+    Assert.assertTrue(htmlH1.equals("9 June to 30 June 2023"))
+  }
 
 }
