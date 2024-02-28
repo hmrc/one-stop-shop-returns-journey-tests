@@ -46,6 +46,16 @@ object CommonPage extends BrowserDriver with Matchers {
       .navigate()
       .to(s"$host/2022-Q2/start")
 
+  def navigateToPreviouslySubmittedReturn(): Unit =
+    driver
+      .navigate()
+      .to(s"$host/past-returns/2022-Q1")
+
+  def navigateToPastReturnsHistory(): Unit =
+    driver
+      .navigate()
+      .to(s"$host/past-returns")
+
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should endWith(url)
 

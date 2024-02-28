@@ -783,6 +783,65 @@ object ReturnsData {
         "submissionReceived": "2022-09-13T22:30:35.167Z"
         ,
         "lastUpdated": "2022-09-13T22:30:35.167Z"
-          }""".stripMargin
+          }""".stripMargin,
+      s"""
+         |{
+         |    "_id" : ObjectId("65df516ed475f5033591497f"),
+         |    "vrn" : "777777771",
+         |    "period" : {
+         |        "year" : 2022,
+         |        "quarter" : "Q1"
+         |    },
+         |    "reference" : "XI/XI777777771/Q1.2022",
+         |    "paymentReference" : "NI777777771Q122",
+         |    "startDate" : "2022-01-01",
+         |    "endDate" : "2022-03-31",
+         |    "salesFromNi" : [
+         |        {
+         |            "countryOfConsumption" : {
+         |                "code" : {
+         |                    "value" : "5sgYsqt+JlVYTyFEYgq3dmO3",
+         |                    "nonce" : "KTNuYBZkYHUKT51rMk72p0CzTgugaDbwOGx+TlHIdsGn4zB7iAsX0jcEM+rOkc7x+ohKQhBHBoQ0Rp+zKZ3cdtZFCz8AjcBOSN1laEfC/wsYtTe6ktVgv5znWJoBL2DR"
+         |                },
+         |                "name" : {
+         |                    "value" : "yIbHL3V9YRJysFsjikaMLtX7D9SpSho=",
+         |                    "nonce" : "rDwDo4v46j2+/6rJw9loGnc3j3SIfH1tclRS1t88z4lxdCrnUqUbz9aHMq7Id6asCjW8LA+Tof4pqdXQaYMMa3ORQ5/X99nkAnmZ286S2JQ+oI36ZE+UmqRJE8RPBROE"
+         |                }
+         |            },
+         |            "amounts" : [
+         |                {
+         |                    "vatRate" : {
+         |                        "rate" : {
+         |                            "value" : "Lzg/LQ/7xr8/74KcMIbusqc0",
+         |                            "nonce" : "NbVyHqp0ep1Xb/TH5noDkaw0xNp150GIob1lJ8/MCX3y4TCqRODfYKjWDuUjYmGx5VgcKaf6TYUOvqeK//I0lEIFImYrVEzJ+tND18CXWigNl+1Cw2AxLJck0sAJHC6p"
+         |                        },
+         |                        "rateType" : {
+         |                            "value" : "JW5TX8Mv05pn33JRZnpt0beBRXov9Bx6",
+         |                            "nonce" : "6ebvqB/g+GRz1Qce/ZolJxGDLOLk2Dto+EgbtoE71Lx1nfGXHik9d0eya11Oy7N17Rqltj3q7EAVy+GkVbKzOolFpOmDzqlz+9ntxMt08UlWE/O8m3dDxuGgtJipc8Jv"
+         |                        }
+         |                    },
+         |                    "netValueOfSales" : {
+         |                        "value" : "vrnYqLPv4nbXwa3U7b4pBM0DrmY=",
+         |                        "nonce" : "dbxzw1Yv6ObU69epfTjcr+7raLQ33PA/PLdpltkDAbVePkHR1DZc3LJjq0+KeZBK9GO5LK3Lqdg5K5HArma0VvQXQpp0JDX08o2hP40K1ptE5s+/Af0GSfRRe+B0YZLx"
+         |                    },
+         |                    "vatOnSales" : {
+         |                        "choice" : {
+         |                            "value" : "9chOUl6zNFiaJYtSOpVk7FSAiulxPHlo",
+         |                            "nonce" : "dJk9LhrcWzi/Qf4sNBqFmxngEwQC8pjIzNMSsLqyxXTXQnaMzdOlbUEm5tn7CIKwFfCqdOE23OxboyNcD5/wvtcchs/NsL6fUH/9qsFfca5RwJFG8QWXmHkScgj5hkYb"
+         |                        },
+         |                        "amount" : {
+         |                            "value" : "jEhjYfUAZPtvv3bI+lnUH9JpIw==",
+         |                            "nonce" : "X8OfVfgzDitIzyiPu9Ml/G0ADDsS8tWKc1td/2uEqrl53CNaTZwKpdboe++B/Poowmu6pXN+EwzWegZ5tFyPOZhU6J4S3O1euL+Fo/0fkzQfa1iK1rDt8RWQmLl19qbR"
+         |                        }
+         |                    }
+         |                }
+         |            ]
+         |        }
+         |    ],
+         |    "salesFromEu" : [],
+         |    "submissionReceived" : "2024-02-28T15:29:49.786024Z",
+         |    "lastUpdated" : "2024-02-28T15:29:49.786025Z"
+         |}
+         |""".stripMargin
     )
 }
