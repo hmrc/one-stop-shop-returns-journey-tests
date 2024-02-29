@@ -34,9 +34,17 @@ class ReturnsStepDef extends BaseStepDef {
   Given("^the user accesses the service$") { () =>
     CommonPage.goToStartOfJourney()
   }
-  Given("^the excluded user navigates to the start your return page$") { () =>
-    CommonPage.navigateToStartYourReturnPage()
 
+  Given("^the user navigates to the start your return page$") { () =>
+    CommonPage.navigateToStartYourReturnPage()
+  }
+
+  Given("^the user navigates to a previously submitted return$") { () =>
+    CommonPage.navigateToPreviouslySubmittedReturn()
+  }
+
+  Given("^the user navigates to past returns history$") { () =>
+    CommonPage.navigateToPastReturnsHistory()
   }
 
   Given("^the user signs in as an Organisation Admin with VAT enrolment (.*) and strong credentials$") {

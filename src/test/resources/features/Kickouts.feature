@@ -42,7 +42,37 @@ Feature: Kickouts Feature
   Scenario: An excluded user is unable to complete a second return
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 600000012 and strong credentials
-    And the excluded user navigates to the start your return page
+    And the user navigates to the start your return page
     Then the user is on the excluded-cannot-use-service page
+
+  Scenario: An user who has changed VAT group from No to Yes is unable to start a return
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 777777771 and strong credentials
+    And the user navigates to the start your return page
+    Then the user is on the delete-all-fixed-establishment page
+
+  Scenario: An user who has changed VAT group from No to Yes is unable to start a return via BTA
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 777777771 and strong credentials
+    And the user manually navigates to the start-your-return-from-bta/2022-Q2 link
+    Then the user is on the delete-all-fixed-establishment page
+
+  Scenario: An user who has changed VAT group from No to Yes is unable to access a previously submitted return
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 777777771 and strong credentials
+    And the user navigates to a previously submitted return
+    Then the user is on the delete-all-fixed-establishment page
+
+  Scenario: An user who has changed VAT group from No to Yes is unable to access past returns history
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 777777771 and strong credentials
+    And the user navigates to past returns history
+    Then the user is on the delete-all-fixed-establishment page
+
+  Scenario: An user who has changed VAT group from No to Yes is unable to access past returns history via BTA
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 777777771 and strong credentials
+    And the user manually navigates to the returns-history-from-bta link
+    Then the user is on the delete-all-fixed-establishment page
 
 
