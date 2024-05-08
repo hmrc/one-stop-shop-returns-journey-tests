@@ -842,6 +842,24 @@ object ReturnsData {
          |    "submissionReceived" : "2024-02-28T15:29:49.786024Z",
          |    "lastUpdated" : "2024-02-28T15:29:49.786025Z"
          |}
+         |""".stripMargin,
+      s"""
+         |{
+         |    "_id" : ObjectId("663b92463ff4011296437213"),
+         |    "vrn" : "600000017",
+         |    "period" : {
+         |        "year" : 2022,
+         |        "quarter" : "Q1"
+         |    },
+         |    "reference" : "XI/XI600000017/Q1.2022",
+         |    "paymentReference" : "NI600000017Q122",
+         |    "startDate" : "2022-01-01",
+         |    "endDate" : "2022-03-31",
+         |    "salesFromNi" : [],
+         |    "salesFromEu" : [],
+         |    "submissionReceived" : "2024-05-08T14:55:02.349921Z",
+         |    "lastUpdated" : "2024-05-08T14:55:02.349921Z"
+         |}
          |""".stripMargin
     )
 }
