@@ -163,7 +163,7 @@ Feature: Returns Feature
 
   Scenario: A user without an organisation name can log in and submit a return
     Given the user accesses the service
-    And the user signs in as an Organisation Admin with VAT enrolment 777777778 and strong credentials
+    And the user signs in as an Organisation Admin with VAT enrolment 783478423 and strong credentials
     Then the user is directed back to the index page
     Then the user clicks on the Start your return link
     And the user answers yes on the start page
