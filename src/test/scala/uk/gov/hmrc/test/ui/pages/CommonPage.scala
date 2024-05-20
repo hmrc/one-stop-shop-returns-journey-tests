@@ -28,8 +28,9 @@ import java.time.{Clock, LocalDate}
 
 object CommonPage extends BrowserDriver with Matchers {
 
-  val host: String     = TestConfiguration.url("one-stop-shop-returns-frontend")
-  val authHost: String = TestConfiguration.url("auth-login-stub")
+  val host: String           = TestConfiguration.url("one-stop-shop-returns-frontend")
+  val authHost: String       = TestConfiguration.url("auth-login-stub")
+  val exclusionsHost: String = TestConfiguration.url("one-stop-shop-exclusions-frontend")
 
   def goToAuthPage(): Unit =
     driver
@@ -113,7 +114,7 @@ object CommonPage extends BrowserDriver with Matchers {
     }
 
   def currentPeriod(): String =
-    LocalDate.now().getYear + "-" + getQuarter(LocalDate.now().getMonthValue)
+    s"${LocalDate.now().getYear}-${getQuarter(LocalDate.now().getMonthValue)}"
 
   def getQuarter(month: Int): String =
     month match {
@@ -162,5 +163,11 @@ object CommonPage extends BrowserDriver with Matchers {
     val htmlH1 = driver.findElement(By.tagName("h1")).getText
     Assert.assertTrue(htmlH1.equals("9 June to 30 June 2023"))
   }
+
+  def goToExclusionsJourney(): Unit =
+    driver.navigate().to(exclusionsHost)
+
+  def checkExclusionsUrl(): Unit =
+    driver.getCurrentUrl startsWith exclusionsHost
 
 }
