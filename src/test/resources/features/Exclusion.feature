@@ -6,7 +6,7 @@ Feature: Exclusion feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 600000011 and strong credentials
     Then the user is directed back to the index page
-    Then the user sees the hmrc exclusion message
+    Then they are presented with the correct banner for trader removed from service and has outstanding returns
     Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
@@ -14,7 +14,7 @@ Feature: Exclusion feature
     Then the user is on the check-your-answers page
     Then the user submits their return
     And the user clicks on the Back to your account button
-    Then the user sees the hmrc exclusion message
+    Then they are presented with the correct banner for trader removed from service and has outstanding returns
     Then the user sees the final return message on the dashboard
     Then the user clicks on the Start your return link
     And the user answers yes on the start page
@@ -53,7 +53,7 @@ Feature: Exclusion feature
     Then the user sees the exclusion submission message
     Then the user submits their return
     And the user clicks on the Back to your account button
-    Then the user sees the HMRC exclusion messages on dashboard after final return
+    Then they are presented with the correct banner for trader removed from service and has no outstanding returns
     Then the user manually navigates to the 2022-Q3 start page
     And the user is on the excluded-cannot-use-service page
 
@@ -61,7 +61,7 @@ Feature: Exclusion feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 600000013 and strong credentials
     Then the user is directed back to the index page
-    Then the user sees the trader exclusion message
+    Then they are presented with the correct banner for trader with an exclusion date in the past with a return due
     Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers yes on the sales-from-northern-ireland page
@@ -89,16 +89,11 @@ Feature: Exclusion feature
     Then the user submits their return
     And the user clicks on the Back to your account button
 
-  Scenario: A user who is excluded for trader reason 5 is unable to submit any more returns
-    Given the user accesses the service
-    And the user signs in as an Organisation Admin with VAT enrolment 600000017 and strong credentials
-    Then the user sees the trader exclusion messages on dashboard after final return
-
   Scenario: A user completes their final return when excluded by HMRC with reason 4 - quarantined
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 600000014 and strong credentials
     Then the user is directed back to the index page
-    Then the user sees the quarantined exclusion message
+    Then they are presented with the correct banner for a quarantined trader with outstanding returns
     Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
@@ -107,15 +102,87 @@ Feature: Exclusion feature
     Then the user sees the exclusion submission message
     Then the user submits their return
     And the user clicks on the Back to your account button
-    Then the user sees the quarantined exclusion messages on dashboard after final return
+    Then they are presented with the correct banner for a quarantined trader with no outstanding returns
     Then the user manually navigates to the 2022-Q3 start page
     And the user is on the excluded-cannot-use-service page
 
-  Scenario: A user selects Leave this service from the dashboard
+  Scenario: A non-excluded user selects Leave this service from the dashboard
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
     Then the user is directed back to the index page
     When the user clicks on the Leave this service link
-    Then the user is on the leave-this-service page
-    When the user clicks on the return to your account link
-    Then the user is on the your-account page
+    Then the user has been redirected to the exclusions service
+
+  Scenario: An excluded user cannot access the exclusions journey
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 600000013 and strong credentials
+    Then the user is directed back to the index page
+    And the link to Leave this service is not displayed on the dashboard
+    When the user manually navigates to the self exclude journey
+#  The user should be sent to a kickout page - Created VEOSS-1838 - may move this part of test over to exclusions journey tests once done
+
+  Scenario: A user who is excluded in the future sees the correct dashboard messages when they have outstanding returns
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 600000018 and strong credentials
+    And the user is directed back to the index page
+    Then they are presented with the correct banner for trader with an exclusion date in the future with outstanding returns
+    When the user clicks on the Start your return link
+    Then the user is on the 2024-Q1/start page
+
+  Scenario: A user who has left the service and has no outstanding actions
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 600000019 and strong credentials
+    And the user is directed back to the index page
+    Then they are presented with the correct banner for trader with an exclusion date in the past and no outstanding actions
+    And they are shown the correct returns message for no outstanding returns
+    And the returns tile shows final return is completed
+
+  Scenario: A user who has left the service and has outstanding returns
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 600000020 and strong credentials
+    And the user is directed back to the index page
+    Then they are presented with the correct banner for trader with an exclusion date in the past with a return due
+    And they are shown the correct returns message for outstanding returns
+    When the user clicks on the Start your return link
+    Then the user is on the 2024-Q1/start page
+
+  Scenario: A user who has been removed from the service and has outstanding returns
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 600000011 and strong credentials
+    And the user is directed back to the index page
+    Then they are presented with the correct banner for trader removed from service and has outstanding returns
+    And they are shown the correct returns message for outstanding returns
+    And the link to Rejoin this service is not displayed on the dashboard
+    When the user clicks on the Start your return link
+    Then the user is on the 2022-Q1/start page
+
+  Scenario: A user who has been removed from the service and has no outstanding returns
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 600000021 and strong credentials
+    And the user is directed back to the index page
+    Then they are presented with the correct banner for trader removed from service and has no outstanding returns
+    And they are shown the correct returns message for no outstanding returns
+    And the returns tile shows final return is completed
+    And the user clicks on the Rejoin this service link
+#  Rejoin not implemented yet
+
+  Scenario: A user who has been excluded and has outstanding returns
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 100000025 and strong credentials
+    And the user is directed back to the index page
+    Then they are presented with the correct banner for a quarantined trader with outstanding returns
+    And they are shown the correct returns message for outstanding returns
+    And the link to Rejoin this service is not displayed on the dashboard
+    When the user clicks on the Start your return link
+    Then the user is on the 2024-Q1/start page
+
+  Scenario: A user who has been excluded and has no outstanding returns
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 100000026 and strong credentials
+    And the user is directed back to the index page
+#    Raised bug VEOSS-1840 for this section
+#    Then they are presented with the correct banner for a quarantined trader with no outstanding returns
+#    And they are shown the correct returns message for no outstanding returns
+#    And the returns tile shows final return is completed
+    And the link to Rejoin this service is not displayed on the dashboard
+

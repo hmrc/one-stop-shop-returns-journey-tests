@@ -25,7 +25,8 @@ import uk.gov.hmrc.test.ui.pages.CommonPage.{checkTransferringToOtherMSIDPastRet
 
 class ReturnsStepDef extends BaseStepDef {
 
-  val host: String = TestConfiguration.url("one-stop-shop-returns-frontend")
+  val host: String           = TestConfiguration.url("one-stop-shop-returns-frontend")
+  val exclusionsHost: String = TestConfiguration.url("one-stop-shop-exclusions-frontend")
 
   Given("^the user navigates to the auth page$") { () =>
     CommonPage.goToAuthPage()
@@ -238,6 +239,8 @@ class ReturnsStepDef extends BaseStepDef {
         driver.findElement(By.id("change-your-registration")).click()
       case "Leave this service"               =>
         driver.findElement(By.id("leave-this-service")).click()
+      case "Rejoin this service"              =>
+        driver.findElement(By.id("rejoin-this-service")).click()
       case _                                  =>
         throw new Exception("Link doesn't exist")
     }
@@ -246,21 +249,6 @@ class ReturnsStepDef extends BaseStepDef {
   Then("""^the user sees the no returns message$""") { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertTrue(htmlBody.contains("You have not submitted any returns."))
-
-  }
-  Then("""^the user sees the (trader|hmrc|quarantined) exclusion message$""") { (source: String) =>
-    val hmrcExclusionMessage = driver.findElement(By.className("govuk-warning-text__text")).getText
-    Assert.assertTrue(
-      hmrcExclusionMessage.contains(
-        if (source == "hmrc") {
-          "We've removed you from this service, but you must complete your final return and pay any VAT you still owe."
-        } else if (source == "quarantined") {
-          "We've removed you from the One Stop Shop scheme, but you must complete your final return and pay any VAT you still owe.\nYou cannot rejoin the scheme until 1 April 2024."
-        } else {
-          "You have left this service, but you must complete your final return and pay any VAT you still owe."
-        }
-      )
-    )
   }
 
   Then("""^the user sees the exclusion submission message$""") { () =>
@@ -275,30 +263,6 @@ class ReturnsStepDef extends BaseStepDef {
   Then("""^the user sees the final return message on the dashboard$""") { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertTrue(htmlBody.contains("This is your final return on this service."))
-  }
-
-  Then("""^the user sees the (HMRC|trader|quarantined) exclusion messages on dashboard after final return$""") {
-    (source: String) =>
-      val leftService = driver.findElement(By.className("govuk-warning-text__text")).getText
-      Assert.assertTrue(
-        leftService.contains(
-          if (source == "HMRC") {
-            "We've removed you from this service."
-          } else if (source == "quarantined") {
-            "We've removed you from the One Stop Shop scheme.\nYou cannot rejoin the scheme until 1 April 2024."
-          } else {
-            "You have left this service."
-          }
-        )
-      )
-
-      val htmlBody = driver.findElement(By.tagName("body")).getText
-      Assert.assertTrue(
-        htmlBody.contains(
-          "You can no longer use this service to correct previous returns. You must make any corrections directly with the country where you made the sales."
-        )
-      )
-      Assert.assertTrue(htmlBody.contains("You've completed your final return."))
   }
 
   Then("""^the user sees the next available return due message$""") { () =>
@@ -379,6 +343,113 @@ class ReturnsStepDef extends BaseStepDef {
       checkTransferringToOtherMSIDPastReturn()
     } else {}
 
+  }
+
+  Then(
+    """^the user has been redirected to the exclusions service$"""
+  ) { () =>
+    CommonPage.checkExclusionsUrl()
+  }
+
+  Then("""^the link to (Leave|Rejoin) this service is not displayed on the dashboard$""") { (link: String) =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+
+    link match {
+      case "Leave"  => Assert.assertFalse(htmlBody.contains("Leave this service"))
+      case "Rejoin" => Assert.assertFalse(htmlBody.contains("Rejoin this service"))
+      case _        => throw new Exception("Link doesn't exist")
+    }
+
+  }
+
+  When("""^the user manually navigates to the self exclude journey$""") { () =>
+    CommonPage.goToExclusionsJourney()
+  }
+
+  Then(
+    """^they are presented with the correct banner for trader with an exclusion date in the future with outstanding returns$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains("You have requested to leave this service. You must complete and pay any outstanding returns.")
+    )
+  }
+
+  Then(
+    """^they are presented with the correct banner for trader with an exclusion date in the past and no outstanding actions$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains("You have left this service.")
+    )
+  }
+
+  Then("""^they are shown the correct returns message for no outstanding returns$""") { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains(
+        "You can no longer use this service to correct previous returns. You must make any VAT corrections directly with the country where you made the sales."
+      )
+    )
+  }
+
+  Then("""^the returns tile shows final return is completed$""") { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(htmlBody.contains("You've completed your final return."))
+  }
+
+  Then(
+    """^they are presented with the correct banner for trader with an exclusion date in the past with a return due$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains("You have left this service. You must complete and pay any outstanding returns.")
+    )
+  }
+
+  Then("""^they are shown the correct returns message for outstanding returns$""") { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(htmlBody.contains("You can correct a previous return when you submit your final one."))
+  }
+
+  Then(
+    """^they are presented with the correct banner for trader removed from service and has outstanding returns$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains("We've removed you from this service, but you must complete and pay your final return.")
+    )
+  }
+
+  Then(
+    """^they are presented with the correct banner for trader removed from service and has no outstanding returns$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains("We've removed you from this service.")
+    )
+  }
+
+  Then(
+    """^they are presented with the correct banner for a quarantined trader with outstanding returns$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains(
+        "We've removed you from this service, but you must complete and pay your final return. You cannot rejoin until"
+      )
+    )
+  }
+
+  Then(
+    """^they are presented with the correct banner for a quarantined trader with no outstanding returns$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains(
+        "We've removed you from this service. You cannot rejoin until"
+      )
+    )
   }
 
 }

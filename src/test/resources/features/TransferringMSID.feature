@@ -82,7 +82,7 @@ Feature: Transferring MSID feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 600000015 and strong credentials
     When the user is directed back to the index page
-    Then the user sees the trader exclusion message
+    Then they are presented with the correct banner for trader with an exclusion date in the past with a return due
     And the user clicks on the Start your return link
     Then the user transferring to another MSID is offered a full return for the correct period
     And the user answers yes on the start page
