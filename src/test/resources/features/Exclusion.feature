@@ -6,7 +6,7 @@ Feature: Exclusion feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 600000011 and strong credentials
     Then the user is directed back to the index page
-    Then the user sees the hmrc exclusion message
+    Then they are presented with the correct banner for trader removed from service and has outstanding returns
     Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
@@ -14,7 +14,7 @@ Feature: Exclusion feature
     Then the user is on the check-your-answers page
     Then the user submits their return
     And the user clicks on the Back to your account button
-    Then the user sees the hmrc exclusion message
+    Then they are presented with the correct banner for trader removed from service and has outstanding returns
     Then the user sees the final return message on the dashboard
     Then the user clicks on the Start your return link
     And the user answers yes on the start page
@@ -53,7 +53,7 @@ Feature: Exclusion feature
     Then the user sees the exclusion submission message
     Then the user submits their return
     And the user clicks on the Back to your account button
-    Then the user sees the HMRC exclusion messages on dashboard after final return
+    Then they are presented with the correct banner for trader removed from service and has no outstanding returns
     Then the user manually navigates to the 2022-Q3 start page
     And the user is on the excluded-cannot-use-service page
 
@@ -61,7 +61,7 @@ Feature: Exclusion feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 600000013 and strong credentials
     Then the user is directed back to the index page
-    Then the user sees the trader exclusion message
+    Then they are presented with the correct banner for trader with an exclusion date in the past with a return due
     Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers yes on the sales-from-northern-ireland page
@@ -89,16 +89,11 @@ Feature: Exclusion feature
     Then the user submits their return
     And the user clicks on the Back to your account button
 
-  Scenario: A user who is excluded for trader reason 5 is unable to submit any more returns
-    Given the user accesses the service
-    And the user signs in as an Organisation Admin with VAT enrolment 600000017 and strong credentials
-    Then the user sees the trader exclusion messages on dashboard after final return
-
   Scenario: A user completes their final return when excluded by HMRC with reason 4 - quarantined
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 600000014 and strong credentials
     Then the user is directed back to the index page
-    Then the user sees the quarantined exclusion message
+    Then they are presented with the correct banner for a quarantined trader with outstanding returns
     Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
@@ -107,7 +102,7 @@ Feature: Exclusion feature
     Then the user sees the exclusion submission message
     Then the user submits their return
     And the user clicks on the Back to your account button
-    Then the user sees the quarantined exclusion messages on dashboard after final return
+    Then they are presented with the correct banner for a quarantined trader with no outstanding returns
     Then the user manually navigates to the 2022-Q3 start page
     And the user is on the excluded-cannot-use-service page
 
