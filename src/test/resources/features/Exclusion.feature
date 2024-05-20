@@ -119,7 +119,7 @@ Feature: Exclusion feature
     Then the user is directed back to the index page
     And the link to Leave this service is not displayed on the dashboard
     When the user manually navigates to the self exclude journey
-#  The user should be kicked out - /already-left-scheme-error page on exclusions
+#  The user should be sent to a kickout page - Created VEOSS-1838 - may move this part of test over to exclusions journey tests once done
 
   Scenario: A user who is excluded in the future sees the correct dashboard messages when they have outstanding returns
     Given the user accesses the service
@@ -170,8 +170,6 @@ Feature: Exclusion feature
     Given the user accesses the service
     When the user signs in as an Organisation Admin with VAT enrolment 100000025 and strong credentials
     And the user is directed back to the index page
-#  Currently on two lines but on one on the prototype
-#  How is rejoin date being calculated? Should be excluded for two years from but this is showing 1st Jan 2026
     Then they are presented with the correct banner for a quarantined trader with outstanding returns
     And they are shown the correct returns message for outstanding returns
     And the link to Rejoin this service is not displayed on the dashboard
@@ -182,7 +180,6 @@ Feature: Exclusion feature
     Given the user accesses the service
     When the user signs in as an Organisation Admin with VAT enrolment 100000026 and strong credentials
     And the user is directed back to the index page
-  #  Currently on two lines but on one on the prototype
     Then they are presented with the correct banner for a quarantined trader with no outstanding returns
     And they are shown the correct returns message for no outstanding returns
     And the returns tile shows final return is completed
