@@ -118,8 +118,6 @@ Feature: Exclusion feature
     And the user signs in as an Organisation Admin with VAT enrolment 600000013 and strong credentials
     Then the user is directed back to the index page
     And the link to Leave this service is not displayed on the dashboard
-    When the user manually navigates to the self exclude journey
-#  The user should be sent to a kickout page - Created VEOSS-1838 - may move this part of test over to exclusions journey tests once done
 
   Scenario: A user who is excluded in the future sees the correct dashboard messages when they have outstanding returns
     Given the user accesses the service
