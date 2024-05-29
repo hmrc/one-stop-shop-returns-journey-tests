@@ -241,6 +241,8 @@ class ReturnsStepDef extends BaseStepDef {
         driver.findElement(By.id("leave-this-service")).click()
       case "Rejoin this service"              =>
         driver.findElement(By.id("rejoin-this-service")).click()
+      case "Cancel your request to leave"     =>
+        driver.findElement(By.id("cancel-request-to-leave")).click()
       case _                                  =>
         throw new Exception("Link doesn't exist")
     }
@@ -351,14 +353,16 @@ class ReturnsStepDef extends BaseStepDef {
     CommonPage.checkExclusionsUrl()
   }
 
-  Then("""^the link to (Leave|Rejoin) this service is not displayed on the dashboard$""") { (link: String) =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
+  Then("""^the link to (Leave|Rejoin|Cancel your request to leave) this service is not displayed on the dashboard$""") {
+    (link: String) =>
+      val htmlBody = driver.findElement(By.tagName("body")).getText
 
-    link match {
-      case "Leave"  => Assert.assertFalse(htmlBody.contains("Leave this service"))
-      case "Rejoin" => Assert.assertFalse(htmlBody.contains("Rejoin this service"))
-      case _        => throw new Exception("Link doesn't exist")
-    }
+      link match {
+        case "Leave"                        => Assert.assertFalse(htmlBody.contains("Leave this service"))
+        case "Rejoin"                       => Assert.assertFalse(htmlBody.contains("Rejoin this service"))
+        case "Cancel your request to leave" => Assert.assertFalse(htmlBody.contains("Cancel your request to leave"))
+        case _                              => throw new Exception("Link doesn't exist")
+      }
 
   }
 
