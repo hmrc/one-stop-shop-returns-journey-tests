@@ -216,7 +216,7 @@ Feature: Exclusion feature
     And the user is directed back to the index page
     And the link to Cancel your request to leave this service is not displayed on the dashboard
 
-  Scenario: A user who is has reversed their exclusion can leave the service again
+  Scenario: A user who has reversed their exclusion can leave the service again
     Given the user accesses the service
     When the user signs in as an Organisation Admin with VAT enrolment 100000029 and strong credentials
     And the user is directed back to the index page
