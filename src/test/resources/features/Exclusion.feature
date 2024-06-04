@@ -183,3 +183,41 @@ Feature: Exclusion feature
     And the returns tile shows final return is completed
     And the link to Rejoin this service is not displayed on the dashboard
 
+  Scenario: A user who is excluded can cancel their request to leave within the correct timescales
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 100000027 and strong credentials
+    And the user is directed back to the index page
+    And the user clicks on the Cancel your request to leave link
+    Then the user has been redirected to the exclusions service
+
+  Scenario: A user who is excluded cannot cancel their request to leave outside of the correct timescales
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 600000017 and strong credentials
+    And the user is directed back to the index page
+    And the link to Cancel your request to leave this service is not displayed on the dashboard
+
+  Scenario: A user who is excluded by HMRC cannot reverse exclusion - ceased trade
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 100000030 and strong credentials
+    And the user is directed back to the index page
+    And the link to Cancel your request to leave this service is not displayed on the dashboard
+
+  Scenario: A user who is excluded by HMRC cannot reverse exclusion - no longer meets conditions
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 100000031 and strong credentials
+    And the user is directed back to the index page
+    And the link to Cancel your request to leave this service is not displayed on the dashboard
+
+  Scenario: A user who is not excluded does not have the option to enter the reversal journey on the dashboard
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
+    And the user is directed back to the index page
+    And the link to Cancel your request to leave this service is not displayed on the dashboard
+
+  Scenario: A user who has reversed their exclusion can leave the service again
+    Given the user accesses the service
+    When the user signs in as an Organisation Admin with VAT enrolment 100000029 and strong credentials
+    And the user is directed back to the index page
+    And the user clicks on the Leave this service link
+    Then the user has been redirected to the exclusions service
+
