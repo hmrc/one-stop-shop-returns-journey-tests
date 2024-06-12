@@ -48,8 +48,8 @@ class ReturnsStepDef extends BaseStepDef {
     CommonPage.navigateToPastReturnsHistory()
   }
 
-  Given("^the user signs in as an Organisation Admin with VAT enrolment (.*) and strong credentials$") {
-    (vrn: String) =>
+  Given("^the (user|assistant) signs in as an Organisation Admin with VAT enrolment (.*) and strong credentials$") {
+    (user: String, vrn: String) =>
       driver.findElement(By.id("redirectionUrl")).clear()
       driver
         .findElement(By.id("redirectionUrl"))
@@ -58,6 +58,12 @@ class ReturnsStepDef extends BaseStepDef {
       selectCredentialStrength.selectByValue("strong")
       val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
       selectAffinityGroup.selectByValue("Organisation")
+
+      if (user == "assistant") {
+        val selectAffinityGroup = new Select(driver.findElement(By.id("credential-role-select")))
+        selectAffinityGroup.selectByValue("Assistant")
+      }
+
       driver.findElement(By.id("enrolment[0].name")).sendKeys("HMRC-MTD-VAT")
       driver
         .findElement(By.id("input-0-0-name"))

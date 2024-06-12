@@ -193,5 +193,10 @@ Feature: Returns Feature
     Then the user is on the check-your-answers page
     Then the user submits their return
 
+  Scenario: An assistant user can access the returns service
+    Given the user accesses the service
+    And the assistant signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
+    Then the user is directed back to the index page
+
 
 
