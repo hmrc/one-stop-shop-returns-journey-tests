@@ -124,6 +124,7 @@ Feature: Exclusion feature
     When the user signs in as an Organisation Admin with VAT enrolment 600000018 and strong credentials
     And the user is directed back to the index page
     Then they are presented with the correct banner for trader with an exclusion date in the future with outstanding returns
+    And the link to Rejoin this service is not displayed on the dashboard
     When the user clicks on the Start your return link
     Then the user is on the 2024-Q1/start page
 
@@ -134,6 +135,8 @@ Feature: Exclusion feature
     Then they are presented with the correct banner for trader with an exclusion date in the past and no outstanding actions
     And they are shown the correct returns message for no outstanding returns
     And the returns tile shows final return is completed
+    When the user clicks on the Rejoin this service link
+    Then the user has been redirected to the rejoin journey
 
   Scenario: A user who has left the service and has outstanding returns
     Given the user accesses the service
@@ -162,7 +165,7 @@ Feature: Exclusion feature
     And they are shown the correct returns message for no outstanding returns
     And the returns tile shows final return is completed
     And the user clicks on the Rejoin this service link
-#  Rejoin not implemented yet
+    Then the user has been redirected to the rejoin journey
 
   Scenario: A user who has been excluded and has outstanding returns
     Given the user accesses the service
@@ -208,11 +211,12 @@ Feature: Exclusion feature
     And the user is directed back to the index page
     And the link to Cancel your request to leave this service is not displayed on the dashboard
 
-  Scenario: A user who is not excluded does not have the option to enter the reversal journey on the dashboard
+  Scenario: A user who is not excluded does not have the option to enter the reversal or rejoin journeys on the dashboard
     Given the user accesses the service
     When the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
     And the user is directed back to the index page
     And the link to Cancel your request to leave this service is not displayed on the dashboard
+    And the link to Rejoin this service is not displayed on the dashboard
 
   Scenario: A user who has reversed their exclusion can leave the service again
     Given the user accesses the service

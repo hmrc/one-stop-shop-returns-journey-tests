@@ -462,4 +462,10 @@ class ReturnsStepDef extends BaseStepDef {
     )
   }
 
+  Then(
+    """^the user has been redirected to the rejoin journey$"""
+  ) { () =>
+    CommonPage.checkRejoinUrl()
+  }
+
 }
