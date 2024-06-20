@@ -31,6 +31,7 @@ object CommonPage extends BrowserDriver with Matchers {
   val host: String           = TestConfiguration.url("one-stop-shop-returns-frontend")
   val authHost: String       = TestConfiguration.url("auth-login-stub")
   val exclusionsHost: String = TestConfiguration.url("one-stop-shop-exclusions-frontend")
+  val registrationHost: String = TestConfiguration.url("one-stop-shop-registration-frontend")
 
   def goToAuthPage(): Unit =
     driver
@@ -169,5 +170,8 @@ object CommonPage extends BrowserDriver with Matchers {
 
   def checkExclusionsUrl(): Unit =
     driver.getCurrentUrl startsWith exclusionsHost
+
+  def checkRejoinUrl(): Unit =
+    driver.getCurrentUrl equals s"$exclusionsHost/rejoin-already-made-sales"
 
 }
