@@ -38,7 +38,3 @@ Feature: Expired VRN Rejoin feature
     And a dashboard message is displayed for a return outstanding for more than 3 years
     And the link to Rejoin this service is not displayed on the dashboard
 
-    Notes:
-    Will also need to manually check payment for 600000007 after submitting the return
-    Add kickout page test to registration
-
