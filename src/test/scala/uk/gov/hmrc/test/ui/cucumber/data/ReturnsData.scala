@@ -932,6 +932,42 @@ object ReturnsData {
          |    "submissionReceived" : "2024-05-20T11:22:00.789076Z",
          |    "lastUpdated" : "2024-05-20T11:22:00.789076Z"
          |}
+         |""".stripMargin,
+      s"""
+         |{
+         |    "_id" : ObjectId("668d4672f8ba07271a9969ff"),
+         |    "vrn" : "600000003",
+         |    "period" : {
+         |        "year" : 2024,
+         |        "quarter" : "Q1"
+         |    },
+         |    "reference" : "XI/XI600000003/Q1.2024",
+         |    "paymentReference" : "NI600000003Q124",
+         |    "startDate" : "2024-01-01",
+         |    "endDate" : "2024-03-31",
+         |    "salesFromNi" : [],
+         |    "salesFromEu" : [],
+         |    "submissionReceived" : "2024-07-09T14:17:22.201312Z",
+         |    "lastUpdated" : "2024-07-09T14:17:22.201312Z"
+         |}
+         |""".stripMargin,
+      s"""
+         |{
+         |    "_id" : ObjectId("668d49abf8ba07271a996a00"),
+         |    "vrn" : "600000005",
+         |    "period" : {
+         |        "year" : 2024,
+         |        "quarter" : "Q1"
+         |    },
+         |    "reference" : "XI/XI600000005/Q1.2024",
+         |    "paymentReference" : "NI600000005Q124",
+         |    "startDate" : "2024-01-01",
+         |    "endDate" : "2024-03-31",
+         |    "salesFromNi" : [],
+         |    "salesFromEu" : [],
+         |    "submissionReceived" : "2024-07-09T14:31:07.280207Z",
+         |    "lastUpdated" : "2024-07-09T14:31:07.280207Z"
+         |}
          |""".stripMargin
     )
 }

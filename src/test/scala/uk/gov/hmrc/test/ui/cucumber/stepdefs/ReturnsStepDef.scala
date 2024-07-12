@@ -468,4 +468,49 @@ class ReturnsStepDef extends BaseStepDef {
     CommonPage.checkRejoinUrl()
   }
 
+  Then(
+    """^they are presented with the correct banner for expired VRN trader who has left the service and has outstanding returns$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains("You have left this service. You must complete and pay any outstanding returns.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service.")
+    )
+  }
+
+  Then(
+    """^they are presented with the correct banner for expired VRN trader who has left the service and has no outstanding returns$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains("You have left this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service.")
+    )
+  }
+
+  Then(
+    """^they are presented with the correct banner for expired VRN trader removed from service and has outstanding returns$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains("We've removed you from this service, but you must complete and pay your final return.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service.")
+    )
+  }
+
+  Then(
+    """^they are presented with the correct banner for expired VRN trader removed from service and has no outstanding returns$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains("We've removed you from this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service.")
+    )
+  }
+
+  Then(
+    """^a dashboard message is displayed for a return outstanding for more than 3 years$"""
+  ) { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertTrue(
+      htmlBody.contains("You must complete your January to March 2021 return with the countries where you made your sales.")
+    )
+  }
+
 }
