@@ -21,7 +21,7 @@ import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.Select
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages.CommonPage
-import uk.gov.hmrc.test.ui.pages.CommonPage.{checkTransferringToOtherMSIDPastReturn, clickContinue, selectLink}
+import uk.gov.hmrc.test.ui.pages.CommonPage.{checkTransferringToOtherMSIDPastReturn, clickContinue, clickSubmit, selectLink}
 
 class ReturnsStepDef extends BaseStepDef {
 
@@ -208,7 +208,7 @@ class ReturnsStepDef extends BaseStepDef {
   }
 
   Then("""^the user submits their return$""") { () =>
-    clickContinue()
+    clickSubmit()
     CommonPage.checkUrl("return-submitted")
   }
 
@@ -473,7 +473,9 @@ class ReturnsStepDef extends BaseStepDef {
   ) { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertTrue(
-      htmlBody.contains("You have left this service. You must complete and pay any outstanding returns.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service.")
+      htmlBody.contains(
+        "You have left this service. You must complete and pay any outstanding returns.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
+      )
     )
   }
 
@@ -482,7 +484,9 @@ class ReturnsStepDef extends BaseStepDef {
   ) { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertTrue(
-      htmlBody.contains("You have left this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service.")
+      htmlBody.contains(
+        "You have left this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
+      )
     )
   }
 
@@ -491,7 +495,9 @@ class ReturnsStepDef extends BaseStepDef {
   ) { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertTrue(
-      htmlBody.contains("We've removed you from this service, but you must complete and pay your final return.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service.")
+      htmlBody.contains(
+        "We've removed you from this service, but you must complete and pay your final return.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
+      )
     )
   }
 
@@ -500,7 +506,9 @@ class ReturnsStepDef extends BaseStepDef {
   ) { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertTrue(
-      htmlBody.contains("We've removed you from this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service.")
+      htmlBody.contains(
+        "We've removed you from this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
+      )
     )
   }
 
@@ -509,7 +517,9 @@ class ReturnsStepDef extends BaseStepDef {
   ) { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertTrue(
-      htmlBody.contains("You must complete your January to March 2021 return with the countries where you made your sales.")
+      htmlBody.contains(
+        "You must complete your January to March 2021 return with the countries where you made your sales."
+      )
     )
   }
 
