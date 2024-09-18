@@ -1,7 +1,7 @@
 @Returns
 
 Feature: Returns Feature
-@wip
+
   Scenario: A user completes a returns journey when only selling goods from NI
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
