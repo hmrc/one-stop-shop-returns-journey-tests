@@ -28,9 +28,9 @@ import java.time.{Clock, LocalDate}
 
 object CommonPage extends BrowserDriver with Matchers {
 
-  val host: String           = TestConfiguration.url("one-stop-shop-returns-frontend")
-  val authHost: String       = TestConfiguration.url("auth-login-stub")
-  val exclusionsHost: String = TestConfiguration.url("one-stop-shop-exclusions-frontend")
+  val host: String             = TestConfiguration.url("one-stop-shop-returns-frontend")
+  val authHost: String         = TestConfiguration.url("auth-login-stub")
+  val exclusionsHost: String   = TestConfiguration.url("one-stop-shop-exclusions-frontend")
   val registrationHost: String = TestConfiguration.url("one-stop-shop-registration-frontend")
 
   def goToAuthPage(): Unit =
@@ -101,6 +101,9 @@ object CommonPage extends BrowserDriver with Matchers {
 
   def clickContinue(): Unit =
     driver.findElement(By.id("continue")).click()
+
+  def clickSubmit(): Unit =
+    driver.findElement(By.id("submit")).click()
 
   def selectLink(link: String): Unit =
     driver.findElement(By.cssSelector(s"a[href*=$link]")).click()
