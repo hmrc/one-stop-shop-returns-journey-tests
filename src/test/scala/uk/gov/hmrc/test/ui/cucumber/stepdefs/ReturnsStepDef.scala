@@ -199,8 +199,12 @@ class ReturnsStepDef extends BaseStepDef {
       CommonPage.tickCheckbox(checkbox)
   }
 
-  Then("""^the user clicks the continue button$""") { () =>
-    clickContinue()
+  Then("""^the user clicks the (continue|submit) button$""") { (button: String) =>
+    if (button == "submit") {
+      clickSubmit()
+    } else {
+      clickContinue()
+    }
   }
 
   Then("""^the user clicks the Save and come back later button$""") { () =>
@@ -210,11 +214,6 @@ class ReturnsStepDef extends BaseStepDef {
   Then("""^the user submits their return$""") { () =>
     clickSubmit()
     CommonPage.checkUrl("return-submitted")
-  }
-
-  Then("""^the user is informed their return cannot be submitted$""") { () =>
-    clickContinue()
-    CommonPage.checkUrl("return-not-submitted")
   }
 
   Then("""^the user clicks on the (.*) link$""") { (link: String) =>

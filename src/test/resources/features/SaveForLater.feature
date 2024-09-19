@@ -207,7 +207,8 @@ Feature: Save For Later Feature
     And the user answers no on the add-sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
     Then the user is on the check-your-answers page
-    And the user is informed their return cannot be submitted
+    When the user clicks the submit button
+    Then the user is on the return-not-submitted page
     Then the user clicks on the return to your account link
     And the user clicks on the Continue your return link
     Then the user is on the return-continue page
@@ -239,7 +240,7 @@ Feature: Save For Later Feature
     And the user answers no on the add-sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
     Then the user is on the check-your-answers page
-    And the user clicks the continue button
+    And the user clicks the submit button
     Then the user is on the return-service-down page
     Then the user clicks on the return to your account link
     And the user clicks on the Continue your return link
