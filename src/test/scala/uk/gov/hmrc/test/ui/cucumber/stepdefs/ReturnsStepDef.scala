@@ -522,4 +522,10 @@ class ReturnsStepDef extends BaseStepDef {
     )
   }
 
+  When(
+    """^the user manually navigates to their (.*) return$"""
+  ) { (returnPeriod: String) =>
+    CommonPage.navigateToPastReturn(returnPeriod)
+  }
+
 }
