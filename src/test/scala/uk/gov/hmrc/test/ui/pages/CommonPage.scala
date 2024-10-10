@@ -177,4 +177,16 @@ object CommonPage extends BrowserDriver with Matchers {
   def checkRejoinUrl(): Unit =
     driver.getCurrentUrl equals s"$exclusionsHost/rejoin-already-made-sales"
 
+  def navigateToPastReturn(returnPeriod: String): Unit = {
+
+    val period = returnPeriod match {
+      case "Q1 2018" => "2018-Q1"
+      case "Q3 2018" => "2018-Q3"
+      case _         => "period doesn't exist"
+    }
+    driver
+      .navigate()
+      .to(s"$host/past-returns/$period")
+  }
+
 }
