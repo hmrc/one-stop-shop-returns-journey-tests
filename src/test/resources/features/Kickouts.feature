@@ -1,4 +1,4 @@
-@Returns @Accessibility
+@Returns
 
 Feature: Kickouts Feature
 

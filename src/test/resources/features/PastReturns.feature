@@ -1,7 +1,7 @@
-@Returns @Accessibility
+@Returns
 
 Feature: Past Returns Feature
-@ZAP
+
   Scenario: A user views one of their past returns
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
