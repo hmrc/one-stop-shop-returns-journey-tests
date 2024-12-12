@@ -18,118 +18,24 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.junit.Assert
 import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.Select
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.pages.CommonPage
-import uk.gov.hmrc.test.ui.pages.CommonPage.{checkTransferringToOtherMSIDPastReturn, clickContinue, clickSubmit, selectLink}
+import uk.gov.hmrc.test.ui.pages._
 
 class ReturnsStepDef extends BaseStepDef {
 
   val host: String           = TestConfiguration.url("one-stop-shop-returns-frontend")
   val exclusionsHost: String = TestConfiguration.url("one-stop-shop-exclusions-frontend")
 
-  Given("^the user navigates to the auth page$") { () =>
-    CommonPage.goToAuthPage()
-  }
-
-  Given("^the user accesses the service$") { () =>
-    CommonPage.goToStartOfJourney()
-  }
-
-  Given("^the user navigates to the start your return page$") { () =>
-    CommonPage.navigateToStartYourReturnPage()
-  }
-
   Given("^the user navigates to a previously submitted return$") { () =>
-    CommonPage.navigateToPreviouslySubmittedReturn()
+    ReturnPage.navigateToPreviouslySubmittedReturn()
   }
 
   Given("^the user navigates to past returns history$") { () =>
-    CommonPage.navigateToPastReturnsHistory()
-  }
-
-  Given("^the (user|assistant) signs in as an Organisation Admin with VAT enrolment (.*) and strong credentials$") {
-    (user: String, vrn: String) =>
-      driver.findElement(By.id("redirectionUrl")).clear()
-      driver
-        .findElement(By.id("redirectionUrl"))
-        .sendKeys(s"$host/your-account")
-      val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
-      selectCredentialStrength.selectByValue("strong")
-      val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
-      selectAffinityGroup.selectByValue("Organisation")
-
-      if (user == "assistant") {
-        val selectAffinityGroup = new Select(driver.findElement(By.id("credential-role-select")))
-        selectAffinityGroup.selectByValue("Assistant")
-      }
-
-      driver.findElement(By.id("enrolment[0].name")).sendKeys("HMRC-MTD-VAT")
-      driver
-        .findElement(By.id("input-0-0-name"))
-        .sendKeys("VRN")
-      driver
-        .findElement(By.id("input-0-0-value"))
-        .sendKeys(vrn)
-      driver.findElement(By.id("enrolment[1].name")).sendKeys("HMRC-OSS-ORG")
-      driver
-        .findElement(By.id("input-1-0-name"))
-        .sendKeys("VRN")
-      driver
-        .findElement(By.id("input-1-0-value"))
-        .sendKeys(vrn)
-      driver.findElement(By.cssSelector("Input[value='Submit']")).click()
-  }
-  Given("^the user signs in as an Organisation Admin with Hmrc Mdt enrolment (.*) and strong credentials$") {
-    (vrn: String) =>
-      driver.findElement(By.id("redirectionUrl")).clear()
-      driver
-        .findElement(By.id("redirectionUrl"))
-        .sendKeys(s"$host/your-account")
-      val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
-      selectCredentialStrength.selectByValue("strong")
-      val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
-      selectAffinityGroup.selectByValue("Organisation")
-      driver.findElement(By.id("enrolment[0].name")).sendKeys("HMRC-MTD-VAT")
-      driver
-        .findElement(By.id("input-0-0-name"))
-        .sendKeys("VRN")
-      driver
-        .findElement(By.id("input-0-0-value"))
-        .sendKeys(vrn)
-      driver.findElement(By.cssSelector("Input[value='Submit']")).click()
-  }
-  Given("^the user signs in as an Organisation Admin with Hmrc Oss VAT enrolment (.*) and strong credentials$") {
-    (vrn: String) =>
-      driver.findElement(By.id("redirectionUrl")).clear()
-      driver
-        .findElement(By.id("redirectionUrl"))
-        .sendKeys(s"$host/your-account")
-      val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
-      selectCredentialStrength.selectByValue("strong")
-      val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
-      selectAffinityGroup.selectByValue("Organisation")
-      driver.findElement(By.id("enrolment[0].name")).sendKeys("HMRC-OSS-VAT")
-      driver
-        .findElement(By.id("input-1-0-name"))
-        .sendKeys("VRN")
-      driver
-        .findElement(By.id("input-1-0-value"))
-        .sendKeys(vrn)
-      driver.findElement(By.cssSelector("Input[value='Submit']")).click()
-  }
-
-  When("""^the user answers (yes|no) on the (.*) page$""") { (data: String, url: String) =>
-    CommonPage.checkUrl(url)
-    CommonPage.selectAnswer(data)
+    ReturnPage.navigateToPastReturnsHistory()
   }
 
   Then("""^the user has been directed to the payments service$""") { () =>
-    CommonPage.paymentsUrl()
-  }
-
-  Then("""^the user is on the (.*) page$""") { (url: String) =>
-    CommonPage.checkUrl(url)
+    ReturnPage.paymentsUrl()
   }
 
   Then("""^the user is directed to the Welsh transition page$""") { () =>
@@ -138,29 +44,6 @@ class ReturnsStepDef extends BaseStepDef {
 
   Then("""^the user is directed back to the index page$""") { () =>
     driver.getCurrentUrl shouldBe s"$host/your-account"
-  }
-
-  When("""^the user adds (.*) on the (first|second) (.*) page$""") { (data: String, index: String, url: String) =>
-    index match {
-      case "first"  => CommonPage.checkUrl(url + "/1")
-      case "second" => CommonPage.checkUrl(url + "/2")
-      case _        => throw new Exception("Index doesn't exist")
-    }
-    CommonPage.enterData(data = data)
-    CommonPage.submitForm()
-  }
-
-  When("""^the user selects (.*) on the (first|second|third|fourth|fifth) (.*) page$""") {
-    (data: String, index: String, url: String) =>
-      index match {
-        case "first"  => CommonPage.checkUrl(url + "/1")
-        case "second" => CommonPage.checkUrl(url + "/2")
-        case "third"  => CommonPage.checkUrl(url + "/3")
-        case "fourth" => CommonPage.checkUrl(url + "/4")
-        case "fifth"  => CommonPage.checkUrl(url + "/5")
-        case _        => throw new Exception("Index doesn't exist")
-      }
-      CommonPage.selectValueAutocomplete(data)
   }
 
   When(
@@ -199,58 +82,13 @@ class ReturnsStepDef extends BaseStepDef {
       CommonPage.tickCheckbox(checkbox)
   }
 
-  Then("""^the user clicks the (continue|submit) button$""") { (button: String) =>
-    if (button == "submit") {
-      clickSubmit()
-    } else {
-      clickContinue()
-    }
-  }
-
   Then("""^the user clicks the Save and come back later button$""") { () =>
     driver.findElement(By.id("saveProgress")).click()
   }
 
   Then("""^the user submits their return$""") { () =>
-    clickSubmit()
+    CommonPage.clickSubmit()
     CommonPage.checkUrl("return-submitted")
-  }
-
-  Then("""^the user clicks on the (.*) link$""") { (link: String) =>
-    link match {
-      case "Start your return"                =>
-        driver.findElement(By.id("start-your-return")).click()
-      case "Continue your return"             =>
-        driver.findElement(By.id("continue-your-return")).click()
-      case "Back to your account"             =>
-        driver.findElement(By.id("back-to-your-account")).click()
-      case "View past returns"                =>
-        driver.findElement(By.id("view-past-returns")).click()
-      case "1 July to 30 September 2021"      =>
-        driver.findElement(By.id("period")).click()
-      case "1 July to 8 September 2023"       =>
-        selectLink("past-returns\\/2023-Q3")
-      case "9 June to 30 June 2023"           =>
-        selectLink("past-returns\\/2023-Q2")
-      case "continue to complete your return" =>
-        driver.findElement(By.id("continueToYourReturn")).click()
-      case "return to your account"           =>
-        driver.findElement(By.id("backToYourAccount")).click()
-      case "sign out and come back later"     =>
-        driver.findElement(By.id("signOut")).click()
-      case "Make a payment"                   =>
-        driver.findElement(By.id("make-a-payment")).click()
-      case "Change your registration"         =>
-        driver.findElement(By.id("change-your-registration")).click()
-      case "Leave this service"               =>
-        driver.findElement(By.id("leave-this-service")).click()
-      case "Rejoin this service"              =>
-        driver.findElement(By.id("rejoin-this-service")).click()
-      case "Cancel your request to leave"     =>
-        driver.findElement(By.id("cancel-request-to-leave")).click()
-      case _                                  =>
-        throw new Exception("Link doesn't exist")
-    }
   }
 
   Then("""^the user sees the no returns message$""") { () =>
@@ -278,25 +116,11 @@ class ReturnsStepDef extends BaseStepDef {
   }
 
   When("""^the user manually navigates to the (.*) start page$""") { (period: String) =>
-    CommonPage.navigateToReturnStartPage(period)
-  }
-
-  When("""^the user manually navigates to the (.*) link$""") { (link: String) =>
-    CommonPage.navigateToBtaLink(link)
+    ReturnPage.navigateToReturnStartPage(period)
   }
 
   When("""^the user manually navigates to the start page for the current period$""") { () =>
-    CommonPage.navigateToReturnStartPage(CommonPage.currentPeriod())
-  }
-
-  Then("""^the user clicks on the Back to your account button$""") { () =>
-    driver.findElement(By.id("back-to-your-account")).click()
-  }
-
-  Then("""^the user clicks on the (.*) breadcrumb""") { (id: String) =>
-    driver
-      .findElement(By.id(id))
-      .click()
+    ReturnPage.navigateToReturnStartPage(CommonPage.currentPeriod())
   }
 
   Then("""^the user selects the (.*) option""") { (option: String) =>
@@ -305,7 +129,7 @@ class ReturnsStepDef extends BaseStepDef {
       case "Delete my return and start again" => driver.findElement(By.id("value_1")).click()
       case _                                  => throw new Exception("Link doesn't exist")
     }
-    clickContinue()
+    CommonPage.clickContinue()
   }
 
   Then("""^the user selects the (.*) return period""") { (option: String) =>
@@ -314,7 +138,7 @@ class ReturnsStepDef extends BaseStepDef {
       case "second" => driver.findElement(By.id("value_1")).click()
       case _        => throw new Exception("Link doesn't exist")
     }
-    clickContinue()
+    CommonPage.clickContinue()
   }
 
   Then(
@@ -347,15 +171,9 @@ class ReturnsStepDef extends BaseStepDef {
     """^the user transferring (to|from) another MSID has the correct partial dates in the past return$"""
   ) { (direction: String) =>
     if (direction == "to") {
-      checkTransferringToOtherMSIDPastReturn()
+      ReturnPage.checkTransferringToOtherMSIDPastReturn()
     } else {}
 
-  }
-
-  Then(
-    """^the user has been redirected to the exclusions service$"""
-  ) { () =>
-    CommonPage.checkExclusionsUrl()
   }
 
   Then("""^the link to (Leave|Rejoin|Cancel your request to leave) this service is not displayed on the dashboard$""") {
@@ -368,147 +186,12 @@ class ReturnsStepDef extends BaseStepDef {
         case "Cancel your request to leave" => Assert.assertFalse(htmlBody.contains("Cancel your request to leave"))
         case _                              => throw new Exception("Link doesn't exist")
       }
-
-  }
-
-  When("""^the user manually navigates to the self exclude journey$""") { () =>
-    CommonPage.goToExclusionsJourney()
-  }
-
-  Then(
-    """^they are presented with the correct banner for trader with an exclusion date in the future with outstanding returns$"""
-  ) { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains("You have asked to leave this service. You must complete and pay any outstanding returns.")
-    )
-  }
-
-  Then(
-    """^they are presented with the correct banner for trader with an exclusion date in the past and no outstanding actions$"""
-  ) { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains("You have left this service.")
-    )
-  }
-
-  Then("""^they are shown the correct returns message for no outstanding returns$""") { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains(
-        "You can no longer use this service to correct previous returns. You must make any VAT corrections directly with the country where you made the sales."
-      )
-    )
-  }
-
-  Then("""^the returns tile shows final return is completed$""") { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(htmlBody.contains("You've completed your final return."))
-  }
-
-  Then(
-    """^they are presented with the correct banner for trader with an exclusion date in the past with a return due$"""
-  ) { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains("You have left this service. You must complete and pay any outstanding returns.")
-    )
-  }
-
-  Then("""^they are shown the correct returns message for outstanding returns$""") { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(htmlBody.contains("You can correct a previous return when you submit your final one."))
-  }
-
-  Then(
-    """^they are presented with the correct banner for trader removed from service and has outstanding returns$"""
-  ) { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains("We've removed you from this service, but you must complete and pay your final return.")
-    )
-  }
-
-  Then(
-    """^they are presented with the correct banner for trader removed from service and has no outstanding returns$"""
-  ) { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains("We've removed you from this service.")
-    )
-  }
-
-  Then(
-    """^they are presented with the correct banner for a quarantined trader with outstanding returns$"""
-  ) { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains(
-        "We've removed you from this service, but you must complete and pay your final return. You cannot rejoin until"
-      )
-    )
-  }
-
-  Then(
-    """^they are presented with the correct banner for a quarantined trader with no outstanding returns$"""
-  ) { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains(
-        "We've removed you from this service. You cannot rejoin until"
-      )
-    )
   }
 
   Then(
     """^the user has been redirected to the rejoin journey$"""
   ) { () =>
     CommonPage.checkRejoinUrl()
-  }
-
-  Then(
-    """^they are presented with the correct banner for expired VRN trader who has left the service and has outstanding returns$"""
-  ) { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains(
-        "You have left this service. You must complete and pay any outstanding returns.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
-      )
-    )
-  }
-
-  Then(
-    """^they are presented with the correct banner for expired VRN trader who has left the service and has no outstanding returns$"""
-  ) { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains(
-        "You have left this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
-      )
-    )
-  }
-
-  Then(
-    """^they are presented with the correct banner for expired VRN trader removed from service and has outstanding returns$"""
-  ) { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains(
-        "We've removed you from this service, but you must complete and pay your final return.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
-      )
-    )
-  }
-
-  Then(
-    """^they are presented with the correct banner for expired VRN trader removed from service and has no outstanding returns$"""
-  ) { () =>
-    val htmlBody = driver.findElement(By.tagName("body")).getText
-    Assert.assertTrue(
-      htmlBody.contains(
-        "We've removed you from this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
-      )
-    )
   }
 
   Then(
@@ -525,7 +208,7 @@ class ReturnsStepDef extends BaseStepDef {
   When(
     """^the user manually navigates to their (.*) return$"""
   ) { (returnPeriod: String) =>
-    CommonPage.navigateToPastReturn(returnPeriod)
+    ReturnPage.navigateToPastReturn(returnPeriod)
   }
 
 }
