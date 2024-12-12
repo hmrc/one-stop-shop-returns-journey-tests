@@ -1,7 +1,7 @@
 @Returns
 
 Feature: Corrections Feature
-@ZAP @Accessibility
+
   Scenario: A user adds corrections for their previous return
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
