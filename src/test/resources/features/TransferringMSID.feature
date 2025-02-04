@@ -39,7 +39,7 @@ Feature: Transferring MSID feature
     Then the user clicks on the 9 June to 30 June 2023 link
     And the user is on the past-returns/2023-Q2 page
     And the user transferring from another MSID has the correct partial dates in the past return
-    And the user clicks on the your-account breadcrumb
+    And the user clicks back on the browser
     And the user is on the your-account page
     Then the user clicks on the Start your return link
     And the user transferring from another MSID is offered a full return for the correct period

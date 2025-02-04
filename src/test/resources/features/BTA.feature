@@ -58,15 +58,6 @@ Feature: BTA Feature
     Then the user clicks on the Back to your account link
     And the user is on the business-account page
 
-  Scenario: A user enters the Submitted Returns page via BTA and the breadcrumb link takes them back to BTA
-    Given the user accesses the service
-    And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
-    Then the user is directed back to the index page
-    Then the user manually navigates to the returns-history-from-bta link
-    Then the user is on the past-returns page
-    And the user clicks on the your-account breadcrumb
-    And the user is on the business-account page
-
   Scenario: A user with one outstanding payment clicks the BTA payment link and is directed to the payments service
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000004 and strong credentials

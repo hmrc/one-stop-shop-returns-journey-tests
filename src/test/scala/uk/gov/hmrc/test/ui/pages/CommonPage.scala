@@ -120,4 +120,9 @@ object CommonPage extends BrowserDriver with Matchers {
   def checkRejoinUrl(): Unit =
     driver.getCurrentUrl equals s"$exclusionsHost/rejoin-already-made-sales"
 
+  def clickBackButton(): Unit =
+    driver
+      .navigate()
+      .back()
+
 }

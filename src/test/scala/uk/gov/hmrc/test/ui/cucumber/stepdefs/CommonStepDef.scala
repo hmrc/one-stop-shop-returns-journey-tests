@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.{CommonPage, ReturnPage}
-import uk.gov.hmrc.test.ui.pages.CommonPage.{clickContinue, clickSubmit, selectLink}
+import uk.gov.hmrc.test.ui.pages.CommonPage.{clickBackButton, clickContinue, clickSubmit, selectLink}
 
 class CommonStepDef extends BaseStepDef {
 
@@ -80,7 +80,7 @@ class CommonStepDef extends BaseStepDef {
         driver.findElement(By.id("back-to-your-account")).click()
       case "View past returns" =>
         driver.findElement(By.id("view-past-returns")).click()
-      case "1 July to 30 September 2021" =>
+      case "July to September 2021" =>
         driver.findElement(By.id("period")).click()
       case "1 July to 8 September 2023" =>
         selectLink("past-returns\\/2023-Q3")
@@ -111,12 +111,8 @@ class CommonStepDef extends BaseStepDef {
     driver.findElement(By.id("back-to-your-account")).click()
   }
 
-  Then("""^the user clicks on the (.*) breadcrumb""") { (id: String) =>
-    driver
-      .findElement(By.id(id))
-      .click()
+  Then("""^the user clicks back on the browser$""") { () =>
+    clickBackButton()
   }
-
-
 
 }

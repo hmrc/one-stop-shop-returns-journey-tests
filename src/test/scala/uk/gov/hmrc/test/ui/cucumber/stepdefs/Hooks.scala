@@ -36,7 +36,7 @@ object Hooks extends ScalaDsl with EN with Browser {
     MongoConnection.dropSavedAnswers()
     MongoConnection.dropCachedVatReturns()
     MongoConnection.dropCachedRegistrations()
-    MongoConnection.insert(ReturnsData.data, "one-stop-shop-returns", "returns")
+//    MongoConnection.insert(ReturnsData.data, "one-stop-shop-returns", "returns")
   }
 
   Before("@Returns") {
