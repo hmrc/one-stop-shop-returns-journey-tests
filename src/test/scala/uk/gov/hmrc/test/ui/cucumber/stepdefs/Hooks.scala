@@ -31,8 +31,8 @@ object Hooks extends ScalaDsl with EN with Browser {
   }
 
   private def resetAll(): Unit = {
-    MongoConnection.dropReturns()
-    MongoConnection.dropCorrections()
+//    MongoConnection.dropReturns()
+//    MongoConnection.dropCorrections()
     MongoConnection.dropSavedAnswers()
     MongoConnection.dropCachedVatReturns()
     MongoConnection.dropCachedRegistrations()
