@@ -83,6 +83,7 @@ object CommonPage extends BrowserDriver with Matchers {
       case ("first", "second")  => CommonPage.checkUrl(urlPage + "/1/2" + appendText)
       case ("second", "first")  => CommonPage.checkUrl(urlPage + "/2/1" + appendText)
       case ("second", "second") => CommonPage.checkUrl(urlPage + "/2/2" + appendText)
+      case ("third", "first") => CommonPage.checkUrl(urlPage + "/3/1" + appendText)
       case _                    => throw new Exception("Index combination is invalid")
     }
 

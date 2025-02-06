@@ -21,14 +21,14 @@ import uk.gov.hmrc.test.ui.pages.CommonPage
 
 class CorrectionsStepDef extends BaseStepDef {
 
-  When("""^the user selects the (first|second) country as (.*) for the (first|second) period on the (.*) page$""") {
+  When("""^the user selects the (first|second) country as (.*) for the (first|second|third) period on the (.*) page$""") {
     (countryIndex: String, countryName: String, periodIndex: String, urlPage: String) =>
       CommonPage.checkDoubleIndexURL(periodIndex, countryIndex, urlPage, "")
       CommonPage.selectValueAutocomplete(countryName)
   }
 
   When(
-    """^the user adds the (first|second) (declared|undeclared) correction amount as (.*) for the (first|second) period on the (.*) page$"""
+    """^the user adds the (first|second) (declared|undeclared) correction amount as (.*) for the (first|second|third) period on the (.*) page$"""
   ) { (countryIndex: String, declared: String, correctionAmount: String, periodIndex: String, urlPage: String) =>
     val appendText =
       if (declared == "declared") {

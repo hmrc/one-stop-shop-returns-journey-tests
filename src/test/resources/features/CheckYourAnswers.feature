@@ -269,7 +269,7 @@ Feature: Check Your Answers Feature
     And the user continues from the vat-payable-check page
     And the user answers no on the vat-correction-list/1 page
     Then the user answers yes on the vat-correction-periods-add page
-    And the user answers yes on the correction-return-single-period/2 page
+    And the user selects the first return period
     And the user selects the first country as Germany for the second period on the correction-country page
     And the user answers yes on the add-new-country/2/1 page
     And the user adds the first undeclared correction amount as 5000 for the second period on the country-vat-correction-amount page
@@ -277,10 +277,10 @@ Feature: Check Your Answers Feature
     And the user is on the vat-payable-check/2/1 page
     And the user continues from the vat-payable-check page
     And the user answers no on the vat-correction-list/2 page
-    Then the user clicks the continue button
+    Then the user answers no on the vat-correction-periods-add page
     Then the user is on the check-your-answers page
     Then the user clicks change for Periods with corrections
-    Then the user is on the change-vat-correction-periods page
+    Then the user is on the change-vat-correction-periods-add page
     And the user selects the change link for change-vat-correction-list\/2
     And the user answers yes on the change-vat-correction-list/2 page
     And the user selects the second country as Spain for the second period on the change-correction-country page

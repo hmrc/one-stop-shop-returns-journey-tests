@@ -42,17 +42,6 @@ Feature: Exclusion feature
     And the user clicks the continue button
     And the user answers no on the add-sales-from-eu-to-eu/1 page
     And the user answers no on the add-sales-from-eu page
-    And the user answers yes on the correct-previous-return page
-    And the user answers yes on the correction-return-single-period/1 page
-    And the user selects the first country as Bulgaria for the first period on the correction-country page
-    And the user answers yes on the add-new-country/1/1 page
-    And the user adds the first undeclared correction amount as 4123 for the first period on the country-vat-correction-amount page
-    And the user answers yes on the vat-payable-confirm/1/1 page
-    And the user is on the vat-payable-check/1/1 page
-    And the user continues from the vat-payable-check page
-    And the user answers no on the vat-correction-list/1 page
-    And the user is on the vat-correction-periods page
-    And the user clicks the continue button
     Then the user is on the check-your-answers page
     Then the user sees the exclusion submission message
     Then the user submits their return

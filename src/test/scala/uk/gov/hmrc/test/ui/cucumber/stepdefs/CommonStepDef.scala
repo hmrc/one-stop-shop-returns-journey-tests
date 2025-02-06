@@ -84,7 +84,7 @@ class CommonStepDef extends BaseStepDef {
         driver.findElement(By.id("period")).click()
       case "1 July to 8 September 2023" =>
         selectLink("past-returns\\/2023-Q3")
-      case "9 June to 30 June 2023" =>
+      case "April to June 2023" =>
         selectLink("past-returns\\/2023-Q2")
       case "continue to complete your return" =>
         driver.findElement(By.id("continueToYourReturn")).click()

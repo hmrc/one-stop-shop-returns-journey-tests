@@ -172,7 +172,9 @@ class ReturnsStepDef extends BaseStepDef {
   ) { (direction: String) =>
     if (direction == "to") {
       ReturnPage.checkTransferringToOtherMSIDPastReturn()
-    } else {}
+    } else {
+      ReturnPage.checkTransferringFromOtherMSIDPastReturn()
+    }
 
   }
 
