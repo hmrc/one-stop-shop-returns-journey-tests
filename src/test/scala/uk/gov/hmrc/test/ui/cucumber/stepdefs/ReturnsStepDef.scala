@@ -211,4 +211,8 @@ class ReturnsStepDef extends BaseStepDef {
     ReturnPage.navigateToPastReturn(returnPeriod)
   }
 
+  When("""^the user accesses the start return link via secure messages$""") { () =>
+    ReturnPage.navigateToSecureStartReturn()
+  }
+
 }
