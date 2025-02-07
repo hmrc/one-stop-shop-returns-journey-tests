@@ -198,5 +198,9 @@ Feature: Returns Feature
     And the assistant signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
     Then the user is directed back to the index page
 
-
+  Scenario: A user can access their next available return via the secure messages link
+    Given the user accesses the service
+    And the assistant signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
+    When the user accesses the start return link via secure messages
+    Then the user is on the 2021-Q3/start page
 

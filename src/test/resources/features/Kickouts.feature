@@ -75,4 +75,9 @@ Feature: Kickouts Feature
     And the user manually navigates to the returns-history-from-bta link
     Then the user is on the delete-all-fixed-establishment page
 
+  Scenario: A user has no available returns to start after clicking the start return link via secure messages
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000005 and strong credentials
+    When the user accesses the start return link via secure messages
+    Then the user is on the no-returns-due page
 

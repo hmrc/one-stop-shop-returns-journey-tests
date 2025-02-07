@@ -76,4 +76,9 @@ object ReturnPage extends BrowserDriver with Matchers {
       .to(s"$host/past-returns/$period")
   }
 
+  def navigateToSecureStartReturn(): Unit =
+    driver
+      .navigate()
+      .to(s"$host/start-return")
+
 }
