@@ -21,10 +21,11 @@ import uk.gov.hmrc.test.ui.pages.CommonPage
 
 class CorrectionsStepDef extends BaseStepDef {
 
-  When("""^the user selects the (first|second) country as (.*) for the (first|second|third) period on the (.*) page$""") {
-    (countryIndex: String, countryName: String, periodIndex: String, urlPage: String) =>
-      CommonPage.checkDoubleIndexURL(periodIndex, countryIndex, urlPage, "")
-      CommonPage.selectValueAutocomplete(countryName)
+  When(
+    """^the user selects the (first|second) country as (.*) for the (first|second|third) period on the (.*) page$"""
+  ) { (countryIndex: String, countryName: String, periodIndex: String, urlPage: String) =>
+    CommonPage.checkDoubleIndexURL(periodIndex, countryIndex, urlPage, "")
+    CommonPage.selectValueAutocomplete(countryName)
   }
 
   When(

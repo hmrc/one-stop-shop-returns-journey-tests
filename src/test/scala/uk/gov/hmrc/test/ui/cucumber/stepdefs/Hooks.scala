@@ -31,12 +31,14 @@ object Hooks extends ScalaDsl with EN with Browser {
   }
 
   private def resetAll(): Unit = {
-//    MongoConnection.dropReturns()
-//    MongoConnection.dropCorrections()
     MongoConnection.dropSavedAnswers()
     MongoConnection.dropCachedVatReturns()
     MongoConnection.dropCachedRegistrations()
-//    MongoConnection.insert(ReturnsData.data, "one-stop-shop-returns", "returns")
+
+//    When strategic returns API is toggled off, these need to be uncommented
+    MongoConnection.dropReturns()
+    MongoConnection.dropCorrections()
+    MongoConnection.insert(ReturnsData.data, "one-stop-shop-returns", "returns")
   }
 
   Before("@Returns") {
