@@ -42,8 +42,7 @@ Feature: Transferring MSID feature
     Then the user is on the past-returns page
     Then the user clicks on the April to June 2023 link
     And the user is on the past-returns/2023-Q2 page
-#  bug VEOSS-2055
-#    And the user transferring from another MSID has the correct partial dates in the past return
+    And the user transferring from another MSID has the correct partial dates in the past return
     And the user clicks back on the browser
     And the user clicks back on the browser
     And the user is on the your-account page
@@ -168,8 +167,7 @@ Feature: Transferring MSID feature
     Then the user is on the past-returns page
     Then the user clicks on the July to September 2023 link
     And the user is on the past-returns/2023-Q3 page
-  #  bug VEOSS-2055
-#    And the user transferring to another MSID has the correct partial dates in the past return
+    And the user transferring to another MSID has the correct partial dates in the past return
 
 
 

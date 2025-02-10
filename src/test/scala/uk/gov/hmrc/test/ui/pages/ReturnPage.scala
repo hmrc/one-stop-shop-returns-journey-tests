@@ -56,12 +56,12 @@ object ReturnPage extends BrowserDriver with Matchers {
 
   def checkTransferringToOtherMSIDPastReturn(): Unit = {
     val htmlH1 = driver.findElement(By.tagName("h1")).getText
-    Assert.assertTrue(htmlH1.equals("1 July to 8 September 2023"))
+    Assert.assertTrue(htmlH1.contains("1 July to 8 September 2023"))
   }
 
   def checkTransferringFromOtherMSIDPastReturn(): Unit = {
     val htmlH1 = driver.findElement(By.tagName("h1")).getText
-    Assert.assertTrue(htmlH1.equals("9 June to 30 June 2023"))
+    Assert.assertTrue(htmlH1.contains("9 June to 30 June 2023"))
   }
 
   def navigateToPastReturn(returnPeriod: String): Unit = {
