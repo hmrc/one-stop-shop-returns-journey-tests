@@ -270,7 +270,8 @@ Feature: Corrections Feature
     And the user continues from the vat-payable-check page
     And the user answers no on the vat-correction-list/1 page
     Then the user answers yes on the vat-correction-periods-add page
-    And the user answers yes on the correction-return-single-period/2 page
+    Then the user is on the correction-return-period/2 page
+    And the user selects the first return period
     And the user selects the first country as Denmark for the second period on the correction-country page
     And the user answers yes on the add-new-country/2/1 page
     And the user adds the first undeclared correction amount as 5000 for the second period on the country-vat-correction-amount page
@@ -278,9 +279,20 @@ Feature: Corrections Feature
     And the user is on the vat-payable-check/2/1 page
     And the user continues from the vat-payable-check page
     And the user answers no on the vat-correction-list/2 page
+    Then the user answers yes on the vat-correction-periods-add page
+    And the user answers yes on the correction-return-single-period/3 page
+    And the user selects the first country as Belgium for the third period on the correction-country page
+    And the user adds the first declared correction amount as 250.63 for the third period on the country-vat-correction-amount page
+    And the user answers yes on the vat-payable-confirm/3/1 page
+    And the user is on the vat-payable-check/3/1 page
+    And the user continues from the vat-payable-check page
+    And the user answers no on the vat-correction-list/3 page
+    Then the user is on the vat-correction-periods page
     Then the user clicks the continue button
     Then the user is on the check-your-answers page
     Then the user submits their return
+
+
 
 
 

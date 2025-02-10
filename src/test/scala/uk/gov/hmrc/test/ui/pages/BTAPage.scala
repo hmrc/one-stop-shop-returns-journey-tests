@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 object BTAPage extends BrowserDriver with Matchers {
 
-  val host: String             = TestConfiguration.url("one-stop-shop-returns-frontend")
+  val host: String = TestConfiguration.url("one-stop-shop-returns-frontend")
 
   def navigateToBtaLink(link: String): Unit =
     driver

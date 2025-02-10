@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 object AuthPage extends BrowserDriver with Matchers {
 
-  val authHost: String         = TestConfiguration.url("auth-login-stub")
+  val authHost: String = TestConfiguration.url("auth-login-stub")
 
   def goToAuthPage(): Unit =
     driver

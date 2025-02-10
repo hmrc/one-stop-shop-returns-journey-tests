@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages._
 
 class AuthStepDef extends BaseStepDef {
 
-  val host: String           = TestConfiguration.url("one-stop-shop-returns-frontend")
+  val host: String = TestConfiguration.url("one-stop-shop-returns-frontend")
 
   Given("^the user navigates to the auth page$") { () =>
     AuthPage.goToAuthPage()
@@ -37,7 +37,7 @@ class AuthStepDef extends BaseStepDef {
         .sendKeys(s"$host/your-account")
       val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
       selectCredentialStrength.selectByValue("strong")
-      val selectAffinityGroup = new Select(driver.findElement(By.id("affinityGroupSelect")))
+      val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
       selectAffinityGroup.selectByValue("Organisation")
 
       if (user == "assistant") {
@@ -70,7 +70,7 @@ class AuthStepDef extends BaseStepDef {
         .sendKeys(s"$host/your-account")
       val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
       selectCredentialStrength.selectByValue("strong")
-      val selectAffinityGroup = new Select(driver.findElement(By.id("affinityGroupSelect")))
+      val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
       selectAffinityGroup.selectByValue("Organisation")
       driver.findElement(By.id("enrolment[0].name")).sendKeys("HMRC-MTD-VAT")
       driver
@@ -90,7 +90,7 @@ class AuthStepDef extends BaseStepDef {
         .sendKeys(s"$host/your-account")
       val selectCredentialStrength = new Select(driver.findElement(By.id("credentialStrength")))
       selectCredentialStrength.selectByValue("strong")
-      val selectAffinityGroup = new Select(driver.findElement(By.id("affinityGroupSelect")))
+      val selectAffinityGroup      = new Select(driver.findElement(By.id("affinityGroupSelect")))
       selectAffinityGroup.selectByValue("Organisation")
       driver.findElement(By.id("enrolment[0].name")).sendKeys("HMRC-OSS-VAT")
       driver
@@ -101,7 +101,5 @@ class AuthStepDef extends BaseStepDef {
         .sendKeys(vrn)
       driver.findElement(By.cssSelector("Input[value='Submit']")).click()
   }
-
-
 
 }

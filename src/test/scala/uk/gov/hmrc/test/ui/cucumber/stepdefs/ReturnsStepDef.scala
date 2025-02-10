@@ -172,7 +172,9 @@ class ReturnsStepDef extends BaseStepDef {
   ) { (direction: String) =>
     if (direction == "to") {
       ReturnPage.checkTransferringToOtherMSIDPastReturn()
-    } else {}
+    } else {
+      ReturnPage.checkTransferringFromOtherMSIDPastReturn()
+    }
 
   }
 
@@ -213,6 +215,11 @@ class ReturnsStepDef extends BaseStepDef {
 
   When("""^the user accesses the start return link via secure messages$""") { () =>
     ReturnPage.navigateToSecureStartReturn()
+  }
+
+  Then("""^they are presented with the regular heading for starting a return$""") { () =>
+    val htmlH1 = driver.findElement(By.tagName("h1")).getText
+    Assert.assertTrue(htmlH1.equals("Do you want to start your return for 1 January to 31 March 2022?"))
   }
 
 }
