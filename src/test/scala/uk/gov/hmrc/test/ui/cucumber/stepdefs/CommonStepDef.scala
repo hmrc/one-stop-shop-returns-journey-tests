@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.{CommonPage, ReturnPage}
-import uk.gov.hmrc.test.ui.pages.CommonPage.{clickContinue, clickSubmit, selectLink}
+import uk.gov.hmrc.test.ui.pages.CommonPage.{clickBackButton, clickContinue, clickSubmit, selectLink}
 
 class CommonStepDef extends BaseStepDef {
 
@@ -41,9 +41,9 @@ class CommonStepDef extends BaseStepDef {
 
   When("""^the user adds (.*) on the (first|second) (.*) page$""") { (data: String, index: String, url: String) =>
     index match {
-      case "first" => CommonPage.checkUrl(url + "/1")
+      case "first"  => CommonPage.checkUrl(url + "/1")
       case "second" => CommonPage.checkUrl(url + "/2")
-      case _ => throw new Exception("Index doesn't exist")
+      case _        => throw new Exception("Index doesn't exist")
     }
     CommonPage.enterData(data = data)
     CommonPage.submitForm()
@@ -52,12 +52,12 @@ class CommonStepDef extends BaseStepDef {
   When("""^the user selects (.*) on the (first|second|third|fourth|fifth) (.*) page$""") {
     (data: String, index: String, url: String) =>
       index match {
-        case "first" => CommonPage.checkUrl(url + "/1")
+        case "first"  => CommonPage.checkUrl(url + "/1")
         case "second" => CommonPage.checkUrl(url + "/2")
-        case "third" => CommonPage.checkUrl(url + "/3")
+        case "third"  => CommonPage.checkUrl(url + "/3")
         case "fourth" => CommonPage.checkUrl(url + "/4")
-        case "fifth" => CommonPage.checkUrl(url + "/5")
-        case _ => throw new Exception("Index doesn't exist")
+        case "fifth"  => CommonPage.checkUrl(url + "/5")
+        case _        => throw new Exception("Index doesn't exist")
       }
       CommonPage.selectValueAutocomplete(data)
   }
@@ -72,37 +72,37 @@ class CommonStepDef extends BaseStepDef {
 
   Then("""^the user clicks on the (.*) link$""") { (link: String) =>
     link match {
-      case "Start your return" =>
+      case "Start your return"                =>
         driver.findElement(By.id("start-your-return")).click()
-      case "Continue your return" =>
+      case "Continue your return"             =>
         driver.findElement(By.id("continue-your-return")).click()
-      case "Back to your account" =>
+      case "Back to your account"             =>
         driver.findElement(By.id("back-to-your-account")).click()
-      case "View past returns" =>
+      case "View past returns"                =>
         driver.findElement(By.id("view-past-returns")).click()
-      case "1 July to 30 September 2021" =>
+      case "July to September 2021"           =>
         driver.findElement(By.id("period")).click()
-      case "1 July to 8 September 2023" =>
+      case "July to September 2023"           =>
         selectLink("past-returns\\/2023-Q3")
-      case "9 June to 30 June 2023" =>
+      case "April to June 2023"               =>
         selectLink("past-returns\\/2023-Q2")
       case "continue to complete your return" =>
         driver.findElement(By.id("continueToYourReturn")).click()
-      case "return to your account" =>
+      case "return to your account"           =>
         driver.findElement(By.id("backToYourAccount")).click()
-      case "sign out and come back later" =>
+      case "sign out and come back later"     =>
         driver.findElement(By.id("signOut")).click()
-      case "Make a payment" =>
+      case "Make a payment"                   =>
         driver.findElement(By.id("make-a-payment")).click()
-      case "Change your registration" =>
+      case "Change your registration"         =>
         driver.findElement(By.id("change-your-registration")).click()
-      case "Leave this service" =>
+      case "Leave this service"               =>
         driver.findElement(By.id("leave-this-service")).click()
-      case "Rejoin this service" =>
+      case "Rejoin this service"              =>
         driver.findElement(By.id("rejoin-this-service")).click()
-      case "Cancel your request to leave" =>
+      case "Cancel your request to leave"     =>
         driver.findElement(By.id("cancel-request-to-leave")).click()
-      case _ =>
+      case _                                  =>
         throw new Exception("Link doesn't exist")
     }
   }
@@ -111,12 +111,8 @@ class CommonStepDef extends BaseStepDef {
     driver.findElement(By.id("back-to-your-account")).click()
   }
 
-  Then("""^the user clicks on the (.*) breadcrumb""") { (id: String) =>
-    driver
-      .findElement(By.id(id))
-      .click()
+  Then("""^the user clicks back on the browser$""") { () =>
+    clickBackButton()
   }
-
-
 
 }

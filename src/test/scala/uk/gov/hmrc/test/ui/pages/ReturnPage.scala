@@ -24,7 +24,7 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 object ReturnPage extends BrowserDriver with Matchers {
 
-  val host: String             = TestConfiguration.url("one-stop-shop-returns-frontend")
+  val host: String = TestConfiguration.url("one-stop-shop-returns-frontend")
 
   def goToStartOfJourney(): Unit =
     driver
@@ -56,12 +56,12 @@ object ReturnPage extends BrowserDriver with Matchers {
 
   def checkTransferringToOtherMSIDPastReturn(): Unit = {
     val htmlH1 = driver.findElement(By.tagName("h1")).getText
-    Assert.assertTrue(htmlH1.equals("1 July to 8 September 2023"))
+    Assert.assertTrue(htmlH1.contains("1 July to 8 September 2023"))
   }
 
   def checkTransferringFromOtherMSIDPastReturn(): Unit = {
     val htmlH1 = driver.findElement(By.tagName("h1")).getText
-    Assert.assertTrue(htmlH1.equals("9 June to 30 June 2023"))
+    Assert.assertTrue(htmlH1.contains("9 June to 30 June 2023"))
   }
 
   def navigateToPastReturn(returnPeriod: String): Unit = {
@@ -69,7 +69,7 @@ object ReturnPage extends BrowserDriver with Matchers {
     val period = returnPeriod match {
       case "Q1 2018" => "2018-Q1"
       case "Q3 2018" => "2018-Q3"
-      case _ => "period doesn't exist"
+      case _         => "period doesn't exist"
     }
     driver
       .navigate()

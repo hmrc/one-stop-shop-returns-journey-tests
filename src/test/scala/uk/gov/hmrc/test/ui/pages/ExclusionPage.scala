@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 object ExclusionPage extends BrowserDriver with Matchers {
 
-  val exclusionsHost: String   = TestConfiguration.url("one-stop-shop-exclusions-frontend")
+  val exclusionsHost: String = TestConfiguration.url("one-stop-shop-exclusions-frontend")
 
   def goToExclusionsJourney(): Unit =
     driver.navigate().to(exclusionsHost)

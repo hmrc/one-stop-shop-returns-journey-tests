@@ -24,6 +24,4 @@ class BTAStepDef extends BaseStepDef {
     BTAPage.navigateToBtaLink(link)
   }
 
-
-
 }

@@ -2,22 +2,26 @@
 
 Feature: Exclusion feature
 
-  Scenario: A user completes their final two returns when excluded by HMRC with reason 2
+  Scenario: An HMRC excluded user who has more than one return remaining does not have final return content
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 600000011 and strong credentials
     Then the user is directed back to the index page
     Then they are presented with the correct banner for trader removed from service and has outstanding returns
     Then the user clicks on the Start your return link
-    And the user answers yes on the start page
+    Then they are presented with the regular heading for starting a return
+    And the user answers yes on the 2022-Q1/start page
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
     Then the user is on the check-your-answers page
     Then the user submits their return
-    And the user clicks on the Back to your account button
+
+  Scenario: An HMRC excluded user who has one return remaining is shown the final return content
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 600000012 and strong credentials
     Then they are presented with the correct banner for trader removed from service and has outstanding returns
     Then the user sees the final return message on the dashboard
     Then the user clicks on the Start your return link
-    And the user answers yes on the start page
+    And the user answers yes on the 2022-Q1/start page
     And the user answers yes on the sales-from-northern-ireland page
     And the user selects Slovenia on the first eu-country-from-northern-ireland page
     And the user ticks the first checkbox on the first eu-vat-rates-from-northern-ireland page
@@ -38,23 +42,15 @@ Feature: Exclusion feature
     And the user clicks the continue button
     And the user answers no on the add-sales-from-eu-to-eu/1 page
     And the user answers no on the add-sales-from-eu page
-    And the user answers yes on the correct-previous-return page
-    And the user answers yes on the correction-return-single-period/1 page
-    And the user selects the first country as Bulgaria for the first period on the correction-country page
-    And the user answers yes on the add-new-country/1/1 page
-    And the user adds the first undeclared correction amount as 4123 for the first period on the country-vat-correction-amount page
-    And the user answers yes on the vat-payable-confirm/1/1 page
-    And the user is on the vat-payable-check/1/1 page
-    And the user continues from the vat-payable-check page
-    And the user answers no on the vat-correction-list/1 page
-    And the user is on the vat-correction-periods page
-    And the user clicks the continue button
     Then the user is on the check-your-answers page
     Then the user sees the exclusion submission message
     Then the user submits their return
-    And the user clicks on the Back to your account button
+
+  Scenario: An HMRC excluded user who has filed their last return is not able to access the subsequent return
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 600001212 and strong credentials
     Then they are presented with the correct banner for trader removed from service and has no outstanding returns
-    Then the user manually navigates to the 2022-Q3 start page
+    Then the user manually navigates to the 2022-Q2 start page
     And the user is on the excluded-cannot-use-service page
 
   Scenario: A user can complete one of their remaining returns with trader exclusion reason 1
@@ -101,10 +97,6 @@ Feature: Exclusion feature
     Then the user is on the check-your-answers page
     Then the user sees the exclusion submission message
     Then the user submits their return
-    And the user clicks on the Back to your account button
-    Then they are presented with the correct banner for a quarantined trader with no outstanding returns
-    Then the user manually navigates to the 2022-Q3 start page
-    And the user is on the excluded-cannot-use-service page
 
   Scenario: A non-excluded user selects Leave this service from the dashboard
     Given the user accesses the service
@@ -177,7 +169,7 @@ Feature: Exclusion feature
     When the user clicks on the Start your return link
     Then the user is on the 2024-Q1/start page
 
-  Scenario: A user who has been excluded and has no outstanding returns
+  Scenario: A user who has been quarantined and has no outstanding returns
     Given the user accesses the service
     When the user signs in as an Organisation Admin with VAT enrolment 100000026 and strong credentials
     And the user is directed back to the index page
@@ -185,6 +177,8 @@ Feature: Exclusion feature
     And they are shown the correct returns message for no outstanding returns
     And the returns tile shows final return is completed
     And the link to Rejoin this service is not displayed on the dashboard
+    Then the user manually navigates to the 2024-Q2 start page
+    And the user is on the excluded-cannot-use-service page
 
   Scenario: A user who is excluded can cancel their request to leave within the correct timescales
     Given the user accesses the service
