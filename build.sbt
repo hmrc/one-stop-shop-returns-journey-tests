@@ -1,3 +1,5 @@
+import scala.collection.Seq
+
 lazy val testSuite = (project in file("."))
   .disablePlugins(JUnitXmlReportPlugin) //Required to prevent https://github.com/scalatest/scalatest/issues/1427
   .settings(
@@ -9,3 +11,10 @@ lazy val testSuite = (project in file("."))
     //The testOptions from SbtAutoBuildPlugin supports only ScalaTest. Resetting testOptions for Cucumber Tests.
     Test / testOptions := Seq.empty
   )
+  .settings(inConfig(Test)(testSettings)*)
+
+lazy val testSettings = Defaults.testSettings ++ Seq(
+    javaOptions ++= Seq(
+        "-Dlogger.resource=logback.xml"
+    )
+)
