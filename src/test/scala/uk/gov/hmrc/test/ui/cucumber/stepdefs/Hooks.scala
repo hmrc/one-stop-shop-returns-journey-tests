@@ -35,10 +35,10 @@ object Hooks extends ScalaDsl with EN with Browser {
     MongoConnection.dropCachedRegistrations()
 
 //    When strategic returns API is toggled off, these need to be uncommented
-//    MongoConnection.dropCachedVatReturns()
-//    MongoConnection.dropReturns()
-//    MongoConnection.dropCorrections()
-//    MongoConnection.insert(ReturnsData.data, "one-stop-shop-returns", "returns")
+    MongoConnection.dropCachedVatReturns()
+    MongoConnection.dropReturns()
+    MongoConnection.dropCorrections()
+    MongoConnection.insert(ReturnsData.data, "one-stop-shop-returns", "returns")
   }
 
   Before("@Returns") {
