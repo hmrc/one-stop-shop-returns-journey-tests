@@ -18,7 +18,9 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.junit.Assert
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.ExclusionPage
+import uk.gov.hmrc.test.ui.pages.{CommonPage, ExclusionPage}
+
+import java.time.LocalDate
 
 class ExclusionStepDef extends BaseStepDef {
 
@@ -160,6 +162,12 @@ class ExclusionStepDef extends BaseStepDef {
         "We've removed you from this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
       )
     )
+  }
+
+  When("""^the user starts the first return from last year$""") { () =>
+    val lastYear = LocalDate.now().minusYears(1).getYear.toString
+    CommonPage.checkUrl(s"$lastYear-Q1/start")
+    CommonPage.selectAnswer("yes")
   }
 
 }

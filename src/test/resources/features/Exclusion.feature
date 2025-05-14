@@ -9,7 +9,7 @@ Feature: Exclusion feature
     Then they are presented with the correct banner for trader removed from service and has outstanding returns
     Then the user clicks on the Start your return link
     Then they are presented with the regular heading for starting a return
-    And the user answers yes on the 2022-Q1/start page
+    And the user answers starts the first return from last year
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
     Then the user is on the check-your-answers page
@@ -21,7 +21,7 @@ Feature: Exclusion feature
     Then they are presented with the correct banner for trader removed from service and has outstanding returns
     Then the user sees the final return message on the dashboard
     Then the user clicks on the Start your return link
-    And the user answers yes on the 2022-Q1/start page
+    And the user starts the first return from last year
     And the user answers yes on the sales-from-northern-ireland page
     And the user selects Slovenia on the first eu-country-from-northern-ireland page
     And the user ticks the first checkbox on the first eu-vat-rates-from-northern-ireland page
@@ -147,7 +147,7 @@ Feature: Exclusion feature
     And they are shown the correct returns message for outstanding returns
     And the link to Rejoin this service is not displayed on the dashboard
     When the user clicks on the Start your return link
-    Then the user is on the 2022-Q1/start page
+    Then the user starts the first return from last year
 
   Scenario: A user who has been removed from the service and has no outstanding returns
     Given the user accesses the service
