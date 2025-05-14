@@ -28,7 +28,7 @@ class ReturnsStepDef extends BaseStepDef {
   val host: String           = TestConfiguration.url("one-stop-shop-returns-frontend")
   val exclusionsHost: String = TestConfiguration.url("one-stop-shop-exclusions-frontend")
 
-  val lastYear = LocalDate.now().minusYears(1).getYear.toString
+  val lastYear     = LocalDate.now().minusYears(1).getYear.toString
   val fourYearsAgo = LocalDate.now().minusYears(3).getYear.toString
 
   Given("^the user navigates to a previously submitted return$") { () =>

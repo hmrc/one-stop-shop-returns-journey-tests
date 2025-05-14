@@ -9,7 +9,7 @@ Feature: Exclusion feature
     Then they are presented with the correct banner for trader removed from service and has outstanding returns
     Then the user clicks on the Start your return link
     Then they are presented with the regular heading for starting a return
-    And the user answers starts the first return from last year
+    And the user starts the first return from last year
     And the user answers no on the sales-from-northern-ireland page
     And the user answers no on the sales-from-eu page
     Then the user is on the check-your-answers page
@@ -50,7 +50,7 @@ Feature: Exclusion feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 600001212 and strong credentials
     Then they are presented with the correct banner for trader removed from service and has no outstanding returns
-    Then the user manually navigates to the 2022-Q2 start page
+    Then the user navigates to the start your return page
     And the user is on the excluded-cannot-use-service page
 
   Scenario: A user can complete one of their remaining returns with trader exclusion reason 1

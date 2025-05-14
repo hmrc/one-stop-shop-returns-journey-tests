@@ -22,6 +22,8 @@ import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
+import java.time.LocalDate
+
 object ReturnPage extends BrowserDriver with Matchers {
 
   val host: String = TestConfiguration.url("one-stop-shop-returns-frontend")
@@ -31,10 +33,12 @@ object ReturnPage extends BrowserDriver with Matchers {
       .navigate()
       .to(s"$host/your-account")
 
-  def navigateToStartYourReturnPage(): Unit =
+  def navigateToStartYourReturnPage(): Unit = {
+    val lastYear = LocalDate.now().minusYears(1).getYear.toString
     driver
       .navigate()
-      .to(s"$host/2022-Q2/start")
+      .to(s"$host/$lastYear-Q2/start")
+  }
 
   def navigateToPreviouslySubmittedReturn(): Unit =
     driver
