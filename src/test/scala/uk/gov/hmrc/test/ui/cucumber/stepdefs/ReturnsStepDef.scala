@@ -21,10 +21,15 @@ import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.pages._
 
+import java.time.LocalDate
+
 class ReturnsStepDef extends BaseStepDef {
 
   val host: String           = TestConfiguration.url("one-stop-shop-returns-frontend")
   val exclusionsHost: String = TestConfiguration.url("one-stop-shop-exclusions-frontend")
+
+  val lastYear     = LocalDate.now().minusYears(1).getYear.toString
+  val fourYearsAgo = LocalDate.now().minusYears(3).getYear.toString
 
   Given("^the user navigates to a previously submitted return$") { () =>
     ReturnPage.navigateToPreviouslySubmittedReturn()
@@ -202,7 +207,7 @@ class ReturnsStepDef extends BaseStepDef {
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertTrue(
       htmlBody.contains(
-        "You must complete your January to March 2021 return with the countries where you made your sales."
+        s"You must complete your January to March $fourYearsAgo return with the countries where you made your sales."
       )
     )
   }
@@ -219,7 +224,7 @@ class ReturnsStepDef extends BaseStepDef {
 
   Then("""^they are presented with the regular heading for starting a return$""") { () =>
     val htmlH1 = driver.findElement(By.tagName("h1")).getText
-    Assert.assertTrue(htmlH1.equals("Do you want to start your return for 1 January to 31 March 2022?"))
+    Assert.assertTrue(htmlH1.equals(s"Do you want to start your return for 1 January to 31 March $lastYear?"))
   }
 
 }
