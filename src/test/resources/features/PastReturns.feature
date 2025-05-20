@@ -8,8 +8,8 @@ Feature: Past Returns Feature
     Then the user is directed back to the index page
     Then the user clicks on the View past returns link
     Then the user is on the past-returns page
-    Then the user clicks on the July to September 2021 link
-    And the user is on the past-returns/2021-Q3 page
+    Then the user clicks on the July to September for two years ago link
+    And the user is directed to the past return for July to September two years ago
 
   Scenario: A user has no past returns to view
     Given the user accesses the service
@@ -23,8 +23,8 @@ Feature: Past Returns Feature
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
     Then the user is directed back to the index page
-    Then the user manually navigates to the 2021-Q3 start page
-    And the user is on the past-returns/2021-Q3 page
+    Then the user manually attempts to start the return from Q3 two years ago
+    And the user is directed to the past return for July to September two years ago
 
   Scenario: A user is not able view a submitted return for a period over 6 years ago
     Given the user accesses the service

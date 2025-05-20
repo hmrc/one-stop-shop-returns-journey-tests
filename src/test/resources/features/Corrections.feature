@@ -292,9 +292,16 @@ Feature: Corrections Feature
     Then the user is on the check-your-answers page
     Then the user submits their return
 
-
-
-
-
+  Scenario: A user can't correct periods that were due over 3 years ago
+    Given the user accesses the service
+    And the user signs in as an Organisation Admin with VAT enrolment 100000008 and strong credentials
+    Then the user is directed back to the index page
+    Then the user clicks on the Start your return link
+    And the user answers yes on the start page
+    And the user answers no on the sales-from-northern-ireland page
+    And the user answers no on the sales-from-eu page
+    And the user answers yes on the correct-previous-return page
+    Then the user is on the correction-return-period/1 page
+    And the user can only see corrections available for returns that were due within the last three years
 
 

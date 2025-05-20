@@ -30,6 +30,7 @@ class ReturnsStepDef extends BaseStepDef {
 
   val lastYear     = LocalDate.now().minusYears(1).getYear.toString
   val fourYearsAgo = LocalDate.now().minusYears(3).getYear.toString
+  val twoYearsAgo  = LocalDate.now().minusYears(2).getYear.toString
 
   Given("^the user navigates to a previously submitted return$") { () =>
     ReturnPage.navigateToPreviouslySubmittedReturn()
@@ -225,6 +226,14 @@ class ReturnsStepDef extends BaseStepDef {
   Then("""^they are presented with the regular heading for starting a return$""") { () =>
     val htmlH1 = driver.findElement(By.tagName("h1")).getText
     Assert.assertTrue(htmlH1.equals(s"Do you want to start your return for 1 January to 31 March $lastYear?"))
+  }
+
+  Then("""^the user is directed to the past return for July to September two years ago$""") { () =>
+    CommonPage.checkUrl(s"past-returns/$twoYearsAgo-Q3")
+  }
+
+  When("""^the user manually attempts to start the return from Q3 two years ago$""") { () =>
+    ReturnPage.navigateToReturnStartPage(s"$twoYearsAgo-Q3")
   }
 
 }
