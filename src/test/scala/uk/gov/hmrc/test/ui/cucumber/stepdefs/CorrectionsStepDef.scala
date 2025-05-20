@@ -16,8 +16,11 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import org.junit.Assert
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.CommonPage
+
+import java.time.LocalDate
 
 class CorrectionsStepDef extends BaseStepDef {
 
@@ -54,5 +57,93 @@ class CorrectionsStepDef extends BaseStepDef {
     """^the user continues from the vat-payable-check page$"""
   ) { () =>
     CommonPage.driver.findElement(By.id("continue")).click()
+  }
+
+  Then(
+    """^the user can only see corrections available for returns that were due within the last three years$"""
+  ) { () =>
+    val fourYearsAgo  = LocalDate.now().minusYears(4).getYear.toString
+    val threeYearsAgo = LocalDate.now().minusYears(3).getYear.toString
+    val twoYearsAgo   = LocalDate.now().minusYears(2).getYear.toString
+
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+
+    Assert.assertFalse(
+      htmlBody.contains(s"1 January to 31 March $fourYearsAgo")
+    )
+    Assert.assertFalse(
+      htmlBody.contains(s"1 April to 30 June $fourYearsAgo")
+    )
+    Assert.assertFalse(
+      htmlBody.contains(s"1 July to 30 September $fourYearsAgo")
+    )
+    Assert.assertFalse(
+      htmlBody.contains(s"1 October to 31 December $fourYearsAgo")
+    )
+
+    val currentMonth = LocalDate.now().getMonthValue
+
+    currentMonth match {
+      case 1 | 2 | 3 | 4 =>
+        Assert.assertTrue(
+          htmlBody.contains(s"1 January to 31 March $threeYearsAgo")
+        )
+        Assert.assertTrue(
+          htmlBody.contains(s"1 April to 30 June $threeYearsAgo")
+        )
+        Assert.assertTrue(
+          htmlBody.contains(s"1 July to 30 September $threeYearsAgo")
+        )
+        Assert.assertTrue(
+          htmlBody.contains(s"1 October to 31 December $threeYearsAgo")
+        )
+      case 5 | 6 | 7     =>
+        Assert.assertFalse(
+          htmlBody.contains(s"1 January to 31 March $threeYearsAgo")
+        )
+        Assert.assertTrue(
+          htmlBody.contains(s"1 April to 30 June $threeYearsAgo")
+        )
+        Assert.assertTrue(
+          htmlBody.contains(s"1 July to 30 September $threeYearsAgo")
+        )
+        Assert.assertTrue(
+          htmlBody.contains(s"1 October to 31 December $threeYearsAgo")
+        )
+      case 8 | 9 | 10    =>
+        Assert.assertFalse(
+          htmlBody.contains(s"1 January to 31 March $threeYearsAgo")
+        )
+        Assert.assertFalse(
+          htmlBody.contains(s"1 April to 30 June $threeYearsAgo")
+        )
+        Assert.assertTrue(
+          htmlBody.contains(s"1 July to 30 September $threeYearsAgo")
+        )
+        Assert.assertTrue(
+          htmlBody.contains(s"1 October to 31 December $threeYearsAgo")
+        )
+      case 11 | 12       =>
+        Assert.assertFalse(
+          htmlBody.contains(s"1 January to 31 March $threeYearsAgo")
+        )
+        Assert.assertFalse(
+          htmlBody.contains(s"1 April to 30 June $threeYearsAgo")
+        )
+        Assert.assertFalse(
+          htmlBody.contains(s"1 July to 30 September $threeYearsAgo")
+        )
+        Assert.assertTrue(
+          htmlBody.contains(s"1 October to 31 December $threeYearsAgo")
+        )
+      case _             => "not a  valid month"
+    }
+
+    Assert.assertTrue(
+      htmlBody.contains(s"1 January to 31 March $twoYearsAgo")
+    )
+    Assert.assertTrue(
+      htmlBody.contains(s"1 April to 30 June $twoYearsAgo")
+    )
   }
 }
