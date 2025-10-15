@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,12 +44,37 @@ class ReturnsStepDef extends BaseStepDef {
     ReturnPage.paymentsUrl()
   }
 
-  Then("""^the user is directed to the Welsh transition page$""") { () =>
-    driver.getCurrentUrl contains s"$host/no-welsh-service?redirectUrl"
+  Then(
+    """^the user is directed to the (dashboard|start return|continue return|returns history|payments) Welsh transition page$"""
+  ) { (page: String) =>
+    val url =
+      s"$host/no-welsh-service?redirectUrl=%2Fpay-vat-on-goods-sold-to-eu%2Fnorthern-ireland-returns-payments%2F"
+
+    if (page == "dashboard") {
+      CommonPage.checkUrl(
+        s"${url}your-account"
+      )
+    } else if (page == "start return") {
+      CommonPage.checkUrl(
+        s"${url}2021-Q3%2Fstart"
+      )
+    } else if (page == "continue return") {
+      CommonPage.checkUrl(
+        s"${url}2021-Q3%2Freturn-continue"
+      )
+    } else if (page == "returns history") {
+      CommonPage.checkUrl(
+        s"${url}past-returns"
+      )
+    } else {
+      CommonPage.checkUrl(
+        s"${url}outstanding-payments"
+      )
+    }
   }
 
   Then("""^the user is directed back to the index page$""") { () =>
-    driver.getCurrentUrl shouldBe s"$host/your-account"
+    CommonPage.checkUrl(s"$host/your-account")
   }
 
   When(

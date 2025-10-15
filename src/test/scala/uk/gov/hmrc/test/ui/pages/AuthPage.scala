@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,17 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-object AuthPage extends BrowserDriver with Matchers {
+object AuthPage extends BasePage with Matchers {
 
   val authHost: String = TestConfiguration.url("auth-login-stub")
+  val authUrl: String  = s"$authHost/gg-sign-in"
 
-  def goToAuthPage(): Unit =
-    driver
-      .navigate()
-      .to(s"$authHost/gg-sign-in")
-
+  def goToAuthPage(): Unit = {
+    get(authUrl)
+    fluentWait.until(ExpectedConditions.urlContains(authUrl))
+  }
 }

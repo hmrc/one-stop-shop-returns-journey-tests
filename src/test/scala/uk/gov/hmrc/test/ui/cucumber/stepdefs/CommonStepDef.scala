@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,13 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.{CommonPage, ReturnPage}
+import uk.gov.hmrc.test.ui.pages.{AuthPage, CommonPage, ReturnPage}
 import uk.gov.hmrc.test.ui.pages.CommonPage.{clickBackButton, clickContinue, clickSubmit, selectLink}
 
 class CommonStepDef extends BaseStepDef {
 
   Given("^the user accesses the service$") { () =>
-    ReturnPage.goToStartOfJourney()
+    AuthPage.goToAuthPage()
   }
 
   Given("^the user navigates to the start your return page$") { () =>
@@ -113,6 +113,14 @@ class CommonStepDef extends BaseStepDef {
 
   Then("""^the user clicks back on the browser$""") { () =>
     clickBackButton()
+  }
+
+  Given("^the user accesses the returns journey$") { () =>
+    ReturnPage.goToStartOfJourney()
+  }
+
+  When("""^the user is shown the (.*) page$""") { (url: String) =>
+    CommonPage.checkExactUrl(url)
   }
 
 }

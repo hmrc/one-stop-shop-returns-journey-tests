@@ -69,6 +69,7 @@ Feature: Save For Later Feature
     Then the user is on the check-sales-from-eu/1/1 page
     And the user clicks the continue button
     And the user answers no on the add-sales-from-eu-to-eu/1 page
+    And the user is shown the 2021-Q3/add-sales-from-eu page
     And the user answers no on the add-sales-from-eu page
     Then the user is on the check-your-answers page
     Then the user submits their return
@@ -128,7 +129,7 @@ Feature: Save For Later Feature
     And the user enters a different amount of VAT totalling 12345 for the first EU country and the first selected VAT rate on the vat-on-sales-from-northern-ireland page
     Then the user is on the check-sales-from-northern-ireland/1 page
     And the user clicks the continue button
-    Then the user accesses the service
+    Then the user accesses the returns journey
     And the user is directed back to the index page
     And the user clicks on the Continue your return link
     And the user answers yes on the start page
