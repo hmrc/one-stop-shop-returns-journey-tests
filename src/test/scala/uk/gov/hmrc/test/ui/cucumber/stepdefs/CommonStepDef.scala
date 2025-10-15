@@ -17,13 +17,13 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.{CommonPage, ReturnPage}
+import uk.gov.hmrc.test.ui.pages.{AuthPage, CommonPage, ReturnPage}
 import uk.gov.hmrc.test.ui.pages.CommonPage.{clickBackButton, clickContinue, clickSubmit, selectLink}
 
 class CommonStepDef extends BaseStepDef {
 
   Given("^the user accesses the service$") { () =>
-    ReturnPage.goToStartOfJourney()
+    AuthPage.goToAuthPage()
   }
 
   Given("^the user navigates to the start your return page$") { () =>

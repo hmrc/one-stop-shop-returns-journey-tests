@@ -118,8 +118,11 @@ object CommonPage extends BasePage with Matchers {
       s"${nextQuarter.format(DateTimeFormatter.ofPattern("d MMMM yyyy"))}."
   }
 
-  def checkRejoinUrl(): Unit =
-    getCurrentUrl should startWith(s"$exclusionsHost/rejoin-already-made-sales")
+  def checkRejoinUrl(): Unit = {
+    val rejoinUrl = s"$registrationHost/rejoin-already-made-sales"
+    fluentWait.until(ExpectedConditions.urlContains(rejoinUrl))
+    getCurrentUrl should startWith(rejoinUrl)
+  }
 
   def clickBackButton(): Unit =
     Driver.instance

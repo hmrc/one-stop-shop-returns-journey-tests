@@ -16,14 +16,17 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object AuthPage extends BasePage with Matchers {
 
   val authHost: String = TestConfiguration.url("auth-login-stub")
+  val authUrl: String  = s"$authHost/gg-sign-in"
 
-  def goToAuthPage(): Unit =
-    get(s"$authHost/gg-sign-in")
-
+  def goToAuthPage(): Unit = {
+    get(authUrl)
+    fluentWait.until(ExpectedConditions.urlContains(authUrl))
+  }
 }

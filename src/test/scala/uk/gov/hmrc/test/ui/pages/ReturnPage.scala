@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.junit.Assert
 import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
@@ -43,7 +44,7 @@ object ReturnPage extends BasePage with Matchers {
     get(s"$host/past-returns")
 
   def paymentsUrl(): Unit =
-    getCurrentUrl should contain("pay/select-payment-amount?traceId=")
+    fluentWait.until(ExpectedConditions.urlContains("pay/select-payment-amount?traceId="))
 
   def navigateToReturnStartPage(period: String): Unit =
     get(s"$host/$period/start")

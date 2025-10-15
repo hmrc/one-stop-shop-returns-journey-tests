@@ -7,6 +7,7 @@ Feature: BTA Feature
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
     Then the user is directed back to the index page
     Then the user manually navigates to the your-account-from-bta link
+    Then the user is directed back to the index page
     Then the user clicks on the Start your return link
     And the user answers yes on the start page
     And the user answers no on the sales-from-northern-ireland page
@@ -78,7 +79,7 @@ Feature: BTA Feature
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
     Then the user is directed back to the index page
     Then the user manually navigates to the your-account-from-bta?lang=cy link
-    And the user is directed to the Welsh transition page
+    And the user is directed to the dashboard Welsh transition page
     Then the user clicks the continue button
     And the user is on the your-account page
 
@@ -87,7 +88,7 @@ Feature: BTA Feature
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
     Then the user is directed back to the index page
     Then the user manually navigates to the start-your-return-from-bta/2021-Q3?lang=cy link
-    And the user is directed to the Welsh transition page
+    And the user is directed to the start return Welsh transition page
     Then the user clicks the continue button
     And the user is on the start page
 
@@ -105,7 +106,7 @@ Feature: BTA Feature
     And the user signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
     Then the user is directed back to the index page
     Then the user manually navigates to the continue-return-from-bta/2021-Q3?lang=cy link
-    And the user is directed to the Welsh transition page
+    And the user is directed to the continue return Welsh transition page
     Then the user clicks the continue button
     Then the user is on the return-continue page
 
@@ -114,7 +115,7 @@ Feature: BTA Feature
     And the user signs in as an Organisation Admin with VAT enrolment 100000003 and strong credentials
     Then the user is directed back to the index page
     Then the user manually navigates to the returns-history-from-bta?lang=cy link
-    And the user is directed to the Welsh transition page
+    And the user is directed to the returns history Welsh transition page
     Then the user clicks the continue button
     Then the user is on the past-returns page
 
@@ -130,7 +131,7 @@ Feature: BTA Feature
     And the user signs in as an Organisation Admin with VAT enrolment 444444444 and strong credentials
     Then the user is directed back to the index page
     Then the user manually navigates to the payments-from-bta?lang=cy link
-    And the user is directed to the Welsh transition page
+    And the user is directed to the payments Welsh transition page
     Then the user clicks the continue button
     And the user is on the outstanding-payments page
 
