@@ -29,6 +29,7 @@ object CommonPage extends BasePage with Matchers {
 
   val exclusionsHost: String   = TestConfiguration.url("one-stop-shop-exclusions-frontend")
   val registrationHost: String = TestConfiguration.url("one-stop-shop-registration-frontend")
+  val returnsHost: String      = TestConfiguration.url("one-stop-shop-returns-frontend")
 
   def checkUrl(url: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(url))
@@ -128,5 +129,10 @@ object CommonPage extends BasePage with Matchers {
     Driver.instance
       .navigate()
       .back()
+
+  def checkExactUrl(url: String): Unit = {
+    fluentWait.until(ExpectedConditions.urlToBe(s"$returnsHost/$url"))
+    getCurrentUrl should endWith(url)
+  }
 
 }

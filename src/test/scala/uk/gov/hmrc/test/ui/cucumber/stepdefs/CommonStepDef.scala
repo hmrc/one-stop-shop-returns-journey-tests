@@ -115,4 +115,12 @@ class CommonStepDef extends BaseStepDef {
     clickBackButton()
   }
 
+  Given("^the user accesses the returns journey$") { () =>
+    ReturnPage.goToStartOfJourney()
+  }
+
+  When("""^the user is shown the (.*) page$""") { (url: String) =>
+    CommonPage.checkExactUrl(url)
+  }
+
 }
