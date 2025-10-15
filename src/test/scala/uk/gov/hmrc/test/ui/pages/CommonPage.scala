@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,64 +18,64 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
-import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.selenium.webdriver.Driver
 
 import java.time.format.DateTimeFormatter
 import java.time.{Clock, LocalDate}
 
-object CommonPage extends BrowserDriver with Matchers {
+object CommonPage extends BasePage with Matchers {
 
   val exclusionsHost: String   = TestConfiguration.url("one-stop-shop-exclusions-frontend")
   val registrationHost: String = TestConfiguration.url("one-stop-shop-registration-frontend")
 
-  def checkUrl(url: String): Unit =
-    driver.getCurrentUrl should endWith(url)
+  def checkUrl(url: String): Unit = {
+    fluentWait.until(ExpectedConditions.urlContains(url))
+    getCurrentUrl should endWith(url)
+  }
 
   def selectAnswer(data: String): Unit = {
     data match {
-      case "yes" => driver.findElement(By.id("value")).click()
-      case "no"  => driver.findElement(By.id("value-no")).click()
+      case "yes" => click(By.id("value"))
+      case "no"  => click(By.id("value-no"))
       case _     => throw new Exception("Option doesn't exist")
     }
     clickContinue()
   }
 
   def enterData(inputId: String = "value", data: String): Unit =
-    driver.findElement(By.id(inputId)).sendKeys(data)
+    sendKeys(By.id(inputId), data)
 
   def submitForm(): Unit =
     clickContinue()
 
   def tickCheckbox(checkbox: String): Unit =
     checkbox match {
-      case "first"  => driver.findElement(By.id("value_0")).click()
-      case "second" => driver.findElement(By.id("value_1")).click()
+      case "first"  => click(By.id("value_0"))
+      case "second" => click(By.id("value_1"))
       case _        => throw new Exception("Checkbox doesn't exist")
     }
 
   def selectValueAutocomplete(data: String): Unit = {
     val inputId = "value"
-    driver.findElement(By.id(inputId)).sendKeys(data)
+    sendKeys(By.id(inputId), data)
     waitForElement(By.id(inputId))
-    driver.findElement(By.cssSelector("li#value__option--0")).click()
+    click(By.cssSelector("li#value__option--0"))
     clickContinue()
   }
 
   def waitForElement(by: By) =
-    new FluentWait(driver).until {
-      ExpectedConditions.presenceOfElementLocated(by)
-    }
+    new FluentWait(Driver.instance).until(ExpectedConditions.presenceOfElementLocated(by))
 
   def clickContinue(): Unit =
-    driver.findElement(By.id("continue")).click()
+    click(By.id("continue"))
 
   def clickSubmit(): Unit =
-    driver.findElement(By.id("submit")).click()
+    click(By.id("submit"))
 
   def selectLink(link: String): Unit =
-    driver.findElement(By.cssSelector(s"a[href*=$link]")).click()
+    click(By.cssSelector(s"a[href*=$link]"))
 
   def checkDoubleIndexURL(firstIndex: String, secondIndex: String, urlPage: String, appendText: String): Unit =
     (firstIndex, secondIndex) match {
@@ -119,10 +119,10 @@ object CommonPage extends BrowserDriver with Matchers {
   }
 
   def checkRejoinUrl(): Unit =
-    driver.getCurrentUrl equals s"$exclusionsHost/rejoin-already-made-sales"
+    getCurrentUrl should startWith(s"$exclusionsHost/rejoin-already-made-sales")
 
   def clickBackButton(): Unit =
-    driver
+    Driver.instance
       .navigate()
       .back()
 

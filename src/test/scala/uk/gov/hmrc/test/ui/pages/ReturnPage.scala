@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,52 +19,42 @@ package uk.gov.hmrc.test.ui.pages
 import org.junit.Assert
 import org.openqa.selenium.By
 import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import java.time.LocalDate
 
-object ReturnPage extends BrowserDriver with Matchers {
+object ReturnPage extends BasePage with Matchers {
 
   val host: String = TestConfiguration.url("one-stop-shop-returns-frontend")
 
   def goToStartOfJourney(): Unit =
-    driver
-      .navigate()
-      .to(s"$host/your-account")
+    get(s"$host/your-account")
 
   def navigateToStartYourReturnPage(): Unit = {
     val lastYear = LocalDate.now().minusYears(1).getYear.toString
-    driver
-      .navigate()
-      .to(s"$host/$lastYear-Q2/start")
+    get(s"$host/$lastYear-Q2/start")
   }
 
   def navigateToPreviouslySubmittedReturn(): Unit =
-    driver
-      .navigate()
-      .to(s"$host/past-returns/2022-Q1")
+    get(s"$host/past-returns/2022-Q1")
 
   def navigateToPastReturnsHistory(): Unit =
-    driver
-      .navigate()
-      .to(s"$host/past-returns")
+    get(s"$host/past-returns")
 
   def paymentsUrl(): Unit =
-    driver.getCurrentUrl should include("pay/select-payment-amount?traceId=")
+    getCurrentUrl should contain("pay/select-payment-amount?traceId=")
 
   def navigateToReturnStartPage(period: String): Unit =
-    driver
-      .navigate()
-      .to(s"$host/$period/start")
+    get(s"$host/$period/start")
 
   def checkTransferringToOtherMSIDPastReturn(): Unit = {
-    val htmlH1 = driver.findElement(By.tagName("h1")).getText
+    val htmlH1 = Driver.instance.findElement(By.tagName("h1")).getText
     Assert.assertTrue(htmlH1.contains("1 July to 8 September 2023"))
   }
 
   def checkTransferringFromOtherMSIDPastReturn(): Unit = {
-    val htmlH1 = driver.findElement(By.tagName("h1")).getText
+    val htmlH1 = Driver.instance.findElement(By.tagName("h1")).getText
     Assert.assertTrue(htmlH1.contains("9 June to 30 June 2023"))
   }
 
@@ -75,14 +65,10 @@ object ReturnPage extends BrowserDriver with Matchers {
       case "Q3 2018" => "2018-Q3"
       case _         => "period doesn't exist"
     }
-    driver
-      .navigate()
-      .to(s"$host/past-returns/$period")
+    get(s"$host/past-returns/$period")
   }
 
   def navigateToSecureStartReturn(): Unit =
-    driver
-      .navigate()
-      .to(s"$host/start-return")
+    get(s"$host/start-return")
 
 }

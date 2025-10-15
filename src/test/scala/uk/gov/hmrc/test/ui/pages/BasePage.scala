@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,17 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.scalatest.matchers.should.Matchers
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.support.ui.{FluentWait, Wait}
+import uk.gov.hmrc.selenium.component.PageObject
+import uk.gov.hmrc.selenium.webdriver.Driver
 
-trait BasePage extends Matchers {
-  val url: String
+import java.time.Duration
+
+trait BasePage extends PageObject {
+
+  def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
+    .withTimeout(Duration.ofSeconds(3))
+    .pollingEvery(Duration.ofMillis(200))
+
 }

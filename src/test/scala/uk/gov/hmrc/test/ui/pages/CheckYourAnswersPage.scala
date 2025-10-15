@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,12 @@ package uk.gov.hmrc.test.ui.pages
 import org.junit.Assert
 import org.openqa.selenium.By
 import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import uk.gov.hmrc.selenium.webdriver.Driver
 
-object CheckYourAnswersPage extends BrowserDriver with Matchers {
+object CheckYourAnswersPage extends BasePage with Matchers {
 
   def checkCYAText(): Unit = {
-    val htmlBody = driver.findElement(By.tagName("body")).getText
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
     Assert.assertFalse(htmlBody.contains("Sales excluding VAT"))
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import org.junit.Assert
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.CommonPage
+import uk.gov.hmrc.test.ui.pages.CommonPage.clickContinue
 
 import java.time.LocalDate
 
@@ -48,7 +49,6 @@ class CorrectionsStepDef extends BaseStepDef {
   When(
     """^the user changes the answer to (.*)$"""
   ) { (answer: String) =>
-    CommonPage.driver.findElement(By.id("value")).clear()
     CommonPage.enterData("value", answer)
     CommonPage.submitForm()
   }
@@ -56,7 +56,7 @@ class CorrectionsStepDef extends BaseStepDef {
   When(
     """^the user continues from the vat-payable-check page$"""
   ) { () =>
-    CommonPage.driver.findElement(By.id("continue")).click()
+    clickContinue()
   }
 
   Then(
