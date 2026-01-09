@@ -29,7 +29,7 @@ class ReturnsStepDef extends BaseStepDef {
   val exclusionsHost: String = TestConfiguration.url("one-stop-shop-exclusions-frontend")
 
   val lastYear     = LocalDate.now().minusYears(1).getYear.toString
-  val fourYearsAgo = LocalDate.now().minusYears(3).getYear.toString
+  val fourYearsAgo = LocalDate.now().minusYears(4).getYear.toString
   val twoYearsAgo  = LocalDate.now().minusYears(2).getYear.toString
 
   Given("^the user navigates to a previously submitted return$") { () =>
@@ -231,6 +231,7 @@ class ReturnsStepDef extends BaseStepDef {
     """^a dashboard message is displayed for a return outstanding for more than 3 years$"""
   ) { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
+
     Assert.assertTrue(
       htmlBody.contains(
         s"You must complete your January to March $fourYearsAgo return with the countries where you made your sales."
