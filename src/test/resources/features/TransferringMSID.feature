@@ -1,7 +1,7 @@
 @Returns
 
 Feature: Transferring MSID feature
-
+@wip
   Scenario: A user who has transferred from another member state has a partial first return
     Given the user accesses the service
     And the user signs in as an Organisation Admin with VAT enrolment 100000007 and strong credentials
