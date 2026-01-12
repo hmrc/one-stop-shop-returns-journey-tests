@@ -201,6 +201,7 @@ Feature: Returns Feature
   Scenario: A user can access their next available return via the secure messages link
     Given the user accesses the service
     And the assistant signs in as an Organisation Admin with VAT enrolment 100000002 and strong credentials
+    And the user is on the your-account page
     When the user accesses the start return link via secure messages
     Then the user is on the 2021-Q3/start page
 
