@@ -68,6 +68,8 @@ class CorrectionsStepDef extends BaseStepDef {
 
     val htmlBody = driver.findElement(By.tagName("body")).getText
 
+    val currentMonth = LocalDate.now().getMonthValue
+
     Assert.assertFalse(
       htmlBody.contains(s"1 January to 31 March $fourYearsAgo")
     )
@@ -77,11 +79,16 @@ class CorrectionsStepDef extends BaseStepDef {
     Assert.assertFalse(
       htmlBody.contains(s"1 July to 30 September $fourYearsAgo")
     )
-    Assert.assertFalse(
-      htmlBody.contains(s"1 October to 31 December $fourYearsAgo")
-    )
 
-    val currentMonth = LocalDate.now().getMonthValue
+    if (currentMonth == 1) {
+      Assert.assertTrue(
+        htmlBody.contains(s"1 October to 31 December $fourYearsAgo")
+      )
+    } else {
+      Assert.assertFalse(
+        htmlBody.contains(s"1 October to 31 December $fourYearsAgo")
+      )
+    }
 
     currentMonth match {
       case 1 | 2 | 3 | 4 =>
