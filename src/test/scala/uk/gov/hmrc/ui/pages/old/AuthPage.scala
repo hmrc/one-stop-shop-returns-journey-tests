@@ -14,13 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.driver
+package uk.gov.hmrc.ui.pages.old
 
-import org.openqa.selenium.WebDriver
-import uk.gov.hmrc.selenium.webdriver.Driver
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.scalatest.matchers.should.Matchers
 
-trait BrowserDriver {
+object AuthPage extends BasePage with Matchers {
 
-  implicit def driver: WebDriver = Driver.instance
+  val authHost: String = TestConfiguration.url("auth-login-stub")
+  val authUrl: String  = s"$authHost/gg-sign-in"
 
+  def goToAuthPage(): Unit = {
+    get(authUrl)
+    fluentWait.until(ExpectedConditions.urlContains(authUrl))
+  }
 }

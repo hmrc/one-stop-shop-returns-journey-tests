@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.data
+package uk.gov.hmrc.ui.data
 
 object ReturnsData {
   val data: List[String] =

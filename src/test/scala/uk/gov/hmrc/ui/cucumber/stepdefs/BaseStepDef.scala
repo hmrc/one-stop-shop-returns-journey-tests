@@ -14,17 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.runner
+package uk.gov.hmrc.ui.cucumber.stepdefs
 
-import io.cucumber.junit.Cucumber
-import io.cucumber.junit.CucumberOptions
-import org.junit.runner.RunWith
+import io.cucumber.scala.{EN, ScalaDsl}
+import org.scalatest.concurrent.Eventually
+import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.ui.driver.BrowserDriver
 
-@RunWith(classOf[Cucumber])
-@CucumberOptions(
-  features = Array("src/test/resources/features"),
-  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json", "junit:target/test-reports/Runner.xml"),
-  tags = "@Returns"
-)
-class Runner {}
+trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers

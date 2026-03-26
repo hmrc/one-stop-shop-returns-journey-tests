@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.ui.pages
 
-import org.openqa.selenium.WebDriver
 import org.openqa.selenium.support.ui.{FluentWait, Wait}
+import org.openqa.selenium.{By, WebDriver}
 import uk.gov.hmrc.selenium.component.PageObject
 import uk.gov.hmrc.selenium.webdriver.Driver
 
@@ -28,5 +28,8 @@ trait BasePage extends PageObject {
   def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
     .withTimeout(Duration.ofSeconds(3))
     .pollingEvery(Duration.ofMillis(200))
+
+  def clickCssSelector(link: String): Unit =
+    click(By.cssSelector(s"a[href*=$link]"))
 
 }

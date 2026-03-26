@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.stepdefs
+package uk.gov.hmrc.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.BTAPage
+import uk.gov.hmrc.ui.pages.old.BTAPage
 
 class BTAStepDef extends BaseStepDef {
 

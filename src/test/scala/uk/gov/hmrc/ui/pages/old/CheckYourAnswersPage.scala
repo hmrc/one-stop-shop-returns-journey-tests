@@ -14,16 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.ui.pages.old
 
+import org.junit.Assert
+import org.openqa.selenium.By
 import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import uk.gov.hmrc.selenium.webdriver.Driver
 
-object BTAPage extends BasePage with Matchers {
+object CheckYourAnswersPage extends BasePage with Matchers {
 
-  val host: String = TestConfiguration.url("one-stop-shop-returns-frontend")
-
-  def navigateToBtaLink(link: String): Unit =
-    get(s"$host/test-only/$link")
+  def checkCYAText(): Unit = {
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    Assert.assertFalse(htmlBody.contains("Sales excluding VAT"))
+  }
 
 }

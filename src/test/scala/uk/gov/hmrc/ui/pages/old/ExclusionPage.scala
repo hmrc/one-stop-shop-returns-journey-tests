@@ -14,16 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.runner
+package uk.gov.hmrc.ui.pages.old
 
-import io.cucumber.junit.{Cucumber, CucumberOptions}
-import org.junit.runner.RunWith
+import org.scalatest.matchers.should.Matchers
 
-@RunWith(classOf[Cucumber])
-@CucumberOptions(
-  features = Array("src/test/resources/features"),
-  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json", "junit:target/test-reports/Runner.xml"),
-  tags = "@wip"
-)
-class WipRunner {}
+object ExclusionPage extends BasePage with Matchers {
+
+  val exclusionsHost: String = TestConfiguration.url("one-stop-shop-exclusions-frontend")
+
+  def goToExclusionsJourney(): Unit =
+    get(exclusionsHost)
+
+  def checkExclusionsUrl(): Unit =
+    getCurrentUrl should startWith(exclusionsHost)
+
+}

@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.ui.pages.old
 
 import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object ExclusionPage extends BasePage with Matchers {
+object BTAPage extends BasePage with Matchers {
 
-  val exclusionsHost: String = TestConfiguration.url("one-stop-shop-exclusions-frontend")
+  val host: String = TestConfiguration.url("one-stop-shop-returns-frontend")
 
-  def goToExclusionsJourney(): Unit =
-    get(exclusionsHost)
-
-  def checkExclusionsUrl(): Unit =
-    getCurrentUrl should startWith(exclusionsHost)
+  def navigateToBtaLink(link: String): Unit =
+    get(s"$host/test-only/$link")
 
 }

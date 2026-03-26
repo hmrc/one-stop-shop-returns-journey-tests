@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.stepdefs
+package uk.gov.hmrc.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.{CheckYourAnswersPage, CommonPage}
+import uk.gov.hmrc.ui.pages.old.{CheckYourAnswersPage, CommonPage}
 
 class CheckYourAnswersStepDef extends BaseStepDef {
 

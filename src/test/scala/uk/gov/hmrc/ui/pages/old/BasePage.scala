@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.ui.pages.old
 
-import org.openqa.selenium.support.ui.ExpectedConditions
-import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.support.ui.{FluentWait, Wait}
+import uk.gov.hmrc.selenium.component.PageObject
+import uk.gov.hmrc.selenium.webdriver.Driver
 
-object AuthPage extends BasePage with Matchers {
+import java.time.Duration
 
-  val authHost: String = TestConfiguration.url("auth-login-stub")
-  val authUrl: String  = s"$authHost/gg-sign-in"
+trait BasePage extends PageObject {
 
-  def goToAuthPage(): Unit = {
-    get(authUrl)
-    fluentWait.until(ExpectedConditions.urlContains(authUrl))
-  }
+  def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
+    .withTimeout(Duration.ofSeconds(3))
+    .pollingEvery(Duration.ofMillis(200))
+
 }
