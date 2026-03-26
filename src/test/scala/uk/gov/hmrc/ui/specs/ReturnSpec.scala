@@ -14,11 +14,23 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.cucumber.stepdefs
+package uk.gov.hmrc.ui.specs
 
-import io.cucumber.scala.{EN, ScalaDsl}
-import org.scalatest.concurrent.Eventually
-import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.ui.driver.BrowserDriver
+import uk.gov.hmrc.ui.pages.*
 
-trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers
+class ReturnSpec extends BaseSpec {
+
+  private val dashboard = Dashboard
+  private val auth      = Auth
+
+  Feature("Dashboard journeys") {
+
+    Scenario("Trader accesses the IOSS Returns Service") {
+
+      Given("the trader accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+    }
+  }
+}

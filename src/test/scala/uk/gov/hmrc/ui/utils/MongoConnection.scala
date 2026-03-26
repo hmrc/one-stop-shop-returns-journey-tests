@@ -16,12 +16,12 @@
 
 package uk.gov.hmrc.ui.utils
 
-import org.mongodb.scala.MongoClient
+import org.mongodb.scala.{MongoClient, SingleObservableFuture}
 import org.mongodb.scala.bson.collection.immutable.Document
 import org.mongodb.scala.model.Filters
 
 import scala.concurrent.Await
-import scala.concurrent.duration._
+import scala.concurrent.duration.*
 
 object MongoConnection {
 
