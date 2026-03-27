@@ -22,6 +22,7 @@ import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import org.scalatest.matchers.should.Matchers.*
 import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.selenium.webdriver.Driver
+import uk.gov.hmrc.ui.pages.Auth.fluentWait
 
 import java.time.{Clock, LocalDate}
 import java.time.format.DateTimeFormatter
@@ -52,6 +53,15 @@ object Dashboard extends BasePage {
     fluentWait.until(ExpectedConditions.urlContains(page))
     getCurrentUrl should startWith(s"$registrationUrl$registrationJourneyUrl")
     getCurrentUrl should endWith(page)
+  }
+
+  def checkExternalServiceUrl(page: String): Unit = {
+    fluentWait.until(ExpectedConditions.urlContains(page))
+    if (page == "business-account") {
+      getCurrentUrl should endWith(page)
+    } else {
+      getCurrentUrl.contains(page)
+    }
   }
 
   def checkProblemPage(): Unit = {
