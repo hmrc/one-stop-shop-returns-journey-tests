@@ -23,6 +23,9 @@ import org.scalatest.matchers.should.Matchers.*
 import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.selenium.webdriver.Driver
 
+import java.time.{Clock, LocalDate}
+import java.time.format.DateTimeFormatter
+
 object Dashboard extends BasePage {
 
   private val dashboardUrl: String        =
@@ -126,4 +129,54 @@ object Dashboard extends BasePage {
 
   def navigateToSecureStartReturn(): Unit =
     get(s"$dashboardUrl$dashboardJourneyUrl/start-return")
+
+  def navigateToReturnStartPage(period: String): Unit = {
+    val lastYear = LocalDate.now().minusYears(1).getYear.toString
+
+    val urlPeriod = if (period == "current") {
+      currentPeriod()
+    } else if (period == "excluded") {
+      s"$lastYear-Q2"
+    } else {
+      period
+    }
+
+    get(s"$dashboardUrl$dashboardJourneyUrl/$urlPeriod/start")
+  }
+
+  private def nextQuarter: LocalDate = {
+    val today                    = LocalDate.now(Clock.systemUTC())
+    val endMonthOfQuarter        = (((today.getMonthValue - 1) / 3) + 1) * 3
+    val dateInLastMonthOfQuarter = today.withMonth(endMonthOfQuarter)
+    val lastDayOfCurrentQuarter  = dateInLastMonthOfQuarter.withDayOfMonth(dateInLastMonthOfQuarter.lengthOfMonth)
+
+    lastDayOfCurrentQuarter.plusDays(1)
+  }
+
+  def generateNextAvailableReturn(): String = {
+    val today               = LocalDate.now()
+    val currentQuarterStart = nextQuarter.minusMonths(3)
+    val currentQuarterEnd   = today.withMonth(currentQuarterStart.getMonthValue).plusMonths(2)
+
+    s"You can complete your " +
+      s"${currentQuarterStart.format(DateTimeFormatter.ofPattern("MMMM"))} to " +
+      s"${currentQuarterEnd.format(DateTimeFormatter.ofPattern("MMMM yyyy"))} return from " +
+      s"${nextQuarter.format(DateTimeFormatter.ofPattern("d MMMM yyyy"))}."
+  }
+
+  def nextAvailableReturnDueMessage(): Unit = {
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    Assert.assertTrue(htmlBody.contains(generateNextAvailableReturn()))
+  }
+
+  def getQuarter(month: Int): String =
+    month match {
+      case 1 | 2 | 3    => "Q1"
+      case 4 | 5 | 6    => "Q2"
+      case 7 | 8 | 9    => "Q3"
+      case 10 | 11 | 12 => "Q4"
+    }
+
+  def currentPeriod(): String =
+    s"${LocalDate.now().getYear}-${getQuarter(LocalDate.now().getMonthValue)}"
 }

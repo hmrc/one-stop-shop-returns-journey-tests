@@ -23,7 +23,7 @@ class ReturnSpec extends BaseSpec {
   private val dashboard = Dashboard
   private val auth      = Auth
 
-  Feature("Dashboard journeys") {
+  Feature("Returns journeys") {
 
     Scenario("User submits an IOSS return with only sales from NI") {
 
@@ -534,7 +534,5 @@ class ReturnSpec extends BaseSpec {
       Then("the user is on the 2021-Q3/start page")
       dashboard.checkJourneyUrl("2021-Q3/start")
     }
-
-//Assistant user scenario - required or not?
   }
 }

@@ -128,7 +128,7 @@ object MongoConnection {
     dropRecord("one-stop-shop-returns", "saved-user-answers", "100000002")
 //    dropRecord("one-stop-shop-returns", "saved-user-answers", "100000003")
 //    dropRecord("one-stop-shop-returns", "saved-user-answers", "100000004")
-//    dropRecord("one-stop-shop-returns", "saved-user-answers", "100000005")
+  dropRecord("one-stop-shop-returns", "saved-user-answers", "100000005")
   dropRecord("one-stop-shop-returns", "saved-user-answers", "100000006")
 //    dropRecord("one-stop-shop-returns", "saved-user-answers", "100000007")
 //    dropRecord("one-stop-shop-returns", "saved-user-answers", "444444444")
@@ -144,7 +144,7 @@ object MongoConnection {
   dropRecord("one-stop-shop-returns", "saved-user-answers", "783478423")
 //    dropRecord("one-stop-shop-returns", "saved-user-answers", "777777771")
 //    dropRecord("one-stop-shop-returns", "saved-user-answers", "600151515")
-//    dropRecord("one-stop-shop-returns", "saved-user-answers", "600001212")
+  dropRecord("one-stop-shop-returns", "saved-user-answers", "600001212")
 //    dropRecord("one-stop-shop-returns", "saved-user-answers", "100000077")
 //    dropRecord("one-stop-shop-returns", "saved-user-answers", "600001515")
 
