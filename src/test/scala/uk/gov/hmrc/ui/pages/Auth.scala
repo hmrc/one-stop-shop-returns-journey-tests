@@ -121,6 +121,10 @@ object Auth extends BasePage {
     }
 
     click(By.cssSelector("Input[value='Submit']"))
+
+    if (vrn == "777777771") {
+      fluentWait.until(ExpectedConditions.urlContains("delete-all-fixed-establishment"))
+    }
   }
 
   def retrieveCredId(): String =

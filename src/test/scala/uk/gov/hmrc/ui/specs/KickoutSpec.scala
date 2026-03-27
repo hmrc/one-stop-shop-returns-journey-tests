@@ -21,7 +21,7 @@ import uk.gov.hmrc.ui.pages.*
 class KickoutSpec extends BaseSpec {
 
   private val dashboard = Dashboard
-  private val auth = Auth
+  private val auth      = Auth
 
   Feature("Kickout journeys") {
 
@@ -118,6 +118,100 @@ class KickoutSpec extends BaseSpec {
 
       And("the user is on the excluded-cannot-use-service page")
       dashboard.checkJourneyUrl("excluded-cannot-use-service")
+    }
+
+    Scenario("An user who has changed VAT group from No to Yes is unable to start a return") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("777777771", "Organisation", "hasOSSEnrolment", "dashboard")
+
+      Then("the user is on the delete-all-fixed-establishment page")
+      dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
+
+      When("the user manually navigates to the 2022-Q3 start page")
+      dashboard.navigateToReturnStartPage("2022-Q3")
+
+      Then("the user is on the delete-all-fixed-establishment page")
+      dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
+    }
+
+    Scenario("An user who has changed VAT group from No to Yes is unable to start a return via BTA") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("777777771", "Organisation", "hasOSSEnrolment", "dashboard")
+
+      Then("the user is on the delete-all-fixed-establishment page")
+      dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
+
+      When("the user manually navigates to the start-your-return-from-bta/2022-Q3 start page")
+      dashboard.navigateToBtaLink("start-your-return-from-bta/2022-Q3")
+
+      Then("the user is on the delete-all-fixed-establishment page")
+      dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
+    }
+
+    Scenario("An user who has changed VAT group from No to Yes is unable to access a previously submitted return") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("777777771", "Organisation", "hasOSSEnrolment", "dashboard")
+
+      Then("the user is on the delete-all-fixed-establishment page")
+      dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
+
+      When("the user manually navigates to a previously submitted return")
+      dashboard.navigateToPreviouslySubmittedReturn()
+
+      Then("the user is on the delete-all-fixed-establishment page")
+      dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
+    }
+
+    Scenario("An user who has changed VAT group from No to Yes is unable to access past returns history") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("777777771", "Organisation", "hasOSSEnrolment", "dashboard")
+
+      Then("the user is on the delete-all-fixed-establishment page")
+      dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
+
+      When("the user manually navigates to past returns history")
+      dashboard.navigateToPastReturnsHistory()
+
+      Then("the user is on the delete-all-fixed-establishment page")
+      dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
+    }
+
+    Scenario("An user who has changed VAT group from No to Yes is unable to access past returns history via BTA") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("777777771", "Organisation", "hasOSSEnrolment", "dashboard")
+
+      Then("the user is on the delete-all-fixed-establishment page")
+      dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
+
+      When("the user manually navigates to returns-history-from-bta link")
+      dashboard.navigateToBtaLink("returns-history-from-bta")
+
+      Then("the user is on the delete-all-fixed-establishment page")
+      dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
+    }
+
+    Scenario("A user has no available returns to start after clicking the start return link via secure messages") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000005", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user accesses the start return link via secure messages")
+      dashboard.navigateToSecureStartReturn()
+
+      Then("the user is on the no-returns-due page")
+      dashboard.checkJourneyUrl("no-returns-due")
     }
   }
 }

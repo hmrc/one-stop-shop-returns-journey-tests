@@ -32,6 +32,10 @@ object Dashboard extends BasePage {
     TestEnvironment.url("one-stop-shop-returns-frontend")
   private val dashboardJourneyUrl: String = "/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments"
 
+  private val registrationUrl: String        =
+    TestEnvironment.url("one-stop-shop-registration-frontend")
+  private val registrationJourneyUrl: String = "/pay-vat-on-goods-sold-to-eu/northern-ireland-register"
+
   def goToDashboardJourney(): Unit =
     get(dashboardUrl + dashboardJourneyUrl)
 
@@ -41,6 +45,12 @@ object Dashboard extends BasePage {
       fluentWait.until(ExpectedConditions.urlMatches("^((?!add-sales-from-eu-to-eu).)*$"))
     }
     getCurrentUrl should startWith(s"$dashboardUrl$dashboardJourneyUrl")
+    getCurrentUrl should endWith(page)
+  }
+
+  def checkRegistrationJourneyUrl(page: String): Unit = {
+    fluentWait.until(ExpectedConditions.urlContains(page))
+    getCurrentUrl should startWith(s"$registrationUrl$registrationJourneyUrl")
     getCurrentUrl should endWith(page)
   }
 
@@ -179,4 +189,13 @@ object Dashboard extends BasePage {
 
   def currentPeriod(): String =
     s"${LocalDate.now().getYear}-${getQuarter(LocalDate.now().getMonthValue)}"
+
+  def navigateToBtaLink(link: String): Unit =
+    get(s"$dashboardUrl$dashboardJourneyUrl/test-only/$link")
+
+  def navigateToPreviouslySubmittedReturn(): Unit =
+    get(s"$dashboardUrl$dashboardJourneyUrl/past-returns/2022-Q1")
+
+  def navigateToPastReturnsHistory(): Unit =
+    get(s"$dashboardUrl$dashboardJourneyUrl/past-returns")
 }
