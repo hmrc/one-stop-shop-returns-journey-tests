@@ -34,6 +34,9 @@ object Dashboard extends BasePage {
 
   def checkJourneyUrl(page: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(page))
+    if (page == "add-sales-from-eu") {
+      fluentWait.until(ExpectedConditions.urlMatches("^((?!add-sales-from-eu-to-eu).)*$"))
+    }
     getCurrentUrl should startWith(s"$dashboardUrl$dashboardJourneyUrl")
     getCurrentUrl should endWith(page)
   }
@@ -113,4 +116,14 @@ object Dashboard extends BasePage {
     click(By.id("value_0"))
     click(continueButton)
   }
+
+  def enterAlternativeVatAmount(amount: String): Unit = {
+    click(By.id("value_1"))
+    waitForElement(By.id("amount"))
+    sendKeys(By.id("amount"), amount)
+    click(continueButton)
+  }
+
+  def navigateToSecureStartReturn(): Unit =
+    get(s"$dashboardUrl$dashboardJourneyUrl/start-return")
 }

@@ -25,7 +25,7 @@ class ReturnSpec extends BaseSpec {
 
   Feature("Dashboard journeys") {
 
-    Scenario("User accesses the IOSS Returns Service") {
+    Scenario("User submits an IOSS return with only sales from NI") {
 
       Given("the user accesses the IOSS Returns Service")
       auth.goToAuthorityWizard()
@@ -111,5 +111,430 @@ class ReturnSpec extends BaseSpec {
       dashboard.submit()
       dashboard.checkJourneyUrl("return-submitted")
     }
+
+    Scenario("User submits an IOSS return with only sales from EU") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user clicks on the 'Start your return' link")
+      dashboard.clickLink("start-your-return")
+
+      Then("the user answers yes on the start page")
+      dashboard.checkJourneyUrl("start")
+      dashboard.answerRadioButton("yes")
+
+      And("the user answers no on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers yes on the sales-from-eu page")
+      dashboard.checkJourneyUrl("sales-from-eu")
+      dashboard.answerRadioButton("yes")
+
+      And("the user selects a country on the eu-country-sold-from page")
+      dashboard.checkJourneyUrl("eu-country-sold-from/1")
+      dashboard.selectCountry("Spain")
+
+      And("the user selects a country on the eu-country-sold-to page")
+      dashboard.checkJourneyUrl("eu-country-sold-to/1/1")
+      dashboard.selectCountry("Bulgaria")
+
+      And("the user selects the first and second checkbox on the eu-vat-rates-from-eu page")
+      dashboard.checkJourneyUrl("eu-vat-rates-from-eu/1/1")
+      dashboard.tickCheckbox("first")
+      dashboard.tickCheckbox("second")
+      dashboard.continue()
+
+      And("the user enters the first country total sales for first VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-eu/1/1/1")
+      dashboard.enterAnswer("123456")
+
+      And("the user confirms the suggested amount of VAT")
+      dashboard.checkJourneyUrl("vat-on-sales-from-eu/1/1/1")
+      dashboard.selectSuggestedVat()
+
+      And("the user enters the first country total sales for second VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-eu/1/1/2")
+      dashboard.enterAnswer("987654")
+
+      And("the user confirms the suggested amount of VAT")
+      dashboard.checkJourneyUrl("vat-on-sales-from-eu/1/1/2")
+      dashboard.selectSuggestedVat()
+
+      And("the user continues on the check-sales-from-eu/1/1 page")
+      dashboard.checkJourneyUrl("check-sales-from-eu/1/1")
+      dashboard.continue()
+
+      And("the user answers yes on the add-sales-from-eu-to-eu/1 page")
+      dashboard.checkJourneyUrl("add-sales-from-eu-to-eu/1")
+      dashboard.answerRadioButton("yes")
+
+      And("the user selects a country on the eu-country-sold-to page")
+      dashboard.checkJourneyUrl("eu-country-sold-to/1/2")
+      dashboard.selectCountry("Finland")
+
+      And("the user selects the first and second checkbox on the eu-vat-rates-from-eu page")
+      dashboard.checkJourneyUrl("eu-vat-rates-from-eu/1/2")
+      dashboard.tickCheckbox("first")
+      dashboard.tickCheckbox("second")
+      dashboard.continue()
+
+      And("the user enters the first country total sales for first VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-eu/1/2/1")
+      dashboard.enterAnswer("123456")
+
+      And("the user confirms the suggested amount of VAT")
+      dashboard.checkJourneyUrl("vat-on-sales-from-eu/1/2/1")
+      dashboard.selectSuggestedVat()
+
+      And("the user enters the first country total sales for second VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-eu/1/2/2")
+      dashboard.enterAnswer("987654")
+
+      And("the user confirms the suggested amount of VAT")
+      dashboard.checkJourneyUrl("vat-on-sales-from-eu/1/2/2")
+      dashboard.selectSuggestedVat()
+
+      And("the user continues on the check-sales-from-eu/1/2 page")
+      dashboard.checkJourneyUrl("check-sales-from-eu/1/2")
+      dashboard.continue()
+
+      And("the user answers no on the add-sales-from-eu-to-eu/1 page")
+      dashboard.checkJourneyUrl("add-sales-from-eu-to-eu/1")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers no on the add-sales-from-eu page")
+      dashboard.checkJourneyUrl("add-sales-from-eu")
+      dashboard.answerRadioButton("no")
+
+      And("the user submits their return successfully via the check-your-answers page")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.submit()
+      dashboard.checkJourneyUrl("return-submitted")
+    }
+
+    Scenario("User submits an IOSS return with sales from NI and EU") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user clicks on the 'Start your return' link")
+      dashboard.clickLink("start-your-return")
+
+      Then("the user answers yes on the start page")
+      dashboard.checkJourneyUrl("start")
+      dashboard.answerRadioButton("yes")
+
+      And("the user answers yes on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("yes")
+
+      And("the user selects a country on the eu-country-from-northern-ireland page")
+      dashboard.checkJourneyUrl("eu-country-from-northern-ireland/1")
+      dashboard.selectCountry("Spain")
+
+      And("the user selects the first and second checkbox on the eu-vat-rates-from-northern-ireland page")
+      dashboard.checkJourneyUrl("eu-vat-rates-from-northern-ireland/1")
+      dashboard.tickCheckbox("first")
+      dashboard.tickCheckbox("second")
+      dashboard.continue()
+
+      And("the user enters the first country total sales for first VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-northern-ireland/1/1")
+      dashboard.enterAnswer("50000")
+
+      And("the user enters a different amount of VAT than the suggested amount")
+      dashboard.checkJourneyUrl("vat-on-sales-from-northern-ireland/1/1")
+      dashboard.enterAlternativeVatAmount("12345")
+
+      And("the user enters the first country total sales for second VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-northern-ireland/1/2")
+      dashboard.enterAnswer("800000")
+
+      And("the user enters a different amount of VAT than the suggested amount")
+      dashboard.checkJourneyUrl("vat-on-sales-from-northern-ireland/1/2")
+      dashboard.enterAlternativeVatAmount("147852")
+
+      And("the user continues on the check-sales-from-northern-ireland/1 page")
+      dashboard.checkJourneyUrl("check-sales-from-northern-ireland/1")
+      dashboard.continue()
+
+      And("the user answers yes on the add-sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("add-sales-from-northern-ireland")
+      dashboard.answerRadioButton("yes")
+
+      And("the user selects another country on the eu-country-from-northern-ireland page")
+      dashboard.checkJourneyUrl("eu-country-from-northern-ireland/2")
+      dashboard.selectCountry("France")
+
+      And("the user selects the first checkbox on the eu-vat-rates-from-northern-ireland page")
+      dashboard.checkJourneyUrl("eu-vat-rates-from-northern-ireland/2")
+      dashboard.tickCheckbox("first")
+      dashboard.continue()
+
+      And("the user enters the second country total sales for first VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-northern-ireland/2/1")
+      dashboard.enterAnswer("50000")
+
+      And("the user enters a different amount of VAT than the suggested amount")
+      dashboard.checkJourneyUrl("vat-on-sales-from-northern-ireland/2/1")
+      dashboard.enterAlternativeVatAmount("12345")
+
+      And("the user continues on the check-sales-from-northern-ireland/2 page")
+      dashboard.checkJourneyUrl("check-sales-from-northern-ireland/2")
+      dashboard.continue()
+
+      And("the user answers no on the add-sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("add-sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers yes on the sales-from-eu page")
+      dashboard.checkJourneyUrl("sales-from-eu")
+      dashboard.answerRadioButton("yes")
+
+      And("the user selects a country on the eu-country-sold-from page")
+      dashboard.checkJourneyUrl("eu-country-sold-from/1")
+      dashboard.selectCountry("Spain")
+
+      And("the user selects a country on the eu-country-sold-to page")
+      dashboard.checkJourneyUrl("eu-country-sold-to/1/1")
+      dashboard.selectCountry("Bulgaria")
+
+      And("the user selects the first and second checkbox on the eu-vat-rates-from-eu page")
+      dashboard.checkJourneyUrl("eu-vat-rates-from-eu/1/1")
+      dashboard.tickCheckbox("first")
+      dashboard.tickCheckbox("second")
+      dashboard.continue()
+
+      And("the user enters the first country total sales for first VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-eu/1/1/1")
+      dashboard.enterAnswer("350000")
+
+      And("the user enters a different amount of VAT than the suggested amount")
+      dashboard.checkJourneyUrl("vat-on-sales-from-eu/1/1/1")
+      dashboard.enterAlternativeVatAmount("71234")
+
+      And("the user enters the first country total sales for second VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-eu/1/1/2")
+      dashboard.enterAnswer("900000")
+
+      And("the user enters a different amount of VAT than the suggested amount")
+      dashboard.checkJourneyUrl("vat-on-sales-from-eu/1/1/2")
+      dashboard.enterAlternativeVatAmount("90099")
+
+      And("the user continues on the check-sales-from-eu/1/1 page")
+      dashboard.checkJourneyUrl("check-sales-from-eu/1/1")
+      dashboard.continue()
+
+      And("the user answers yes on the add-sales-from-eu-to-eu/1 page")
+      dashboard.checkJourneyUrl("add-sales-from-eu-to-eu/1")
+      dashboard.answerRadioButton("yes")
+
+      And("the user selects a country on the eu-country-sold-to page")
+      dashboard.checkJourneyUrl("eu-country-sold-to/1/2")
+      dashboard.selectCountry("Finland")
+
+      And("the user selects the first and second checkbox on the eu-vat-rates-from-eu page")
+      dashboard.checkJourneyUrl("eu-vat-rates-from-eu/1/2")
+      dashboard.tickCheckbox("first")
+      dashboard.tickCheckbox("second")
+      dashboard.continue()
+
+      And("the user enters the first country total sales for first VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-eu/1/2/1")
+      dashboard.enterAnswer("100000")
+
+      And("the user enters a different amount of VAT than the suggested amount")
+      dashboard.checkJourneyUrl("vat-on-sales-from-eu/1/2/1")
+      dashboard.enterAlternativeVatAmount("15200")
+
+      And("the user enters the first country total sales for second VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-eu/1/2/2")
+      dashboard.enterAnswer("250000")
+
+      And("the user enters a different amount of VAT than the suggested amount")
+      dashboard.checkJourneyUrl("vat-on-sales-from-eu/1/2/2")
+      dashboard.enterAlternativeVatAmount("20999")
+
+      And("the user continues on the check-sales-from-eu/1/2 page")
+      dashboard.checkJourneyUrl("check-sales-from-eu/1/2")
+      dashboard.continue()
+
+      And("the user answers no on the add-sales-from-eu-to-eu/1 page")
+      dashboard.checkJourneyUrl("add-sales-from-eu-to-eu/1")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers no on the add-sales-from-eu page")
+      dashboard.checkJourneyUrl("add-sales-from-eu")
+      dashboard.answerRadioButton("no")
+
+      And("the user submits their return successfully via the check-your-answers page")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.submit()
+      dashboard.checkJourneyUrl("return-submitted")
+    }
+
+    Scenario("User submits a nil IOSS return") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user clicks on the 'Start your return' link")
+      dashboard.clickLink("start-your-return")
+
+      Then("the user answers yes on the start page")
+      dashboard.checkJourneyUrl("start")
+      dashboard.answerRadioButton("yes")
+
+      And("the user answers no on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers no on the sales-from-eu page")
+      dashboard.checkJourneyUrl("sales-from-eu")
+      dashboard.answerRadioButton("no")
+
+      And("the user submits their return successfully via the check-your-answers page")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.submit()
+      dashboard.checkJourneyUrl("return-submitted")
+    }
+
+    Scenario("A user completes a full returns journey after registering with Send Goods data") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000006", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user clicks on the 'Start your return' link")
+      dashboard.clickLink("start-your-return")
+
+      Then("the user answers yes on the start page")
+      dashboard.checkJourneyUrl("start")
+      dashboard.answerRadioButton("yes")
+
+      And("the user answers yes on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("yes")
+
+      And("the user selects a country on the eu-country-from-northern-ireland page")
+      dashboard.checkJourneyUrl("eu-country-from-northern-ireland/1")
+      dashboard.selectCountry("Poland")
+
+      And("the user selects the first checkbox on the eu-vat-rates-from-northern-ireland page")
+      dashboard.checkJourneyUrl("eu-vat-rates-from-northern-ireland/1")
+      dashboard.tickCheckbox("first")
+      dashboard.continue()
+
+      And("the user enters the first country total sales for first VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-northern-ireland/1/1")
+      dashboard.enterAnswer("48565")
+
+      And("the user confirms the VAT amount")
+      dashboard.checkJourneyUrl("vat-on-sales-from-northern-ireland/1/1")
+      dashboard.selectSuggestedVat()
+
+      And("the user continues on the check-sales-from-northern-ireland/1 page")
+      dashboard.checkJourneyUrl("check-sales-from-northern-ireland/1")
+      dashboard.continue()
+
+      And("the user answers no on the add-sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("add-sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers yes on the sales-from-eu page")
+      dashboard.checkJourneyUrl("sales-from-eu")
+      dashboard.answerRadioButton("yes")
+
+      And("the user selects a country on the eu-country-sold-from page")
+      dashboard.checkJourneyUrl("eu-country-sold-from/1")
+      dashboard.selectCountry("Slovakia")
+
+      And("the user selects a country on the eu-country-sold-to page")
+      dashboard.checkJourneyUrl("eu-country-sold-to/1/1")
+      dashboard.selectCountry("Czech Republic")
+
+      And("the user selects the first checkbox on the eu-vat-rates-from-eu page")
+      dashboard.checkJourneyUrl("eu-vat-rates-from-eu/1/1")
+      dashboard.tickCheckbox("first")
+      dashboard.continue()
+
+      And("the user enters the first country total sales for first VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-eu/1/1/1")
+      dashboard.enterAnswer("350000")
+
+      And("the user enters a different amount of VAT than the suggested amount")
+      dashboard.checkJourneyUrl("vat-on-sales-from-eu/1/1/1")
+      dashboard.enterAlternativeVatAmount("71234")
+
+      And("the user continues on the check-sales-from-eu/1/1 page")
+      dashboard.checkJourneyUrl("check-sales-from-eu/1/1")
+      dashboard.continue()
+
+      And("the user answers no on the add-sales-from-eu-to-eu/1 page")
+      dashboard.checkJourneyUrl("add-sales-from-eu-to-eu/1")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers no on the add-sales-from-eu page")
+      dashboard.checkJourneyUrl("add-sales-from-eu")
+      dashboard.answerRadioButton("no")
+
+      And("the user submits their return successfully via the check-your-answers page")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.submit()
+      dashboard.checkJourneyUrl("return-submitted")
+    }
+
+    Scenario("User without an organisation name can log in and submit IOSS return") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("783478423", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user clicks on the 'Start your return' link")
+      dashboard.clickLink("start-your-return")
+
+      Then("the user answers yes on the start page")
+      dashboard.checkJourneyUrl("start")
+      dashboard.answerRadioButton("yes")
+
+      And("the user answers no on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers no on the sales-from-eu page")
+      dashboard.checkJourneyUrl("sales-from-eu")
+      dashboard.answerRadioButton("no")
+
+      And("the user submits their return successfully via the check-your-answers page")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.submit()
+      dashboard.checkJourneyUrl("return-submitted")
+    }
+
+    Scenario("A user can access their next available return via the secure messages link") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user accesses the start return link via secure messages")
+      dashboard.navigateToSecureStartReturn()
+
+      Then("the user is on the 2021-Q3/start page")
+      dashboard.checkJourneyUrl("2021-Q3/start")
+    }
+
+//Assistant user scenario - required or not?
   }
 }
