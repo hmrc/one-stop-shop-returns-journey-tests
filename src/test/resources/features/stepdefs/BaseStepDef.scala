@@ -14,22 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages
+package uk.gov.hmrc.ui.cucumber.stepdefs
 
-import org.openqa.selenium.support.ui.{FluentWait, Wait}
-import org.openqa.selenium.{By, WebDriver}
-import uk.gov.hmrc.selenium.component.PageObject
-import uk.gov.hmrc.selenium.webdriver.Driver
+import io.cucumber.scala.{EN, ScalaDsl}
+import org.scalatest.concurrent.Eventually
+import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.ui.driver.BrowserDriver
 
-import java.time.Duration
-
-trait BasePage extends PageObject {
-
-  protected val continueButton: By = By.id("continue")
-  protected val submitButton: By   = By.id("submit")
-
-  def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
-    .withTimeout(Duration.ofSeconds(3))
-    .pollingEvery(Duration.ofMillis(200))
-
-}
+trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers

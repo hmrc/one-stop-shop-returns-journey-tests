@@ -30,16 +30,17 @@ trait BaseSpec
     with Browser
     with ScreenshotOnFailure {
 
-  override def beforeEach(): Unit =
+  override def beforeEach(): Unit = {
     startBrowser()
-  MongoConnection.dropSavedAnswers()
-  MongoConnection.dropCachedRegistrations()
+    MongoConnection.dropSavedAnswers()
+    MongoConnection.dropCachedRegistrations()
 
-  //    When strategic returns API is toggled off, these need to be uncommented
-  //    MongoConnection.dropCachedVatReturns()
-  //    MongoConnection.dropReturns()
-  //    MongoConnection.dropCorrections()
-  //    MongoConnection.insert(ReturnsData.data, "one-stop-shop-returns", "returns")
+    //    When strategic returns API is toggled off, these need to be uncommented
+    //    MongoConnection.dropCachedVatReturns()
+    //    MongoConnection.dropReturns()
+    //    MongoConnection.dropCorrections()
+    //    MongoConnection.insert(ReturnsData.data, "one-stop-shop-returns", "returns")
+  }
 
   override def afterEach(): Unit =
     quitBrowser()

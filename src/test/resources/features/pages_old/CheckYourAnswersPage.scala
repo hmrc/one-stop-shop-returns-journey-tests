@@ -14,22 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages
+package uk.gov.hmrc.ui.pages.old
 
-import org.openqa.selenium.support.ui.{FluentWait, Wait}
-import org.openqa.selenium.{By, WebDriver}
-import uk.gov.hmrc.selenium.component.PageObject
+import org.junit.Assert
+import org.openqa.selenium.By
+import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.selenium.webdriver.Driver
 
-import java.time.Duration
+object CheckYourAnswersPage extends BasePage with Matchers {
 
-trait BasePage extends PageObject {
-
-  protected val continueButton: By = By.id("continue")
-  protected val submitButton: By   = By.id("submit")
-
-  def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
-    .withTimeout(Duration.ofSeconds(3))
-    .pollingEvery(Duration.ofMillis(200))
+  def checkCYAText(): Unit = {
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    Assert.assertFalse(htmlBody.contains("Sales excluding VAT"))
+  }
 
 }

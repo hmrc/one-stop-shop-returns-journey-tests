@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages
 
 import org.junit.Assert
 import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import org.scalatest.matchers.should.Matchers.*
 import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.selenium.webdriver.Driver
@@ -32,10 +32,11 @@ object Dashboard extends BasePage {
   def goToDashboardJourney(): Unit =
     get(dashboardUrl + dashboardJourneyUrl)
 
-  def checkJourneyUrl(page: String): Unit =
-    val url = s"$dashboardUrl$dashboardJourneyUrl/$page"
-    fluentWait.until(ExpectedConditions.urlContains(url))
-    getCurrentUrl should startWith(url)
+  def checkJourneyUrl(page: String): Unit = {
+    fluentWait.until(ExpectedConditions.urlContains(page))
+    getCurrentUrl should startWith(s"$dashboardUrl$dashboardJourneyUrl")
+    getCurrentUrl should endWith(page)
+  }
 
   def checkProblemPage(): Unit = {
     fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("h1")))
@@ -68,4 +69,48 @@ object Dashboard extends BasePage {
 
   def goToPage(page: String): Unit =
     get(s"$dashboardUrl$dashboardJourneyUrl/$page")
+
+  def answerRadioButton(answer: String): Unit = {
+
+    answer match {
+      case "yes" => click(By.id("value"))
+      case "no"  => click(By.id("value-no"))
+      case _     => throw new Exception("Option doesn't exist")
+    }
+    click(continueButton)
+  }
+
+  def waitForElement(by: By): Unit =
+    new FluentWait(Driver.instance).until(ExpectedConditions.presenceOfElementLocated(by))
+
+  def selectCountry(country: String): Unit = {
+    val inputId = "value"
+    sendKeys(By.id(inputId), country)
+    waitForElement(By.id(inputId))
+    click(By.cssSelector("li#value__option--0"))
+    click(continueButton)
+  }
+
+  def tickCheckbox(checkbox: String): Unit =
+    checkbox match {
+      case "first"  => click(By.id("value_0"))
+      case "second" => click(By.id("value_1"))
+      case _        => throw new Exception("Checkbox doesn't exist")
+    }
+
+  def continue(): Unit =
+    click(continueButton)
+
+  def submit(): Unit =
+    click(submitButton)
+
+  def enterAnswer(answer: String): Unit = {
+    sendKeys(By.id("value"), answer)
+    click(continueButton)
+  }
+
+  def selectSuggestedVat(): Unit = {
+    click(By.id("value_0"))
+    click(continueButton)
+  }
 }

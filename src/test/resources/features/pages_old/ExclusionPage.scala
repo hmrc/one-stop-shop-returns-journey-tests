@@ -14,22 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages
+package uk.gov.hmrc.ui.pages.old
 
-import org.openqa.selenium.support.ui.{FluentWait, Wait}
-import org.openqa.selenium.{By, WebDriver}
-import uk.gov.hmrc.selenium.component.PageObject
-import uk.gov.hmrc.selenium.webdriver.Driver
+import org.scalatest.matchers.should.Matchers
 
-import java.time.Duration
+object ExclusionPage extends BasePage with Matchers {
 
-trait BasePage extends PageObject {
+  val exclusionsHost: String = TestConfiguration.url("one-stop-shop-exclusions-frontend")
 
-  protected val continueButton: By = By.id("continue")
-  protected val submitButton: By   = By.id("submit")
+  def goToExclusionsJourney(): Unit =
+    get(exclusionsHost)
 
-  def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
-    .withTimeout(Duration.ofSeconds(3))
-    .pollingEvery(Duration.ofMillis(200))
+  def checkExclusionsUrl(): Unit =
+    getCurrentUrl should startWith(exclusionsHost)
 
 }
