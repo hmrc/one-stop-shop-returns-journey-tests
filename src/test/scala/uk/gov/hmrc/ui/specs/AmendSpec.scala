@@ -21,7 +21,7 @@ import uk.gov.hmrc.ui.pages.*
 class AmendSpec extends BaseSpec {
 
   private val dashboard = Dashboard
-  private val auth = Auth
+  private val auth      = Auth
 
   Feature("Amend registration journey") {
     Scenario("A user can navigate from Your Account to Change Your Registration in the registration service") {

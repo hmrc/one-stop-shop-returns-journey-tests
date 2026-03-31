@@ -21,7 +21,7 @@ import uk.gov.hmrc.ui.pages.*
 class PaymentSpec extends BaseSpec {
 
   private val dashboard = Dashboard
-  private val auth = Auth
+  private val auth      = Auth
 
   Feature("Payment journeys") {
     Scenario("A user has one outstanding payment and is taken straight to the payment service from My Account") {
@@ -33,7 +33,7 @@ class PaymentSpec extends BaseSpec {
 
       When("the user clicks on the Make a payment link")
       dashboard.clickLink("make-a-payment")
-      
+
       Then("the user is redirected to the payments service")
       dashboard.checkExternalServiceUrl("pay/select-payment-amount?traceId=")
     }
@@ -47,10 +47,10 @@ class PaymentSpec extends BaseSpec {
 
       When("the user clicks on the Make a payment link")
       dashboard.clickLink("make-a-payment")
-      
+
       Then("the user is on the outstanding-payments page")
       dashboard.checkJourneyUrl("outstanding-payments")
-      
+
       And("the user selects the second return period")
       dashboard.selectReturnPeriod("second")
 

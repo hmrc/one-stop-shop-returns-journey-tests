@@ -23,7 +23,7 @@ import java.time.LocalDate
 class PastReturnSpec extends BaseSpec {
 
   private val dashboard = Dashboard
-  private val auth = Auth
+  private val auth      = Auth
 
   private val twoYearsAgo = LocalDate.now().minusYears(2).getYear.toString
 
