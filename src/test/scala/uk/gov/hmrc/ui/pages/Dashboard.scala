@@ -200,12 +200,23 @@ object Dashboard extends BasePage {
   def currentPeriod(): String =
     s"${LocalDate.now().getYear}-${getQuarter(LocalDate.now().getMonthValue)}"
 
-  def navigateToBtaLink(link: String): Unit =
-    get(s"$dashboardUrl$dashboardJourneyUrl/test-only/$link")
-
   def navigateToPreviouslySubmittedReturn(): Unit =
     get(s"$dashboardUrl$dashboardJourneyUrl/past-returns/2022-Q1")
 
   def navigateToPastReturnsHistory(): Unit =
     get(s"$dashboardUrl$dashboardJourneyUrl/past-returns")
+
+  def selectReturnPeriod(period: String): Unit = {
+    period match {
+      case "first"  => click(By.id("value_0"))
+      case "second" => click(By.id("value_1"))
+      case _        => throw new Exception("Link doesn't exist")
+    }
+    continue()
+  }
+
+  def noPastReturns(): Unit = {
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    Assert.assertTrue(htmlBody.contains("You have not submitted any returns."))
+  }
 }

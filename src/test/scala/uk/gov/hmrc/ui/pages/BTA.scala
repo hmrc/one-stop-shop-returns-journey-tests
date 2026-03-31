@@ -21,7 +21,7 @@ import uk.gov.hmrc.configuration.TestEnvironment
 
 object BTA extends BasePage {
 
-  private val dashboardUrl: String =
+  private val dashboardUrl: String        =
     TestEnvironment.url("one-stop-shop-returns-frontend")
   private val dashboardJourneyUrl: String = "/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments"
 
@@ -34,15 +34,15 @@ object BTA extends BasePage {
       s"$dashboardUrl$dashboardJourneyUrl/no-welsh-service?redirectUrl=%2Fpay-vat-on-goods-sold-to-eu%2Fnorthern-ireland-returns-payments%2F"
 
     val urlToCheck = if (page == "dashboard") {
-        s"${url}your-account"
+      s"${url}your-account"
     } else if (page == "startReturn") {
-        s"${url}2021-Q3%2Fstart"
+      s"${url}2021-Q3%2Fstart"
     } else if (page == "continueReturn") {
-        s"${url}2021-Q3%2Freturn-continue"
+      s"${url}2021-Q3%2Freturn-continue"
     } else if (page == "returnsHistory") {
-        s"${url}past-returns"
+      s"${url}past-returns"
     } else {
-        s"${url}outstanding-payments"
+      s"${url}outstanding-payments"
     }
     fluentWait.until(ExpectedConditions.urlContains(urlToCheck))
   }

@@ -201,7 +201,7 @@ class BTASpec extends BaseSpec {
       dashboard.checkJourneyUrl("your-account")
 
       And("the user browses to the continue-return-from-bta/2021-Q3?lang=cy link")
-      dashboard.navigateToBtaLink("continue-return-from-bta/2021-Q3?lang=cy")
+      bta.navigateToBtaLink("continue-return-from-bta/2021-Q3?lang=cy")
 
       Then("the user is directed to the continue return Welsh transition page")
       bta.checkWelshTransition("continueReturn")
