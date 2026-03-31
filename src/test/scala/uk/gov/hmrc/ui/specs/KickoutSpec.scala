@@ -22,6 +22,7 @@ class KickoutSpec extends BaseSpec {
 
   private val dashboard = Dashboard
   private val auth      = Auth
+  private val bta       = BTA
 
   Feature("Kickout journeys") {
 
@@ -146,7 +147,7 @@ class KickoutSpec extends BaseSpec {
       dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
 
       When("the user manually navigates to the start-your-return-from-bta/2022-Q3 start page")
-      dashboard.navigateToBtaLink("start-your-return-from-bta/2022-Q3")
+      bta.navigateToBtaLink("start-your-return-from-bta/2022-Q3")
 
       Then("the user is on the delete-all-fixed-establishment page")
       dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
@@ -194,7 +195,7 @@ class KickoutSpec extends BaseSpec {
       dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
 
       When("the user manually navigates to returns-history-from-bta link")
-      dashboard.navigateToBtaLink("returns-history-from-bta")
+      bta.navigateToBtaLink("returns-history-from-bta")
 
       Then("the user is on the delete-all-fixed-establishment page")
       dashboard.checkRegistrationJourneyUrl("delete-all-fixed-establishment")
