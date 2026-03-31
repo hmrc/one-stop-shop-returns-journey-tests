@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 HM Revenue & Customs
+ * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,60 +14,22 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.cucumber.stepdefs
+package uk.gov.hmrc.ui.pages
 
 import org.junit.Assert
 import org.openqa.selenium.By
-import uk.gov.hmrc.ui.pages.old.CommonPage
-import uk.gov.hmrc.ui.pages.old.CommonPage.clickContinue
+import uk.gov.hmrc.selenium.webdriver.Driver
 
 import java.time.LocalDate
 
-class CorrectionsStepDef extends BaseStepDef {
+object Correction extends BasePage {
 
-  When(
-    """^the user selects the (first|second) country as (.*) for the (first|second|third) period on the (.*) page$"""
-  ) { (countryIndex: String, countryName: String, periodIndex: String, urlPage: String) =>
-    CommonPage.checkDoubleIndexURL(periodIndex, countryIndex, urlPage, "")
-    CommonPage.selectValueAutocomplete(countryName)
-  }
-
-  When(
-    """^the user adds the (first|second) (declared|undeclared) correction amount as (.*) for the (first|second|third) period on the (.*) page$"""
-  ) { (countryIndex: String, declared: String, correctionAmount: String, periodIndex: String, urlPage: String) =>
-    val appendText =
-      if (declared == "declared") {
-        "?undeclaredCountry=false"
-      } else {
-        "?undeclaredCountry=true"
-      }
-    CommonPage.checkDoubleIndexURL(periodIndex, countryIndex, urlPage, appendText)
-    CommonPage.enterData("value", correctionAmount)
-    CommonPage.submitForm()
-  }
-
-  When(
-    """^the user changes the answer to (.*)$"""
-  ) { (answer: String) =>
-    CommonPage.enterData("value", answer)
-    CommonPage.submitForm()
-  }
-
-  When(
-    """^the user continues from the vat-payable-check page$"""
-  ) { () =>
-    clickContinue()
-  }
-
-  
-  Then(
-    """^the user can only see corrections available for returns that were due within the last three years$"""
-  ) { () =>
-    val fourYearsAgo  = LocalDate.now().minusYears(4).getYear.toString
+  def checkCorrectionsAvailable (): Unit = {
+    val fourYearsAgo = LocalDate.now().minusYears(4).getYear.toString
     val threeYearsAgo = LocalDate.now().minusYears(3).getYear.toString
-    val twoYearsAgo   = LocalDate.now().minusYears(2).getYear.toString
+    val twoYearsAgo = LocalDate.now().minusYears(2).getYear.toString
 
-    val htmlBody = driver.findElement(By.tagName("body")).getText
+    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
 
     val currentMonth = LocalDate.now().getMonthValue
 
@@ -105,7 +67,7 @@ class CorrectionsStepDef extends BaseStepDef {
         Assert.assertTrue(
           htmlBody.contains(s"1 October to 31 December $threeYearsAgo")
         )
-      case 5 | 6 | 7     =>
+      case 5 | 6 | 7 =>
         Assert.assertFalse(
           htmlBody.contains(s"1 January to 31 March $threeYearsAgo")
         )
@@ -118,7 +80,7 @@ class CorrectionsStepDef extends BaseStepDef {
         Assert.assertTrue(
           htmlBody.contains(s"1 October to 31 December $threeYearsAgo")
         )
-      case 8 | 9 | 10    =>
+      case 8 | 9 | 10 =>
         Assert.assertFalse(
           htmlBody.contains(s"1 January to 31 March $threeYearsAgo")
         )
@@ -131,7 +93,7 @@ class CorrectionsStepDef extends BaseStepDef {
         Assert.assertTrue(
           htmlBody.contains(s"1 October to 31 December $threeYearsAgo")
         )
-      case 11 | 12       =>
+      case 11 | 12 =>
         Assert.assertFalse(
           htmlBody.contains(s"1 January to 31 March $threeYearsAgo")
         )
@@ -144,7 +106,7 @@ class CorrectionsStepDef extends BaseStepDef {
         Assert.assertTrue(
           htmlBody.contains(s"1 October to 31 December $threeYearsAgo")
         )
-      case _             => "not a  valid month"
+      case _ => "not a valid month"
     }
 
     Assert.assertTrue(
@@ -153,5 +115,6 @@ class CorrectionsStepDef extends BaseStepDef {
     Assert.assertTrue(
       htmlBody.contains(s"1 April to 30 June $twoYearsAgo")
     )
+   
   }
 }
