@@ -219,4 +219,7 @@ object Dashboard extends BasePage {
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
     Assert.assertTrue(htmlBody.contains("You have not submitted any returns."))
   }
+
+  def selectChangeOrRemoveLink(link: String): Unit =
+    click(By.cssSelector(s"a[href*=$link]"))
 }

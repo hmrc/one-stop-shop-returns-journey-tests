@@ -29,13 +29,17 @@ object Exclusion extends BasePage {
   def expiredVrnBanner(exclusionType: String, returnsOutstanding: Boolean): Unit = {
 
     val textToDisplay = (exclusionType, returnsOutstanding) match {
-      case ("self", false) => "You have left this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
-      case ("self", true) => "You have left this service. You must complete and pay any outstanding returns.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
-      case ("hmrc", false) => "We've removed you from this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
-      case ("hmrc", true) => "We've removed you from this service, but you must complete and pay your final return. You cannot rejoin until 1 April 2026\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
-      case _ => "not a valid combination"
+      case ("self", false) =>
+        "You have left this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
+      case ("self", true)  =>
+        "You have left this service. You must complete and pay any outstanding returns.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
+      case ("hmrc", false) =>
+        "We've removed you from this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
+      case ("hmrc", true)  =>
+        "We've removed you from this service, but you must complete and pay your final return. You cannot rejoin until 1 April 2026\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
+      case _               => "not a valid combination"
     }
-    val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
+    val htmlBody      = Driver.instance.findElement(By.tagName("body")).getText
     Assert.assertTrue(
       htmlBody.contains(
         textToDisplay
@@ -45,11 +49,11 @@ object Exclusion extends BasePage {
 
   def leaveRejoinLinkNotDisplayed(linkType: String): Unit = {
 
-    val link = linkType match {
-      case "leave" => "Leave this service"
+    val link     = linkType match {
+      case "leave"  => "Leave this service"
       case "rejoin" => "Rejoin this service"
       case "cancel" => "Cancel your request to leave"
-      case _ => "not a valid link"
+      case _        => "not a valid link"
     }
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
     Assert.assertFalse(
