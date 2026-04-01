@@ -31,9 +31,9 @@ trait BaseSpec
     with ScreenshotOnFailure {
 
   override def beforeEach(): Unit = {
-    startBrowser()
     MongoConnection.dropSavedAnswers()
     MongoConnection.dropCachedRegistrations()
+    startBrowser()
 
     //    When strategic returns API is toggled off, these need to be uncommented
     //    MongoConnection.dropCachedVatReturns()

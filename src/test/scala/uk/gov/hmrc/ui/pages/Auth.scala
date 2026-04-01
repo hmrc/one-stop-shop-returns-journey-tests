@@ -48,24 +48,24 @@ object Auth extends BasePage {
     getCurrentUrl should startWith(authUrl)
 
     val redirectUrl = journey match {
-      case "amendChangedVATGroup" | "dashboard"                      =>
+      case "amendChangedVATGroup" | "dashboard" | "saveReturn" | "retrieveReturn" =>
         s"$dashboardUrl$dashboardJourneyUrl"
-      case amend if amend.startsWith("amend")                        =>
+      case amend if amend.startsWith("amend")                                     =>
         s"$registrationUrl$journeyUrl/start-amend-journey"
-      case "noSavedRegistration" | "savedRegistration" | "savedIOSS" =>
+      case "noSavedRegistration" | "savedRegistration" | "savedIOSS"              =>
         s"$registrationUrl$journeyUrl/continue-on-sign-in"
-      case rejoin if rejoin.startsWith("rejoin")                     =>
+      case rejoin if rejoin.startsWith("rejoin")                                  =>
         s"$registrationUrl$journeyUrl/start-rejoin-journey"
-      case _                                                         =>
+      case _                                                                      =>
         s"$registrationUrl$journeyUrl"
     }
 
     sendKeys(By.name("redirectionUrl"), redirectUrl)
 
-    if (journey == "savedWithCredId") {
+    if (journey == "saveReturn") {
       generateCredId()
       sendKeys(By.name("authorityId"), retrieveCredId())
-    } else if (journey == "savedRegistration" || journey == "savedIOSS") {
+    } else if (journey == "retrieveReturn") {
       sendKeys(By.name("authorityId"), retrieveCredId())
     }
 

@@ -266,5 +266,88 @@ class BTASpec extends BaseSpec {
       dashboard.continue()
       dashboard.checkJourneyUrl("outstanding-payments")
     }
+
+    Scenario(
+      "A user enters the Continue Your Return page via BTA, submits a small return and has the correct link back to BTA"
+    ) {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "saveReturn")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user clicks on the 'Start your return' link")
+      dashboard.clickLink("start-your-return")
+
+      Then("the user answers yes on the start page")
+      dashboard.checkJourneyUrl("start")
+      dashboard.answerRadioButton("yes")
+
+      And("the user enters returns data")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("eu-country-from-northern-ireland/1")
+      dashboard.selectCountry("Spain")
+      dashboard.checkJourneyUrl("eu-vat-rates-from-northern-ireland/1")
+      dashboard.tickCheckbox("first")
+      dashboard.continue()
+      dashboard.checkJourneyUrl("eu-sales-from-northern-ireland/1/1")
+      dashboard.enterAnswer("50000")
+      dashboard.checkJourneyUrl("vat-on-sales-from-northern-ireland/1/1")
+      dashboard.selectSuggestedVat()
+      dashboard.checkJourneyUrl("check-sales-from-northern-ireland/1")
+
+      When("the user clicks the Save and come back later button")
+      dashboard.clickLink("saveProgress")
+      dashboard.checkSavedReturn()
+
+      And("the user clicks on the sign out and come back later link")
+      dashboard.clickLink("signOut")
+
+      Then("the user signs back into the service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "retrieveReturn")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user manually navigates to the continue-return-from-bta/2021-Q3 page")
+      bta.navigateToBtaLink("continue-return-from-bta/2021-Q3")
+
+      Then("the user is on the return-continue page")
+      dashboard.checkJourneyUrl("return-continue")
+
+      When("the user selects the Continue my return option")
+      dashboard.clickLink("value_0")
+      dashboard.continue()
+
+      Then("the user is able to continue their saved return")
+      dashboard.checkJourneyUrl("check-sales-from-northern-ireland/1")
+      dashboard.continue()
+      dashboard.checkJourneyUrl("add-sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+      dashboard.checkJourneyUrl("sales-from-eu")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("eu-country-sold-from/1")
+      dashboard.selectCountry("Spain")
+      dashboard.checkJourneyUrl("eu-country-sold-to/1/1")
+      dashboard.selectCountry("Bulgaria")
+      dashboard.checkJourneyUrl("eu-vat-rates-from-eu/1/1")
+      dashboard.tickCheckbox("first")
+      dashboard.continue()
+      dashboard.checkJourneyUrl("eu-sales-from-eu/1/1/1")
+      dashboard.enterAnswer("123456")
+      dashboard.checkJourneyUrl("vat-on-sales-from-eu/1/1/1")
+      dashboard.selectSuggestedVat()
+      dashboard.checkJourneyUrl("check-sales-from-eu/1/1")
+      dashboard.continue()
+      dashboard.checkJourneyUrl("add-sales-from-eu-to-eu/1")
+      dashboard.answerRadioButton("no")
+      dashboard.checkJourneyUrl("add-sales-from-eu")
+      dashboard.answerRadioButton("no")
+
+      And("the user submits their return successfully via the check-your-answers page")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.submit()
+      dashboard.checkJourneyUrl("return-submitted")
+    }
   }
 }
