@@ -21,7 +21,7 @@ import uk.gov.hmrc.ui.pages.*
 class ExclusionSpec extends BaseSpec {
 
   private val dashboard = Dashboard
-  private val auth = Auth
+  private val auth      = Auth
   private val exclusion = Exclusion
 
   Feature("Exclusion journeys") {
@@ -185,7 +185,9 @@ class ExclusionSpec extends BaseSpec {
       exclusion.leaveRejoinLinkNotDisplayed("leave")
     }
 
-    Scenario("A user who is excluded in the future sees the correct dashboard messages when they have outstanding returns") {
+    Scenario(
+      "A user who is excluded in the future sees the correct dashboard messages when they have outstanding returns"
+    ) {
 
       Given("the user accesses the IOSS Returns Service")
       auth.goToAuthorityWizard()
@@ -369,7 +371,9 @@ class ExclusionSpec extends BaseSpec {
       exclusion.leaveRejoinLinkNotDisplayed("cancel")
     }
 
-    Scenario("A user who is not excluded does not have the option to enter the reversal or rejoin journeys on the dashboard") {
+    Scenario(
+      "A user who is not excluded does not have the option to enter the reversal or rejoin journeys on the dashboard"
+    ) {
 
       Given("the user accesses the IOSS Returns Service")
       auth.goToAuthorityWizard()
