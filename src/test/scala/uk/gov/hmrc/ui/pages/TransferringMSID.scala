@@ -25,7 +25,7 @@ object TransferringMSID extends BasePage {
   def transferringDates(transferDirection: String, returnStage: String, returnType: String): Unit = {
 
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
-    val heading = Driver.instance.findElement(By.tagName("h1")).getText
+    val heading  = Driver.instance.findElement(By.tagName("h1")).getText
     if (transferDirection == "to" && returnStage == "offered" && returnType == "full") {
       Assert.assertTrue(heading.contains("1 April to 30 June 2023"))
     } else if (transferDirection == "to" && returnStage == "submitting" && returnType == "full") {
@@ -39,17 +39,16 @@ object TransferringMSID extends BasePage {
     }
   }
 
-  def selectReturn(link: String): Unit = {
+  def selectReturn(link: String): Unit =
     click(By.cssSelector(s"a[href*=$link]"))
-  }
 
   def pastReturnDates(direction: String): Unit = {
     val htmlH1 = Driver.instance.findElement(By.tagName("h1")).getText
-    
+
     if (direction == "to") {
       Assert.assertTrue(htmlH1.contains("1 July to 8 September 2023"))
     } else {
       Assert.assertTrue(htmlH1.contains("9 June to 30 June 2023"))
-    }    
+    }
   }
 }
