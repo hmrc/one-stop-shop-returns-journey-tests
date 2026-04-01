@@ -24,10 +24,10 @@ import java.time.LocalDate
 
 object Correction extends BasePage {
 
-  def checkCorrectionsAvailable (): Unit = {
-    val fourYearsAgo = LocalDate.now().minusYears(4).getYear.toString
+  def checkCorrectionsAvailable(): Unit = {
+    val fourYearsAgo  = LocalDate.now().minusYears(4).getYear.toString
     val threeYearsAgo = LocalDate.now().minusYears(3).getYear.toString
-    val twoYearsAgo = LocalDate.now().minusYears(2).getYear.toString
+    val twoYearsAgo   = LocalDate.now().minusYears(2).getYear.toString
 
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
 
@@ -67,7 +67,7 @@ object Correction extends BasePage {
         Assert.assertTrue(
           htmlBody.contains(s"1 October to 31 December $threeYearsAgo")
         )
-      case 5 | 6 | 7 =>
+      case 5 | 6 | 7     =>
         Assert.assertFalse(
           htmlBody.contains(s"1 January to 31 March $threeYearsAgo")
         )
@@ -80,7 +80,7 @@ object Correction extends BasePage {
         Assert.assertTrue(
           htmlBody.contains(s"1 October to 31 December $threeYearsAgo")
         )
-      case 8 | 9 | 10 =>
+      case 8 | 9 | 10    =>
         Assert.assertFalse(
           htmlBody.contains(s"1 January to 31 March $threeYearsAgo")
         )
@@ -93,7 +93,7 @@ object Correction extends BasePage {
         Assert.assertTrue(
           htmlBody.contains(s"1 October to 31 December $threeYearsAgo")
         )
-      case 11 | 12 =>
+      case 11 | 12       =>
         Assert.assertFalse(
           htmlBody.contains(s"1 January to 31 March $threeYearsAgo")
         )
@@ -106,7 +106,7 @@ object Correction extends BasePage {
         Assert.assertTrue(
           htmlBody.contains(s"1 October to 31 December $threeYearsAgo")
         )
-      case _ => "not a valid month"
+      case _             => "not a valid month"
     }
 
     Assert.assertTrue(
@@ -115,6 +115,6 @@ object Correction extends BasePage {
     Assert.assertTrue(
       htmlBody.contains(s"1 April to 30 June $twoYearsAgo")
     )
-   
+
   }
 }

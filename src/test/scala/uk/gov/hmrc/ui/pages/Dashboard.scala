@@ -37,6 +37,10 @@ object Dashboard extends BasePage {
     TestEnvironment.url("one-stop-shop-registration-frontend")
   private val registrationJourneyUrl: String = "/pay-vat-on-goods-sold-to-eu/northern-ireland-register"
 
+  private val exclusionUrl: String        =
+    TestEnvironment.url("one-stop-shop-exclusions-frontend")
+  private val exclusionJourneyUrl: String = "/pay-vat-on-goods-sold-to-eu/leave-one-stop-shop"
+
   def goToDashboardJourney(): Unit =
     get(dashboardUrl + dashboardJourneyUrl)
 
@@ -53,6 +57,11 @@ object Dashboard extends BasePage {
     fluentWait.until(ExpectedConditions.urlContains(page))
     getCurrentUrl should startWith(s"$registrationUrl$registrationJourneyUrl")
     getCurrentUrl should endWith(page)
+  }
+
+  def checkExclusionsJourneyUrl(): Unit = {
+    fluentWait.until(ExpectedConditions.urlContains(s"$exclusionUrl$exclusionJourneyUrl"))
+    getCurrentUrl should startWith(s"$exclusionUrl$exclusionJourneyUrl")
   }
 
   def checkExternalServiceUrl(page: String): Unit = {
