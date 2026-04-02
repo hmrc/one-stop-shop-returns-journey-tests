@@ -59,69 +59,6 @@ object MongoConnection {
       case e: Exception => println("Error: " + e)
     }
 
-  def insert(source: List[String], database: String, collection: String): Unit =
-    try {
-      val db  = mongoClient.getDatabase(database)
-      val col = db.getCollection(collection)
-      source.map { e =>
-        val doc = Document(e)
-        Await.result(
-          col.insertOne(doc).toFutureOption(),
-          timeout
-        )
-      }
-    } catch {
-      case ex: Exception => println(s"Error inserting data into MongoDB: $ex")
-    }
-
-  def dropReturns(): Unit = {
-    dropRecord("one-stop-shop-returns", "returns", "100000002")
-    dropRecord("one-stop-shop-returns", "returns", "100000003")
-    dropRecord("one-stop-shop-returns", "returns", "100000004")
-    dropRecord("one-stop-shop-returns", "returns", "100000006")
-    dropRecord("one-stop-shop-returns", "returns", "100000007")
-    dropRecord("one-stop-shop-returns", "returns", "444444444")
-    dropRecord("one-stop-shop-returns", "returns", "600000003")
-    dropRecord("one-stop-shop-returns", "returns", "600000005")
-    dropRecord("one-stop-shop-returns", "returns", "600000011")
-    dropRecord("one-stop-shop-returns", "returns", "600000012")
-    dropRecord("one-stop-shop-returns", "returns", "600000013")
-    dropRecord("one-stop-shop-returns", "returns", "600000014")
-    dropRecord("one-stop-shop-returns", "returns", "600000015")
-    dropRecord("one-stop-shop-returns", "returns", "600000017")
-    dropRecord("one-stop-shop-returns", "returns", "600000019")
-    dropRecord("one-stop-shop-returns", "returns", "600000021")
-    dropRecord("one-stop-shop-returns", "returns", "100000026")
-    dropRecord("one-stop-shop-returns", "returns", "783478423")
-    dropRecord("one-stop-shop-returns", "returns", "777777771")
-    dropRecord("one-stop-shop-returns", "returns", "600151515")
-    dropRecord("one-stop-shop-returns", "returns", "600001212")
-    dropRecord("one-stop-shop-returns", "returns", "100000077")
-    dropRecord("one-stop-shop-returns", "returns", "600001515")
-  }
-
-  def dropCorrections(): Unit = {
-    dropRecord("one-stop-shop-returns", "corrections", "100000002")
-    dropRecord("one-stop-shop-returns", "corrections", "100000003")
-    dropRecord("one-stop-shop-returns", "corrections", "100000004")
-    dropRecord("one-stop-shop-returns", "corrections", "100000006")
-    dropRecord("one-stop-shop-returns", "corrections", "100000007")
-    dropRecord("one-stop-shop-returns", "corrections", "444444444")
-    dropRecord("one-stop-shop-returns", "corrections", "600000003")
-    dropRecord("one-stop-shop-returns", "corrections", "600000005")
-    dropRecord("one-stop-shop-returns", "corrections", "600000011")
-    dropRecord("one-stop-shop-returns", "corrections", "600000014")
-    dropRecord("one-stop-shop-returns", "corrections", "600000015")
-    dropRecord("one-stop-shop-returns", "corrections", "600000017")
-    dropRecord("one-stop-shop-returns", "corrections", "600000019")
-    dropRecord("one-stop-shop-returns", "corrections", "600000021")
-    dropRecord("one-stop-shop-returns", "corrections", "100000026")
-    dropRecord("one-stop-shop-returns", "corrections", "600151515")
-    dropRecord("one-stop-shop-returns", "corrections", "600001212")
-    dropRecord("one-stop-shop-returns", "corrections", "100000077")
-    dropRecord("one-stop-shop-returns", "corrections", "600001515")
-  }
-
   def dropSavedAnswers(): Unit = {
     dropRecord("one-stop-shop-returns", "saved-user-answers", "222222222")
     dropRecord("one-stop-shop-returns", "saved-user-answers", "222222223")
@@ -148,9 +85,6 @@ object MongoConnection {
     dropRecord("one-stop-shop-returns", "saved-user-answers", "100000077")
     dropRecord("one-stop-shop-returns", "saved-user-answers", "600001515")
   }
-
-  def dropCachedVatReturns(): Unit =
-    dropRecords("one-stop-shop-returns-frontend", "cachedVatReturns")
 
   def dropCachedRegistrations(): Unit =
     dropRecords("one-stop-shop-registration", "cachedRegistrations")

@@ -34,12 +34,6 @@ trait BaseSpec
     MongoConnection.dropSavedAnswers()
     MongoConnection.dropCachedRegistrations()
     startBrowser()
-
-    //    When strategic returns API is toggled off, these need to be uncommented
-    //    MongoConnection.dropCachedVatReturns()
-    //    MongoConnection.dropReturns()
-    //    MongoConnection.dropCorrections()
-    //    MongoConnection.insert(ReturnsData.data, "one-stop-shop-returns", "returns")
   }
 
   override def afterEach(): Unit =
