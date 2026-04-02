@@ -21,7 +21,7 @@ import uk.gov.hmrc.ui.pages.*
 class CheckYourAnswersSpec extends BaseSpec {
 
   private val dashboard = Dashboard
-  private val auth = Auth
+  private val auth      = Auth
 
   Feature("Check your answers journeys") {
 
@@ -318,6 +318,446 @@ class CheckYourAnswersSpec extends BaseSpec {
       dashboard.answerRadioButton("no")
 
       Then("the user submits their return successfully via the check-your-answers page")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.submit()
+      dashboard.checkJourneyUrl("return-submitted")
+    }
+
+    Scenario(
+      "A user uses the Check Your Answers functionality to change between calculated VAT and amended VAT amounts"
+    ) {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user clicks on the 'Start your return' link")
+      dashboard.clickLink("start-your-return")
+
+      Then("the user answers yes on the start page")
+      dashboard.checkJourneyUrl("start")
+      dashboard.answerRadioButton("yes")
+
+      And("the user answers yes on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("yes")
+
+      And("the user selects a country on the eu-country-from-northern-ireland page")
+      dashboard.checkJourneyUrl("eu-country-from-northern-ireland/1")
+      dashboard.selectCountry("Spain")
+
+      And("the user selects the first and second checkbox on the eu-vat-rates-from-northern-ireland page")
+      dashboard.checkJourneyUrl("eu-vat-rates-from-northern-ireland/1")
+      dashboard.tickCheckbox("first")
+      dashboard.tickCheckbox("second")
+      dashboard.continue()
+
+      And("the user enters the first country total sales for first VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-northern-ireland/1/1")
+      dashboard.enterAnswer("50000")
+
+      And("the user selects the suggested amount of VAT")
+      dashboard.checkJourneyUrl("vat-on-sales-from-northern-ireland/1/1")
+      dashboard.selectSuggestedVat()
+
+      And("the user enters the first country total sales for second VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-northern-ireland/1/2")
+      dashboard.enterAnswer("800000")
+
+      And("the user enters a different amount of VAT than the suggested amount")
+      dashboard.checkJourneyUrl("vat-on-sales-from-northern-ireland/1/2")
+      dashboard.enterAlternativeVatAmount("147852")
+
+      And("the user continues on the check-sales-from-northern-ireland/1 page")
+      dashboard.checkJourneyUrl("check-sales-from-northern-ireland/1")
+      dashboard.continue()
+
+      And("the user answers no on the add-sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("add-sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers yes on the sales-from-eu page")
+      dashboard.checkJourneyUrl("sales-from-eu")
+      dashboard.answerRadioButton("yes")
+
+      And("the user selects a country on the eu-country-sold-from page")
+      dashboard.checkJourneyUrl("eu-country-sold-from/1")
+      dashboard.selectCountry("Spain")
+
+      And("the user selects a country on the eu-country-sold-to page")
+      dashboard.checkJourneyUrl("eu-country-sold-to/1/1")
+      dashboard.selectCountry("Bulgaria")
+
+      And("the user selects the first and second checkbox on the eu-vat-rates-from-eu page")
+      dashboard.checkJourneyUrl("eu-vat-rates-from-eu/1/1")
+      dashboard.tickCheckbox("first")
+      dashboard.tickCheckbox("second")
+      dashboard.continue()
+
+      And("the user enters the first country total sales for first VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-eu/1/1/1")
+      dashboard.enterAnswer("350000")
+
+      And("the user selects the suggested amount of VAT")
+      dashboard.checkJourneyUrl("vat-on-sales-from-eu/1/1/1")
+      dashboard.selectSuggestedVat()
+
+      And("the user enters the first country total sales for second VAT rate")
+      dashboard.checkJourneyUrl("eu-sales-from-eu/1/1/2")
+      dashboard.enterAnswer("900000")
+
+      And("the user enters a different amount of VAT than the suggested amount")
+      dashboard.checkJourneyUrl("vat-on-sales-from-eu/1/1/2")
+      dashboard.enterAlternativeVatAmount("90099")
+
+      And("the user continues on the check-sales-from-eu/1/1 page")
+      dashboard.checkJourneyUrl("check-sales-from-eu/1/1")
+      dashboard.continue()
+
+      And("the user answers no on the add-sales-from-eu-to-eu/1 page")
+      dashboard.checkJourneyUrl("add-sales-from-eu-to-eu/1")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers no on the add-sales-from-eu page")
+      dashboard.checkJourneyUrl("add-sales-from-eu")
+      dashboard.answerRadioButton("no")
+
+      Then("the user selects change for NI sales excluding VAT")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.clickLink("change-sales-excluding-vat-ni")
+
+      Then("the user selects change for change-check-sales-from-northern-ireland/1")
+      dashboard.checkJourneyUrl("check-add-sales-from-northern-ireland")
+      dashboard.selectChangeOrRemoveLink("change-check-sales-from-northern-ireland\\/1")
+
+      Then("the user selects change for check-vat-on-sales-from-northern-ireland/1/1")
+      dashboard.checkJourneyUrl("change-check-sales-from-northern-ireland/1")
+      dashboard.selectChangeOrRemoveLink("check-vat-on-sales-from-northern-ireland\\/1\\/1")
+
+      Then("the user selects a different amount of vat instead of the suggested amount")
+      dashboard.checkJourneyUrl("final-inner-check-vat-on-sales-from-northern-ireland/1/1")
+      dashboard.enterAlternativeVatAmount("12345")
+
+      And("the user clicks continue on the change-check-sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("change-check-sales-from-northern-ireland/1")
+      dashboard.continue()
+
+      And("the user answers no on the check-add-sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("check-add-sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+
+      Then("the user clicks change for EU sales excluding VAT")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.clickLink("change-sales-excluding-vat-eu")
+
+      Then("the user clicks change for check-add-sales-from-eu-to-eu/1")
+      dashboard.checkJourneyUrl("check-add-sales-from-eu")
+      dashboard.selectChangeOrRemoveLink("check-add-sales-from-eu-to-eu\\/1")
+
+      Then("the user clicks change for change-check-sales-from-eu/1/1")
+      dashboard.checkJourneyUrl("check-add-sales-from-eu-to-eu/1")
+      dashboard.selectChangeOrRemoveLink("change-check-sales-from-eu\\/1\\/1")
+
+      Then("the user clicks change for check-vat-on-sales-from-eu/1/1/1")
+      dashboard.checkJourneyUrl("change-check-sales-from-eu/1/1")
+      dashboard.selectChangeOrRemoveLink("check-vat-on-sales-from-eu\\/1\\/1\\/1")
+
+      And("the user changes from the suggested amount of VAT to a different amount")
+      dashboard.checkJourneyUrl("check-vat-on-sales-from-eu/1/1/1")
+      dashboard.enterAlternativeVatAmount("15200")
+
+      And("the user continues on the change-check-sales-from-eu/1/1 page")
+      dashboard.checkJourneyUrl("change-check-sales-from-eu/1/1")
+      dashboard.continue()
+
+      And("the user answers no on the check-add-sales-from-eu-to-eu/1 page")
+      dashboard.checkJourneyUrl("check-add-sales-from-eu-to-eu/1")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers no on the check-add-sales-from-eu page")
+      dashboard.checkJourneyUrl("check-add-sales-from-eu")
+      dashboard.answerRadioButton("no")
+
+      And("the user submits their return successfully via the check-your-answers page")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.submit()
+      dashboard.checkJourneyUrl("return-submitted")
+    }
+
+    Scenario("A user says no to adding a correction then changes to yes and adds a correction") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user clicks on the 'Start your return' link")
+      dashboard.clickLink("start-your-return")
+
+      Then("the user answers yes on the start page")
+      dashboard.checkJourneyUrl("start")
+      dashboard.answerRadioButton("yes")
+
+      And("the user answers no on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers no on the sales-from-eu page")
+      dashboard.checkJourneyUrl("sales-from-eu")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers no on the correct-previous-return page")
+      dashboard.checkJourneyUrl("correct-previous-return")
+      dashboard.answerRadioButton("no")
+
+      When("the user clicks change for corrections")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.clickLink("change-corrections")
+
+      Then("the user answers yes on the change-correct-previous-return page")
+      dashboard.checkJourneyUrl("change-correct-previous-return")
+      dashboard.answerRadioButton("yes")
+
+      And("the uer answers yes on the change-correction-return-single-period/1 page")
+      dashboard.checkJourneyUrl("change-correction-return-single-period/1")
+      dashboard.answerRadioButton("yes")
+
+      And("the user adds correction data for one country")
+      dashboard.checkJourneyUrl("change-correction-country/1/1")
+      dashboard.selectCountry("Austria")
+      dashboard.checkJourneyUrl("change-add-new-country/1/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("change-country-vat-correction-amount/1/1?undeclaredCountry=true")
+      dashboard.enterAnswer("2000")
+      dashboard.checkJourneyUrl("change-vat-payable-confirm/1/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("change-vat-payable-check/1/1")
+      dashboard.continue()
+      dashboard.checkJourneyUrl("change-vat-correction-list/1")
+      dashboard.answerRadioButton("no")
+      dashboard.checkJourneyUrl("change-vat-correction-periods")
+      dashboard.continue()
+
+      And("the user submits their return successfully via the check-your-answers page")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.submit()
+      dashboard.checkJourneyUrl("return-submitted")
+    }
+
+    Scenario("A user says yes to adding a correction then changes to no") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user clicks on the 'Start your return' link")
+      dashboard.clickLink("start-your-return")
+
+      Then("the user answers yes on the start page")
+      dashboard.checkJourneyUrl("start")
+      dashboard.answerRadioButton("yes")
+
+      And("the user answers no on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers no on the sales-from-eu page")
+      dashboard.checkJourneyUrl("sales-from-eu")
+      dashboard.answerRadioButton("no")
+
+      And("the user adds correction data")
+      dashboard.checkJourneyUrl("correct-previous-return")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("correction-return-single-period/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("correction-country/1/1")
+      dashboard.selectCountry("Romania")
+      dashboard.checkJourneyUrl("add-new-country/1/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("country-vat-correction-amount/1/1?undeclaredCountry=true")
+      dashboard.enterAnswer("8500")
+      dashboard.checkJourneyUrl("vat-payable-confirm/1/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("vat-payable-check/1/1")
+      dashboard.continue()
+      dashboard.checkJourneyUrl("vat-correction-list/1")
+      dashboard.answerRadioButton("no")
+      dashboard.checkJourneyUrl("vat-correction-periods")
+      dashboard.continue()
+
+      Then("the user removes the corrections they just added via check-your-answers")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.clickLink("change-corrections")
+      dashboard.checkJourneyUrl("change-correct-previous-return")
+      dashboard.answerRadioButton("no")
+
+      And("the user submits their return successfully via the check-your-answers page")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.submit()
+      dashboard.checkJourneyUrl("return-submitted")
+    }
+
+    Scenario(
+      "A user says yes to adding a correction to a single period then uses change option to add another country"
+    ) {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user clicks on the 'Start your return' link")
+      dashboard.clickLink("start-your-return")
+
+      Then("the user answers yes on the start page")
+      dashboard.checkJourneyUrl("start")
+      dashboard.answerRadioButton("yes")
+
+      And("the user answers no on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers no on the sales-from-eu page")
+      dashboard.checkJourneyUrl("sales-from-eu")
+      dashboard.answerRadioButton("no")
+
+      And("the user adds correction data")
+      dashboard.checkJourneyUrl("correct-previous-return")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("correction-return-single-period/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("correction-country/1/1")
+      dashboard.selectCountry("Romania")
+      dashboard.checkJourneyUrl("add-new-country/1/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("country-vat-correction-amount/1/1?undeclaredCountry=true")
+      dashboard.enterAnswer("8500")
+      dashboard.checkJourneyUrl("vat-payable-confirm/1/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("vat-payable-check/1/1")
+      dashboard.continue()
+      dashboard.checkJourneyUrl("vat-correction-list/1")
+      dashboard.answerRadioButton("no")
+      dashboard.checkJourneyUrl("vat-correction-periods")
+      dashboard.continue()
+
+      Then("the user clicks change via check-your-answers to add corrections for another country")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.clickLink("change-correction-periods")
+      dashboard.checkJourneyUrl("change-vat-correction-periods")
+      dashboard.selectChangeOrRemoveLink("change-vat-correction-list\\/1")
+      dashboard.checkJourneyUrl("change-vat-correction-list/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("change-correction-country/1/2")
+      dashboard.selectCountry("Spain")
+      dashboard.checkJourneyUrl("change-country-vat-correction-amount/1/2?undeclaredCountry=false")
+      dashboard.enterAnswer("1234")
+      dashboard.checkJourneyUrl("change-vat-payable-confirm/1/2")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("change-vat-payable-check/1/2")
+      dashboard.continue()
+      dashboard.checkJourneyUrl("change-vat-correction-list/1")
+      dashboard.answerRadioButton("no")
+      dashboard.checkJourneyUrl("change-vat-correction-periods")
+      dashboard.continue()
+
+      And("the user submits their return successfully via the check-your-answers page")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.submit()
+      dashboard.checkJourneyUrl("return-submitted")
+    }
+
+    Scenario("A user amends corrections with multiple periods") {
+
+      Given("the user accesses the IOSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000004", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user clicks on the 'Start your return' link")
+      dashboard.clickLink("start-your-return")
+
+      Then("the user answers yes on the start page")
+      dashboard.checkJourneyUrl("start")
+      dashboard.answerRadioButton("yes")
+
+      And("the user answers no on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers no on the sales-from-eu page")
+      dashboard.checkJourneyUrl("sales-from-eu")
+      dashboard.answerRadioButton("no")
+
+      And("the user adds correction data for one period")
+      dashboard.checkJourneyUrl("correct-previous-return")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("correction-return-period/1")
+      dashboard.selectReturnPeriod("first")
+      dashboard.checkJourneyUrl("correction-country/1/1")
+      dashboard.selectCountry("Croatia")
+      dashboard.checkJourneyUrl("add-new-country/1/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("country-vat-correction-amount/1/1?undeclaredCountry=true")
+      dashboard.enterAnswer("1000")
+      dashboard.checkJourneyUrl("vat-payable-confirm/1/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("vat-payable-check/1/1")
+      dashboard.continue()
+      dashboard.checkJourneyUrl("vat-correction-list/1")
+      dashboard.answerRadioButton("no")
+
+      Then("the user adds corrections for another period")
+      dashboard.checkJourneyUrl("vat-correction-periods-add")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("correction-return-period/2")
+      dashboard.selectReturnPeriod("first")
+      dashboard.checkJourneyUrl("correction-country/2/1")
+      dashboard.selectCountry("Denmark")
+      dashboard.checkJourneyUrl("add-new-country/2/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("country-vat-correction-amount/2/1?undeclaredCountry=true")
+      dashboard.enterAnswer("5000")
+      dashboard.checkJourneyUrl("vat-payable-confirm/2/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("vat-payable-check/2/1")
+      dashboard.continue()
+      dashboard.checkJourneyUrl("vat-correction-list/2")
+      dashboard.answerRadioButton("no")
+      dashboard.checkJourneyUrl("vat-correction-periods-add")
+      dashboard.answerRadioButton("no")
+
+      Then("the user goes back to add another country to the corrections")
+      dashboard.checkJourneyUrl("check-your-answers")
+      dashboard.clickLink("change-correction-periods")
+      dashboard.checkJourneyUrl("change-vat-correction-periods-add")
+      dashboard.selectChangeOrRemoveLink("change-vat-correction-list\\/2")
+      dashboard.checkJourneyUrl("change-vat-correction-list/2")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("change-correction-country/2/2")
+      dashboard.selectCountry("Spain")
+      dashboard.checkJourneyUrl("change-add-new-country/2/2")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("change-country-vat-correction-amount/2/2?undeclaredCountry=true")
+      dashboard.enterAnswer("2000")
+      dashboard.checkJourneyUrl("change-vat-payable-confirm/2/2")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("change-vat-payable-check/2/2")
+      dashboard.continue()
+      dashboard.checkJourneyUrl("change-vat-correction-list/2")
+      dashboard.answerRadioButton("no")
+
+      Then("the user removes a correction")
+      dashboard.checkJourneyUrl("change-vat-correction-periods-add")
+      dashboard.selectChangeOrRemoveLink("change-remove-period-correction\\/1")
+      dashboard.checkJourneyUrl("change-remove-period-correction/1")
+      dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("change-vat-correction-periods-add")
+      dashboard.answerRadioButton("no")
+
+      And("the user submits their return successfully via the check-your-answers page")
       dashboard.checkJourneyUrl("check-your-answers")
       dashboard.submit()
       dashboard.checkJourneyUrl("return-submitted")
