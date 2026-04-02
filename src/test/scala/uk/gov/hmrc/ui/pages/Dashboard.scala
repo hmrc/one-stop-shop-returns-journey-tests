@@ -46,7 +46,7 @@ object Dashboard extends BasePage {
 
   def checkJourneyUrl(page: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(page))
-    if (page == "add-sales-from-eu") {
+    if (page == "add-sales-from-eu" || page == "check-add-sales-from-eu") {
       fluentWait.until(ExpectedConditions.urlMatches("^((?!add-sales-from-eu-to-eu).)*$"))
     }
     getCurrentUrl should startWith(s"$dashboardUrl$dashboardJourneyUrl")
