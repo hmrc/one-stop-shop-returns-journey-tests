@@ -47,20 +47,7 @@ object Auth extends BasePage {
 
     getCurrentUrl should startWith(authUrl)
 
-    val redirectUrl = journey match {
-      case "amendChangedVATGroup" | "dashboard" | "saveReturn" | "retrieveReturn" =>
-        s"$dashboardUrl$dashboardJourneyUrl"
-      case amend if amend.startsWith("amend")                                     =>
-        s"$registrationUrl$journeyUrl/start-amend-journey"
-      case "noSavedRegistration" | "savedRegistration" | "savedIOSS"              =>
-        s"$registrationUrl$journeyUrl/continue-on-sign-in"
-      case rejoin if rejoin.startsWith("rejoin")                                  =>
-        s"$registrationUrl$journeyUrl/start-rejoin-journey"
-      case _                                                                      =>
-        s"$registrationUrl$journeyUrl"
-    }
-
-    sendKeys(By.name("redirectionUrl"), redirectUrl)
+    sendKeys(By.name("redirectionUrl"), s"$dashboardUrl$dashboardJourneyUrl")
 
     if (journey == "saveReturn") {
       generateCredId()
@@ -75,49 +62,10 @@ object Auth extends BasePage {
 
     selectByValue(By.id("affinityGroupSelect"), "Organisation")
 
-    if (accountType != "vatOnly" && accountType != "hasOSSEnrolment") {
-      sendKeys(By.id("enrolment[1].name"), "HMRC-IOSS-ORG")
-      sendKeys(By.id("input-1-0-name"), "IOSSNumber")
-
-      val iossNumber = journey match {
-        case "quarantineIOSS" | "amendQuarantinedIOSS" | "rejoinQuarantinedIOSS" | "savedIOSS" => "IM9003999993"
-        case "quarantineExpiredIOSS"                                                           => "IM9002999993"
-        case "crossSchemaPreviousIOSSRegistration" | "amendCrossSchemaPreviousIOSSRegistration" |
-            "rejoinCrossSchemaPreviousIOSSRegistration" =>
-          "IM9019999997"
-        case "crossSchemaMultipleIOSSRegistrations" | "amendCrossSchemaMultipleIOSSRegistrations" |
-            "rejoinCrossSchemaMultipleIOSSRegistrations" =>
-          "IM9007231111"
-        case _                                                                                 => "IM9001234567"
-      }
-      if (journey != "registration") {
-        sendKeys(By.id("input-1-0-value"), iossNumber)
-      }
-    }
-
     if (accountType == "hasOSSEnrolment") {
       sendKeys(By.id("enrolment[1].name"), "HMRC-OSS-ORG")
       sendKeys(By.id("input-1-0-name"), "VRN")
       sendKeys(By.id("input-1-0-value"), vrn)
-    }
-
-    if (accountType == "hasOSSAndIOSSEnrolment") {
-      sendKeys(By.id("enrolment[2].name"), "HMRC-OSS-ORG")
-      sendKeys(By.id("input-2-0-name"), "VRN")
-      sendKeys(By.id("input-2-0-value"), vrn)
-    }
-
-    if (journey == "crossSchemaMultipleIOSSRegistrations") {
-      sendKeys(By.id("enrolment[2].name"), "HMRC-IOSS-ORG")
-      sendKeys(By.id("input-2-0-name"), "IOSSNumber")
-      sendKeys(By.id("input-2-0-value"), "IM9006231111")
-    }
-    if (
-      journey == "amendCrossSchemaMultipleIOSSRegistrations" || journey == "rejoinCrossSchemaMultipleIOSSRegistrations"
-    ) {
-      sendKeys(By.id("enrolment[3].name"), "HMRC-IOSS-ORG")
-      sendKeys(By.id("input-3-0-name"), "IOSSNumber")
-      sendKeys(By.id("input-3-0-value"), "IM9006231111")
     }
 
     click(By.cssSelector("Input[value='Submit']"))

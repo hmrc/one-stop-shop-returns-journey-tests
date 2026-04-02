@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 HM Revenue & Customs
+ * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.ui.utils
 
-import org.mongodb.scala.{MongoClient, SingleObservableFuture}
+import org.mongodb.scala.MongoClient
 import org.mongodb.scala.bson.collection.immutable.Document
 import org.mongodb.scala.model.Filters
 
