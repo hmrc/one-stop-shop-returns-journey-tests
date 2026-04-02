@@ -26,6 +26,7 @@ object Exclusion extends BasePage {
 
   private val fourYearsAgo = LocalDate.now().minusYears(4).getYear.toString
   private val lastYear     = LocalDate.now().minusYears(1).getYear.toString
+  private val nextYear     = LocalDate.now().plusYears(1).getYear.toString
 
   def expiredVrnBanner(exclusionType: String, returnsOutstanding: Boolean): Unit = {
 
@@ -37,7 +38,7 @@ object Exclusion extends BasePage {
       case ("hmrc", false) =>
         "We've removed you from this service.\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
       case ("hmrc", true)  =>
-        "We've removed you from this service, but you must complete and pay your final return. You cannot rejoin until 1 April 2026\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
+        s"We've removed you from this service, but you must complete and pay your final return. You cannot rejoin until 1 April $nextYear\nYou are no longer VAT registered. You must re-register for VAT to use the One Stop Shop service."
       case _               => "not a valid combination"
     }
     val htmlBody      = Driver.instance.findElement(By.tagName("body")).getText
