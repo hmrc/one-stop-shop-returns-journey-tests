@@ -27,7 +27,7 @@ class CheckYourAnswersSpec extends BaseSpec {
 
     Scenario("A user follows a basic journey and amends NI answers using Check Your Answers functionality") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -92,7 +92,7 @@ class CheckYourAnswersSpec extends BaseSpec {
 
     Scenario("A user follows a basic journey and amends EU answers using Check Your Answers functionality") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -230,7 +230,7 @@ class CheckYourAnswersSpec extends BaseSpec {
 
     Scenario("A user provides answers then amends to remove info using Check Your Answer functionality") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -327,7 +327,7 @@ class CheckYourAnswersSpec extends BaseSpec {
       "A user uses the Check Your Answers functionality to change between calculated VAT and amended VAT amounts"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -487,7 +487,7 @@ class CheckYourAnswersSpec extends BaseSpec {
 
     Scenario("A user says no to adding a correction then changes to yes and adds a correction") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -547,7 +547,7 @@ class CheckYourAnswersSpec extends BaseSpec {
 
     Scenario("A user says yes to adding a correction then changes to no") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -603,7 +603,7 @@ class CheckYourAnswersSpec extends BaseSpec {
       "A user says yes to adding a correction to a single period then uses change option to add another country"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -671,7 +671,7 @@ class CheckYourAnswersSpec extends BaseSpec {
 
     Scenario("A user amends corrections with multiple periods") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000004", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")

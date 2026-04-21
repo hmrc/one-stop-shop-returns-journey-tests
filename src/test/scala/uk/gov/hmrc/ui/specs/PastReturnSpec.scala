@@ -30,7 +30,7 @@ class PastReturnSpec extends BaseSpec {
   Feature("Past Returns journeys") {
     Scenario("A user views one of their past returns") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -50,7 +50,7 @@ class PastReturnSpec extends BaseSpec {
 
     Scenario("A user has no past returns to view") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -67,7 +67,7 @@ class PastReturnSpec extends BaseSpec {
 
     Scenario("A user tries to start a duplicate return for the same period") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -81,7 +81,7 @@ class PastReturnSpec extends BaseSpec {
 
     Scenario("A user is not able view a submitted return for a period over 6 years ago") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("166666666", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")

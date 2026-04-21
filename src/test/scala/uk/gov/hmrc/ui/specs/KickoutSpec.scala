@@ -28,7 +28,7 @@ class KickoutSpec extends BaseSpec {
 
     Scenario("A user has not registered for the One Shop Stop scheme - no OSS enrolment") {
 
-      Given("the user accesses the IOSS Returns Service with no OSS enrolment")
+      Given("the user accesses the OSS Returns Service with no OSS enrolment")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("121212121", "Organisation", "vatOnly", "dashboard")
 
@@ -38,7 +38,7 @@ class KickoutSpec extends BaseSpec {
 
     Scenario("A user has not registered for the One Shop Stop scheme - no ETMP registration") {
 
-      Given("the user accesses the IOSS Returns Service with no OSS enrolment")
+      Given("the user accesses the OSS Returns Service with no OSS enrolment")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("121212121", "Organisation", "hasOSSEnrolment", "dashboard")
 
@@ -48,7 +48,7 @@ class KickoutSpec extends BaseSpec {
 
     Scenario("A user selects no to starting return for sales period where there are no other sales periods available") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -70,7 +70,7 @@ class KickoutSpec extends BaseSpec {
 
     Scenario("A user cannot start a return later than the most overdue return") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -88,7 +88,7 @@ class KickoutSpec extends BaseSpec {
 
     Scenario("A user cannot complete a return for the current period by manually browsing to the URL") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000005", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -109,7 +109,7 @@ class KickoutSpec extends BaseSpec {
 
     Scenario("An excluded user is unable to complete a return for a period they were no longer registered") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600001212", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -123,7 +123,7 @@ class KickoutSpec extends BaseSpec {
 
     Scenario("An user who has changed VAT group from No to Yes is unable to start a return") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("777777771", "Organisation", "hasOSSEnrolment", "dashboard")
 
@@ -139,7 +139,7 @@ class KickoutSpec extends BaseSpec {
 
     Scenario("An user who has changed VAT group from No to Yes is unable to start a return via BTA") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("777777771", "Organisation", "hasOSSEnrolment", "dashboard")
 
@@ -155,7 +155,7 @@ class KickoutSpec extends BaseSpec {
 
     Scenario("An user who has changed VAT group from No to Yes is unable to access a previously submitted return") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("777777771", "Organisation", "hasOSSEnrolment", "dashboard")
 
@@ -171,7 +171,7 @@ class KickoutSpec extends BaseSpec {
 
     Scenario("An user who has changed VAT group from No to Yes is unable to access past returns history") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("777777771", "Organisation", "hasOSSEnrolment", "dashboard")
 
@@ -187,7 +187,7 @@ class KickoutSpec extends BaseSpec {
 
     Scenario("An user who has changed VAT group from No to Yes is unable to access past returns history via BTA") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("777777771", "Organisation", "hasOSSEnrolment", "dashboard")
 
@@ -203,7 +203,7 @@ class KickoutSpec extends BaseSpec {
 
     Scenario("A user has no available returns to start after clicking the start return link via secure messages") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000005", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")

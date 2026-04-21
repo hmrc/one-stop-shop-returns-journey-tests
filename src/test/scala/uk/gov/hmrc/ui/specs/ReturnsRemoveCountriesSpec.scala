@@ -27,7 +27,7 @@ class ReturnsRemoveCountriesSpec extends BaseSpec {
 
     Scenario("A user accesses the Returns service when selling goods and removes countries") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")

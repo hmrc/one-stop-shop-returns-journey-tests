@@ -27,7 +27,7 @@ class SaveForLaterSpec extends BaseSpec {
 
     Scenario("A user can save their progress and return to the last page they were on") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -105,7 +105,7 @@ class SaveForLaterSpec extends BaseSpec {
 
     Scenario("A user can access their saved return from 'Your account' and complete it") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "saveReturn")
       dashboard.checkJourneyUrl("your-account")
@@ -184,7 +184,7 @@ class SaveForLaterSpec extends BaseSpec {
 
     Scenario("A user can delete an in progress return and start again") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "saveReturn")
       dashboard.checkJourneyUrl("your-account")
@@ -264,7 +264,7 @@ class SaveForLaterSpec extends BaseSpec {
       "A user is advised to come back later and their return is saved when submitting a return where the registration is not found on Core"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("222222222", "Organisation", "hasOSSEnrolment", "saveReturn")
       dashboard.checkJourneyUrl("your-account")
@@ -311,7 +311,7 @@ class SaveForLaterSpec extends BaseSpec {
       "Return saved when there is an issue connecting to EIS/Core during submission"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("222222223", "Organisation", "hasOSSEnrolment", "saveReturn")
       dashboard.checkJourneyUrl("your-account")

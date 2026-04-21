@@ -26,7 +26,7 @@ class AmendSpec extends BaseSpec {
   Feature("Amend registration journey") {
     Scenario("A user can navigate from Your Account to Change Your Registration in the registration service") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -34,7 +34,7 @@ class AmendSpec extends BaseSpec {
       When("the user clicks on the Change your registration link")
       dashboard.clickLink("change-your-registration")
 
-      Then("the user is redirected to the IOSS registration service")
+      Then("the user is redirected to the OSS registration service")
       dashboard.checkRegistrationJourneyUrl("change-your-registration")
     }
   }
