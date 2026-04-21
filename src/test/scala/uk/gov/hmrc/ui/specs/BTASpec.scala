@@ -27,7 +27,7 @@ class BTASpec extends BaseSpec {
   Feature("BTA journeys") {
     Scenario("A user enters the Your Account page via BTA, submits a nil return and has the correct link back to BTA") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -67,7 +67,7 @@ class BTASpec extends BaseSpec {
       "A user enters the Start Your Return page via BTA, submits a nil return and has the correct link back to BTA"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -103,7 +103,7 @@ class BTASpec extends BaseSpec {
       "A user with one outstanding payment clicks the BTA payment link and is directed to the payments service"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -119,7 +119,7 @@ class BTASpec extends BaseSpec {
       "A user with multiple outstanding payments clicks the BTA payment link and is directed to the payment choice page"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("444444444", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -135,7 +135,7 @@ class BTASpec extends BaseSpec {
       "A Welsh user enters the Your Account page via BTA and sees the Welsh transition page before 'Your Account'"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -155,7 +155,7 @@ class BTASpec extends BaseSpec {
       "A Welsh user enters the Start Your Return page via BTA and sees the Welsh transition page before they start their return"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -175,7 +175,7 @@ class BTASpec extends BaseSpec {
       "A Welsh user enters the Continue Your Return page via BTA and sees the Welsh transition page before they continue their return"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -215,7 +215,7 @@ class BTASpec extends BaseSpec {
       "A Welsh user enters the Submitted Returns page via BTA and sees the Welsh transition page before the Past Returns page"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -235,7 +235,7 @@ class BTASpec extends BaseSpec {
       "A user enters the Your Account page via BTA with the en specific parameter and is directed straight to 'Your Account'"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -251,7 +251,7 @@ class BTASpec extends BaseSpec {
       "A Welsh user with multiple outstanding payments clicks the BTA payment link and and sees the Welsh transition page before the payment choice page"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("444444444", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -271,7 +271,7 @@ class BTASpec extends BaseSpec {
       "A user enters the Continue Your Return page via BTA, submits a small return and has the correct link back to BTA"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "saveReturn")
       dashboard.checkJourneyUrl("your-account")

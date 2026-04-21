@@ -26,7 +26,7 @@ class PaymentSpec extends BaseSpec {
   Feature("Payment journeys") {
     Scenario("A user has one outstanding payment and is taken straight to the payment service from My Account") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -40,7 +40,7 @@ class PaymentSpec extends BaseSpec {
 
     Scenario("A user has multiple outstanding payments and is taken to the payment choice page from My Account") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("444444444", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")

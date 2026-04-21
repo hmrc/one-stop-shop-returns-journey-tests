@@ -25,9 +25,9 @@ class ReturnSpec extends BaseSpec {
 
   Feature("Returns journeys") {
 
-    Scenario("User submits an IOSS return with only sales from NI") {
+    Scenario("User submits an OSS return with only sales from NI") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -112,9 +112,9 @@ class ReturnSpec extends BaseSpec {
       dashboard.checkJourneyUrl("return-submitted")
     }
 
-    Scenario("User submits an IOSS return with only sales from EU") {
+    Scenario("User submits an OSS return with only sales from EU") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -216,9 +216,9 @@ class ReturnSpec extends BaseSpec {
       dashboard.checkJourneyUrl("return-submitted")
     }
 
-    Scenario("User submits an IOSS return with sales from NI and EU") {
+    Scenario("User submits an OSS return with sales from NI and EU") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -379,9 +379,9 @@ class ReturnSpec extends BaseSpec {
       dashboard.checkJourneyUrl("return-submitted")
     }
 
-    Scenario("User submits a nil IOSS return") {
+    Scenario("User submits a nil OSS return") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -409,7 +409,7 @@ class ReturnSpec extends BaseSpec {
 
     Scenario("A user completes a full returns journey after registering with Send Goods data") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000006", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -493,9 +493,9 @@ class ReturnSpec extends BaseSpec {
       dashboard.checkJourneyUrl("return-submitted")
     }
 
-    Scenario("User without an organisation name can log in and submit IOSS return") {
+    Scenario("User without an organisation name can log in and submit OSS return") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("783478423", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -523,7 +523,7 @@ class ReturnSpec extends BaseSpec {
 
     Scenario("A user can access their next available return via the secure messages link") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")

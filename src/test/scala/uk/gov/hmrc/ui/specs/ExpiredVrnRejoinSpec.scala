@@ -27,7 +27,7 @@ class ExpiredVrnRejoinSpec extends BaseSpec {
   Feature("Expired VRN Rejoin journeys") {
     Scenario("A trader who has left the service with outstanding returns and now has an expired VRN") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -43,7 +43,7 @@ class ExpiredVrnRejoinSpec extends BaseSpec {
 
     Scenario("A trader who has left the service with no outstanding returns and now has an expired VRN") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -59,7 +59,7 @@ class ExpiredVrnRejoinSpec extends BaseSpec {
 
     Scenario("A trader who has been removed from the service with outstanding returns and now has an expired VRN") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000004", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -75,7 +75,7 @@ class ExpiredVrnRejoinSpec extends BaseSpec {
 
     Scenario("A trader who has been removed from the service with no outstanding returns and now has an expired VRN") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000005", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -93,7 +93,7 @@ class ExpiredVrnRejoinSpec extends BaseSpec {
       "A trader who has left the service with outstanding returns older than 3 years and now has an expired VRN"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000006", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")

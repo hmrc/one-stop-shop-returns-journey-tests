@@ -28,7 +28,7 @@ class CorrectionsSpec extends BaseSpec {
 
     Scenario("A user adds corrections for their previous return") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -108,7 +108,7 @@ class CorrectionsSpec extends BaseSpec {
 
     Scenario("A user adds a correction for a country that was not on their previous return") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -172,7 +172,7 @@ class CorrectionsSpec extends BaseSpec {
 
     Scenario("A user says no to adding a correction to their return") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -204,7 +204,7 @@ class CorrectionsSpec extends BaseSpec {
 
     Scenario("A user is offered a single period to correct and chooses No") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -244,7 +244,7 @@ class CorrectionsSpec extends BaseSpec {
 
     Scenario("A user changes data on their correction in progress and via vat-payable-check") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -330,7 +330,7 @@ class CorrectionsSpec extends BaseSpec {
 
     Scenario("A user changes and removes data on their correction in vat-correction-list") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -410,7 +410,7 @@ class CorrectionsSpec extends BaseSpec {
 
     Scenario("A user changes and removes data on their correction in vat-correction-periods") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -478,7 +478,7 @@ class CorrectionsSpec extends BaseSpec {
 
     Scenario("A user can submit a return with only minus corrections for a previously declared country") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -524,7 +524,7 @@ class CorrectionsSpec extends BaseSpec {
 
     Scenario("A user submits a full return with corrections") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000003", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -610,7 +610,7 @@ class CorrectionsSpec extends BaseSpec {
 
     Scenario("A user adds corrections for multiple previous returns") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000004", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -692,7 +692,7 @@ class CorrectionsSpec extends BaseSpec {
 
     Scenario("A user can't correct periods that were due over 3 years ago") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000008", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")

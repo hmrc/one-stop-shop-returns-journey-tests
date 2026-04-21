@@ -29,7 +29,7 @@ class TransferringMSIDSpec extends BaseSpec {
 
     Scenario("A user who has transferred from another member state has a partial first return") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000007", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -94,7 +94,7 @@ class TransferringMSIDSpec extends BaseSpec {
       "A user who has transferred from another member state has a partial first return in their past returns and a second full return period available"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000077", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -145,7 +145,7 @@ class TransferringMSIDSpec extends BaseSpec {
 
     Scenario("A user who is transferring to another member state has a full return prior to the final return") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000015", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -182,7 +182,7 @@ class TransferringMSIDSpec extends BaseSpec {
 
     Scenario("A user who is transferring to another member state has a final partial return period") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600001515", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -267,7 +267,7 @@ class TransferringMSIDSpec extends BaseSpec {
       "A user who is transferring to another member state has a final return with partial dates in their returns history"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600151515", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")

@@ -27,7 +27,7 @@ class ExclusionSpec extends BaseSpec {
   Feature("Exclusion journeys") {
     Scenario("An HMRC excluded user who has more than one return remaining does not have final return content") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000011", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -66,7 +66,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("An HMRC excluded user who has one return remaining is shown the final return content") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000012", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -104,7 +104,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("An HMRC excluded user who has filed their last return is not able to access the subsequent return") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600001212", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -123,7 +123,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("A user completes their final return when excluded by HMRC with reason 4 - quarantined") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000014", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -162,7 +162,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("A non-excluded user selects Leave this service from the dashboard") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -176,7 +176,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("An excluded user cannot access the exclusions journey") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000013", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -189,7 +189,7 @@ class ExclusionSpec extends BaseSpec {
       "A user who is excluded in the future sees the correct dashboard messages when they have outstanding returns"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000018", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -211,7 +211,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("A user who has left the service and has no outstanding actions") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000019", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -236,7 +236,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("A user who has left the service and has outstanding returns") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000020", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -258,7 +258,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("A user who has been removed from the service and has no outstanding returns") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000021", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -279,7 +279,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("A user who has been quarantined and has outstanding returns") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000025", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -302,7 +302,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("A user who has been quarantined and has no outstanding returns") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000026", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -326,7 +326,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("A user who is excluded can cancel their request to leave within the correct timescales") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000027", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -340,7 +340,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("A user who is excluded cannot cancel their request to leave outside of the correct timescales") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("600000017", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -351,7 +351,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("A user who is excluded by HMRC cannot reverse exclusion - ceased trade") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000030", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -362,7 +362,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("A user who is excluded by HMRC cannot reverse exclusion - no longer meets conditions") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000031", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -375,7 +375,7 @@ class ExclusionSpec extends BaseSpec {
       "A user who is not excluded does not have the option to enter the reversal or rejoin journeys on the dashboard"
     ) {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
@@ -389,7 +389,7 @@ class ExclusionSpec extends BaseSpec {
 
     Scenario("A user who has reversed their exclusion can leave the service again") {
 
-      Given("the user accesses the IOSS Returns Service")
+      Given("the user accesses the OSS Returns Service")
       auth.goToAuthorityWizard()
       auth.loginUsingAuthorityWizard("100000029", "Organisation", "hasOSSEnrolment", "dashboard")
       dashboard.checkJourneyUrl("your-account")
