@@ -308,7 +308,7 @@ class SaveForLaterSpec extends BaseSpec {
     }
 
     Scenario(
-      "Return saved when there is an issue connecting to EIS/Core during submission"
+      "Return saved when there is an issue connecting to EIS or Core during submission"
     ) {
 
       Given("the user accesses the OSS Returns Service")
