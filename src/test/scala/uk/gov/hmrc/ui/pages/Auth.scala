@@ -26,9 +26,6 @@ import scala.util.Random
 object Auth extends BasePage {
 
   private val authUrl: String             = TestEnvironment.url("auth-login-stub") + "/auth-login-stub/gg-sign-in"
-  private val registrationUrl: String     =
-    TestEnvironment.url("one-stop-shop-registration-frontend")
-  private val journeyUrl: String          = "/pay-vat-on-goods-sold-to-eu/northern-ireland-register"
   private val dashboardUrl: String        =
     TestEnvironment.url("one-stop-shop-returns-frontend")
   private val dashboardJourneyUrl: String = "/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments"

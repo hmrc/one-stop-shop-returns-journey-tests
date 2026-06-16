@@ -43,6 +43,11 @@ class BTASpec extends BaseSpec {
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
 
+      And("the user answers no on the want-to-upload-file page")
+      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.clickLink("value-2")
+      dashboard.continue()
+
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("no")
@@ -78,6 +83,11 @@ class BTASpec extends BaseSpec {
       Then("the user answers yes on the start page")
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
+
+      And("the user answers no on the want-to-upload-file page")
+      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.clickLink("value-2")
+      dashboard.continue()
 
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
@@ -184,6 +194,9 @@ class BTASpec extends BaseSpec {
       dashboard.clickLink("start-your-return")
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.clickLink("value-2")
+      dashboard.continue()
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("yes")
       dashboard.checkJourneyUrl("eu-country-from-northern-ireland/1")
@@ -282,6 +295,11 @@ class BTASpec extends BaseSpec {
       Then("the user answers yes on the start page")
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
+
+      And("the user answers no on the want-to-upload-file page")
+      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.clickLink("value-2")
+      dashboard.continue()
 
       And("the user enters returns data")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
