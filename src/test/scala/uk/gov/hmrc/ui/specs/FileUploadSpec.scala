@@ -20,8 +20,8 @@ import uk.gov.hmrc.ui.pages.*
 
 class FileUploadSpec extends BaseSpec {
 
-  private val dashboard = Dashboard
-  private val auth      = Auth
+  private val dashboard  = Dashboard
+  private val auth       = Auth
   private val fileUpload = FileUpload
 
   Feature("File upload journeys") {

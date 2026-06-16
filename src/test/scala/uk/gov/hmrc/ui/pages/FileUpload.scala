@@ -28,13 +28,13 @@ import java.io.File
 
 object FileUpload extends BasePage with Eventually {
 
-  private val dashboardUrl: String =
+  private val dashboardUrl: String        =
     TestEnvironment.url("one-stop-shop-returns-frontend")
   private val dashboardJourneyUrl: String = "/pay-vat-on-goods-sold-to-eu/northern-ireland-returns-payments"
 
   def uploadFile(file: String): Unit = {
     val pathNameString: String = System.getProperty("user.dir") + s"/src/test/scala/uk/gov/hmrc/ui/data/$file"
-    val filePath = new File(pathNameString)
+    val filePath               = new File(pathNameString)
 
     //Cannot use clear function in PageObject sendKeys
     Driver.instance.findElement(By.id("file-input")).sendKeys(filePath.getAbsolutePath)
@@ -51,10 +51,10 @@ object FileUpload extends BasePage with Eventually {
   def selectFileUpload(selectButton: String): Unit = {
     eventually(timeout(Span(1, Seconds)), interval(Span(200, Millis))) {
       selectButton match {
-        case "Yes" => click(By.id("value"))
+        case "Yes"                                                             => click(By.id("value"))
         case "No, enter them myself" | "No, I want to upload a different file" =>
           click(By.id("value-2"))
-        case _ => throw new Exception("Option doesn't exist")
+        case _                                                                 => throw new Exception("Option doesn't exist")
       }
     }
     click(continueButton)
