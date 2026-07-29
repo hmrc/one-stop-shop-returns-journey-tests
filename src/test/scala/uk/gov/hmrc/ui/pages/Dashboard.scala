@@ -239,4 +239,7 @@ object Dashboard extends BasePage {
     )
     getTitle should be(pageTitle)
   }
+
+  def selectCssLink(link: String): Unit =
+    click(By.cssSelector(s"a[href*=$link]"))
 }
