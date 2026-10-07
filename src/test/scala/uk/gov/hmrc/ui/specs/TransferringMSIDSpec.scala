@@ -18,12 +18,16 @@ package uk.gov.hmrc.ui.specs
 
 import uk.gov.hmrc.ui.pages.*
 
+import java.time.LocalDate
+
 class TransferringMSIDSpec extends BaseSpec {
 
   private val dashboard        = Dashboard
   private val auth             = Auth
   private val transferringMSID = TransferringMSID
   private val exclusion        = Exclusion
+
+  private val twoYearsAgo = LocalDate.now().minusYears(2).getYear.toString
 
   Feature("Transferring MSID journeys") {
 
@@ -110,11 +114,11 @@ class TransferringMSIDSpec extends BaseSpec {
       Then("the user is on the past-returns page")
       dashboard.checkJourneyUrl("past-returns")
 
-      And("the user clicks on the April to June 2023 link")
-      transferringMSID.selectReturn("past-returns\\/2023-Q2")
+      And("the user clicks on the April to June two years ago link")
+      transferringMSID.selectReturn(s"past-returns\\/$twoYearsAgo-Q2")
 
-      And("the user is on the past-returns/2023-Q2 page")
-      dashboard.checkJourneyUrl("past-returns/2023-Q2")
+      And("the user is on the past-returns page for April to June two years ago")
+      dashboard.checkJourneyUrl(s"past-returns/$twoYearsAgo-Q2")
 
       And("the user transferring from another MSID has the correct partial dates in the past return")
       transferringMSID.pastReturnDates("from")
@@ -298,11 +302,11 @@ class TransferringMSIDSpec extends BaseSpec {
       Then("the user is on the past-returns page")
       dashboard.checkJourneyUrl("past-returns")
 
-      And("the user clicks on the July to Sptember 2023 link")
-      transferringMSID.selectReturn("past-returns\\/2023-Q3")
+      And("the user clicks on the July to September two years ago link")
+      transferringMSID.selectReturn(s"past-returns\\/$twoYearsAgo-Q3")
 
-      And("the user is on the past-returns/2023-Q3 page")
-      dashboard.checkJourneyUrl("past-returns/2023-Q3")
+      And("the user is on the past-returns page for July to September two years ago")
+      dashboard.checkJourneyUrl(s"past-returns/$twoYearsAgo-Q3")
 
       And("the user transferring to another MSID has the correct partial dates in the past return")
       transferringMSID.pastReturnDates("to")

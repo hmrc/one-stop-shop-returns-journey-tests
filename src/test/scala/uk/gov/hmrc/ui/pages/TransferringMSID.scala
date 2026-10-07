@@ -20,22 +20,27 @@ import org.junit.Assert
 import org.openqa.selenium.By
 import uk.gov.hmrc.selenium.webdriver.Driver
 
+import java.time.LocalDate
+
 object TransferringMSID extends BasePage {
+
+  private val twoYearsAgo = LocalDate.now().minusYears(2).getYear
 
   def transferringDates(transferDirection: String, returnStage: String, returnType: String): Unit = {
 
     val htmlBody = Driver.instance.findElement(By.tagName("body")).getText
     val heading  = Driver.instance.findElement(By.tagName("h1")).getText
+
     if (transferDirection == "to" && returnStage == "offered" && returnType == "full") {
-      Assert.assertTrue(heading.contains("1 April to 30 June 2023"))
+      Assert.assertTrue(heading.contains(s"1 April to 30 June $twoYearsAgo"))
     } else if (transferDirection == "to" && returnStage == "submitting" && returnType == "full") {
-      Assert.assertTrue(htmlBody.contains("1 April to 30 June 2023"))
+      Assert.assertTrue(htmlBody.contains(s"1 April to 30 June $twoYearsAgo"))
     } else if (transferDirection == "to" && returnType == "partial") {
-      Assert.assertTrue(htmlBody.contains("1 July to 8 September 2023"))
+      Assert.assertTrue(htmlBody.contains(s"1 July to 8 September $twoYearsAgo"))
     } else if (transferDirection == "from" && returnType == "partial") {
-      Assert.assertTrue(htmlBody.contains("9 June to 30 June 2023"))
+      Assert.assertTrue(htmlBody.contains(s"9 June to 30 June $twoYearsAgo"))
     } else {
-      Assert.assertTrue(heading.contains("1 July to 30 September 2023"))
+      Assert.assertTrue(heading.contains(s"1 July to 30 September $twoYearsAgo"))
     }
   }
 
@@ -46,9 +51,9 @@ object TransferringMSID extends BasePage {
     val htmlH1 = Driver.instance.findElement(By.tagName("h1")).getText
 
     if (direction == "to") {
-      Assert.assertTrue(htmlH1.contains("1 July to 8 September 2023"))
+      Assert.assertTrue(htmlH1.contains(s"1 July to 8 September $twoYearsAgo"))
     } else {
-      Assert.assertTrue(htmlH1.contains("9 June to 30 June 2023"))
+      Assert.assertTrue(htmlH1.contains(s"9 June to 30 June $twoYearsAgo"))
     }
   }
 }
