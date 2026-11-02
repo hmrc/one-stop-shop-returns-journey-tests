@@ -383,5 +383,25 @@ class SaveForLaterSpec extends BaseSpec {
       Then("the user is on the check-your-answers page")
       dashboard.checkJourneyUrl("check-your-answers")
     }
+
+    Scenario("User attempts to start a saved return when there are no longer any saved returns") {
+
+      Given("the user accesses the OSS Returns Service")
+      auth.goToAuthorityWizard()
+      auth.loginUsingAuthorityWizard("100000002", "Organisation", "hasOSSEnrolment", "dashboard")
+      dashboard.checkJourneyUrl("your-account")
+
+      When("the user manually navigates to 2021-Q3/return-continue")
+      dashboard.goToPage("2021-Q3/return-continue")
+
+      Then("the user is on the no-saved-returns page")
+      dashboard.checkJourneyUrl("no-saved-returns")
+
+      And("the user clicks on the Return to your account link")
+      dashboard.clickLink("return-to-your-account")
+
+      And("the user is returned to their dashboard")
+      dashboard.checkJourneyUrl("your-account")
+    }
   }
 }
