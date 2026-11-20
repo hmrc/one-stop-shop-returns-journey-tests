@@ -40,6 +40,10 @@ class FileUploadSpec extends BaseSpec {
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
 
+      And("the user answers yes on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("yes")
+
       And("the user answers yes on the want-to-upload-file page")
       dashboard.checkJourneyUrl("want-to-upload-file")
       dashboard.clickLink("value")
@@ -75,6 +79,14 @@ class FileUploadSpec extends BaseSpec {
 
       Then("the user answers yes on the start page")
       dashboard.checkJourneyUrl("start")
+      dashboard.answerRadioButton("yes")
+
+      And("the user answers no on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("no")
+
+      And("the user answers yes on the sales-from-eu")
+      dashboard.checkJourneyUrl("sales-from-eu")
       dashboard.answerRadioButton("yes")
 
       And("the user answers yes on the want-to-upload-file page")
