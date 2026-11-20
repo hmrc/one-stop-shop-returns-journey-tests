@@ -39,11 +39,6 @@ class CheckYourAnswersSpec extends BaseSpec {
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("no")
@@ -62,6 +57,13 @@ class CheckYourAnswersSpec extends BaseSpec {
       And("the user answers yes on the check-sales-from-northern-ireland page")
       dashboard.answerRadioButton("yes")
 
+      //does this need check in url?
+      And("the user answers no on the want-to-upload-file page")
+      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.clickLink("value-2")
+      dashboard.continue()
+
+      And("the user selects a country on the eu-country-from-northern-ireland page")
       dashboard.checkJourneyUrl("check-eu-country-from-northern-ireland/1")
       dashboard.selectCountry("Denmark")
 
@@ -109,11 +111,6 @@ class CheckYourAnswersSpec extends BaseSpec {
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("no")
@@ -132,6 +129,12 @@ class CheckYourAnswersSpec extends BaseSpec {
       And("the user answers yes on the sales-from-eu page")
       dashboard.checkJourneyUrl("check-sales-from-eu")
       dashboard.answerRadioButton("yes")
+
+      //does this need check in url?
+      And("the user answers no on the want-to-upload-file page")
+      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.clickLink("value-2")
+      dashboard.continue()
 
       And("the user selects a country on the eu-country-sold-from page")
       dashboard.checkJourneyUrl("check-eu-country-sold-from/1")
@@ -252,14 +255,14 @@ class CheckYourAnswersSpec extends BaseSpec {
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
 
+      And("the user answers yes on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("yes")
+
       And("the user answers no on the want-to-upload-file page")
       dashboard.checkJourneyUrl("want-to-upload-file")
       dashboard.clickLink("value-2")
       dashboard.continue()
-
-      And("the user answers yes on the sales-from-northern-ireland page")
-      dashboard.checkJourneyUrl("sales-from-northern-ireland")
-      dashboard.answerRadioButton("yes")
 
       And("the user selects a country on the eu-country-from-northern-ireland page")
       dashboard.checkJourneyUrl("eu-country-from-northern-ireland/1")
@@ -354,14 +357,14 @@ class CheckYourAnswersSpec extends BaseSpec {
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
 
+      And("the user answers yes on the sales-from-northern-ireland page")
+      dashboard.checkJourneyUrl("sales-from-northern-ireland")
+      dashboard.answerRadioButton("yes")
+
       And("the user answers no on the want-to-upload-file page")
       dashboard.checkJourneyUrl("want-to-upload-file")
       dashboard.clickLink("value-2")
       dashboard.continue()
-
-      And("the user answers yes on the sales-from-northern-ireland page")
-      dashboard.checkJourneyUrl("sales-from-northern-ireland")
-      dashboard.answerRadioButton("yes")
 
       And("the user selects a country on the eu-country-from-northern-ireland page")
       dashboard.checkJourneyUrl("eu-country-from-northern-ireland/1")
@@ -519,11 +522,6 @@ class CheckYourAnswersSpec extends BaseSpec {
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("no")
@@ -584,11 +582,6 @@ class CheckYourAnswersSpec extends BaseSpec {
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("no")
@@ -644,11 +637,6 @@ class CheckYourAnswersSpec extends BaseSpec {
       Then("the user answers yes on the start page")
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
-
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
 
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
@@ -717,11 +705,6 @@ class CheckYourAnswersSpec extends BaseSpec {
       Then("the user answers yes on the start page")
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
-
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
 
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")

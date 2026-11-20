@@ -50,11 +50,6 @@ class ExclusionSpec extends BaseSpec {
       And("the user starts the first return from last year")
       exclusion.firstReturnLastYear()
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("no")
@@ -89,11 +84,6 @@ class ExclusionSpec extends BaseSpec {
 
       And("the user starts the first return from last year")
       exclusion.firstReturnLastYear()
-
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
 
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
@@ -152,11 +142,6 @@ class ExclusionSpec extends BaseSpec {
       Then("the user answers yes on the start page")
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
-
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
 
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")

@@ -66,7 +66,7 @@ class ChangeDateSpec extends BaseSpec {
       dashboard.clickLink("skip-and-back-to-your-account")
 
       Then("the user is able to progress the return")
-      dashboard.checkJourneyUrl("2023-Q2/want-to-upload-file")
+      dashboard.checkJourneyUrl("2023-Q2/sales-from-northern-ireland")
     }
   }
 }
