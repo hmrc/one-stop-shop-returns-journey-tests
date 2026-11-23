@@ -68,7 +68,6 @@ class ChangeAnswersFileUploadSpec extends BaseSpec {
       dashboard.answerRadioButton("yes")
 
       And("the user manually enters sales for the EU")
-      //currently going to file upload
       dashboard.checkJourneyUrl("check-eu-country-sold-from/1")
       dashboard.selectCountry("Lithuania")
       dashboard.checkJourneyUrl("check-eu-country-sold-to/1/1")
@@ -168,7 +167,6 @@ class ChangeAnswersFileUploadSpec extends BaseSpec {
       dashboard.answerRadioButton("yes")
 
       And("the user manually enters sales for NI")
-      //currently going to file upload
       dashboard.checkJourneyUrl("check-eu-country-from-northern-ireland/1")
       dashboard.selectCountry("Denmark")
       dashboard.checkJourneyUrl("check-eu-sales-from-northern-ireland/1/1")

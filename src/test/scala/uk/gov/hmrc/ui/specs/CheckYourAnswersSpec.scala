@@ -57,9 +57,8 @@ class CheckYourAnswersSpec extends BaseSpec {
       And("the user answers yes on the check-sales-from-northern-ireland page")
       dashboard.answerRadioButton("yes")
 
-      //does this need check in url?
       And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.checkJourneyUrl("change-want-to-upload-file")
       dashboard.clickLink("value-2")
       dashboard.continue()
 
@@ -130,9 +129,8 @@ class CheckYourAnswersSpec extends BaseSpec {
       dashboard.checkJourneyUrl("check-sales-from-eu")
       dashboard.answerRadioButton("yes")
 
-      //does this need check in url?
       And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.checkJourneyUrl("change-want-to-upload-file")
       dashboard.clickLink("value-2")
       dashboard.continue()
 
