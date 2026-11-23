@@ -39,14 +39,12 @@ class SaveForLaterSpec extends BaseSpec {
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user enters returns data")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.clickLink("value-2")
+      dashboard.continue()
       dashboard.checkJourneyUrl("eu-country-from-northern-ireland/1")
       dashboard.selectCountry("Spain")
       dashboard.checkJourneyUrl("eu-vat-rates-from-northern-ireland/1")
@@ -122,14 +120,12 @@ class SaveForLaterSpec extends BaseSpec {
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user enters returns data")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.clickLink("value-2")
+      dashboard.continue()
       dashboard.checkJourneyUrl("eu-country-from-northern-ireland/1")
       dashboard.selectCountry("Spain")
       dashboard.checkJourneyUrl("eu-vat-rates-from-northern-ireland/1")
@@ -206,14 +202,12 @@ class SaveForLaterSpec extends BaseSpec {
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user enters returns data")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.clickLink("value-2")
+      dashboard.continue()
       dashboard.checkJourneyUrl("eu-country-from-northern-ireland/1")
       dashboard.selectCountry("Spain")
       dashboard.checkJourneyUrl("eu-vat-rates-from-northern-ireland/1")
@@ -261,11 +255,6 @@ class SaveForLaterSpec extends BaseSpec {
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("no")
@@ -295,11 +284,6 @@ class SaveForLaterSpec extends BaseSpec {
       Then("the user answers yes on the start page")
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
-
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
 
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
@@ -347,11 +331,6 @@ class SaveForLaterSpec extends BaseSpec {
       Then("the user answers yes on the start page")
       dashboard.checkJourneyUrl("start")
       dashboard.answerRadioButton("yes")
-
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
 
       And("the user answers no on the sales-from-northern-ireland page")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")

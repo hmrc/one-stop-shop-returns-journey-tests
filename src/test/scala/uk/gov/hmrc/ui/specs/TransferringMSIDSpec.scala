@@ -48,14 +48,12 @@ class TransferringMSIDSpec extends BaseSpec {
       Then("the user answers yes on the start page")
       dashboard.answerRadioButton("yes")
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user enters return data")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.clickLink("value-2")
+      dashboard.continue()
       dashboard.checkJourneyUrl("eu-country-from-northern-ireland/1")
       dashboard.selectCountry("Spain")
       dashboard.checkJourneyUrl("eu-vat-rates-from-northern-ireland/1")
@@ -138,11 +136,6 @@ class TransferringMSIDSpec extends BaseSpec {
       Then("the user answers yes on the start page")
       dashboard.answerRadioButton("yes")
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user enters return data")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("no")
@@ -179,11 +172,6 @@ class TransferringMSIDSpec extends BaseSpec {
       Then("the user answers yes on the start page")
       dashboard.answerRadioButton("yes")
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user enters return data")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("no")
@@ -216,14 +204,12 @@ class TransferringMSIDSpec extends BaseSpec {
       Then("the user answers yes on the start page")
       dashboard.answerRadioButton("yes")
 
-      And("the user answers no on the want-to-upload-file page")
-      dashboard.checkJourneyUrl("want-to-upload-file")
-      dashboard.clickLink("value-2")
-      dashboard.continue()
-
       And("the user enters return data")
       dashboard.checkJourneyUrl("sales-from-northern-ireland")
       dashboard.answerRadioButton("yes")
+      dashboard.checkJourneyUrl("want-to-upload-file")
+      dashboard.clickLink("value-2")
+      dashboard.continue()
       dashboard.checkJourneyUrl("eu-country-from-northern-ireland/1")
       dashboard.selectCountry("Spain")
       dashboard.checkJourneyUrl("eu-vat-rates-from-northern-ireland/1")
